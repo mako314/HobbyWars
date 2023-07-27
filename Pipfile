@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sqlalchemy = "*"
+alembic = "*"
+Flask = "*"
+Flask-Migrate = "*"
+Flask-SQLAlchemy = "*"
+importlib-resources = "*"
+ipdb = "*"
+pytest = "7.1.3"
+sqlalchemy-serializer = "*"
+Flask-Restful = "*"
+Flask-Cors = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

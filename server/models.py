@@ -19,6 +19,32 @@ class User(db.Model, SerializerMixin):
     location = db.Column(db.String)
     phone = db.Column(db.String)
     email = db.Column(db.String)
+    # hobbies = db.Column(db.String)
     profileImg = db.Column(db.String)
     bannerImg = db.Column(db.String)
+
+class Hobby(db.Model, SerializerMixin):
+    __tablename__ = "hobbies"
+    id = db.Column(db.Integer, primary_key = True)
+    hobby = db.Column(db.String)
+    expertise = db.Column(db.Integer) #1-10 or 1-5?
+
+class Competition(db.Model, SerializerMixin):
+    __tablename__ = "competitions"
+    #Columns
+    id = db.Column(db.Integer, primary_key = True)
+    requirements = db.Column(db.String) #This would be hobby
+    description = db.Column(db.String)
+    cost_of_entry = db.Column(db.Integer)
+    schedule = db.Column(db.String)
+    contact = db.Column(db.String)
+    location = db.Column(db.String)
+    #Need to find prizing information
+    registration_schedule = db.Column(db.String)
+
+
+class Result(db.Model, SerializerMixin):
+    __tablename__ = "results"
+    #Columns
+    id = db.Column(db.Integer, primary_key = True)
 

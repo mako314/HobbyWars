@@ -8,3 +8,17 @@ metadata = MetaData(naming_convention={
 })
 
 db = SQLAlchemy()
+
+class User(db.Model, SerializerMixin):
+    __tablename__ = "users"
+    #Columns
+    id = db.Column(db.Integer, primary_key = True)
+    firstName = db.Column(db.String)
+    lastName = db.Column(db.String)
+    bio = db.Column(db.String)
+    location = db.Column(db.String)
+    phone = db.Column(db.String)
+    email = db.Column(db.String)
+    profileImg = db.Column(db.String)
+    bannerImg = db.Column(db.String)
+

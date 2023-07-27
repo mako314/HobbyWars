@@ -23,7 +23,10 @@ class User(db.Model, SerializerMixin):
     profileImg = db.Column(db.String)
     bannerImg = db.Column(db.String)
 
-    competitions = db.relationship('Competition')
+    competitions = db.relationship('Competition', backref="users" )
+    hobbies = db.relationship('Hobby', backref="users")
+    result = db.relationship('Result', backref="users")
+    entries = db.relationship('Entry', backref="users")
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
@@ -59,6 +62,9 @@ class Competition(db.Model, SerializerMixin):
 
     registration_schedule = db.Column(db.String) # I really want this to use DateTime but likely not
 
+    users = db.relationship('User', backref="competitions")
+    entries = db.relationship('Entry', backref="competitions")
+    result = db.relationship('Result', backref="competitions")
 
 
 class Result(db.Model, SerializerMixin):
@@ -77,6 +83,8 @@ class Entry(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     submission = db.Column(db.String)
     description = db.Column(db.String)
+    tools_utilized = db.Column(db.String)
+
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))

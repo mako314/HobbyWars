@@ -23,6 +23,8 @@ class User(db.Model, SerializerMixin):
     profileImg = db.Column(db.String)
     bannerImg = db.Column(db.String)
 
+    competitions = db.relationship('Competition')
+
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
     id = db.Column(db.Integer, primary_key = True)
@@ -54,7 +56,9 @@ class Competition(db.Model, SerializerMixin):
     prize7 = db.Column(db.String)
     prize8 = db.Column(db.String)
     #Need to find prizing information
-    registration_schedule = db.Column(db.String)
+
+    registration_schedule = db.Column(db.String) # I really want this to use DateTime but likely not
+
 
 
 class Result(db.Model, SerializerMixin):
@@ -66,5 +70,13 @@ class Result(db.Model, SerializerMixin):
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
-    
 
+class Entry(db.Model, SerializerMixin):
+    __tablename__ = "entries"
+    #Columns
+    id = db.Column(db.Integer, primary_key = True)
+    submission = db.Column(db.String)
+    description = db.Column(db.String)
+    #Foreign Keys
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))

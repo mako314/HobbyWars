@@ -23,10 +23,14 @@ class User(db.Model, SerializerMixin):
     profileImg = db.Column(db.String)
     bannerImg = db.Column(db.String)
 
+    #Relationships
     competitions = db.relationship('Competition', backref="users" )
     hobbies = db.relationship('Hobby', backref="users")
     result = db.relationship('Result', backref="users")
     entries = db.relationship('Entry', backref="users")
+
+    #Serialize rules
+    serialize_rules = ('-competitions.users', '-hobbies.users', '-result.users', '-entries.user')
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
@@ -62,9 +66,13 @@ class Competition(db.Model, SerializerMixin):
 
     registration_schedule = db.Column(db.String) # I really want this to use DateTime but likely not
 
+    #Relationships
     users = db.relationship('User', backref="competitions")
     entries = db.relationship('Entry', backref="competitions")
     result = db.relationship('Result', backref="competitions")
+
+    #Serialize Rules
+    serialize_rules = ('-users.competitions', '-entries.competitions', '-result.competitions')
 
 
 class Result(db.Model, SerializerMixin):
@@ -77,6 +85,13 @@ class Result(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
 
+    #Relationships
+    users = db.relationship('User', backref="results")
+    
+    #Serialize Rules
+    serialize_rules = ('-users.results',)
+
+
 class Entry(db.Model, SerializerMixin):
     __tablename__ = "entries"
     #Columns
@@ -88,3 +103,7 @@ class Entry(db.Model, SerializerMixin):
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
+
+    #Relationships
+    users = db.relationship('User', backref="results")
+    serialize_rules = ('-users.results',)

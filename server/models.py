@@ -26,24 +26,37 @@ class User(db.Model, SerializerMixin):
     bannerImg = db.Column(db.String)
 
     #Relationships
-    # competitions = db.relationship('Competition', backref="users" ) '-competitions.users',
-    hobbies = db.relationship('Hobby', backref="users")
-    results = db.relationship('Result', backref="users")
-    entries = db.relationship('Entry', backref="users")
+    competitions = db.relationship('Competition', back_populates="user" ) 
+    hobby = db.relationship('Hobby', back_populates="user")
+    result = db.relationship('Result', back_populates="user")
+    entry = db.relationship('Entry', back_populates="user")
+    user_hobby = db.relationship('UserHobby', back_populates="user")
 
     #Serialize rules
-    serialize_rules = ('-hobbies.users', '-result.users', '-entries.user')
+    serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user')
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
     id = db.Column(db.Integer, primary_key = True)
     hobby = db.Column(db.String)
-    expertise = db.Column(db.Integer) #1-10 or 1-5?
-
+    description = db.Column(db.String)
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    #Relationships
+    user = db.relationship('User', back_populates="hobby")
+
+
     #Serialize Rules
+class UserHobby(db.Model, SerializerMixin):
+    __tablename__= "user_hobbies"
+    id = db.Column(db.Integer, primary_key = True)
+    expertise = db.Column(db.Integer) #1-10 or 1-5?
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    hobby_id = db.Column(db.Integer, db.ForeignKey('hobbies.id'))
+
+    user = db.relationship('User', back_populates="user_hobby")
 
 
 class Competition(db.Model, SerializerMixin):
@@ -72,12 +85,12 @@ class Competition(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     #Relationships
-    users = db.relationship('User', backref="competitions")
-    entries = db.relationship('Entry', backref="competitions")
-    result = db.relationship('Result', backref="competitions")
+    user = db.relationship('User', back_populates="competitions")
+    entry = db.relationship('Entry', back_populates="competitions")
+    result = db.relationship('Result', back_populates="competitions")
 
     #Serialize Rules
-    serialize_rules = ('-users.competitions', '-entries.competitions', '-result.competitions')
+    serialize_rules = ('-user.competitions', '-entry.competitions', '-result.competitions')
 
 
 class Result(db.Model, SerializerMixin):
@@ -91,10 +104,12 @@ class Result(db.Model, SerializerMixin):
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
 
     #Relationships
-    # users = db.relationship('User', backref="results")
+    user = db.relationship('User', back_populates="result")
+    competitions = db.relationship('Competition', back_populates="result" )
+
     
     #Serialize Rules
-    serialize_rules = ('-users.results',)
+    serialize_rules = ('-user.results','-competitions.result')
 
 
 class Entry(db.Model, SerializerMixin):
@@ -110,7 +125,11 @@ class Entry(db.Model, SerializerMixin):
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
 
     #Relationships
-    # users = db.relationship('User', backref="entries")
+    user = db.relationship('User', back_populates="entry")
+    competitions = db.relationship('Competition', back_populates="entry" )
 
     #Serialize Rules
-    serialize_rules = ('-users.entries',)
+    serialize_rules = ('-users.entry','competitions.entry')
+
+
+#table for user hobbies so they can put experience etc

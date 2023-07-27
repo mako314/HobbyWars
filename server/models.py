@@ -15,6 +15,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     firstName = db.Column(db.String)
     lastName = db.Column(db.String)
+    age = db.Column(db.Integer) # Would like to swap this to one of the calendars where you select your age.
     bio = db.Column(db.String)
     location = db.Column(db.String)
     phone = db.Column(db.String)
@@ -40,6 +41,10 @@ class Hobby(db.Model, SerializerMixin):
 
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    #Serialize Rules
+
+
 
 
 
@@ -106,4 +111,6 @@ class Entry(db.Model, SerializerMixin):
 
     #Relationships
     users = db.relationship('User', backref="results")
+
+    #Serialize Rules
     serialize_rules = ('-users.results',)

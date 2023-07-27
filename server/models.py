@@ -44,6 +44,15 @@ class Competition(db.Model, SerializerMixin):
     schedule = db.Column(db.String)
     contact = db.Column(db.String)
     location = db.Column(db.String)
+
+    prize1 = db.Column(db.String)
+    prize2 = db.Column(db.String)
+    prize3 = db.Column(db.String)
+    prize4 = db.Column(db.String)
+    prize5 = db.Column(db.String)
+    prize6 = db.Column(db.String)
+    prize7 = db.Column(db.String)
+    prize8 = db.Column(db.String)
     #Need to find prizing information
     registration_schedule = db.Column(db.String)
 

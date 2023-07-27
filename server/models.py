@@ -29,6 +29,11 @@ class Hobby(db.Model, SerializerMixin):
     hobby = db.Column(db.String)
     expertise = db.Column(db.Integer) #1-10 or 1-5?
 
+    #Foreign Keys
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+
+
 class Competition(db.Model, SerializerMixin):
     __tablename__ = "competitions"
     #Columns
@@ -47,4 +52,10 @@ class Result(db.Model, SerializerMixin):
     __tablename__ = "results"
     #Columns
     id = db.Column(db.Integer, primary_key = True)
+    placement = db.Column(db.Integer)
+
+    #Foreign Keys
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
+    
 

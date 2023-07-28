@@ -825,7 +825,7 @@ if __name__ == '__main__':
                 prize6="Sixth Place: The sixth-place team will receive $50 cash prize, acknowledging their resilience and spirit in tackling the trail's obstacles.",
                 prize7="Seventh Place: The seventh-place team will be granted a $25 outdoor gear voucher, allowing them to choose equipment or accessories to enhance their future trekking adventures.",
                 prize8="Eighth Place: The eighth-place team will receive a $20 outdoor gear voucher, providing them with an opportunity to acquire quality gear for their outdoor pursuits.",
-                registration_schedule="", # need a way to grab date
+                registration_schedule="Participants can register for the competition through [provide registration details]. The number of teams may be limited, so early registration is encouraged.", # need a way to grab date
             ),
             Competition(
                 title="Celestial Explorer Challenge",
@@ -852,42 +852,114 @@ if __name__ == '__main__':
             Competition(
                 title="Virtual Culinary Showdown",
                 objective="Unleash your culinary prowess and embark on a thrilling gourmet adventure as you participate in the Virtual Culinary Showdown! This online cooking competition aims to celebrate the art of cooking, ignite culinary creativity, and bring together passionate home chefs in a virtual culinary spectacle.",
-                description="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens.",
-                scoring="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens.",
+                description="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens.\n In the culinary theater, the virtual audience becomes an integral part of the spectacle! Through real-time comments, questions, and votes, spectators will engage with the passionate chefs, savoring the excitement and camaraderie of the Virtual Culinary Showdown.\nDuring the live stream, the virtual audience will have the opportunity to engage with the participants through real-time comments, questions, and votes for their favorite dishes.",
+                scoring="Dedicated judges will assess participants' culinary feats in each challenge, and a delectable blend of taste, technique, and presentation will be rewarded. The participant who reigns supreme with the highest overall score at the end of the Virtual Culinary Showdown will be crowned the culinary virtuoso.",
                 cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Online (Participants will cook from their respective kitchens)",
                 requirement="",
                 competition_tasks="1. Signature Dish Challenge: Ignite the flames of creativity and culinary finesse as each participant presents their show-stopping 'Signature Dish.' With the spotlight on their unique culinary styles and inventive flavors, participants will unravel the secrets of their gastronomic masterpieces during the live-streamed showdown.\n2. Mystery Ingredient Round: Thrills await in the Mystery Ingredient Round! As the culinary maestros compete against the clock, they must ingeniously incorporate a surprise ingredient into their dishes, impressing the virtual audience with their culinary dexterity and resourcefulness.\n3. Plating and Presentation: A feast for the eyes! As taste buds savor the delectable creations, participants will be challenged to elevate their culinary artistry through captivating plating and presentation. Each dish becomes a canvas, where culinary expression meets visual brilliance.\n4. Cooking Demonstration: Engage, inspire, and captivate! Throughout the competition, participants will take center stage, demonstrating their culinary prowess step-by-step. Their explanations will tantalize the virtual audience, whisking them away on a culinary adventure from the comfort of their screens.",
-                safety_measures="1. Strict adherence to safety guidelines and precautions for stargazing activities is paramount, ensuring that every Celestial Explorer enjoys the night sky responsibly and securely.\n2. All participants must use flashlights equipped with red filters to preserve night vision during the competition.",
-                prize1="Grand Prize: The participant achieving the highest overall score will be awarded a high-quality Orion StarBlast 6 Astro Reflector Telescope. With its 6-inch aperture and sturdy tabletop design, this telescope provides excellent views of the Moon, planets, and deep-sky objects. The StarBlast 6 is perfect for both beginners and experienced astronomers, making it an ideal companion for exploring the wonders of the night sky.",
-                prize2="The second-highest scoring participant will receive a generous monetary compensation of $300, in recognition of their exceptional astronomical prowess and dedication.",
-                prize3="The third-place participant will be awarded $200, celebrating their outstanding achievements and passion for astronomy.",
-                prize4="Fourth Place Prize: A reward of $150 awaits the fourth-place participant, acknowledging their dedication and enthusiasm in navigating the celestial realm.",
-                prize5="Fifth Place Prize: The fifth-place participant will receive $100, recognizing their commitment to stargazing and astronomical exploration.",
-                prize6="Sixth Place Prize: A prize of $75 will be granted to the sixth-place participant, commending their celestial quest and astronomical knowledge.",
-                prize7="Seventh Place Prize: With a reward of $50, the seventh-place participant will be celebrated for their engagement in the cosmos and their astronomical feats.",
-                prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
-                registration_schedule="", # need a way to grab date
+                safety_measures="To participate in the Virtual Culinary Showdown, participants must have access to a stable internet connection and a device (computer, tablet, or smartphone) with a working camera and microphone.",
+                prize1="Grand Prize: The culinary champion will receive a coveted high-end kitchen appliance, such as a professional-grade chef's knife set or a top-of-the-line stand mixer, empowering them to continue crafting culinary excellence.",
+                prize2="Second Place: The runner-up will be honored with a gourmet cooking class or a premium selection of exotic spices and culinary ingredients, adding new dimensions to their culinary journey.",
+                prize3="Third Place: The esteemed third-place participant will receive a gift card to a renowned culinary supply store, inviting them to explore and enhance their kitchen arsenal.",
+                prize4="Fourth Place: The fourth-place participant will be granted a $150 cash prize, appreciating their culinary talent and dedication.",
+                prize5="Fifth Place: The fifth-place participant will receive a $100 cash prize, celebrating their culinary achievements and passion for cooking.",
+                prize6="Sixth Place: The sixth-place participant will be awarded a $75 cash prize, recognizing their skill and creativity in the kitchen.",
+                prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and culinary expertise.",
+                prize8="Eighth Place: The eighth-place participant will be granted a $25 gift card to a popular online gourmet food store, allowing them to explore and indulge in gourmet ingredients and culinary delights.",
+                registration_schedule="Participants can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
+            ),
+            Competition(
+                title="Coastal Serenity Art Challenge",
+                objective="Unleash the power of your creativity and immerse yourself in the captivating allure of coastal landscapes with the Coastal Serenity Art Challenge! This inspiring competition invites artists of all backgrounds to celebrate the tranquil beauty of beaches through their artistic expressions, capturing the essence of serenity that resonates with these idyllic seascapes.",
+                description="Welcome to the Coastal Serenity Art Challenge, where the mesmerizing harmony of sun-kissed shores and glistening waters serves as the muse for artistic brilliance. Against a backdrop of virtual camaraderie, participants will embark on an artistic odyssey, embracing the essence of coastal serenity through their unique perspectives and strokes of genius.\n The virtual art gallery will be a captivating spectacle, adorned with an array of coastal-inspired creations. As the competition unfolds, spectators and fellow artists will wander through this digital haven, savoring the captivating narratives woven into each artwork.",
+                scoring="Esteemed art connoisseurs will evaluate the artworks, guided by an appreciation for technique, composition, originality, and the ability to evoke the serene spirit of beaches. The artist with the highest overall score at the end of the Coastal Serenity Art Challenge will be hailed as the coastal artist extraordinaire.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="Virtual (Participants will paint from their own studios or creative spaces)",
+                requirement="",
+                competition_tasks="1. Beachscape Masterpiece: With the caress of brushstrokes or the dance of colors on canvas, participants will craft their magnum opus—a 'Beachscape Masterpiece.' Each artist will capture the ever-changing beauty of beaches, from the gentle ebb and flow of tides to the whispers of ocean breeze, allowing viewers to be transported to the tranquil realms of coastal bliss.\n2. Seaside Elements: Dive into the intricacies of coastal life! In this segment, artists will focus on the captivating details of seaside elements—seashells, seagulls, palm fronds, or driftwood. Each brushstroke or pencil mark will bring these coastal treasures to life, revealing the profound connections between art and nature.\n3. Sunset Horizons: As the sun dips below the horizon, artists will find inspiration in the enchanting allure of beach sunsets. With the interplay of colors and light, participants will capture the ethereal moments when the sky and ocean unite in a symphony of breathtaking hues.\n4. Artistic Process Showcase: Within the virtual realm, artists will open their creative sanctuaries, showcasing their artistic processes through time-lapse videos or live demonstrations. Witness the magic as visions take shape, revealing the heart and soul of each artwork.",
+                safety_measures="To participate in the Coastal Serenity Art Challenge, participants must have access to a stable internet connection and a device (computer, tablet, or smartphone) with a working camera and microphone.",
+                prize1="Grand Prize: The art virtuoso who claims the top spot will be awarded a deluxe artist's set, comprising premium-quality paints, brushes, canvases, and other art supplies to elevate their artistic endeavors.",
+                prize2="Second Place: The runner-up will receive a gift card to a renowned art supply store, offering them the opportunity to expand their art materials collection and explore new artistic horizons.",
+                prize3="Third Place: The esteemed third-place artist will be granted a stipend to attend a coastal art workshop or retreat, where they can further hone their skills and find inspiration in picturesque seaside settings.",
+                prize4="Fourth Place: The fourth-place artist will be granted a $150 cash prize, acknowledging their artistic talent and dedication to capturing coastal serenity.",
+                prize5="Fifth Place: The fifth-place artist will receive a $100 cash prize, celebrating their artistic achievements and passion for painting beaches.",
+                prize6="Sixth Place: The sixth-place artist will be awarded a $75 cash prize, recognizing their artistic skill and creativity.",
+                prize7="Seventh Place: The seventh-place artist will receive a $50 cash prize, honoring their efforts and artistic expression.",
+                prize8="Eighth Place: The eighth-place artist will be granted a $25 art supply voucher, allowing them to acquire additional tools and materials to nurture their artistic visions.",
+                registration_schedule="Artists can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
+            ),
+            Competition(
+                title="Captured Visions Photography Contest",
+                objective="Embark on a thrilling visual expedition and unleash the magic of your lens in the Captured Visions Photography Contest! This captivating competition invites photographers of all levels to explore the boundless realms of creativity and showcase their unique perspectives, encapsulating the essence of captivating moments frozen in time.",
+                description="Welcome to the Captured Visions Photography Contest, where the world becomes your canvas, and your camera becomes the brush that paints unforgettable images. In this artistic journey, photographers will delve into their passion for storytelling through imagery, capturing fleeting emotions, arresting landscapes, and life's hidden treasures.\n Through the digital realm, the virtual photography gallery will come alive, showcasing the entrancing collection of captivating photographs. Spectators and fellow photographers will stroll through this immersive gallery, celebrating the richness of visual storytelling.",
+                scoring="A panel of expert photographers and art connoisseurs will judge the entries based on technical excellence, composition, creativity, and the ability to convey powerful emotions and narratives through the lens. The photographer with the highest overall score at the end of the Captured Visions Photography Contest will be celebrated as the visionary image-maker.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="Global (Participants will submit their photographs online)",
+                requirement="",
+                competition_tasks="1. Emotive Portraits: Participants will focus on creating captivating portraits that evoke emotions, personalities, and untold stories. Showcase the power of human connections and the art of portraiture to bring out the essence of the subjects.\n2. Nature's Symphony: In this task, photographers will venture into nature's embrace, capturing the symphony of colors, textures, and life found in landscapes, forests, rivers, and other natural settings. Unleash the beauty of the great outdoors through your lens.\n3. Street Life Chronicles: Embrace the bustling energy of urban landscapes in this task. Capture candid moments and fleeting encounters that narrate the essence of street life, documenting the cultural fabric and dynamic stories of cityscapes.\n4. Macro Wonders: Through macro photography, explore the fascinating microcosms that often go unnoticed by the naked eye. From tiny insects to delicate flora, unveil the intricate wonders hidden in the details.",
+                safety_measures="To participate in the Captured Visions Photography Contest, participants must have access to a stable internet connection and a device (computer, tablet, or smartphone) with a working camera and microphone.",
+                prize1="Grand Prize: The photographic virtuoso who claims the top spot will be awarded a top-of-the-line professional DSLR camera, unlocking new possibilities for their future visual journeys.",
+                prize2="Second Place: The runner-up will receive a high-quality camera lens or photography equipment that complements their photographic artistry.",
+                prize3="Third Place: The esteemed third-place photographer will be granted a stipend to attend a photography workshop or expedition to refine their craft and find inspiration in new horizons.",
+                prize4="Fourth Place: The fourth-place photographer will be granted a $150 cash prize, acknowledging their exceptional talent and dedication to capturing extraordinary moments.",
+                prize5="Fifth Place: The fifth-place photographer will receive a $100 cash prize, celebrating their artistic achievements and passion for visual storytelling.",
+                prize6="Sixth Place: The sixth-place photographer will be awarded a $75 cash prize, recognizing their technical skill and creativity in capturing captivating images.",
+                prize7="Seventh Place: The seventh-place photographer will receive a $50 cash prize, honoring their efforts and artistic vision.",
+                prize8="Eighth Place: The eighth-place photographer will be granted a $25 photography gear voucher, allowing them to enhance their photographic arsenal.",
+                registration_schedule="Photographers can submit their captivating images through [provide submission details]. Each participant may enter photographs for one or more of the competition tasks.", # need a way to grab date
+            ),
+            Competition(
+                title="Strum and Show Guitar Challenge",
+                objective="Tune your passion and skill to the perfect rhythm in the Strum and Show Guitar Challenge! This dynamic competition invites guitarists of all styles and levels to showcase their musicality, stage presence, and captivating performances, inspiring audiences with the magic of their melodies.",
+                description="Welcome to the Strum and Show Guitar Challenge, where every strum is a brushstroke, and every note paints a vibrant sonic canvas. This thrilling contest provides a stage for guitarists to unleash their musical creativity, energizing the audience with heartfelt tunes and electrifying performances.\n The Strum and Show Guitar Challenge will host a virtual showcase, allowing audiences to revel in the captivating performances of all participants. Virtual viewers will be immersed in a musical feast, celebrating the artistry and passion of each guitarist.",
+                scoring="A panel of music experts, seasoned performers, and audience participation will contribute to the scoring process. They will evaluate technical skills, musicality, stage presence, originality, and the ability to engage the audience. The guitarist with the highest overall score at the end of the Strum and Show Guitar Challenge will be crowned the Guitar Maestro.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="Global (Participants will submit their entries online)",
+                requirement="",
+                competition_tasks="1. Solo Showcase: In this task, guitarists will take center stage to deliver a soul-stirring solo performance, showcasing their technical finesse, expressive playing, and ability to communicate through the strings.\n2. Genre Fusion Frenzy: Participants will push the boundaries of genres in this task, creating exciting fusion performances that blend different styles, bridging the gap between musical worlds and inspiring new harmonies.\n3. Stagecraft Brilliance: In this task, guitarists will not only play with brilliance but also dazzle the audience with captivating stagecraft. Participants will incorporate visual effects, dynamic movements, or theatrical elements to enhance their performances.\n4. Harmony Jam: Collaboration is the key in this task. Guitarists will team up with other musicians to create an enchanting musical journey, demonstrating the power of harmonious collaboration.",
+                safety_measures="To participate in the Strum and Show Guitar Challenge, participants must have access to a stable internet connection and a device (computer, tablet, or smartphone) with a working camera and microphone.",
+                prize1="Grand Prize: The Guitar Maestro will receive a high-end, custom-designed guitar, tailor-made to complement their unique playing style and artistic vision.",
+                prize2="Second Place: The runner-up will be awarded a premium guitar effects pedal board, elevating their sonic possibilities and creativity.",
+                prize3="Third Place: The esteemed third-place guitarist will be granted a stipend to attend a renowned guitar workshop or masterclass, unlocking new dimensions of musical excellence.",
+                prize4="Fourth Place: The fourth-place guitarist will be granted a $150 cash prize, recognizing their exceptional talent and dedication to their craft.",
+                prize5="Fifth Place: The fifth-place guitarist will receive a $100 cash prize, celebrating their musical achievements and passion for guitar playing.",
+                prize6="Sixth Place: The sixth-place guitarist will be awarded a $75 cash prize, acknowledging their technical skill and captivating performances.",
+                prize7="Seventh Place: The seventh-place guitarist will receive a $50 cash prize, honoring their efforts and musical expression.",
+                prize8="Eighth Place: The eighth-place guitarist will be granted a $25 gift card to a popular music store, allowing them to explore and expand their guitar gear collection.",
+                registration_schedule="Guitarists can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
+            ),
+            Competition(
+                title="ElectraTech Maker Challenge",
+                objective="Spark your ingenuity and technical prowess in the ElectraTech Maker Challenge! This electrifying competition invites DIY electronics and robotics enthusiasts to showcase their innovative creations, tinkering skills, and transformative designs that push the boundaries of technology.",
+                description="Welcome to the ElectraTech Maker Challenge, where circuits come alive, and robots dance to the rhythm of innovation. This thrilling contest provides a platform for makers, DIY enthusiasts, and robotics wizards to demonstrate their technical prowess, creative problem-solving, and passion for cutting-edge technology.\nThe ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity.\nIgnite your passion for innovation and join the ElectraTech Maker Challenge, where creativity sparks, robots conquer, and technology transforms the world!",
+                scoring="A panel of technology experts, electronics engineers, and robotics enthusiasts will contribute to the scoring process. They will evaluate project complexity, technical sophistication, innovation, and the impact of the projects on society. The participant with the highest overall score at the end of the ElectraTech Maker Challenge will be crowned the ElectraTech Innovator.\nThe ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="Virtual (Participants will work from their own workshops or creative spaces)",
+                requirement="",
+                competition_tasks="1. RoboMachina Showcase: In this task, participants will exhibit their self-designed robots or robotic projects, demonstrating their functionality, efficiency, and unique features. Robots can be autonomous, remote-controlled, or programmed using cutting-edge AI.\n2. ElectroCraft Wonders: Makers will showcase their innovative electronics projects, which could include custom-built gadgets, IoT devices, electronic wearables, or home automation systems, highlighting how they enhance and simplify daily life.\n3. TechBreakthrough Design: In this task, participants will present their groundbreaking designs or inventions that offer ingenious solutions to real-world challenges. Projects may range from renewable energy solutions to assistive technology for individuals with disabilities.\n4. DIY Robotics Challenge: Participants will compete in an exciting robotics challenge, where they will construct robots capable of completing specific tasks within a set timeframe. The challenge will test participants' engineering skills, robotics know-how, and quick problem-solving abilities.",
+                safety_measures="To participate in the ElectraTech Maker Challenge, participants must have access to a stable internet connection and a device (computer, tablet, or smartphone) with a working camera and microphone.",
+                prize1="The ElectraTech Innovator will receive a state-of-the-art electronics and robotics kit, equipped with advanced components to fuel their future inventions and innovations.",
+                prize2="Second Place: The runner-up will be awarded a high-quality soldering station and toolset, empowering them to tackle intricate electronic projects with precision.",
+                prize3="Third Place: The esteemed third-place participant will be granted a stipend to attend a prestigious technology workshop or conference, exploring new realms of knowledge and networking.",
+                prize4="Fourth Place: The fourth-place participant will be granted a $150 cash prize, acknowledging their exceptional talent and dedication to DIY electronics and robotics.",
+                prize5="Fifth Place: The fifth-place participant will receive a $100 cash prize, celebrating their inventive achievements and passion for hands-on technology.",
+                prize6="Sixth Place: The sixth-place participant will be awarded a $75 cash prize, acknowledging their technical skill and creativity in DIY electronics and robotics.",
+                prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and technological ingenuity.",
+                prize8="Eighth Place: The eighth-place participant will be granted a $25 electronics components voucher, allowing them to expand their toolkit and fuel their next creations.",
+                registration_schedule="Makers and DIY enthusiasts can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
             ),
         ]
-
-    # requirements = db.Column(db.String) #This would be hobby
-    # description = db.Column(db.String)
-    # cost_of_entry = db.Column(db.Integer)
-    # schedule = db.Column(db.String)
-    # contact = db.Column(db.String)
-    # location = db.Column(db.String)
-
-    # prize1 = db.Column(db.String)
-    # prize2 = db.Column(db.String)
-    # prize3 = db.Column(db.String)
-    # prize4 = db.Column(db.String)
-    # prize5 = db.Column(db.String)
-    # prize6 = db.Column(db.String)
-    # prize7 = db.Column(db.String)
-    # prize8 = db.Column(db.String)
         db.session.commit()
 
  

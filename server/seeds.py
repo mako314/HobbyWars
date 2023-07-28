@@ -1047,67 +1047,67 @@ if __name__ == '__main__':
 
         print("Seeding our Entries...")
         Results = [
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=6,
             competition_id=2,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=10,
             competition_id=2,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=19,
             competition_id=2,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=21,
             competition_id=2,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=26,
             competition_id=5,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=11,
             competition_id=5,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=2,
             competition_id=1,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=4,
             competition_id=1,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=10,
             competition_id=1,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=22,
             competition_id=1,
             ),
-            Result(
+            Entry(
             submission="",
             description="",
             user_id=29,

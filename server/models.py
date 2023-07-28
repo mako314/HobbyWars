@@ -26,7 +26,8 @@ class User(db.Model, SerializerMixin):
     bannerImg = db.Column(db.String)
 
     #Relationships
-    competitions = db.relationship('Competition', back_populates="user" ) 
+    # competitions = db.relationship('Competition', back_populates="user" ) <- SHOULD BE CONNECTED BY RESULT AND ENTRIES
+
     # hobby = db.relationship('Hobby', back_populates="user")
     result = db.relationship('Result', back_populates="user")
     entry = db.relationship('Entry', back_populates="user")
@@ -100,11 +101,11 @@ class Competition(db.Model, SerializerMixin):
     # notes = db.Column(db.String) # May incldue this as an editable text area
 
     # #Foreign Keys Likely will link this to entries and results instead of a user id
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id')) <- UNSURE IF NEEDED
     # entry_id = db.Column(db.Integer, db.ForeignKey('entries.id'))
 
     #Relationships
-    user = db.relationship('User', back_populates="competitions")
+    # user = db.relationship('User', back_populates="competitions") COMMENTED OUT NOT SURE IF NEEDED
     entry = db.relationship('Entry', back_populates="competitions")
     result = db.relationship('Result', back_populates="competitions")
 
@@ -124,7 +125,7 @@ class Result(db.Model, SerializerMixin):
 
     #Relationships
     user = db.relationship('User', back_populates="result")
-    competitions = db.relationship('Competition', back_populates="result" )
+    competitions = db.relationship('Competition', back_populates="result")
 
     
     #Serialize Rules

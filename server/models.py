@@ -63,13 +63,26 @@ class Competition(db.Model, SerializerMixin):
     __tablename__ = "competitions"
     #Columns
     id = db.Column(db.Integer, primary_key = True)
-    requirements = db.Column(db.String) #This would be hobby
+
+    #-----Obj, Description, Tasks, and CoE-----
+    title = db.Column(db.String)
+    objective = db.Column(db.String)
     description = db.Column(db.String)
+    scoring = db.Column(db.String)
     cost_of_entry = db.Column(db.Integer)
+
+    #----Logistics Info----
     schedule = db.Column(db.String)
     contact = db.Column(db.String)
     location = db.Column(db.String)
 
+    #----Req, Tasks, and Safety Measures----
+    #may need to add scoring as a gauge, and then result can hold their score + result
+    requirements = db.Column(db.String) #This would be hobby
+    competition_tasks = db.Column(db.String)
+    safety_measures = db.Column(db.String)
+
+    #---Prizes!!!----
     prize1 = db.Column(db.String)
     prize2 = db.Column(db.String)
     prize3 = db.Column(db.String)
@@ -80,9 +93,11 @@ class Competition(db.Model, SerializerMixin):
     prize8 = db.Column(db.String)
     #Need to find prizing information
 
+    #Registration schedule and or maybe limit?
     registration_schedule = db.Column(db.String) # I really want this to use DateTime but likely not
     # #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # entry_id = db.Column(db.Integer, db.ForeignKey('entries.id'))
 
     #Relationships
     user = db.relationship('User', back_populates="competitions")

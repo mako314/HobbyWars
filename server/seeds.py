@@ -802,6 +802,70 @@ if __name__ == '__main__':
             UserHobby(expertise=7, user_id=30, hobby_id=3),  # Zara Knight - Poetry - Writing Poetry ✔
         ]
         db.session.add_all(user_hobbies)
+#---------------------------------------------------------------------------------USERS HOBBIES-----------------------------------------------------------------------------------------------
+        print("Seeding our Competitions...")
+        competitions = [
+            Competition(
+                title="Trail of Ten Falls Trekking Challenge",
+                objective="The objective of this competition is to test participants' trekking abilities, endurance, and appreciation for nature as they explore the Trail of Ten Falls in Silver Falls State Park.",
+                description="Participants will form teams of 3 and undertake an unforgettable trekking adventure along the Trail of Ten Falls. The trail will showcase the park's breathtaking waterfalls and offer participants a chance to immerse themselves in the beauty of Oregon's lush wilderness.",
+                scoring="Teams will earn points based on their performance in each task. The team with the highest overall score at the end of the competition will be declared the winner.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="Silver Falls State Park, Oregon, United States",
+                requirement="",
+                competition_tasks="1. Checkpoint Navigation: Each team will be provided with a map and a list of checkpoints corresponding to the ten waterfalls along the trail. Teams must navigate their way to each waterfall checkpoint in sequential order. Navigation skills and map reading will be crucial.\n2. Waterfall Exploration: At each waterfall checkpoint, teams will have to complete a task related to the specific waterfall. Tasks may include taking a group photo in front of the waterfall, identifying unique features of the falls, or answering questions about the waterfall's history.\n3. Environmental Awareness: Throughout the trek, teams will be evaluated on their adherence to environmental ethics, including 'Leave No Trace'principles. They should demonstrate respect for the park's natural beauty and wildlife.\n4. Nature Trivia: Along the trail, teams will encounter educational boards with information about the flora, fauna, and geology of the area. A nature-themed quiz will be conducted, testing participants' knowledge of the local ecosystem.\n 5.Photography Challenge: Participants will be encouraged to capture the stunning scenery and waterfalls through photography. They can submit their best shots at the end of the competition, and the most captivating photographs will be rewarded.",
+                safety_measures="1. All participants must undergo a health check and be in good physical condition.\n2. Each team must have a designated team leader responsible for the safety of the team members.\n3. Participants should dress appropriately for the weather and carry essentials such as water, snacks, and a first aid kit.",
+                prize1="Grand Prize: The winning team will receive a top-of-the-line Osprey Atmos AG 65 backpack, renowned for its exceptional comfort and ample storage space for multi-day treks.",
+                prize2="Second Place: The second-place team will be rewarded a pair of Salomon X Ultra 3 Mid GTX hiking boots. These high-performance boots offer excellent support, durability, and comfort, making them the perfect choice for conquering challenging terrains like the Trail of Ten Falls.",
+                prize3="Third Place: The third-place team will receive a set of premium Black Diamond Trail Ergo Cork trekking poles, providing enhanced stability and reducing strain during long hikes.",
+                prize4="Fourth Place: The fourth-place team will be granted $100 cash prize, recognizing their dedication and enthusiasm in conquering the Trail of Ten Falls.",
+                prize5="Fifth Place: The fifth-place team will be awarded $75 cash prize, celebrating their strong performance and commitment to the challenge.",
+                prize6="Sixth Place: The sixth-place team will receive $50 cash prize, acknowledging their resilience and spirit in tackling the trail's obstacles.",
+                prize7="Seventh Place: The seventh-place team will be granted a $25 outdoor gear voucher, allowing them to choose equipment or accessories to enhance their future trekking adventures.",
+                prize8="Eighth Place: The eighth-place team will receive a $20 outdoor gear voucher, providing them with an opportunity to acquire quality gear for their outdoor pursuits.",
+                registration_schedule="", # need a way to grab date
+            ),
+            Competition(
+                title="Celestial Explorer Challenge",
+                objective="Embark on a captivating journey of astronomical discovery as an individual participant, where you will showcase your profound knowledge of the cosmos, hone your keen stargazing skills, and immerse yourself in the awe-inspiring beauty of the night sky through a series of celestial tasks and challenges under the twinkling canopy above.",
+                description="In the Celestial Explorer Challenge, you will become a lone adventurer under the stars, navigating the mysteries of the cosmos with zeal and curiosity. This competition is tailored for individual stargazers who seek to deepen their understanding of astronomy, test their powers of observation, and capture the essence of the night sky through enthralling challenges and astronomical quests.",
+                scoring="Your performance in each task will be scored, and the individual participant with the highest overall score at the end of the Celestial Explorer Challenge will claim the title of the night's most accomplished stargazer.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="BIG BEND NATIONAL PARK, TEXAS",
+                requirement="",
+                competition_tasks="1. Stargazing Quest: Armed with a sky chart or a list of celestial wonders, you will embark on a personal quest to discover and observe awe-inspiring phenomena, such as planets, stars, constellations, and captivating deep-sky objects, all while forging a profound connection with the vast expanse above.\n2. Night Sky Challenges: Encounter enchanting astronomy-related challenges throughout the night, designed to invigorate your intellect and imagination. From identifying elusive stars and constellations without visual aids to unraveling enigmatic astronomical puzzles, each challenge will spark the thrill of cosmic exploration.\n3. Astronomy Trivia: Demonstrate your astronomical acumen in a knowledge-based quiz that spans the breadth of space exploration, from celestial bodies and galactic phenomena to the rich history of astronomical discovery and the brilliant minds who shaped our understanding of the universe.\n4. Astrophotography Task: Capture the ephemeral beauty of the cosmos through your lens, showcasing your artistic flair in astrophotography. Freeze time with long-exposure shots of the night sky or capture the delicate details of celestial wonders through telescopic photography, leaving a visual legacy of your cosmic odyssey.",
+                safety_measures="1. Strict adherence to safety guidelines and precautions for stargazing activities is paramount, ensuring that every Celestial Explorer enjoys the night sky responsibly and securely.\n2. All participants must use flashlights equipped with red filters to preserve night vision during the competition.",
+                prize1="Grand Prize: The participant achieving the highest overall score will be awarded a high-quality Orion StarBlast 6 Astro Reflector Telescope. With its 6-inch aperture and sturdy tabletop design, this telescope provides excellent views of the Moon, planets, and deep-sky objects. The StarBlast 6 is perfect for both beginners and experienced astronomers, making it an ideal companion for exploring the wonders of the night sky.",
+                prize2="The second-highest scoring participant will receive a generous monetary compensation of $300, in recognition of their exceptional astronomical prowess and dedication.",
+                prize3="The third-place participant will be awarded $200, celebrating their outstanding achievements and passion for astronomy.",
+                prize4="Fourth Place Prize: A reward of $150 awaits the fourth-place participant, acknowledging their dedication and enthusiasm in navigating the celestial realm.",
+                prize5="Fifth Place Prize: The fifth-place participant will receive $100, recognizing their commitment to stargazing and astronomical exploration.",
+                prize6="Sixth Place Prize: A prize of $75 will be granted to the sixth-place participant, commending their celestial quest and astronomical knowledge.",
+                prize7="Seventh Place Prize: With a reward of $50, the seventh-place participant will be celebrated for their engagement in the cosmos and their astronomical feats.",
+                prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
+                registration_schedule="", # need a way to grab date
+            ),
+        ]
+
+    # requirements = db.Column(db.String) #This would be hobby
+    # description = db.Column(db.String)
+    # cost_of_entry = db.Column(db.Integer)
+    # schedule = db.Column(db.String)
+    # contact = db.Column(db.String)
+    # location = db.Column(db.String)
+
+    # prize1 = db.Column(db.String)
+    # prize2 = db.Column(db.String)
+    # prize3 = db.Column(db.String)
+    # prize4 = db.Column(db.String)
+    # prize5 = db.Column(db.String)
+    # prize6 = db.Column(db.String)
+    # prize7 = db.Column(db.String)
+    # prize8 = db.Column(db.String)
         db.session.commit()
 
  

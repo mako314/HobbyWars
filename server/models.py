@@ -78,7 +78,7 @@ class UserHobby(db.Model, SerializerMixin):
     hobby = db.relationship('Hobby', back_populates="user_hobby")
     
     #Serialize Rules
-    serialize_rules = ('-user.user_hobby','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
+    serialize_rules = ('-user','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
 
 
 class Competition(db.Model, SerializerMixin):

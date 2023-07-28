@@ -56,7 +56,20 @@ class UserHobbies(Resource):
         response = make_response(user_hobbies, 200)
 
         return response
+    
 api.add_resource(UserHobbies, '/user-hobbies')
+
+#------------------------------------Competition Routing------------------------------------------
+
+class Competitions(Resource):
+    def get(self):
+        competitions = [competition.to_dict() for competition in Competition.query.all()]
+
+        response = make_response(competitions, 200)
+
+        return response 
+    
+api.add_resource(Competitions,'/competitions')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

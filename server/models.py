@@ -93,10 +93,14 @@ class Competition(db.Model, SerializerMixin):
     prize8 = db.Column(db.String)
     #Need to find prizing information
 
+
     #Registration schedule and or maybe limit?
     registration_schedule = db.Column(db.String) # I really want this to use DateTime but likely not
-    # #Foreign Keys
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    # notes = db.Column(db.String) # May incldue this as an editable text area
+
+    # #Foreign Keys Likely will link this to entries and results instead of a user id
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # entry_id = db.Column(db.Integer, db.ForeignKey('entries.id'))
 
     #Relationships

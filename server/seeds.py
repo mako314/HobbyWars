@@ -849,6 +849,28 @@ if __name__ == '__main__':
                 prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
                 registration_schedule="", # need a way to grab date
             ),
+            Competition(
+                title="Virtual Culinary Showdown",
+                objective="Unleash your culinary prowess and embark on a thrilling gourmet adventure as you participate in the Virtual Culinary Showdown! This online cooking competition aims to celebrate the art of cooking, ignite culinary creativity, and bring together passionate home chefs in a virtual culinary spectacle.",
+                description="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens.",
+                scoring="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens.",
+                cost_of_entry="",
+                schedule="",
+                contact="",
+                location="Online (Participants will cook from their respective kitchens)",
+                requirement="",
+                competition_tasks="1. Signature Dish Challenge: Ignite the flames of creativity and culinary finesse as each participant presents their show-stopping 'Signature Dish.' With the spotlight on their unique culinary styles and inventive flavors, participants will unravel the secrets of their gastronomic masterpieces during the live-streamed showdown.\n2. Mystery Ingredient Round: Thrills await in the Mystery Ingredient Round! As the culinary maestros compete against the clock, they must ingeniously incorporate a surprise ingredient into their dishes, impressing the virtual audience with their culinary dexterity and resourcefulness.\n3. Plating and Presentation: A feast for the eyes! As taste buds savor the delectable creations, participants will be challenged to elevate their culinary artistry through captivating plating and presentation. Each dish becomes a canvas, where culinary expression meets visual brilliance.\n4. Cooking Demonstration: Engage, inspire, and captivate! Throughout the competition, participants will take center stage, demonstrating their culinary prowess step-by-step. Their explanations will tantalize the virtual audience, whisking them away on a culinary adventure from the comfort of their screens.",
+                safety_measures="1. Strict adherence to safety guidelines and precautions for stargazing activities is paramount, ensuring that every Celestial Explorer enjoys the night sky responsibly and securely.\n2. All participants must use flashlights equipped with red filters to preserve night vision during the competition.",
+                prize1="Grand Prize: The participant achieving the highest overall score will be awarded a high-quality Orion StarBlast 6 Astro Reflector Telescope. With its 6-inch aperture and sturdy tabletop design, this telescope provides excellent views of the Moon, planets, and deep-sky objects. The StarBlast 6 is perfect for both beginners and experienced astronomers, making it an ideal companion for exploring the wonders of the night sky.",
+                prize2="The second-highest scoring participant will receive a generous monetary compensation of $300, in recognition of their exceptional astronomical prowess and dedication.",
+                prize3="The third-place participant will be awarded $200, celebrating their outstanding achievements and passion for astronomy.",
+                prize4="Fourth Place Prize: A reward of $150 awaits the fourth-place participant, acknowledging their dedication and enthusiasm in navigating the celestial realm.",
+                prize5="Fifth Place Prize: The fifth-place participant will receive $100, recognizing their commitment to stargazing and astronomical exploration.",
+                prize6="Sixth Place Prize: A prize of $75 will be granted to the sixth-place participant, commending their celestial quest and astronomical knowledge.",
+                prize7="Seventh Place Prize: With a reward of $50, the seventh-place participant will be celebrated for their engagement in the cosmos and their astronomical feats.",
+                prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
+                registration_schedule="", # need a way to grab date
+            ),
         ]
 
     # requirements = db.Column(db.String) #This would be hobby

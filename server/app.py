@@ -44,7 +44,19 @@ class Hobbies(Resource):
         response = make_response(hobby, 200)
 
         return response
+    
 api.add_resource(Hobbies, '/hobbies')
+
+#------------------------------------HobbyUSER (meaning a user has this hobby) Routing------------------------------------------
+
+class UserHobbies(Resource):
+    def get(self):
+        user_hobbies = [hobby.to_dict() for hobby in UserHobby.query.all()]
+
+        response = make_response(user_hobbies, 200)
+
+        return response
+api.add_resource(UserHobbies, '/user-hobbies')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

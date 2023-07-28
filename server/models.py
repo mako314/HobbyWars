@@ -21,14 +21,10 @@ class User(db.Model, SerializerMixin):
     location = db.Column(db.String)
     phone = db.Column(db.String)
     email = db.Column(db.String)
-    # hobbies = db.Column(db.String)
     profileImg = db.Column(db.String)
     bannerImg = db.Column(db.String)
 
     #Relationships
-    # competitions = db.relationship('Competition', back_populates="user" ) <- SHOULD BE CONNECTED BY RESULT AND ENTRIES
-    # hobby = db.relationship('Hobby', back_populates="user")
-
     results = db.relationship('Result', back_populates="user")
     entry = db.relationship('Entry', back_populates="user")
     user_hobby = db.relationship('UserHobby', back_populates="user")
@@ -38,29 +34,29 @@ class User(db.Model, SerializerMixin):
     serialize_rules = ( #Result rules, subtract competitions.entry to remove ALL entries, but I still want user entries.
                        '-results.user',
                        '-results.competitions.entry',
-                       #User_Hobby Rules. Remove recursiong with user, remove userID because we have it.
+                       #User_Hobby Rules. Remove recursiong with user, remove userID because we have it. Remove hobby_id because user hobby has it.
                        '-user_hobby.user_id',
                        '-user_hobby.user',
                        '-user_hobby.hobby_id',
                        #Entry rules
-                       '-entry.user',
-                       '-entry.user_id'
+                       '-entry.user', #Removes recursion back to our user
+                       '-entry.user_id' #Removes recursion back to our user
                        #'-results.competitions', #This one removes competitions from appearing with all their clutter
                        ) 
+    
     #Random serialize rules that could've been done
     #'-entry.user','-user_hobby.user' #'-results.user_id',
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
+    #Columns
     id = db.Column(db.Integer, primary_key = True)
     type_of_hobby = db.Column(db.String)
     description = db.Column(db.String)
 
     #Foreign Keys
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     #Relationships
-    # user = db.relationship('User', back_populates="hobby")
     user_hobby = db.relationship('UserHobby', back_populates="hobby")
 
     #Serialize Rules

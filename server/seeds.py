@@ -385,383 +385,383 @@ if __name__ == '__main__':
         print("Seeding Hobbies...")
         hobbies = [
             Hobby(
-                hobby="Writing Novels",
+                type_of_hobby="Writing Novels",
                 description="Writing novels involves creating a long, narrative piece of literature, typically divided into chapters. It requires a well-developed plot, in-depth character development, and a thorough exploration of themes and settings."
             ),
             Hobby(
-                hobby="Writing Blogs",
+                type_of_hobby="Writing Blogs",
                 description="Writing blogs involves creating content for an online platform called a blog. This hobby can range from personal journaling to providing information on specific topics, and allows for the sharing and discussion of ideas on the internet."
             ),
             Hobby(
-                hobby="Writing Poetry",
+                type_of_hobby="Writing Poetry",
                 description="Writing poetry is a beautiful and expressive hobby that involves crafting verses and lines to evoke emotions, share personal experiences, and explore the beauty of language. Poets use metaphors, rhythm, and vivid imagery to create meaningful and thought-provoking poems."
             ),
             Hobby(
-                hobby="Photography",
+                type_of_hobby="Photography",
                 description="Photography is the art of capturing light with a camera, usually via a digital sensor or film, to create an image. With the right camera equipment, one can even capture the smallest details in stunning clarity."
             ),
             Hobby(
-                hobby="Crafting",
+                type_of_hobby="Crafting",
                 description="Crafting includes a wide range of activities that involve making things with one's own hands. This can include knitting, crocheting, sewing, or origami. Crafting can be a relaxing and rewarding hobby."
             ),
             Hobby(
-                hobby="Pottery",
+                type_of_hobby="Pottery",
                 description="Pottery involves the shaping of clay into objects, which are then fired at high temperatures to make them hard and durable. This can result in functional items like dishes, or purely decorative pieces."
             ),
             Hobby(
-                hobby="Ceramics",
+                type_of_hobby="Ceramics",
                 description="Ceramics involves creating objects from clay and other raw materials, then hardening them by high-temperature baking. It can result in an array of items from sculptures to pottery and is distinguished by its versatility and artistic expression."
             ),
             Hobby(
-                hobby="Hiking",
+                type_of_hobby="Hiking",
                 description="Hiking is an outdoor activity of walking in natural environments, often on hiking trails. It's a great way to enjoy the scenery, get exercise, and possibly spot some wildlife."
             ),
             Hobby(
-                hobby="Trekking",
+                type_of_hobby="Trekking",
                 description="Trekking is a long, vigorous hike, usually on trails in the countryside. Trekking trips can last from several days to months and often involve navigating through remote and often hilly or mountainous areas."
             ),
             Hobby(
-                hobby="Gardening",
+                type_of_hobby="Gardening",
                 description="Gardening involves growing and maintaining plants as part of horticulture. This can be done for utility, for example growing fruits and vegetables, or for beauty, like growing flowers."
             ),
             Hobby(
-                hobby="Birdwatching",
+                type_of_hobby="Birdwatching",
                 description="Birdwatching involves observing birds in their natural habitats as a hobby. It's a form of wildlife observation and can be done with the naked eye, or through devices like binoculars and telescopes."
             ),
             Hobby(
-                hobby="Cycling",
+                type_of_hobby="Cycling",
                 description="Cycling involves riding a bicycle for transport, recreation, or exercise. It's a good form of low-impact exercise that can be enjoyed by people of all ages."
             ),
             Hobby(
-                hobby="Mountain Biking",
+                type_of_hobby="Mountain Biking",
                 description="Mountain biking is a type of off-road cycling over rough terrain, using specially designed mountain bikes. It's a fun and challenging activity that requires physical stamina and good bike handling skills."
             ),
             Hobby(
-                hobby="Camping",
+                type_of_hobby="Camping",
                 description="Camping involves spending time outdoors, typically overnight, in a tent or recreational vehicle. Activities may include hiking, swimming, fishing, or simply enjoying the scenery and wildlife."
             ),
             Hobby(
-                hobby="Outdoor Cooking",
+                type_of_hobby="Outdoor Cooking",
                 description="Outdoor cooking involves preparing food outside, as in a campground or a picnic area. It can involve a range of techniques, from grilling to open-fire cooking, and can create unique flavors and experiences."
             ),
             Hobby(
-                hobby="Running",
+                type_of_hobby="Running",
                 description="Running is a method of terrestrial locomotion that allows humans and other animals to move rapidly. It's an excellent way to improve physical health, relieve stress, and enjoy the outdoors."
             ),
             Hobby(
-                hobby="Jogging",
+                type_of_hobby="Jogging",
                 description="Jogging is a form of running at a slow or leisurely pace with the main intention to increase physical fitness and overall health. It's a less intense form of running, and can be a good starting point for beginners."
             ),
             Hobby(
-                hobby="Yoga",
+                type_of_hobby="Yoga",
                 description="Yoga is a group of physical, mental, and spiritual practices that originated in ancient India. It involves a variety of postures, breathing exercises, and meditation techniques that promote flexibility, strength, and inner peace."
             ),
             Hobby(
-                hobby="Pilates",
+                type_of_hobby="Pilates",
                 description="Pilates is a method of exercise that consists of low-impact flexibility, muscular strength, and endurance movements. It emphasizes proper postural alignment, core strength, and muscle balance."
             ),
             Hobby(
-                hobby="Dancing",
+                type_of_hobby="Dancing",
                 description="Dancing involves moving rhythmically to music, often following a set sequence of steps. There are many styles of dance, including salsa, hip-hop, and ballroom, each with their unique movements and music."
             ),
             Hobby(
-                hobby="Martial Arts",
+                type_of_hobby="Martial Arts",
                 description="Martial arts are codified systems and traditions of combat practiced for various reasons such as self-defense, competition, physical health and fitness, entertainment, as well as mental, physical, and spiritual development."
             ),
             Hobby(
-                hobby="Swimming",
+                type_of_hobby="Swimming",
                 description="Swimming is an activity that involves moving through water using the limbs. It's a good full-body exercise, a life-saving skill, and a competitive sport."
             ),
             Hobby(
-                hobby="Playing a Musical Instrument",
+                type_of_hobby="Playing a Musical Instrument",
                 description="Playing a musical instrument involves creating music using an instrument. There are a variety of instruments, such as the guitar, piano, and violin, each with its unique sound and playing technique."
             ),
             Hobby(
-                hobby="Playing Guitar",
+                type_of_hobby="Playing Guitar",
                 description="Playing the guitar involves creating music with a string instrument. Guitars can have six or more strings and can be plucked or strummed to create a variety of musical styles, from rock and blues to flamenco and country."
             ),
             Hobby(
-                hobby="Playing Piano",
+                type_of_hobby="Playing Piano",
                 description="Playing the piano involves creating music by pressing keys on a piano, which is a stringed musical instrument. It's versatile and can be used for a variety of musical genres, from classical to jazz."
             ),
             Hobby(
-                hobby="Playing Violin",
+                type_of_hobby="Playing Violin",
                 description="Playing the violin involves creating music with a stringed instrument that is played with a bow. Violins are often used in a variety of musical genres, including classical, folk, and bluegrass music."
             ),
             Hobby(
-                hobby="Playing Drums",
+                type_of_hobby="Playing Drums",
                 description="Playing the drums involves creating rhythms and beats using a set of drums and cymbals. Drums are often used in a variety of musical genres, including rock, jazz, and pop music."
             ),
             Hobby(
-                hobby="Playing Flute",
+                type_of_hobby="Playing Flute",
                 description="Playing the flute involves creating music by blowing air across an opening on a tube. The flute is a woodwind instrument often used in a variety of musical genres, including classical, jazz, and folk music."
             ),
             Hobby(
-                hobby="Singing",
+                type_of_hobby="Singing",
                 description="Singing involves producing musical sounds with the voice, usually by forming words. It can be performed as a form of musical expression, as a hobby, as a part of religious devotion, or as a profession."
             ),
             Hobby(
-                hobby="Acting",
+                type_of_hobby="Acting",
                 description="Acting involves portraying a character in a performance, such as in a play, a movie, or on television. It requires a variety of skills, including vocal projection, clarity of speech, physical expression, and emotional understanding."
             ),
             Hobby(
-                hobby="Theater",
+                type_of_hobby="Theater",
                 description="Theater involves the performance of plays or other dramatic works. It's a collaborative form of fine art that uses live performers to present a real or imagined event before an audience."
             ),
             Hobby(
-                hobby="Stand-up Comedy",
+                type_of_hobby="Stand-up Comedy",
                 description="Stand-up comedy is a comic style where a comedian performs in front of a live audience, usually speaking directly to them. The performer is commonly known as a comic, stand-up comic, comedian, or simply a stand-up."
             ),
             Hobby(
-                hobby="Improv Workshops",
+                type_of_hobby="Improv Workshops",
                 description="Improv workshops involve learning and practicing improvisation, which is a form of live theater in which the plot, characters, and dialogue are made up on the spot. It encourages creativity, spontaneity, and collaboration."
             ),
             Hobby(
-                hobby="Video Gaming",
+                type_of_hobby="Video Gaming",
                 description="Video gaming involves playing electronic games, whether through consoles, computers, mobile phones, or another medium altogether. Video games are a popular form of entertainment that ranges from casual games to professional e-sports."
             ),
             Hobby(
-                hobby="Board Games",
+                type_of_hobby="Board Games",
                 description="Board games involve moving pieces on a pre-marked surface or 'board' according to a set of rules. They include strategy games, chance games, and a combination of the two, and have a wide range of complexity and themes."
             ),
             Hobby(
-                hobby="Tabletop Role-Playing Games",
+                type_of_hobby="Tabletop Role-Playing Games",
                 description="Tabletop role-playing games are a form of role-playing game (RPG) in which the participants describe their characters' actions through speech. Games often use rules and game mechanics, along with imagination and storytelling, to simulate a world in which the players' characters exist."
             ),
             Hobby(
-                hobby="Coding",
+                type_of_hobby="Coding",
                 description="Coding, or programming, involves writing instructions for computers to execute. These instructions, or 'code', can create software, websites, apps, and more. It's a highly sought-after skill with a wide variety of uses."
             ),
             Hobby(
-                hobby="HTML Coding",
+                type_of_hobby="HTML Coding",
                 description="HTML, or HyperText Markup Language, is the standard markup language for documents designed to be displayed in a web browser. It's used to structure the content on the webpage and is fundamental to web development."
             ),
             Hobby(
-                hobby="JavaScript Coding",
+                type_of_hobby="JavaScript Coding",
                 description="JavaScript is a high-level programming language used to create and control the content of a website. It's an essential part of web development and can create dynamic and interactive elements on web pages."
             ),
             Hobby(
-                hobby="React Coding",
+                type_of_hobby="React Coding",
                 description="React is a JavaScript library for building user interfaces, typically for single-page applications. It allows developers to create reusable UI components and is commonly used for web and mobile applications."
             ),
             Hobby(
-                hobby="Python Coding",
+                type_of_hobby="Python Coding",
                 description="Python is a high-level programming language known for its readability and simplicity. It's used in a variety of applications, including web development, data analysis, AI, and machine learning."
             ),
             Hobby(
-                hobby="Java Coding",
+                type_of_hobby="Java Coding",
                 description="Java is a general-purpose, high-level programming language known for its object-oriented structure. It's used in a variety of computing platforms, from embedded devices and mobile phones to enterprise servers and supercomputers."
             ),
             Hobby(
-                hobby="DIY Electronics and Robotics",
+                type_of_hobby="DIY Electronics and Robotics",
                 description="DIY electronics and robotics involve creating and modifying electronic devices and robots at home. This can range from simple tasks like assembling a kit to complex projects like designing and building a robot from scratch."
             ),
             Hobby(
-                hobby="Collecting Stamps",
+                type_of_hobby="Collecting Stamps",
                 description="Collecting stamps, or philately, involves gathering and categorizing postage stamps, which often feature beautiful artwork or commemorate significant events or people. It's a hobby that can teach a lot about history, geography, and art."
             ),
             Hobby(
-                hobby="Collecting Coins",
+                type_of_hobby="Collecting Coins",
                 description="Collecting coins, or numismatics, is the collection and study of coins, including old coins, rare coins, or coins from different countries. Coins are pieces of history, offering insights into the culture and period they originate from."
             ),
             Hobby(
-                hobby="Collecting Postcards",
+                type_of_hobby="Collecting Postcards",
                 description="Collecting postcards, or deltiology, involves gathering and categorizing postcards, which are often sent by people while traveling. It's a way to explore different places, cultures, and times through the images and messages on the cards."
             ),
             Hobby(
-                hobby="Collecting Vintage Items",
+                type_of_hobby="Collecting Vintage Items",
                 description="Collecting vintage items involves acquiring and preserving items from the past. These could be toys, records, books, or any number of other items. The draw for collectors is often a combination of their historical significance and nostalgic value."
             ),
             Hobby(
-                hobby="Collecting Memorabilia",
+                type_of_hobby="Collecting Memorabilia",
                 description="Collecting memorabilia involves gathering items of personal interest, such as items related to a particular sports team, movie, music band, or historical event. These items can range from clothing, posters, autographed items, to merchandise."
             ),
             Hobby(
-                hobby="Collecting Art",
+                type_of_hobby="Collecting Art",
                 description="Collecting art involves acquiring art pieces that appeal to the collector's personal aesthetics. This could include paintings, sculptures, photographs, and other forms of visual art. Art collection can also be an investment."
             ),
             Hobby(
-                hobby="Collecting Antiques",
+                type_of_hobby="Collecting Antiques",
                 description="Collecting antiques involves acquiring old objects, typically more than a hundred years old, which are valued for their beauty, rarity, condition, utility, personal emotional connection, and/or other unique features."
             ),
             Hobby(
-                hobby="Collecting Rare Books",
+                type_of_hobby="Collecting Rare Books",
                 description="Collecting rare books involves gathering books that are significant due to their age, scarcity, historical importance, or other factors. These books are often highly prized and carefully preserved by collectors."
             ),
             Hobby(
-                hobby="Cooking",
+                type_of_hobby="Cooking",
                 description="Cooking is the art and practice of preparing food by combining various ingredients and using various methods to create delicious and nourishing dishes. Whether it's experimenting with new recipes or perfecting traditional ones, cooking is a hobby that brings joy and satisfaction to many food enthusiasts."
             ),
             Hobby(
-                hobby="Baking",
+                type_of_hobby="Baking",
                 description="Baking is a method of cooking food that uses prolonged dry heat, typically in an oven. Baking, especially of breads, pastries, cakes, and other desserts, is a hobby enjoyed by many and can be quite rewarding."
             ),
             Hobby(
-                hobby="Cooking International Cuisines",
+                type_of_hobby="Cooking International Cuisines",
                 description="Cooking international cuisines involves preparing dishes from various countries and cultures. This hobby allows individuals to explore and appreciate different culinary traditions from around the world."
             ),
             Hobby(
-                hobby="Food Photography",
+                type_of_hobby="Food Photography",
                 description="Food photography is a still life specialization of commercial photography, aimed at producing attractive photographs of food for a variety of uses including in advertisements, magazines, cookbooks, and social media."
             ),
             Hobby(
-                hobby="Food Styling",
+                type_of_hobby="Food Styling",
                 description="Food styling is the art of arranging food so that it looks tasty and fresh. This is important in a number of fields, particularly in the advertising industry where products need to look as appealing as possible."
             ),
             Hobby(
-                hobby="Brewing Beer",
+                type_of_hobby="Brewing Beer",
                 description="Brewing beer involves fermenting cereal grains to produce a carbonated, alcoholic beverage. Home brewing allows for great customization of flavors and styles, making it a popular hobby for many beer enthusiasts."
             ),
             Hobby(
-                hobby="Making Wine",
+                type_of_hobby="Making Wine",
                 description="Making wine involves fermenting grapes or other fruits to create a unique blend of flavors. Wine making, or vinification, requires knowledge and patience, but can be an enjoyable and rewarding hobby."
             ),
             Hobby(
-                hobby="BBQ and Grilling",
+                type_of_hobby="BBQ and Grilling",
                 description="BBQ and grilling involve cooking food on a grill or open fire. The techniques and flavors differ widely across the world, making it a versatile and sociable hobby for food lovers."
             ),
             Hobby(
-                hobby="Reading Fiction Books",
+                type_of_hobby="Reading Fiction Books",
                 description="Reading fiction books involves immersing oneself in a narrative that originates from an author's imagination. Genres can range widely, from fantasy to thriller to romance, providing endless opportunities for enjoyment and escapism."
             ),
             Hobby(
-                hobby="Reading Non-Fiction Books",
+                type_of_hobby="Reading Non-Fiction Books",
                 description="Reading non-fiction books involves learning about real-world subjects from literature. This can include history, biographies, self-help, science, and more. It's a way to gain knowledge and understanding about various topics."
             ),
             Hobby(
-                hobby="Book Club Participation",
+                type_of_hobby="Book Club Participation",
                 description="Book club participation involves reading books and discussing them in a group setting. It's a way to enjoy literature, share ideas, and socialize with others who share a love for books."
             ),
             Hobby(
-                hobby="Writing Book Reviews",
+                type_of_hobby="Writing Book Reviews",
                 description="Writing book reviews involves reading a book and writing a critique of it for the benefit of others. This can include a summary of the content, an analysis of the writing style, and personal opinions about the book."
             ),
             Hobby(
-                hobby="Running a Book Blog",
+                type_of_hobby="Running a Book Blog",
                 description="Running a book blog involves writing about books on a blog. This could include writing reviews, conducting author interviews, and providing recommendations. It's a great hobby for avid readers who enjoy sharing their love of books with others."
             ),
             Hobby(
-                hobby="Traveling",
+                type_of_hobby="Traveling",
                 description="Traveling involves visiting new places, both near and far, to experience different cultures, landscapes, and activities. It provides opportunities to meet new people, try new foods, and learn about history and traditions."
             ),
             Hobby(
-                hobby="Geocaching",
+                type_of_hobby="Geocaching",
                 description="Geocaching is an outdoor recreational activity, in which participants use a GPS receiver or mobile device to hide and seek containers, called 'geocaches' or 'caches', at specific locations marked by coordinates all over the world."
             ),
             Hobby(
-                hobby="Urban Exploration",
+                type_of_hobby="Urban Exploration",
                 description="Urban exploration involves exploring manmade structures, usually abandoned ruins or not usually seen components of the urban environment. Safety and legality are important considerations for those engaged in this hobby."
             ),
             Hobby(
-                hobby="Camping",
+                type_of_hobby="Camping",
                 description="Camping involves spending time outdoors, typically staying overnight in a tent, a caravan, or even under the stars. It's a way to enjoy nature and outdoor activities like hiking, fishing, and wildlife spotting."
             ),
             Hobby(
-                hobby="Road Trips",
+                type_of_hobby="Road Trips",
                 description="Road trips involve long distance travel on the road. Whether it's a journey across the state or across the country, road trips can be a fun and flexible way to travel and see new places."
             ),
             Hobby(
-                hobby="Bird Watching",
+                type_of_hobby="Bird Watching",
                 description="Bird watching involves observing birds in their natural habitat. Bird watchers, or birders, use binoculars or telescopes to spot and identify different species, often documenting their findings in a 'life list'."
             ),
             Hobby(
-                hobby="Astrology",
+                type_of_hobby="Astrology",
                 description="Astrology is a belief system that suggests there is a relationship between the positions of celestial bodies and events in the human world. Many people enjoy astrology as a hobby, reading and interpreting horoscopes or natal charts."
             ),
             Hobby(
-                hobby="Meditation",
+                type_of_hobby="Meditation",
                 description="Meditation is a practice where an individual uses a technique such as mindfulness, or focusing their mind on a particular object, thought or activity to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state."
             ),
             Hobby(
-                hobby="Learning New Languages",
+                type_of_hobby="Learning New Languages",
                 description="Learning new languages involves studying the structure, vocabulary, and grammar of foreign languages. In addition to being a valuable skill, it can also be a fun hobby that allows for better understanding and appreciation of other cultures."
             ),
             Hobby(
-                hobby="Learning Musical Instruments",
+                type_of_hobby="Learning Musical Instruments",
                 description="Learning musical instruments involves practicing to play instruments such as the guitar, piano, violin, drums, or any other musical instrument. It's a skill that takes time and patience to develop but can provide a lifetime of enjoyment."
             ),
             Hobby(
-                hobby="Learning Magic Tricks",
+                type_of_hobby="Learning Magic Tricks",
                 description="Learning magic tricks involves practicing skills like sleight of hand and illusion to entertain and amaze an audience. This hobby requires patience and dexterity but can be a lot of fun to learn and perform."
             ),
             Hobby(
-                hobby="Learning to Dance",
+                type_of_hobby="Learning to Dance",
                 description="Learning to dance involves mastering the movements and steps that make up a particular style of dance. Dance styles can range from ballet to salsa to hip-hop, each offering a unique way to express oneself through movement."
             ),
             Hobby(
-                hobby="Learning Calligraphy",
+                type_of_hobby="Learning Calligraphy",
                 description="Learning calligraphy involves practicing the art of writing in an expressive, beautiful, and skillful manner. Calligraphy requires steady hands and patience, but can be a relaxing and rewarding hobby."
             ),
             Hobby(
-                hobby="Learning Pottery",
+                type_of_hobby="Learning Pottery",
                 description="Learning pottery involves creating objects from clay and other ceramic materials, which are then fired at high temperatures to become pottery. It's a creative hobby that can result in beautiful, functional art pieces."
             ),
             Hobby(
-                hobby="Singing",
+                type_of_hobby="Singing",
                 description="Singing involves producing musical sounds with the voice, usually to accompany a song. Singing can be done professionally or as a hobby and can be enjoyed solo or with others in a choir or band."
             ),
             Hobby(
-                hobby="Painting",
+                type_of_hobby="Painting",
                 description="Painting involves applying paint to a medium (such as canvas or paper) to create an artwork. There are various styles and techniques of painting, making it a versatile and creative outlet."
             ),
             Hobby(
-                hobby="Drawing",
+                type_of_hobby="Drawing",
                 description="Drawing involves making pictures by making lines on paper, or other surfaces. It can be a simple hobby to start, but with time and practice, many people can develop their skills to produce stunning artworks."
             ),
             Hobby(
-                hobby="Knitting",
+                type_of_hobby="Knitting",
                 description="Knitting involves creating a fabric or textile by creating interlocking loops of yarn. It's a hobby that can be picked up by almost anyone and can result in everything from blankets to sweaters to stuffed animals."
             ),
             Hobby(
-                hobby="Crocheting",
+                type_of_hobby="Crocheting",
                 description="Crocheting involves creating a fabric by interlocking loops of yarn or thread with a crochet hook. Like knitting, crocheting can result in a variety of handmade items like doilies, scarves, and hats."
             ),
             Hobby(
-                hobby="Sewing",
+                type_of_hobby="Sewing",
                 description="Sewing involves fastening or attaching objects using stitches made with a needle and thread. It's a practical hobby that can be used to make, mend, or alter clothes and other items."
             ),
             Hobby(
-                hobby="Embroidery",
+                type_of_hobby="Embroidery",
                 description="Embroidery involves decorating fabric or other materials using a needle to apply thread or yarn. It's a hobby that can be as simple or complex as the pattern demands, and it's often used to personalize clothing, linens, and wall hangings."
             ),
             Hobby(
-                hobby="Gardening",
+                type_of_hobby="Gardening",
                 description="Gardening involves the cultivation and care of plants. This can include flowers, vegetables, fruits, herbs, or decorative plants. Gardening can be a relaxing and rewarding outdoor activity."
             ),
             Hobby(
-                hobby="Landscaping",
+                type_of_hobby="Landscaping",
                 description="Landscaping involves the planning, design, and maintenance of outdoor spaces. This can include plant selection and placement, pathway design, and other aesthetic decisions. It's a more large-scale and intricate hobby than gardening."
             ),
             Hobby(
-                hobby="Composting",
+                type_of_hobby="Composting",
                 description="Composting involves collecting organic waste (like food scraps and lawn clippings) and letting it decompose over time. The result is nutrient-rich soil that can be used in gardening. It's a practical hobby that's good for the environment."
             ),
             Hobby(
-                hobby="Urban Farming",
+                type_of_hobby="Urban Farming",
                 description="Urban farming involves growing food in cities, often in small spaces like balconies, rooftops, or indoor gardens. It's a hobby that can provide fresh, local food and promote sustainable living."
             ),
             Hobby(
-                hobby="Keeping Bees",
+                type_of_hobby="Keeping Bees",
                 description="Keeping bees, or beekeeping, involves the maintenance of bee colonies, usually in hives. It's a hobby that can provide honey and promote the pollination of nearby plants."
             ),
             Hobby(
-                hobby="Fishing",
+                type_of_hobby="Fishing",
                 description="Fishing involves catching fish, either as a profession, for survival, or for sport. As a hobby, it's a relaxing outdoor activity that can also provide an opportunity to catch a meal."
             ),
             Hobby(
-                hobby="Hunting",
+                type_of_hobby="Hunting",
                 description="Hunting involves tracking and killing animals, either for food, for sport, or for trade. It's a hobby that requires knowledge of animals and their behaviors, outdoor survival skills, and shooting skills."
             ),
             Hobby(
-                hobby="Surfing",
+                type_of_hobby="Surfing",
                 description="Surfing involves riding waves on a board, either standing up, lying down, or kneeling. It's a physically demanding hobby that also offers adrenaline and a close connection to nature."
             ),
             Hobby(
-                hobby="Food Drive Participation",
+                type_of_hobby="Food Drive Participation",
                 description="Participating in food drives involves collecting and donating food to support local communities, particularly those dealing with food insecurity. This typically includes gathering non-perishable food items and delivering them to a central location. It's a community-oriented hobby that directly helps those in need and can raise awareness about food security issues."
             ),
             Hobby(
-                hobby="Volunteering",
+                type_of_hobby="Volunteering",
                 description="Volunteering involves donating one's time and energy to support a cause or organization without expecting monetary compensation. This can take many forms, from helping at local charities or community events, supporting environmental initiatives, to aiding educational programs. It provides an opportunity to give back to the community, develop new skills, and make social connections."
             ),
         ]

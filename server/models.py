@@ -34,12 +34,12 @@ class User(db.Model, SerializerMixin):
 
     #Serialize rules
     # serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user', '-user_hobby.user')
-    serialize_rules = ('-result.user', '-entry.user','-user_hobby.user')
+    serialize_rules = ('-result.user', '-entry.user','-user_hobby.user',) #'-user_hobby.hobby'
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
     id = db.Column(db.Integer, primary_key = True)
-    hobby = db.Column(db.String)
+    type_of_hobby = db.Column(db.String)
     description = db.Column(db.String)
 
     #Foreign Keys
@@ -50,7 +50,7 @@ class Hobby(db.Model, SerializerMixin):
     user_hobby = db.relationship('UserHobby', back_populates="hobby")
 
     #Serialize Rules
-    serialize_rules = ('-user_hobby.hobby', )
+    serialize_rules = ('-user_hobby.hobby',) #'-user_hobby.user'
 
 
 class UserHobby(db.Model, SerializerMixin):
@@ -66,7 +66,7 @@ class UserHobby(db.Model, SerializerMixin):
     hobby = db.relationship('Hobby', back_populates="user_hobby")
     
     #Serialize Rules
-    serialize_rules = ('-user.user_hobby','-hobby.user_hobby')
+    serialize_rules = ('-user.user_hobby','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
 
 
 class Competition(db.Model, SerializerMixin):

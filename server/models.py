@@ -28,13 +28,28 @@ class User(db.Model, SerializerMixin):
     #Relationships
     # competitions = db.relationship('Competition', back_populates="user" ) <- SHOULD BE CONNECTED BY RESULT AND ENTRIES
     # hobby = db.relationship('Hobby', back_populates="user")
-    result = db.relationship('Result', back_populates="user")
+
+    results = db.relationship('Result', back_populates="user")
     entry = db.relationship('Entry', back_populates="user")
     user_hobby = db.relationship('UserHobby', back_populates="user")
 
     #Serialize rules
-    # serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user', '-user_hobby.user')
-    serialize_rules = ('-result.user', '-entry.user','-user_hobby.user',) #'-user_hobby.hobby'
+    # serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user', '-user_hobby.user') #WHAT I'VE TRIED
+    serialize_rules = ( #Result rules, subtract competitions.entry to remove ALL entries, but I still want user entries.
+                       '-results.user',
+                       '-results.competitions.entry',
+                       #User_Hobby Rules. Remove recursiong with user, remove userID because we have it.
+                       '-user_hobby.user_id',
+                       '-user_hobby.user',
+                       '-user_hobby.hobby_id',
+                       #Entry rules
+                       '-entry.user',
+                       '-entry.user_id'
+                       
+                       #'-results.competitions', #This one removes competitions from appearing with all their clutter
+                       ) 
+    #Random serialize rules that could've been done
+    #'-entry.user','-user_hobby.user' #'-results.user_id',
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
@@ -50,7 +65,7 @@ class Hobby(db.Model, SerializerMixin):
     user_hobby = db.relationship('UserHobby', back_populates="hobby")
 
     #Serialize Rules
-    serialize_rules = ('-user_hobby.hobby',) #'-user_hobby.user'
+    serialize_rules = ('-user_hobby.hobby',) # SHOULD I ADD THIS -> ('-user_hobby.user')
 
 
 class UserHobby(db.Model, SerializerMixin):
@@ -134,12 +149,11 @@ class Result(db.Model, SerializerMixin):
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
 
     #Relationships
-    user = db.relationship('User', back_populates="result")
+    user = db.relationship('User', back_populates="results")
     competitions = db.relationship('Competition', back_populates="result")
 
-    
     #Serialize Rules
-    serialize_rules = ('-user.result','-competitions.result')
+    serialize_rules = ('-user.results','-competitions.result') #'-competitions.result'
 
 
 class Entry(db.Model, SerializerMixin):
@@ -159,4 +173,4 @@ class Entry(db.Model, SerializerMixin):
     competitions = db.relationship('Competition', back_populates="entry" )
 
     #Serialize Rules
-    serialize_rules = ('-user.entry','-competitions.entry')
+    serialize_rules = ('-user.entry','-competitions')

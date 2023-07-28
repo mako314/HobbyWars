@@ -27,7 +27,7 @@ CORS(app)
 
 class Users(Resource):
     def get(self):
-        users = [user.to_dict() for user in User.query.all()]
+        users = [user.to_dict(rules =('-user_hobby.id',)) for user in User.query.all()]
 
         response = make_response(users, 200)
 

@@ -985,7 +985,7 @@ if __name__ == '__main__':
         db.session.add_all(competitions)
 #---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
         print("Seeding our Results...")
-        Results = [
+        results = [
             Result(
             placement=2,
             user_id=6,
@@ -1042,11 +1042,12 @@ if __name__ == '__main__':
             competition_id=1,
             ),
         ]
+        db.session.add_all(results)
 
 #---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
 
         print("Seeding our Entries...")
-        Results = [
+        entries = [
             Entry(
             submission="",
             description="",
@@ -1114,12 +1115,10 @@ if __name__ == '__main__':
             competition_id=1,
             ),
         ]
+        db.session.add_all(entries)
 
-    # placement = db.Column(db.Integer)
 
-    # #Foreign Keys
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    # competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
+        print("Existing data is now established.")
         db.session.commit()
 
  

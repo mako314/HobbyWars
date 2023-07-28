@@ -21,33 +21,50 @@ class User(db.Model, SerializerMixin):
     location = db.Column(db.String)
     phone = db.Column(db.String)
     email = db.Column(db.String)
-    # hobbies = db.Column(db.String)
     profileImg = db.Column(db.String)
     bannerImg = db.Column(db.String)
 
     #Relationships
-    competitions = db.relationship('Competition', back_populates="user" ) 
-    # hobby = db.relationship('Hobby', back_populates="user")
-    result = db.relationship('Result', back_populates="user")
+    results = db.relationship('Result', back_populates="user")
     entry = db.relationship('Entry', back_populates="user")
     user_hobby = db.relationship('UserHobby', back_populates="user")
 
     #Serialize rules
-    serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user')
+    # serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user', '-user_hobby.user') #WHAT I'VE TRIED
+    serialize_rules = ( #Result rules, subtract competitions.entry to remove ALL entries, but I still want user entries.
+                       '-results.user',
+                       '-results.competitions.entry',
+                       #User_Hobby Rules. Remove recursiong with user, remove userID because we have it. Remove hobby_id because user hobby has it.
+                       '-user_hobby.user_id',
+                       '-user_hobby.user',
+                       '-user_hobby.hobby_id',
+                       #Entry rules
+                       '-entry.user', #Removes recursion back to our user
+                       '-entry.user_id' #Removes recursion back to our user
+                       #'-results.competitions', #This one removes competitions from appearing with all their clutter
+                       ) 
+    
+    #Random serialize rules that could've been done
+    #'-entry.user','-user_hobby.user' #'-results.user_id',
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
+    #Columns
     id = db.Column(db.Integer, primary_key = True)
-    hobby = db.Column(db.String)
+    type_of_hobby = db.Column(db.String)
     description = db.Column(db.String)
+
     #Foreign Keys
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     #Relationships
-    # user = db.relationship('User', back_populates="hobby")
-
+    user_hobby = db.relationship('UserHobby', back_populates="hobby")
 
     #Serialize Rules
+    #user_hobby.hobby removes the recursion back to hobby.
+    #user_hobby.user removes user data that gets populated from user_hobby
+    serialize_rules = ('-user_hobby.hobby', '-user_hobby.user') # SHOULD I ADD THIS -> ('-user_hobby.user')
+
+
 class UserHobby(db.Model, SerializerMixin):
     __tablename__= "user_hobbies"
     id = db.Column(db.Integer, primary_key = True)
@@ -56,20 +73,38 @@ class UserHobby(db.Model, SerializerMixin):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     hobby_id = db.Column(db.Integer, db.ForeignKey('hobbies.id'))
 
+    #Relationships
     user = db.relationship('User', back_populates="user_hobby")
+    hobby = db.relationship('Hobby', back_populates="user_hobby")
+    
+    #Serialize Rules
+    serialize_rules = ('-user.user_hobby','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
 
 
 class Competition(db.Model, SerializerMixin):
     __tablename__ = "competitions"
     #Columns
     id = db.Column(db.Integer, primary_key = True)
-    requirements = db.Column(db.String) #This would be hobby
+
+    #-----Obj, Description, Tasks, and CoE-----
+    title = db.Column(db.String)
+    objective = db.Column(db.String)
     description = db.Column(db.String)
+    scoring = db.Column(db.String)
     cost_of_entry = db.Column(db.Integer)
+
+    #----Logistics Info----
     schedule = db.Column(db.String)
     contact = db.Column(db.String)
     location = db.Column(db.String)
 
+    #----Req, Tasks, and Safety Measures----
+    #may need to add scoring as a gauge, and then result can hold their score + result
+    requirements = db.Column(db.String) #This would be hobby
+    competition_tasks = db.Column(db.String)
+    safety_measures = db.Column(db.String)
+
+    #---Prizes!!!----
     prize1 = db.Column(db.String)
     prize2 = db.Column(db.String)
     prize3 = db.Column(db.String)
@@ -80,17 +115,24 @@ class Competition(db.Model, SerializerMixin):
     prize8 = db.Column(db.String)
     #Need to find prizing information
 
+
+    #Registration schedule and or maybe limit?
     registration_schedule = db.Column(db.String) # I really want this to use DateTime but likely not
-    # #Foreign Keys
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    # notes = db.Column(db.String) # May incldue this as an editable text area
+
+    # #Foreign Keys Likely will link this to entries and results instead of a user id
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id')) <- UNSURE IF NEEDED
+    # entry_id = db.Column(db.Integer, db.ForeignKey('entries.id'))
 
     #Relationships
-    user = db.relationship('User', back_populates="competitions")
+    # user = db.relationship('User', back_populates="competitions") COMMENTED OUT NOT SURE IF NEEDED
     entry = db.relationship('Entry', back_populates="competitions")
     result = db.relationship('Result', back_populates="competitions")
 
     #Serialize Rules
-    serialize_rules = ('-user.competitions', '-entry.competitions', '-result.competitions')
+    serialize_rules = ('-entry.competitions', '-result.competitions')
+    #'-user.competitions'
 
 
 class Result(db.Model, SerializerMixin):
@@ -104,12 +146,11 @@ class Result(db.Model, SerializerMixin):
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
 
     #Relationships
-    user = db.relationship('User', back_populates="result")
-    competitions = db.relationship('Competition', back_populates="result" )
+    user = db.relationship('User', back_populates="results")
+    competitions = db.relationship('Competition', back_populates="result")
 
-    
     #Serialize Rules
-    serialize_rules = ('-user.results','-competitions.result')
+    serialize_rules = ('-user.results','-competitions.result') #'-competitions.result'
 
 
 class Entry(db.Model, SerializerMixin):
@@ -118,7 +159,7 @@ class Entry(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     submission = db.Column(db.String)
     description = db.Column(db.String)
-    tools_utilized = db.Column(db.String)
+    #tools_utilized = db.Column(db.String) <- do I need this?
 
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -129,7 +170,4 @@ class Entry(db.Model, SerializerMixin):
     competitions = db.relationship('Competition', back_populates="entry" )
 
     #Serialize Rules
-    serialize_rules = ('-users.entry','competitions.entry')
-
-
-#table for user hobbies so they can put experience etc
+    serialize_rules = ('-user.entry','-competitions')

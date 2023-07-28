@@ -34,6 +34,7 @@ class Users(Resource):
         return response
 
 api.add_resource(Users, '/users')
+#------------------------------------------------------------------------------
 
 #------------------------------------Hobby (Not USER) Routing------------------------------------------
 
@@ -46,6 +47,7 @@ class Hobbies(Resource):
         return response
     
 api.add_resource(Hobbies, '/hobbies')
+#------------------------------------------------------------------------------
 
 #------------------------------------HobbyUSER (meaning a user has this hobby) Routing------------------------------------------
 
@@ -58,6 +60,7 @@ class UserHobbies(Resource):
         return response
     
 api.add_resource(UserHobbies, '/user-hobbies')
+#------------------------------------------------------------------------------
 
 #------------------------------------Competition Routing------------------------------------------
 
@@ -70,6 +73,25 @@ class Competitions(Resource):
         return response 
     
 api.add_resource(Competitions,'/competitions')
+#------------------------------------------------------------------------------
+
+
+#------------------------------------Result Routing------------------------------------------
+
+class Results(Resource):
+    def get(self):
+        results = [result.to_dict() for result in Result.query.all()]
+
+        response = make_response(results, 200)
+
+        return response
+    
+api.add_resource(Results, '/results')
+#------------------------------------------------------------------------------
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
+
+
+
+#would be cool to make a competition by almost result ID? Like if the results competition id matches the competition ID show all those results for that competition? Same for entry

@@ -27,7 +27,7 @@ class User(db.Model, SerializerMixin):
 
     #Relationships
     competitions = db.relationship('Competition', back_populates="user" ) 
-    hobby = db.relationship('Hobby', back_populates="user")
+    # hobby = db.relationship('Hobby', back_populates="user")
     result = db.relationship('Result', back_populates="user")
     entry = db.relationship('Entry', back_populates="user")
     user_hobby = db.relationship('UserHobby', back_populates="user")
@@ -41,10 +41,10 @@ class Hobby(db.Model, SerializerMixin):
     hobby = db.Column(db.String)
     description = db.Column(db.String)
     #Foreign Keys
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     #Relationships
-    user = db.relationship('User', back_populates="hobby")
+    # user = db.relationship('User', back_populates="hobby")
 
 
     #Serialize Rules

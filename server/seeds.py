@@ -15,7 +15,7 @@ if __name__ == '__main__':
         Competition.query.delete()
         Result.query.delete()
         Entry.query.delete()
-#-----------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------USER SEEDING---------------------------------------------------------------------------------------
         #Seed users
         print("Seeding potential Users...")
         users = [
@@ -381,7 +381,7 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(users)
-#-----------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------HOBBY SEEDING--------------------------------------------------------------------------------------
         print("Seeding Hobbies...")
         hobbies = [
             Hobby(
@@ -391,6 +391,10 @@ if __name__ == '__main__':
             Hobby(
                 hobby="Writing Blogs",
                 description="Writing blogs involves creating content for an online platform called a blog. This hobby can range from personal journaling to providing information on specific topics, and allows for the sharing and discussion of ideas on the internet."
+            ),
+            Hobby(
+                hobby="Writing Poetry",
+                description="Writing poetry is a beautiful and expressive hobby that involves crafting verses and lines to evoke emotions, share personal experiences, and explore the beauty of language. Poets use metaphors, rhythm, and vivid imagery to create meaningful and thought-provoking poems."
             ),
             Hobby(
                 hobby="Photography",
@@ -585,6 +589,10 @@ if __name__ == '__main__':
                 description="Collecting rare books involves gathering books that are significant due to their age, scarcity, historical importance, or other factors. These books are often highly prized and carefully preserved by collectors."
             ),
             Hobby(
+                hobby="Cooking",
+                description="Cooking is the art and practice of preparing food by combining various ingredients and using various methods to create delicious and nourishing dishes. Whether it's experimenting with new recipes or perfecting traditional ones, cooking is a hobby that brings joy and satisfaction to many food enthusiasts."
+            ),
+            Hobby(
                 hobby="Baking",
                 description="Baking is a method of cooking food that uses prolonged dry heat, typically in an oven. Baking, especially of breads, pastries, cakes, and other desserts, is a hobby enjoyed by many and can be quite rewarding."
             ),
@@ -647,10 +655,6 @@ if __name__ == '__main__':
             Hobby(
                 hobby="Camping",
                 description="Camping involves spending time outdoors, typically staying overnight in a tent, a caravan, or even under the stars. It's a way to enjoy nature and outdoor activities like hiking, fishing, and wildlife spotting."
-            ),
-            Hobby(
-                hobby="Hiking",
-                description="Hiking involves long, vigorous walks on trails or footpaths in the countryside. Hiking is not only a great form of physical exercise but also a way to appreciate nature and scenic landscapes."
             ),
             Hobby(
                 hobby="Road Trips",
@@ -751,26 +755,53 @@ if __name__ == '__main__':
             Hobby(
                 hobby="Surfing",
                 description="Surfing involves riding waves on a board, either standing up, lying down, or kneeling. It's a physically demanding hobby that also offers adrenaline and a close connection to nature."
-            ),Hobby(
+            ),
+            Hobby(
                 hobby="Food Drive Participation",
                 description="Participating in food drives involves collecting and donating food to support local communities, particularly those dealing with food insecurity. This typically includes gathering non-perishable food items and delivering them to a central location. It's a community-oriented hobby that directly helps those in need and can raise awareness about food security issues."
-            ),Hobby(
+            ),
+            Hobby(
                 hobby="Volunteering",
                 description="Volunteering involves donating one's time and energy to support a cause or organization without expecting monetary compensation. This can take many forms, from helping at local charities or community events, supporting environmental initiatives, to aiding educational programs. It provides an opportunity to give back to the community, develop new skills, and make social connections."
             ),
         ]
         db.session.add_all(hobbies)
+#---------------------------------------------------------------------------------USERS HOBBIES-----------------------------------------------------------------------------------------------
+#print some of these can defnitely have extra things
+        print("Seeding our existing Users hobbies...")
+        user_hobbies = [
+            UserHobby(expertise=9, user_id=1, hobby_id=80),   # Luna Everwood - Painting ✔
+            UserHobby(expertise=7, user_id=2, hobby_id=9),   # Zephyr Wilde - Adventuring - Trekking ✔
+            UserHobby(expertise=5, user_id=3, hobby_id=1),   # Seren Hawthorne - Writing - Writing Novels ✔ 
+            UserHobby(expertise=8, user_id=4, hobby_id=9),   # Atlas Stone - Mountain Exploration - Trekking ✔
+            UserHobby(expertise=6, user_id=5, hobby_id=31),   # Aria Nightingale - Music - Theater ✔
+            UserHobby(expertise=9, user_id=6, hobby_id=71),   # Max Adler - Astronomy - Astrology ✔
+            UserHobby(expertise=4, user_id=7, hobby_id=60),   # Eliza Bard - Reading Fiction Books ✔
+            UserHobby(expertise=7, user_id=8, hobby_id=20),   # Phoenix Blaze - Fire Dancing - Dancing ✔
+            UserHobby(expertise=8, user_id=9, hobby_id=71),   # Stella Morgan - Astronomy - Astrology✔
+            UserHobby(expertise=5, user_id=10, hobby_id=9),   # Asher Kane - Hiking - Trekking
+            UserHobby(expertise=6, user_id=11, hobby_id=4),  # Ivy Greene - Photography ✔
+            UserHobby(expertise=4, user_id=12, hobby_id=13),  # Carter Reeves - Adrenaline Activities - Mountain Biking	 ✔
+            UserHobby(expertise=5, user_id=13, hobby_id=72),  # Jasmine Hart - Mindfulness - Meditation (add yoga 18) ✔
+            UserHobby(expertise=8, user_id=14, hobby_id=37),  # Oliver Hudson - Technology - Coding ✔
+            UserHobby(expertise=6, user_id=15, hobby_id=95),  # Ava Morgan - Animal Welfare - Volunteering ✔
+            UserHobby(expertise=9, user_id=16, hobby_id=8),  # Ash Hunter - Nature - Hiking ✔
+            UserHobby(expertise=3, user_id=17, hobby_id=50),  # Ari James - History - Collecting Antiques ✔
+            UserHobby(expertise=7, user_id=18, hobby_id=72),  # Aiden Hartman - Mindfulness - Meditation ✔
+            UserHobby(expertise=5, user_id=19, hobby_id=71),  # Luna Knight - Astronomy - Astrology✔
+            UserHobby(expertise=4, user_id=20, hobby_id=65),  # Ryder Moss - Travel - Traveling ✔
+            UserHobby(expertise=8, user_id=21, hobby_id=71),  # Nova Sullivan - Stargazing - Astrology✔
+            UserHobby(expertise=6, user_id=22, hobby_id=9),   # Silas Rivera - Nature - Trekking✔
+            UserHobby(expertise=3, user_id=23, hobby_id=10),  # Ivy Lawrence - Gardening ✔
+            UserHobby(expertise=5, user_id=24, hobby_id=3),   # Zara Harrison - Poetry - Writing Poetry	✔
+            UserHobby(expertise=7, user_id=25, hobby_id=65),  # Finn Collins - Travel - Traveling ✔
+            UserHobby(expertise=6, user_id=26, hobby_id=4),   # Lila Morris - Photography ✔
+            UserHobby(expertise=8, user_id=27, hobby_id=47),  # Miles Cooper - History - Vintage Items✔
+            UserHobby(expertise=3, user_id=28, hobby_id=54),  # Zoe Manning - Culinary Exploration - Cooking International Cuisines	 ✔
+            UserHobby(expertise=5, user_id=29, hobby_id=9),   # Caleb Williams - Resilience - Trekking ✔
+            UserHobby(expertise=7, user_id=30, hobby_id=3),  # Zara Knight - Poetry - Writing Poetry ✔
+        ]
+        db.session.add_all(user_hobbies)
         db.session.commit()
 
-    # hobby = db.Column(db.String)
-    # description = db.Column(db.String)
-    # id = db.Column(db.Integer, primary_key = True)
-    # firstName = db.Column(db.String)
-    # lastName = db.Column(db.String)
-    # bio = db.Column(db.String)
-    # location = db.Column(db.String)
-    # phone = db.Column(db.String)
-    # email = db.Column(db.String)
-    # # hobbies = db.Column(db.String)
-    # profileImg = db.Column(db.String)
-    # bannerImg = db.Column(db.String)
+ 

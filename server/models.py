@@ -45,7 +45,6 @@ class User(db.Model, SerializerMixin):
                        #Entry rules
                        '-entry.user',
                        '-entry.user_id'
-                       
                        #'-results.competitions', #This one removes competitions from appearing with all their clutter
                        ) 
     #Random serialize rules that could've been done
@@ -65,7 +64,9 @@ class Hobby(db.Model, SerializerMixin):
     user_hobby = db.relationship('UserHobby', back_populates="hobby")
 
     #Serialize Rules
-    serialize_rules = ('-user_hobby.hobby',) # SHOULD I ADD THIS -> ('-user_hobby.user')
+    #user_hobby.hobby removes the recursion back to hobby.
+    #user_hobby.user removes user data that gets populated from user_hobby
+    serialize_rules = ('-user_hobby.hobby', '-user_hobby.user') # SHOULD I ADD THIS -> ('-user_hobby.user')
 
 
 class UserHobby(db.Model, SerializerMixin):

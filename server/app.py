@@ -35,6 +35,16 @@ class Users(Resource):
 
 api.add_resource(Users, '/users')
 
-#-----------------------------------------------------------------------------------------
+#------------------------------------Hobby (Not USER) Routing------------------------------------------
+
+class Hobbies(Resource):
+    def get(self):
+        hobby = [hobby.to_dict() for hobby in Hobby.query.all()]
+
+        response = make_response(hobby, 200)
+
+        return response
+api.add_resource(Hobbies, '/hobbies')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

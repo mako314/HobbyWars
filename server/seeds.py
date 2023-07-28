@@ -20,14 +20,14 @@ if __name__ == '__main__':
         print("Seeding potential Users...")
         users = [
             User(
-            firstName="Luna",
+            firstName="Emily",
             lastName="Everwood",
-            username="EnchantingLuna88",
+            username="EnchantingEmily88",
             age=28,
-            bio="Hey there! I'm Luna, a nature enthusiast, artist, and dreamer. I find so much inspiration in the breathtaking beauty of national parks that I try to capture through my vibrant paintings. My art aims to evoke a sense of tranquility and wonder, reflecting my deep connection with nature. Exploring the world's natural wonders has become a life-changing journey that keeps me endlessly curious.",
+            bio="Hey there! I'm Emily, a nature enthusiast, artist, and dreamer. I find so much inspiration in the breathtaking beauty of national parks that I try to capture through my vibrant paintings. My art aims to evoke a sense of tranquility and wonder, reflecting my deep connection with nature. Exploring the world's natural wonders has become a life-changing journey that keeps me endlessly curious.",
             location="Aspen, Colorado, USA",
             phone="+1 (970) 789-1234",
-            email="luna.paints.magic88@gmail.com",
+            email="Emily.paints.magic88@gmail.com",
             profileImg="link_to_profile_image_1",
             bannerImg="link_to_banner_image_1",
             ),
@@ -296,14 +296,14 @@ if __name__ == '__main__':
             bannerImg="link_to_banner_image_36",
             ),
             User(
-            firstName="Zara",
+            firstName="Zoe",
             lastName="Harrison",
-            username="WanderZara_25",
+            username="WanderZoe_25",
             age=25,
-            bio="Hello, wanderlust souls! I'm Zara, a free spirit and explorer of hidden gems. Whether it's lost ruins or undiscovered caves, I'm on a quest to find the extraordinary in the ordinary. Join me on this whimsical journey as we embrace the unknown and create extraordinary memories together.",
+            bio="Hello, wanderlust souls! I'm Zoe, a free spirit and explorer of hidden gems. Whether it's lost ruins or undiscovered caves, I'm on a quest to find the extraordinary in the ordinary. Join me on this whimsical journey as we embrace the unknown and create extraordinary memories together.",
             location="Enchanted Trails, Colorado, USA",
             phone="+1 (720) 712-5065",
-            email="wander.zara25@gmail.com",
+            email="wander.Zoe25@gmail.com",
             profileImg="link_to_profile_image_37",
             bannerImg="link_to_banner_image_37",
             ),
@@ -770,7 +770,7 @@ if __name__ == '__main__':
 #print some of these can defnitely have extra things
         print("Seeding our existing Users hobbies...")
         user_hobbies = [
-            UserHobby(expertise=9, user_id=1, hobby_id=80),   # Luna Everwood - Painting ✔
+            UserHobby(expertise=9, user_id=1, hobby_id=80),   # Emily Everwood - Painting ✔
             UserHobby(expertise=7, user_id=2, hobby_id=9),   # Zephyr Wilde - Adventuring - Trekking ✔
             UserHobby(expertise=5, user_id=3, hobby_id=1),   # Seren Hawthorne - Writing - Writing Novels ✔ 
             UserHobby(expertise=8, user_id=4, hobby_id=9),   # Atlas Stone - Mountain Exploration - Trekking ✔
@@ -793,7 +793,7 @@ if __name__ == '__main__':
             UserHobby(expertise=8, user_id=21, hobby_id=71),  # Nova Sullivan - Stargazing - Astrology✔
             UserHobby(expertise=6, user_id=22, hobby_id=9),   # Silas Rivera - Nature - Trekking✔
             UserHobby(expertise=3, user_id=23, hobby_id=10),  # Ivy Lawrence - Gardening ✔
-            UserHobby(expertise=5, user_id=24, hobby_id=3),   # Zara Harrison - Poetry - Writing Poetry	✔
+            UserHobby(expertise=5, user_id=24, hobby_id=3),   # Zoe Harrison - Poetry - Writing Poetry	✔
             UserHobby(expertise=7, user_id=25, hobby_id=65),  # Finn Collins - Travel - Traveling ✔
             UserHobby(expertise=6, user_id=26, hobby_id=4),   # Lila Morris - Photography ✔
             UserHobby(expertise=8, user_id=27, hobby_id=47),  # Miles Cooper - History - Vintage Items✔
@@ -983,16 +983,137 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(competitions)
-#---------------------------------------------------------------------------------COMPETITIONS-----------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
         print("Seeding our Results...")
         Results = [
             Result(
-            placement="",
-            user_id="",
-            competition_id="",
-            )
+            placement=2,
+            user_id=6,
+            competition_id=2,
+            ),
+            Result(
+            placement=5,
+            user_id=10,
+            competition_id=2,
+            ),
+            Result(
+            placement=1,
+            user_id=19,
+            competition_id=2,
+            ),
+            Result(
+            placement=3,
+            user_id=21,
+            competition_id=2,
+            ),
+            Result(
+            placement=5,
+            user_id=26,
+            competition_id=5,
+            ),
+            Result(
+            placement=1,
+            user_id=11,
+            competition_id=5,
+            ),
+            Result(
+            placement=3,
+            user_id=2,
+            competition_id=1,
+            ),
+            Result(
+            placement=5,
+            user_id=4,
+            competition_id=1,
+            ),
+            Result(
+            placement=6,
+            user_id=10,
+            competition_id=1,
+            ),
+            Result(
+            placement=1,
+            user_id=22,
+            competition_id=1,
+            ),
+            Result(
+            placement=2,
+            user_id=29,
+            competition_id=1,
+            ),
         ]
 
+#---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
+
+        print("Seeding our Entries...")
+        Results = [
+            Result(
+            submission="",
+            description="",
+            user_id=6,
+            competition_id=2,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=10,
+            competition_id=2,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=19,
+            competition_id=2,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=21,
+            competition_id=2,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=26,
+            competition_id=5,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=11,
+            competition_id=5,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=2,
+            competition_id=1,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=4,
+            competition_id=1,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=10,
+            competition_id=1,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=22,
+            competition_id=1,
+            ),
+            Result(
+            submission="",
+            description="",
+            user_id=29,
+            competition_id=1,
+            ),
+        ]
 
     # placement = db.Column(db.Integer)
 

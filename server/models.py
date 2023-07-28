@@ -137,7 +137,7 @@ class Entry(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     submission = db.Column(db.String)
     description = db.Column(db.String)
-    tools_utilized = db.Column(db.String)
+    #tools_utilized = db.Column(db.String) <- do I need this?
 
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

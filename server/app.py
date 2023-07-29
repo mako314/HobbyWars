@@ -70,7 +70,7 @@ class UserByID(Resource):
         user = User.query.filter(User.id == id).first()
 
         if user:
-            response = make_response(user.to_dict(),200)
+            response = make_response(user.to_dict(), 200)
         else:
             response = make_response({
                 "error": "User not found"
@@ -126,30 +126,19 @@ class Hobbies(Resource):
 
         return response
     
-    # def post(self):
-    #     data = request.get_json()
-    #     #try:
-    #     new_hobby = Hobby(
+    #Post a Hobby
+    def post(self):
+        data = request.get_json()
+        #try:
+        new_hobby = Hobby(
+            type_of_hobby = data['type_of_hobby'],
+            description = data['description']
+        )
 
-    #     )
-    #     # new_user = User(
-    #     #     firstName = data['firstName'],
-    #     #     lastName = data['lastName'],
-    #     #     username = data['username'],
-    #     #     age = data['age'],
-    #     #     bio = data['bio'],
-    #     #     location = data['location'],
-    #     #     phone = data['phone'],
-    #     #     email = data['email'],
-    #     #     profileImg = data['profileImg'],
-    #     #     bannerImg = data['bannerImg']
-    #     # )
+        db.session.add(new_hobby)
+        db.session.commit()
 
-    #     # db.session.add(new_user)
-    #     # db.session.commit()
-
-    #     # return make_response(new_user.to_dict(), 201)
-
+        return make_response(new_hobby.to_dict(), 201)
     
 api.add_resource(Hobbies, '/hobbies')
 #------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------

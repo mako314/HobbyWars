@@ -92,6 +92,7 @@ class UserByID(Resource):
             response = make_response(user.to_dict(), 202)
             
             #except ValueError:
+            
         else:
             response = make_response({
                 "error": "User not found"
@@ -175,6 +176,7 @@ class HobbiesByID(Resource):
             response = make_response(hobby.to_dict(), 202)
             
             #except ValueError:
+
         else:
             response = make_response({
                 "error": "Hobby not found"
@@ -260,6 +262,7 @@ class UserHobbiesByID(Resource):
             
             response = make_response(user_hobby.to_dict(), 202)
             #except ValueError:
+
         else:
             response = make_response({
                 "error": "Users Hobby not found"
@@ -326,6 +329,7 @@ class Competitions(Resource):
         db.session.commit()
 
         return make_response(new_competition.to_dict(), 201)
+        #except ValueError:
 
 api.add_resource(Competitions,'/competitions')
 
@@ -339,6 +343,28 @@ class CompetitionByID(Resource):
 
         if competition:
             response = make_response(competition.to_dict(), 200)
+        else:
+            response = make_response({
+                "error": "Competition not found"
+            }, 404)
+        return response
+    
+    #PATCH Competition by ID
+    def patch(self, id):
+        competition = Competition.query.filter(Competition.id == id).first()
+
+        if competition:
+            #try:
+            data = request.get_json()
+            for key in data:
+                setattr(competition, key, data[key])
+            db.session.add(competition)
+            db.session.commit()
+
+            response = make_response(competition.to_dict(), 202)
+
+            #except ValueError:
+
         else:
             response = make_response({
                 "error": "Competition not found"

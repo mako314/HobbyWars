@@ -21,9 +21,9 @@ migrate = Migrate(app, db)
 db.init_app(app)
 api = Api(app)
 CORS(app)
-#-----------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------
 #Routing here
-#------------------------------------User Routing--------------------------------------
+#------------------------------------User Routing------------------------------------------------------------------------------
 
 class Users(Resource):
     def get(self):
@@ -35,7 +35,7 @@ class Users(Resource):
 
 api.add_resource(Users, '/users')
 
-#---------------------------------UserByID Routing (GET, PATCH, DELETE)------------------------------------
+#---------------------------------UserByID (GET, PATCH, DELETE) Routing----------------------------------------------------------
 
 class UserByID(Resource):
     def get(self,id):
@@ -50,9 +50,9 @@ class UserByID(Resource):
         return response
 
 api.add_resource(UserByID, '/user/<int:id>')
-#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------
 
-#------------------------------------Hobby (Not USER) Routing------------------------------------------
+#------------------------------------Hobby (Not USER) Routing------------------------------------------------------------------------
 
 class Hobbies(Resource):
     def get(self):
@@ -63,7 +63,7 @@ class Hobbies(Resource):
         return response
     
 api.add_resource(Hobbies, '/hobbies')
-#------------------------------------Hobby by ID(Not USER) Routing (GET, PATCH, DELETE)------------------------------------------
+#------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------
 
 class HobbiesByID(Resource):
     def get(self, id):
@@ -78,7 +78,8 @@ class HobbiesByID(Resource):
         return response
     
 api.add_resource(HobbiesByID, '/hobby/<int:id>')
-#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------
+
 #------------------------------------HobbyUSER (meaning a user has this hobby) Routing------------------------------------------
 
 class UserHobbies(Resource):
@@ -90,9 +91,24 @@ class UserHobbies(Resource):
         return response
     
 api.add_resource(UserHobbies, '/user-hobbies')
-#------------------------------------------------------------------------------
+#------------------------------------HobbyUSER BY ID (GET, PATCH, DELETE) Routing------------------------------------------
 
-#------------------------------------Competition Routing------------------------------------------
+class UserHobbiesByID(Resource):
+    def get(self, id):
+        user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
+
+        if user_hobby:
+            response = make_response(user_hobby.to_dict(rules = ('-hobby.id',)),200)
+        else:
+            response = make_response({
+                "error": "Users Hobby not found"
+            }, 404)
+        return response
+
+api.add_resource(UserHobbiesByID, '/user/hobbies/<int:id>')
+#------------------------------------------------------------------------------------------------------------------------------
+
+#------------------------------------Competition Routing------------------------------------------------------------------------
 
 class Competitions(Resource):
     def get(self):
@@ -103,7 +119,24 @@ class Competitions(Resource):
         return response 
     
 api.add_resource(Competitions,'/competitions')
-#------------------------------------------------------------------------------
+
+#------------------------------------CompetitionByID (GET, PATCH, DELETE) Routing----------------------------------------------
+
+class CompetitionByID(Resource):
+    def get(self, id):
+        competition = Competition.query.filter(Competition.id == id).first()
+
+        if competition:
+            response = make_response(competition.to_dict(), 200)
+        else:
+            response = make_response({
+                "error": "Competition not found"
+            }, 404)
+        return response
+    
+api.add_resource(CompetitionByID, '/competition/<int:id>')
+
+#------------------------------------------------------------------------------------------------------------------------------
 
 
 #------------------------------------Result Routing------------------------------------------
@@ -138,3 +171,21 @@ if __name__ == '__main__':
 
 
 #would be cool to make a competition by almost result ID? Like if the results competition id matches the competition ID show all those results for that competition? Same for entry
+
+#maybe a route for user hobbies by user'
+
+#user hobby is showing the hobby description, hobby id, and the type of hobby
+
+# {
+#   "expertise": 6,
+#   "hobby": {
+#     "description": "Theater involves the performance of plays or other dramatic works. It's a collaborative form of fine art that uses live performers to present a real or imagined event before an audience.",
+#     "id": 31,
+#     "type_of_hobby": "Theater"
+#   },
+#   "hobby_id": 31,
+#   "id": 5,
+#   "user_id": 5
+# }
+
+# Do I need the hobby twice?

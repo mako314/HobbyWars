@@ -34,6 +34,22 @@ class Users(Resource):
         return response
 
 api.add_resource(Users, '/users')
+
+#---------------------------------UserByID------------------------------------
+
+class UserByID(Resource):
+    def get(self,id):
+        user = User.query.filter(User.id == id).first()
+
+        if user:
+            response = make_response(user.to_dict(),200)
+        else:
+            response = make_response({
+                "error": "User not found"
+            }, 404)
+        return response
+
+api.add_resource(UserByID, '/user/<int:id>')
 #------------------------------------------------------------------------------
 
 #------------------------------------Hobby (Not USER) Routing------------------------------------------

@@ -26,7 +26,7 @@ CORS(app)
 #------------------------------------User Routing------------------------------------------------------------------------------
 
 class Users(Resource):
-    
+
     #Get all USERS
     def get(self):
         users = [user.to_dict(rules =('-user_hobby.id',)) for user in User.query.all()]
@@ -106,7 +106,7 @@ class UserByID(Resource):
         if user:
             db.session.delete(user)
             db.session.commit()
-            response = make_response({"message":"Succesfully deleted!"}, 204)
+            response = make_response({"message":"User Succesfully deleted!"}, 204)
         else:
             response = make_response({
                 "error": "User not found"
@@ -120,6 +120,8 @@ api.add_resource(UserByID, '/user/<int:id>')
 #------------------------------------Hobby (Not USER) Routing------------------------------------------------------------------------
 
 class Hobbies(Resource):
+
+    #Get ALL hobbies
     def get(self):
         hobby = [hobby.to_dict() for hobby in Hobby.query.all()]
 
@@ -145,6 +147,7 @@ api.add_resource(Hobbies, '/hobbies')
 #------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------
 
 class HobbiesByID(Resource):
+
     #Get Hobbies by ID
     def get(self, id):
         hobby = Hobby.query.filter(Hobby.id == id).first()
@@ -157,7 +160,7 @@ class HobbiesByID(Resource):
             }, 404)
         return response
     
-    
+    #PATCH a Hobby
     def patch(self, id):
         hobby = Hobby.query.filter(Hobby.id == id).first()
 
@@ -177,6 +180,22 @@ class HobbiesByID(Resource):
                 "error": "Hobby not found"
             }, 404)
         return response
+    
+    #Delete Hobby by ID
+    def delete(self,id):
+        hobby = Hobby.query.filter(Hobby.id == id).first()
+
+        if hobby:
+            db.session.delete(hobby)
+            db.session.commit()
+
+            response = make_response({"message":"Hobby Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+                "error": "Hobby not found"
+            }, 404)
+        return response
+
 
 
     

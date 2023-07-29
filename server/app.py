@@ -161,7 +161,7 @@ class HobbiesByID(Resource):
             }, 404)
         return response
     
-    #PATCH a Hobby
+    #PATCH a Hobby by ID
     def patch(self, id):
         hobby = Hobby.query.filter(Hobby.id == id).first()
 
@@ -404,7 +404,7 @@ class Results(Resource):
 
         return response
     
-    #POST Result
+    #POST a Result
     def post(self):
         #try:
         data = request.get_json()
@@ -491,6 +491,7 @@ class Entries(Resource):
 
         return response
     
+    #POST an Entry
     def post(self):
         #try:
         data = request.get_json()

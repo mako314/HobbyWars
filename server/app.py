@@ -427,6 +427,8 @@ api.add_resource(Results, '/results')
 #------------------------------------ResultByID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class ResultsByID(Resource):
+
+    #GET Result by ID
     def get(self, id):
         result = Result.query.filter(Result.id == id).first()
 
@@ -437,6 +439,44 @@ class ResultsByID(Resource):
                 "error": "Result not found"
             }, 404)
         return response
+    
+    #PATCH Result by ID
+    def patch(self, id):
+        result = Result.query.filter(Result.id == id).first()
+
+        if result:
+            #try:
+            data = request.get_json()
+            for key in data:
+                setattr(result, key, data[key])
+            db.session.add(result)
+            db.session.commit()
+
+            response = make_response(result.to_dict(), 202)
+
+            #except ValueError:
+
+        else:
+            response = make_response({
+                "error": "Result not found"
+            }, 404)
+        return response
+    
+    #DELETE Result by ID
+    def delete(self, id):
+        result = Result.query.filter(Result.id == id).first()
+
+        if result:
+            db.session.delete(result)
+            db.session.commit()
+
+            response = make_response({"message":"Result Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+                "error": "Result not found"
+            }, 404)
+        return response
+
 
 api.add_resource(ResultsByID, '/result/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------

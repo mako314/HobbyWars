@@ -546,6 +546,21 @@ class EntriesByID(Resource):
                 "error": "Entry not found"
             }, 404)
         return response
+    
+    #DELETE an Entry
+    def delete(self,id):
+        entry = Entry.query.filter(Entry.id == id).first()
+
+        if entry:
+            db.session.delete(entry)
+            db.session.commit()
+
+            response = make_response({"message":"Entry Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+                "error": "Entry not found"
+            }, 404)
+        return response
 
 api.add_resource(EntriesByID, '/entry/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------

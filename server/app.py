@@ -512,11 +512,35 @@ api.add_resource(Entries, '/entries')
 #------------------------------------EntriesByID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class EntriesByID(Resource):
+
+    #GET Entry by ID
     def get(self,id):
         entry = Entry.query.filter(Entry.id == id).first()
 
         if entry:
             response = make_response(entry.to_dict(),200)
+        else:
+            response = make_response({
+                "error": "Entry not found"
+            }, 404)
+        return response
+    
+    #PATCH an Entry
+    def patch(self, id):
+        entry = Entry.query.filter(Entry.id == id).first()
+
+        if entry:
+            #try
+            data = request.get_json()
+            for key in data:
+                setattr(entry, key, data[key])
+            db.session.add(entry)
+            db.session.commit()
+
+            response = make_response(entry.to_dict(), 202)
+            
+            #except ValueError:
+
         else:
             response = make_response({
                 "error": "Entry not found"

@@ -35,7 +35,7 @@ class Users(Resource):
 
 api.add_resource(Users, '/users')
 
-#---------------------------------UserByID------------------------------------
+#---------------------------------UserByID Routing (GET, PATCH, DELETE)------------------------------------
 
 class UserByID(Resource):
     def get(self,id):
@@ -63,8 +63,22 @@ class Hobbies(Resource):
         return response
     
 api.add_resource(Hobbies, '/hobbies')
-#------------------------------------------------------------------------------
+#------------------------------------Hobby by ID(Not USER) Routing (GET, PATCH, DELETE)------------------------------------------
 
+class HobbiesByID(Resource):
+    def get(self, id):
+        hobby = Hobby.query.filter(Hobby.id == id).first()
+
+        if hobby:
+            response = make_response(hobby.to_dict(),200)
+        else:
+            response = make_response({
+                "error": "Hobby not found"
+            }, 404)
+        return response
+    
+api.add_resource(HobbiesByID, '/hobby/<int:id>')
+#------------------------------------------------------------------------------
 #------------------------------------HobbyUSER (meaning a user has this hobby) Routing------------------------------------------
 
 class UserHobbies(Resource):

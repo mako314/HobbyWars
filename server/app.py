@@ -26,6 +26,7 @@ CORS(app)
 #------------------------------------User Routing------------------------------------------------------------------------------
 
 class Users(Resource):
+    #Get all USERS
     def get(self):
         users = [user.to_dict(rules =('-user_hobby.id',)) for user in User.query.all()]
 
@@ -33,6 +34,7 @@ class Users(Resource):
 
         return response
     
+    #POST a USER
     def post(self):
         data = request.get_json()
         #try:
@@ -62,6 +64,8 @@ api.add_resource(Users, '/users')
 #---------------------------------UserByID (GET, PATCH, DELETE) Routing----------------------------------------------------------
 
 class UserByID(Resource):
+
+    #Get a single USER by ID
     def get(self,id):
         user = User.query.filter(User.id == id).first()
 
@@ -72,6 +76,28 @@ class UserByID(Resource):
                 "error": "User not found"
             }, 404)
         return response
+    
+    
+    def patch(self, id):
+        user = User.query.filter(User.id == id).first()
+
+        if user:
+            #try
+            data = request.get_json()
+            for key in data:
+                setattr(user, key, data[key])
+            db.session.add(user)
+            db.session.commit()
+
+            return make_response(user.to_dict(), 202)
+            
+            #except ValueError:
+        else:
+            response = make_response({
+                "error": "User not found"
+            }, 404)
+        return response
+
 
 api.add_resource(UserByID, '/user/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------

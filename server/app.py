@@ -26,6 +26,7 @@ CORS(app)
 #------------------------------------User Routing------------------------------------------------------------------------------
 
 class Users(Resource):
+    
     #Get all USERS
     def get(self):
         users = [user.to_dict(rules =('-user_hobby.id',)) for user in User.query.all()]
@@ -89,7 +90,7 @@ class UserByID(Resource):
             db.session.add(user)
             db.session.commit()
 
-            return make_response(user.to_dict(), 202)
+            response = make_response(user.to_dict(), 202)
             
             #except ValueError:
         else:
@@ -144,6 +145,7 @@ api.add_resource(Hobbies, '/hobbies')
 #------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------
 
 class HobbiesByID(Resource):
+    #Get Hobbies by ID
     def get(self, id):
         hobby = Hobby.query.filter(Hobby.id == id).first()
 
@@ -154,6 +156,29 @@ class HobbiesByID(Resource):
                 "error": "Hobby not found"
             }, 404)
         return response
+    
+    
+    def patch(self, id):
+        hobby = Hobby.query.filter(Hobby.id == id).first()
+
+        if hobby:
+            #try
+            data = request.get_json()
+            for key in data:
+                setattr(hobby, key, data[key])
+            db.session.add(hobby)
+            db.session.commit()
+
+            response = make_response(hobby.to_dict(), 202)
+            
+            #except ValueError:
+        else:
+            response = make_response({
+                "error": "Hobby not found"
+            }, 404)
+        return response
+
+
     
 api.add_resource(HobbiesByID, '/hobby/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------

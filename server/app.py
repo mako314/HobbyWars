@@ -89,6 +89,19 @@ class Results(Resource):
 api.add_resource(Results, '/results')
 #------------------------------------------------------------------------------
 
+#------------------------------------Entry Routing------------------------------------------
+
+class Entries(Resource):
+    def get(self):
+        entries = [entry.to_dict() for entry in Entry.query.all()]
+
+        response = make_response(entries, 200)
+
+        return response
+    
+api.add_resource(Entries, '/entries')
+
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
 

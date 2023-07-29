@@ -183,4 +183,6 @@ class Entry(db.Model, SerializerMixin):
     competitions = db.relationship('Competition', back_populates="entry" )
 
     #Serialize Rules
-    serialize_rules = ('-user.entry','-competitions')
+    serialize_rules = ('-user','-competitions', )
+
+    #originally had this '-user.entry' switching to just '-user'

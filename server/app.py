@@ -65,7 +65,7 @@ api.add_resource(Users, '/users')
 
 class UserByID(Resource):
 
-    #Get a single USER by ID
+    #Get a Single USER by ID
     def get(self,id):
         user = User.query.filter(User.id == id).first()
 
@@ -233,6 +233,8 @@ api.add_resource(UserHobbies, '/user-hobbies')
 #------------------------------------HobbyUSER BY ID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class UserHobbiesByID(Resource):
+
+    #Get Users Hobby by ID
     def get(self, id):
         user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
 
@@ -243,6 +245,27 @@ class UserHobbiesByID(Resource):
                 "error": "Users Hobby not found"
             }, 404)
         return response
+    
+    #Patch Users Hobby by ID
+    def patch(self, id):
+        user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
+
+        if user_hobby:
+            #try:
+            data = request.get_json()
+            for key in data:
+                setattr(user_hobby, key, data[key])
+            db.session.add(user_hobby)
+            db.session.commit()
+            
+            response = make_response(user_hobby.to_dict(), 202)
+            #except ValueError:
+        else:
+            response = make_response({
+                "error": "Users Hobby not found"
+            }, 404)
+        return response
+
 
 api.add_resource(UserHobbiesByID, '/user/hobbies/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------

@@ -150,8 +150,21 @@ class Results(Resource):
         return response
     
 api.add_resource(Results, '/results')
-#------------------------------------------------------------------------------
+#------------------------------------ResultByID (GET, PATCH, DELETE) Routing------------------------------------------
 
+class ResultsByID(Resource):
+    def get(self, id):
+        result = Result.query.filter(Result.id == id).first()
+
+        if result:
+            response = make_response(result.to_dict(), 200)
+        else:
+            response = make_response({
+                "error": "Result not found"
+            }, 404)
+        return response
+
+api.add_resource(ResultsByID, '/result/<int:id>')
 #------------------------------------Entry Routing------------------------------------------
 
 class Entries(Resource):
@@ -188,4 +201,6 @@ if __name__ == '__main__':
 #   "user_id": 5
 # }
 
-# Do I need the hobby twice?
+# Do I need the hobby twice? < - removed hobby id
+
+#also, as far as competition goes, I should likely go and edit the result to be results and entry to entries like Tyler had suggested.

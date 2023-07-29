@@ -97,6 +97,20 @@ class UserByID(Resource):
                 "error": "User not found"
             }, 404)
         return response
+    
+    #Delete USER by ID
+    def delete(self,id):
+        user = User.query.filter(User.id == id).first()
+
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            response = make_response({"message":"Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+                "error": "User not found"
+            }, 404)
+        return response
 
 
 api.add_resource(UserByID, '/user/<int:id>')
@@ -111,6 +125,31 @@ class Hobbies(Resource):
         response = make_response(hobby, 200)
 
         return response
+    
+    # def post(self):
+    #     data = request.get_json()
+    #     #try:
+    #     new_hobby = Hobby(
+
+    #     )
+    #     # new_user = User(
+    #     #     firstName = data['firstName'],
+    #     #     lastName = data['lastName'],
+    #     #     username = data['username'],
+    #     #     age = data['age'],
+    #     #     bio = data['bio'],
+    #     #     location = data['location'],
+    #     #     phone = data['phone'],
+    #     #     email = data['email'],
+    #     #     profileImg = data['profileImg'],
+    #     #     bannerImg = data['bannerImg']
+    #     # )
+
+    #     # db.session.add(new_user)
+    #     # db.session.commit()
+
+    #     # return make_response(new_user.to_dict(), 201)
+
     
 api.add_resource(Hobbies, '/hobbies')
 #------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------

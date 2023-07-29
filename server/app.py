@@ -265,8 +265,21 @@ class UserHobbiesByID(Resource):
                 "error": "Users Hobby not found"
             }, 404)
         return response
+    
+    #Delete Users Hobby by ID
+    def delete(self, id):
+        user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
 
-
+        if user_hobby:
+            db.session.delete(user_hobby)
+            db.session.commit()
+            response = make_response({"message":"Users Hobby Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+                "error": "Users Hobby not found"
+            }, 404)
+        return response
+    
 api.add_resource(UserHobbiesByID, '/user/hobbies/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
 

@@ -78,7 +78,7 @@ class UserHobby(db.Model, SerializerMixin):
     hobby = db.relationship('Hobby', back_populates="user_hobby")
     
     #Serialize Rules
-    serialize_rules = ('-user.user_hobby','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
+    serialize_rules = ('-user','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
 
 
 class Competition(db.Model, SerializerMixin):
@@ -131,8 +131,18 @@ class Competition(db.Model, SerializerMixin):
     result = db.relationship('Result', back_populates="competitions")
 
     #Serialize Rules
-    serialize_rules = ('-entry.competitions', '-result.competitions')
+    serialize_rules = (#remove recursing back to competitions from entry
+                       '-entry.competitions',
+                       #remove user from entry portion
+                       '-entry.user',
+                       #remove recursing back to competitions from result
+                       '-result.competitions',
+                       #remove user from result portion
+                       '-result.user'
+                       )
     #'-user.competitions'
+
+    #The way I see it, all of our user information is readily available within the entries and results. Meaning no user information technically has to appear. You can access it with entry.user_id and results.user_id?
 
 
 class Result(db.Model, SerializerMixin):
@@ -150,8 +160,11 @@ class Result(db.Model, SerializerMixin):
     competitions = db.relationship('Competition', back_populates="result")
 
     #Serialize Rules
-    serialize_rules = ('-user.results','-competitions.result') #'-competitions.result'
+    #this first serliazer removes all the user information. I remove competitions.result so no infinite recursion. 
+    #May be a good idea to just remove competitions as it should be accesible via the competition.id, so I could even get the entries with competition.id.entry?
+    serialize_rules = ('-user','-competitions') #'-competitions.result'
 
+    #'-competitions.result', taking this out for now, it stops infinite recursion but I am just going to remove all of the competitions information.
 
 class Entry(db.Model, SerializerMixin):
     __tablename__ = "entries"
@@ -170,4 +183,7 @@ class Entry(db.Model, SerializerMixin):
     competitions = db.relationship('Competition', back_populates="entry" )
 
     #Serialize Rules
-    serialize_rules = ('-user.entry','-competitions')
+    serialize_rules = ('-user','-competitions', )
+
+    #originally had this '-user.entry' switching to just '-user'
+    # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example

@@ -22,7 +22,8 @@ db.init_app(app)
 api = Api(app)
 CORS(app)
 #------------------------------------------------------------------------------------------------------------------------------
-#Routing here
+#Questions
+#1. Should I do the request.get_json() above my try and excepts?
 #------------------------------------User Routing------------------------------------------------------------------------------
 
 class Users(Resource):
@@ -37,8 +38,8 @@ class Users(Resource):
     
     #POST a USER
     def post(self):
-        data = request.get_json()
         #try:
+        data = request.get_json()
         new_user = User(
             firstName = data['firstName'],
             lastName = data['lastName'],
@@ -59,9 +60,7 @@ class Users(Resource):
     
         #except ValueError:
         
-
 api.add_resource(Users, '/users')
-
 #---------------------------------UserByID (GET, PATCH, DELETE) Routing----------------------------------------------------------
 
 class UserByID(Resource):
@@ -113,7 +112,6 @@ class UserByID(Resource):
             }, 404)
         return response
 
-
 api.add_resource(UserByID, '/user/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
 
@@ -131,8 +129,8 @@ class Hobbies(Resource):
     
     #Post a Hobby
     def post(self):
-        data = request.get_json()
         #try:
+        data = request.get_json()
         new_hobby = Hobby(
             type_of_hobby = data['type_of_hobby'],
             description = data['description']
@@ -142,6 +140,8 @@ class Hobbies(Resource):
         db.session.commit()
 
         return make_response(new_hobby.to_dict(), 201)
+    
+        #except ValueError:
     
 api.add_resource(Hobbies, '/hobbies')
 #------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------
@@ -196,21 +196,38 @@ class HobbiesByID(Resource):
             }, 404)
         return response
 
-
-
-    
 api.add_resource(HobbiesByID, '/hobby/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
 
 #------------------------------------HobbyUSER (meaning a user has this hobby) Routing------------------------------------------
 
 class UserHobbies(Resource):
+
+    #Get ALL User Hobbies
     def get(self):
         user_hobbies = [hobby.to_dict() for hobby in UserHobby.query.all()]
 
         response = make_response(user_hobbies, 200)
 
         return response
+    
+    #POST a USER Hobby
+    def post(self):
+        #try:
+        data = request.get_json()
+        new_user_hobby = UserHobby(
+            expertise = data['expertise'],
+            user_id = data['user_id'],
+            hobby_id = data['hobby_id']
+        )
+
+        db.session.add(new_user_hobby)
+        db.session.commit()
+
+        return make_response(new_user_hobby.to_dict(), 201)
+        
+        #except ValueError:
+
     
 api.add_resource(UserHobbies, '/user-hobbies')
 #------------------------------------HobbyUSER BY ID (GET, PATCH, DELETE) Routing------------------------------------------

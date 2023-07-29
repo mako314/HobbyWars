@@ -165,6 +165,8 @@ class ResultsByID(Resource):
         return response
 
 api.add_resource(ResultsByID, '/result/<int:id>')
+#------------------------------------------------------------------------------------------------------------------------------
+
 #------------------------------------Entry Routing------------------------------------------
 
 class Entries(Resource):
@@ -176,6 +178,22 @@ class Entries(Resource):
         return response
     
 api.add_resource(Entries, '/entries')
+
+#------------------------------------EntriesByID (GET, PATCH, DELETE) Routing------------------------------------------
+
+class EntriesByID(Resource):
+    def get(self,id):
+        entry = Entry.query.filter(Entry.id == id).first()
+
+        if entry:
+            response = make_response(entry.to_dict(),200)
+        else:
+            response = make_response({
+                "error": "Entry not found"
+            }, 404)
+        return response
+
+api.add_resource(EntriesByID, '/entry/<int:id>')
 
 
 if __name__ == '__main__':

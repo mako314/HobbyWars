@@ -421,8 +421,6 @@ class Results(Resource):
     
         #except ValueError:
 
-
-    
 api.add_resource(Results, '/results')
 #------------------------------------ResultByID (GET, PATCH, DELETE) Routing------------------------------------------
 
@@ -484,6 +482,8 @@ api.add_resource(ResultsByID, '/result/<int:id>')
 #------------------------------------Entry Routing------------------------------------------
 
 class Entries(Resource):
+
+    #GET all Entries
     def get(self):
         entries = [entry.to_dict() for entry in Entry.query.all()]
 
@@ -491,8 +491,24 @@ class Entries(Resource):
 
         return response
     
-api.add_resource(Entries, '/entries')
+    def post(self):
+        #try:
+        data = request.get_json()
+        entry = Entry(
+            submission = data['submission'],
+            description = data['description'],
+            user_id = data['user_id'],
+            competition_id = data['competition_id']
+        )
 
+        db.session.add(entry)
+        db.session.commit()
+
+        return make_response(entry.to_dict(), 201)
+        
+        #except ValueError:
+  
+api.add_resource(Entries, '/entries')
 #------------------------------------EntriesByID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class EntriesByID(Resource):
@@ -508,11 +524,10 @@ class EntriesByID(Resource):
         return response
 
 api.add_resource(EntriesByID, '/entry/<int:id>')
-
+#------------------------------------------------------------------------------------------------------------------------------
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
-
 
 
 #would be cool to make a competition by almost result ID? Like if the results competition id matches the competition ID show all those results for that competition? Same for entry

@@ -28,7 +28,7 @@ CORS(app)
 
 class Users(Resource):
 
-    #Get all USERS
+    #GET all USERS
     def get(self):
         users = [user.to_dict(rules =('-user_hobby.id',)) for user in User.query.all()]
 
@@ -65,7 +65,7 @@ api.add_resource(Users, '/users')
 
 class UserByID(Resource):
 
-    #Get a Single USER by ID
+    #GET a Single USER by ID
     def get(self,id):
         user = User.query.filter(User.id == id).first()
 
@@ -77,7 +77,7 @@ class UserByID(Resource):
             }, 404)
         return response
     
-    #Patch a USER by ID
+    #PATCH a USER by ID
     def patch(self, id):
         user = User.query.filter(User.id == id).first()
 
@@ -98,7 +98,7 @@ class UserByID(Resource):
             }, 404)
         return response
     
-    #Delete USER by ID
+    #DELETE USER by ID
     def delete(self,id):
         user = User.query.filter(User.id == id).first()
 
@@ -119,7 +119,7 @@ api.add_resource(UserByID, '/user/<int:id>')
 
 class Hobbies(Resource):
 
-    #Get ALL hobbies
+    #GET ALL hobbies
     def get(self):
         hobby = [hobby.to_dict() for hobby in Hobby.query.all()]
 
@@ -127,7 +127,7 @@ class Hobbies(Resource):
 
         return response
     
-    #Post a Hobby
+    #POST a Hobby
     def post(self):
         #try:
         data = request.get_json()
@@ -148,7 +148,7 @@ api.add_resource(Hobbies, '/hobbies')
 
 class HobbiesByID(Resource):
 
-    #Get Hobbies by ID
+    #GET Hobbies by ID
     def get(self, id):
         hobby = Hobby.query.filter(Hobby.id == id).first()
 
@@ -181,7 +181,7 @@ class HobbiesByID(Resource):
             }, 404)
         return response
     
-    #Delete Hobby by ID
+    #DELETE Hobby by ID
     def delete(self,id):
         hobby = Hobby.query.filter(Hobby.id == id).first()
 
@@ -203,7 +203,7 @@ api.add_resource(HobbiesByID, '/hobby/<int:id>')
 
 class UserHobbies(Resource):
 
-    #Get ALL User Hobbies
+    #GET ALL User Hobbies
     def get(self):
         user_hobbies = [hobby.to_dict() for hobby in UserHobby.query.all()]
 
@@ -234,7 +234,7 @@ api.add_resource(UserHobbies, '/user-hobbies')
 
 class UserHobbiesByID(Resource):
 
-    #Get Users Hobby by ID
+    #GET Users Hobby by ID
     def get(self, id):
         user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
 
@@ -246,7 +246,7 @@ class UserHobbiesByID(Resource):
             }, 404)
         return response
     
-    #Patch Users Hobby by ID
+    #PATCH Users Hobby by ID
     def patch(self, id):
         user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
 
@@ -266,7 +266,7 @@ class UserHobbiesByID(Resource):
             }, 404)
         return response
     
-    #Delete Users Hobby by ID
+    #DELETE Users Hobby by ID
     def delete(self, id):
         user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
 
@@ -286,6 +286,8 @@ api.add_resource(UserHobbiesByID, '/user/hobbies/<int:id>')
 #------------------------------------Competition Routing------------------------------------------------------------------------
 
 class Competitions(Resource):
+
+    #GET ALL Competitions
     def get(self):
         competitions = [competition.to_dict() for competition in Competition.query.all()]
 
@@ -293,11 +295,45 @@ class Competitions(Resource):
 
         return response 
     
+    #POST a Competition
+    def post(self):
+        #try:
+        data = request.get_json()
+        new_competition = Competition(
+            title = data['title'],
+            objective = data['objective'],
+            description = data['description'],
+            scoring = data['scoring'],
+            cost_of_entry = data['cost_of_entry'],
+            schedule = data['schedule'],
+            contact = data['contact'],
+            location = data['location'],
+            requirements = data['requirements'],
+            competition_tasks = data['competition_tasks'],
+            safety_measures = data['safety_measures'],
+            prize1 = data['prize1'],
+            prize2 = data['prize2'],
+            prize3 = data['prize3'],
+            prize4 = data['prize4'],
+            prize5 = data['prize5'],
+            prize6 = data['prize6'],
+            prize7 = data['prize7'],
+            prize8 = data['prize8'],
+            registration_schedule = data['registration_schedule']
+        )
+
+        db.session.add(new_competition)
+        db.session.commit()
+
+        return make_response(new_competition.to_dict(), 201)
+
 api.add_resource(Competitions,'/competitions')
 
 #------------------------------------CompetitionByID (GET, PATCH, DELETE) Routing----------------------------------------------
 
 class CompetitionByID(Resource):
+
+    #GET Competition by ID
     def get(self, id):
         competition = Competition.query.filter(Competition.id == id).first()
 

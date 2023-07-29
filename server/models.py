@@ -32,12 +32,14 @@ class User(db.Model, SerializerMixin):
     #Serialize rules
     # serialize_rules = ('-competitions.user','-hobby.users', '-result.users', '-entry.user', '-user_hobby.user') #WHAT I'VE TRIED
     serialize_rules = ( #Result rules, subtract competitions.entry to remove ALL entries, but I still want user entries.
+                        #The third rule here should remove all the competitions results which get populated for some reason
                        '-results.user',
                        '-results.competitions.entry',
+                       '-results.competitions.result',
                        #User_Hobby Rules. Remove recursiong with user, remove userID because we have it. Remove hobby_id because user hobby has it.
                        '-user_hobby.user_id',
                        '-user_hobby.user',
-                       '-user_hobby.hobby_id',
+                      #'-user_hobby.hobby', #Can uncomment this if you DONT want to see the users hobby description / type
                        #Entry rules
                        '-entry.user', #Removes recursion back to our user
                        '-entry.user_id' #Removes recursion back to our user
@@ -46,6 +48,7 @@ class User(db.Model, SerializerMixin):
     
     #Random serialize rules that could've been done
     #'-entry.user','-user_hobby.user' #'-results.user_id',
+    #'-user_hobby.hobby_id', <- This would remove the hobby id from the user hobby in the user data. I want the hobby id though.
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"

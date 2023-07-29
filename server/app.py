@@ -77,7 +77,7 @@ class UserByID(Resource):
             }, 404)
         return response
     
-    
+    #Patch a USER by ID
     def patch(self, id):
         user = User.query.filter(User.id == id).first()
 

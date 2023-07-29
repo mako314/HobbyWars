@@ -12,6 +12,7 @@ if __name__ == '__main__':
         print("Clearing db...")
         User.query.delete()
         Hobby.query.delete()
+        UserHobby.query.delete()
         Competition.query.delete()
         Result.query.delete()
         Entry.query.delete()

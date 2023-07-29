@@ -92,7 +92,7 @@ class UserByID(Resource):
             response = make_response(user.to_dict(), 202)
             
             #except ValueError:
-            
+
         else:
             response = make_response({
                 "error": "User not found"
@@ -370,6 +370,22 @@ class CompetitionByID(Resource):
                 "error": "Competition not found"
             }, 404)
         return response
+    
+    #DELETE Competition by ID
+    def delete(self,id):
+        competition = Competition.query.filter(Competition.id == id).first()
+
+        if competition:
+            db.session.delete(competition)
+            db.session.commit()
+
+            response = make_response({"message":"Competition Succesfully deleted!"}, 204)
+        else:
+            response = make_response({
+                "error": "Competition not found"
+            }, 404)
+        return response
+
     
 api.add_resource(CompetitionByID, '/competition/<int:id>')
 

@@ -32,6 +32,30 @@ class Users(Resource):
         response = make_response(users, 200)
 
         return response
+    
+    def post(self):
+        data = request.get_json()
+        #try:
+        new_user = User(
+            firstName = data['firstName'],
+            lastName = data['lastName'],
+            username = data['username'],
+            age = data['age'],
+            bio = data['bio'],
+            location = data['location'],
+            phone = data['phone'],
+            email = data['email'],
+            profileImg = data['profileImg'],
+            bannerImg = data['bannerImg']
+        )
+
+        db.session.add(new_user)
+        db.session.commit()
+
+        return make_response(new_user.to_dict(), 201)
+    
+        #except ValueError:
+        
 
 api.add_resource(Users, '/users')
 

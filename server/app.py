@@ -395,12 +395,33 @@ api.add_resource(CompetitionByID, '/competition/<int:id>')
 #------------------------------------Result Routing------------------------------------------
 
 class Results(Resource):
+
+    #GET ALL Results
     def get(self):
         results = [result.to_dict() for result in Result.query.all()]
 
         response = make_response(results, 200)
 
         return response
+    
+    #POST Result
+    def post(self):
+        #try:
+        data = request.get_json()
+        result = Result(
+            placement = data['placement'],
+            user_id = data['user_id'],
+            competition_id = data['competition_id']
+        )
+
+        db.session.add(result)
+        db.session.commit()
+
+        return make_response(result.to_dict(), 201)
+    
+        #except ValueError:
+
+
     
 api.add_resource(Results, '/results')
 #------------------------------------ResultByID (GET, PATCH, DELETE) Routing------------------------------------------

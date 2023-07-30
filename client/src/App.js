@@ -9,13 +9,13 @@ function App() {
     console.log(user);
 
     // grabs current session from server-side and sets state
-    // function handleCheckSession() {
-    //     fetch("/check_session").then((resp) => {
-    //       if (resp.ok) {
-    //         resp.json().then((user) => setUser(user));
-    //       }
-    //     });
-    // }
+    function handleCheckSession() {
+        fetch("/check_session").then((resp) => {
+          if (resp.ok) {
+            resp.json().then((user) => setUser(user));
+          }
+        });
+    }
 
     // LOGIN / sends information to server-side, sets session, and sets state
     function handleLogin(e) {
@@ -57,7 +57,7 @@ function App() {
 
             <br />
 
-            {/* <button onClick = {handleCheckSession}>Check Session</button> */}
+            <button onClick = {handleCheckSession}>Check Session</button>
         </>
     )
 }

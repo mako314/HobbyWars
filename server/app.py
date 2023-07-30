@@ -3,6 +3,8 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask import Flask, request, make_response, jsonify, session
 from flask_restful import Api, Resource
+from flask_bcrypt import Bcrypt
+
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -17,6 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
+bcrypt = Bcrypt(app)
 
 migrate = Migrate(app, db)
 
@@ -28,7 +31,7 @@ CORS(app)
 #1. Should I do the request.get_json() above my try and excepts?
 
 
-#------------------------------------User Login------------------------------------------------------------------------------
+#------------------------------------User LOGIN------------------------------------------------------------------------------
 
 class Login(Resource):
 
@@ -36,17 +39,30 @@ class Login(Resource):
         pass
 
     def post(self):
-        user = User.query.filter(
-            User.username == request.get_json()['username']
-        ).first()
+        username = request.get_json()['username']
+        user = User.query.filter(User.username == username)
 
-        session['user_id'] = user.id
+        password = request.get_json()['password']
 
-        print(user)
+        if user.authenticate(password):
+            session['user_id'] = user.id
+            return user.to_dict(), 200
 
-        return make_response(user.to_dict(), 200)
+        return make_response({'error': 'Invalid username or password'}, 401)
 
 api.add_resource(Login, '/login')
+#------------------------------------------------------------------------------------------------------------------------------
+
+#------------------------------------User LOGOUT------------------------------------------------------------------------------
+
+class Logout(Resource):
+
+    def delete(self): # just add this line!
+        session['user_id'] = None
+        return {'message': '204: No Content'}, 204
+
+api.add_resource(Logout, '/logout')
+#------------------------------------------------------------------------------------------------------------------------------
 
 #------------------------------------Check Session------------------------------------------------------------------------------
 
@@ -60,6 +76,7 @@ class CheckSession(Resource):
             return {'message': '401: Not Authorized'}, 401
 
 api.add_resource(CheckSession, '/check_session')
+#------------------------------------------------------------------------------------------------------------------------------
 
 #------------------------------------User Routing------------------------------------------------------------------------------
 
@@ -98,7 +115,9 @@ class Users(Resource):
         #except ValueError:
         
 api.add_resource(Users, '/users')
-#---------------------------------UserByID (GET, PATCH, DELETE) Routing----------------------------------------------------------
+#------------------------------------------------------------------------------------------------------------------------------
+
+#---------------------------------UserByID (GET, PATCH, DELETE) Routing---------------------------------------------------------
 
 class UserByID(Resource):
 
@@ -182,6 +201,8 @@ class Hobbies(Resource):
         #except ValueError:
     
 api.add_resource(Hobbies, '/hobbies')
+#------------------------------------------------------------------------------------------------------------------------------
+
 #------------------------------------Hobby by ID (Not USER) (GET, PATCH, DELETE) Routing ------------------------------------------
 
 class HobbiesByID(Resource):
@@ -269,6 +290,8 @@ class UserHobbies(Resource):
 
     
 api.add_resource(UserHobbies, '/user-hobbies')
+#------------------------------------------------------------------------------------------------------------------------------
+
 #------------------------------------HobbyUSER BY ID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class UserHobbiesByID(Resource):
@@ -369,6 +392,7 @@ class Competitions(Resource):
         #except ValueError:
 
 api.add_resource(Competitions,'/competitions')
+#------------------------------------------------------------------------------------------------------------------------------
 
 #------------------------------------CompetitionByID (GET, PATCH, DELETE) Routing----------------------------------------------
 
@@ -429,7 +453,7 @@ api.add_resource(CompetitionByID, '/competition/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
 
 
-#------------------------------------Result Routing------------------------------------------
+#------------------------------------Result Routing------------------------------------------------------------------------------
 
 class Results(Resource):
 
@@ -459,6 +483,8 @@ class Results(Resource):
         #except ValueError:
 
 api.add_resource(Results, '/results')
+#------------------------------------------------------------------------------------------------------------------------------
+
 #------------------------------------ResultByID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class ResultsByID(Resource):
@@ -516,7 +542,7 @@ class ResultsByID(Resource):
 api.add_resource(ResultsByID, '/result/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
 
-#------------------------------------Entry Routing------------------------------------------
+#------------------------------------Entry Routing------------------------------------------------------------------------------
 
 class Entries(Resource):
 
@@ -547,6 +573,8 @@ class Entries(Resource):
         #except ValueError:
   
 api.add_resource(Entries, '/entries')
+#------------------------------------------------------------------------------------------------------------------------------
+
 #------------------------------------EntriesByID (GET, PATCH, DELETE) Routing------------------------------------------
 
 class EntriesByID(Resource):

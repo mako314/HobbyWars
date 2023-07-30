@@ -141,4 +141,15 @@ banner image
 
 
 
+---Possible other additional things ---
+
 Site wide search?
+
+
+I may still need to add passwords for users and other things as I get to it.
+
+Ideally I want the birthday to be a date selection and math to get the correct birthday /birthday reminders
+
+registration limits / maybe requirements to register also? like user_hobby expertise level? Two layers?
+
+entries may need more than just a submission? but submission can be anything, text, video, mail, etc

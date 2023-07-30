@@ -2,6 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
+from sqlalchemy.ext.hybrid import hybrid_property
+from app import bcrypt
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -15,7 +17,8 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     firstName = db.Column(db.String)
     lastName = db.Column(db.String)
-    username = db.Column(db.String)
+    username = db.Column(db.String, unique = True)
+    _password_hash = db.Column(db.String, nullable=False)
     age = db.Column(db.Integer) # Would like to swap this to one of the calendars where you select your age.
     bio = db.Column(db.String)
     location = db.Column(db.String)
@@ -49,6 +52,27 @@ class User(db.Model, SerializerMixin):
     #Random serialize rules that could've been done
     #'-entry.user','-user_hobby.user' #'-results.user_id',
     #'-user_hobby.hobby_id', <- This would remove the hobby id from the user hobby in the user data. I want the hobby id though.
+
+
+    #PROPERTIES
+    # @hybrid_property
+    # def password_hash(self):
+    #     return self._password_hash
+
+    # @password_hash.setter
+    # def password_hash(self, password):
+    #     # utf-8 encoding and decoding is required in python 3
+    #     password_hash = bcrypt.generate_password_hash(
+    #         password.encode('utf-8'))
+    #     self._password_hash = password_hash.decode('utf-8')
+
+    # def authenticate(self, password):
+    #     return bcrypt.check_password_hash(
+    #         self._password_hash, password.encode('utf-8'))
+
+
+
+    #Validations ( need to add one to make sure user has username > 3 characters)
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"

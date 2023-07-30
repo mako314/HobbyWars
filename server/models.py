@@ -15,7 +15,7 @@ class User(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     firstName = db.Column(db.String)
     lastName = db.Column(db.String)
-    username = db.Column(db.String)
+    username = db.Column(db.String, unique = True)
     age = db.Column(db.Integer) # Would like to swap this to one of the calendars where you select your age.
     bio = db.Column(db.String)
     location = db.Column(db.String)
@@ -49,6 +49,8 @@ class User(db.Model, SerializerMixin):
     #Random serialize rules that could've been done
     #'-entry.user','-user_hobby.user' #'-results.user_id',
     #'-user_hobby.hobby_id', <- This would remove the hobby id from the user hobby in the user data. I want the hobby id though.
+
+    #Validations ( need to add one to make sure user has username > 3 characters)
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"

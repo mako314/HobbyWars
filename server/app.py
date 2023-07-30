@@ -1,7 +1,7 @@
 from models import db, User, Hobby, UserHobby, Competition, Result, Entry
 from flask_cors import CORS
 from flask_migrate import Migrate
-from flask import Flask, request, make_response, jsonify
+from flask import Flask, request, make_response, jsonify, session
 from flask_restful import Api, Resource
 import os
 
@@ -10,6 +10,8 @@ DATABASE = os.environ.get(
     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
 
 app = Flask(__name__)
+
+app.secret_key = "TESTING123456789"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -27,15 +29,38 @@ CORS(app)
 
 
 #------------------------------------User Login------------------------------------------------------------------------------
+
 class Login(Resource):
 
     def get(self):
         pass
 
     def post(self):
-        pass
+        user = User.query.filter(
+            User.username == request.get_json()['username']
+        ).first()
+
+        session['user_id'] = user.id
+
+        print(user)
+
+        return make_response(user.to_dict(), 200)
 
 api.add_resource(Login, '/login')
+
+#------------------------------------Check Session------------------------------------------------------------------------------
+
+class CheckSession(Resource):
+
+    def get(self):
+        user = User.query.filter(User.id == session.get('user_id')).first()
+        if user:
+            return user.to_dict()
+        else:
+            return {'message': '401: Not Authorized'}, 401
+
+api.add_resource(CheckSession, '/check_session')
+
 #------------------------------------User Routing------------------------------------------------------------------------------
 
 class Users(Resource):

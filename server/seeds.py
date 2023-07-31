@@ -34,6 +34,7 @@ if __name__ == '__main__':
             bannerImg="link_to_banner_image_1",
             )
         
+        
         user_2 = User(
             firstName="Zephyr",
             lastName="Wilde",
@@ -262,7 +263,7 @@ if __name__ == '__main__':
             firstName="Aiden",
             lastName="Hartman",
             username="MindfulWanderer_28",
-            _password_hash=" Zen&Traveler21",
+            _password_hash="Zen&Traveler21",
             age=28,
             bio="Hey, mindful souls! I'm Aiden, a seeker of serenity and a lover of mindfulness practices. I believe that nurturing the mind is as important as exploring the world. Whether through meditation, yoga, or self-reflection, I find balance and harmony in my inner journey. Join me on this path of mindfulness as we embrace the present moment and savor the beauty of self-awareness.",
             location="Tranquility Cove, Oregon, USA",
@@ -441,6 +442,138 @@ if __name__ == '__main__':
             )
         # ]
         # db.session.add_all(users)
+        db.session.add(user_1)
+        db.session.add(user_2)
+        db.session.add(user_3)
+        db.session.add(user_4)
+        db.session.add(user_5)
+        db.session.add(user_6)
+        db.session.add(user_7)
+        db.session.add(user_8)
+        db.session.add(user_9)
+        db.session.add(user_10)
+        db.session.add(user_11)
+        db.session.add(user_12)
+        db.session.add(user_13)
+        db.session.add(user_14)
+        db.session.add(user_15)
+        db.session.add(user_16)
+        db.session.add(user_17)
+        db.session.add(user_18)
+        db.session.add(user_19)
+        db.session.add(user_20)
+        db.session.add(user_21)
+        db.session.add(user_22)
+        db.session.add(user_23)
+        db.session.add(user_24)
+        db.session.add(user_25)
+        db.session.add(user_26)
+        db.session.add(user_27)
+        db.session.add(user_28)
+        db.session.add(user_29)
+        db.session.add(user_30)
+
+        db.session.commit()
+        #This commit handles adding the users without their passwords for the time being.
+        #COMMIT INDIVIDUAL USERS, NEED TO REMOVE THEIR PASSWORDS AND ASSIGN THE BELOW.
+
+        user_1_password = 'Magic42!Paints'
+        user_2_password = 'Seeker19!Wander'
+        user_3_password = 'Serenade66@Scribe'
+        user_4_password = 'Summit@Peaks99'
+        user_5_password = 'Melody77?Singer'
+        user_6_password = 'Galaxy55!Explorer'
+        user_7_password = 'Pen&Traveler27"'
+        user_8_password = 'Blaze99!Showtime'
+        user_9_password = 'Cosmic!Traveler23'
+        user_10_password = 'Trekker18?Forest'
+        user_11_password = 'WanderEnchant88'
+        user_12_password = 'Daredevil67!Adventurer'
+        user_13_password = 'Journey22?Soulful'
+        user_14_password = 'Geek&Trekker36'
+        user_15_password = 'Pawprints94@Furry'
+        user_16_password = 'Hiker88!Outdoors'
+        user_17_password = 'Odyssey21@Explorer'
+        user_18_password = 'Zen&Traveler21'
+        user_19_password = 'Moonlight@Dreamer30'
+        user_20_password = 'rydmoss42!Nomad'
+        user_21_password = 'AstralJourney23?'
+        user_22_password = 'Wilderness80&Hiker?'
+        user_23_password = 'GardenVibes19!Grow'
+        user_24_password = 'DiscoverWorld69'
+        user_25_password = 'Explore32@Globetrot'
+        user_26_password = 'Shutterbug21!Memories'
+        user_27_password = 'JourneyOn50@Miles!'
+        user_28_password = 'ZestLife15!Adventures'
+        user_29_password = 'Persevere76?Strength'
+        user_30_password = 'Breeze&Dreams25'
+
+
+        user_1.password_hash = user_1_password
+        user_2.password_hash = user_2_password
+        user_3.password_hash = user_3_password
+        user_4.password_hash = user_4_password
+        user_5.password_hash = user_5_password
+        user_6.password_hash = user_6_password
+        user_7.password_hash = user_7_password
+        user_8.password_hash = user_8_password
+        user_9.password_hash = user_9_password
+        user_10.password_hash = user_10_password
+        user_11.password_hash = user_11_password
+        user_12.password_hash = user_12_password
+        user_13.password_hash = user_13_password
+        user_14.password_hash = user_14_password
+        user_15.password_hash = user_15_password
+        user_16.password_hash = user_16_password
+        user_17.password_hash = user_17_password
+        user_18.password_hash = user_18_password
+        user_19.password_hash = user_19_password
+        user_20.password_hash = user_20_password
+        user_21.password_hash = user_21_password
+        user_22.password_hash = user_22_password
+        user_23.password_hash = user_23_password
+        user_24.password_hash = user_24_password
+        user_25.password_hash = user_25_password
+        user_26.password_hash = user_26_password
+        user_27.password_hash = user_27_password
+        user_28.password_hash = user_28_password
+        user_29.password_hash = user_29_password
+        user_30.password_hash = user_30_password
+
+        db.session.add(user_1)
+        db.session.add(user_2)
+        db.session.add(user_3)
+        db.session.add(user_4)
+        db.session.add(user_5)
+        db.session.add(user_6)
+        db.session.add(user_7)
+        db.session.add(user_8)
+        db.session.add(user_9)
+        db.session.add(user_10)
+        db.session.add(user_11)
+        db.session.add(user_12)
+        db.session.add(user_13)
+        db.session.add(user_14)
+        db.session.add(user_15)
+        db.session.add(user_16)
+        db.session.add(user_17)
+        db.session.add(user_18)
+        db.session.add(user_19)
+        db.session.add(user_20)
+        db.session.add(user_21)
+        db.session.add(user_22)
+        db.session.add(user_23)
+        db.session.add(user_24)
+        db.session.add(user_25)
+        db.session.add(user_26)
+        db.session.add(user_27)
+        db.session.add(user_28)
+        db.session.add(user_29)
+        db.session.add(user_30)
+
+        db.session.commit()
+        #Adds users with their passwords hashed.
+
 #------------------------------------------------------------------------------------------HOBBY SEEDING--------------------------------------------------------------------------------------
         print("Seeding Hobbies...")
         hobbies = [

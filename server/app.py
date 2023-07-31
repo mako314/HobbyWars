@@ -7,6 +7,8 @@ from flask_restful import Api, Resource
 # from config import db, app, api
 import os
 
+#all of the below was commented out. I will need to remove db from models import when i fix the config file
+
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.environ.get(
     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")

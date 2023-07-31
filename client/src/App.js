@@ -22,7 +22,7 @@ function App() {
         e.preventDefault();
 
         let username = e.target.username.value;
-        // let password = e.target.password.value;
+        let password = e.target.password.value;
 
         fetch("/login", {
             method: "POST",
@@ -66,3 +66,8 @@ function App() {
 }
 
 export default App;
+
+
+
+//Pass user around through props, so this will be it's own state, then do like if user: 
+// load account page, if we have a user show this otherwise show a signup form

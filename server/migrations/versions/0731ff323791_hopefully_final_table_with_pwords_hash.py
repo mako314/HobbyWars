@@ -1,8 +1,8 @@
-"""<new table with user password>
+"""<hopefully final table with pwords hash>
 
-Revision ID: 27495b572353
+Revision ID: 0731ff323791
 Revises: 
-Create Date: 2023-07-31 11:15:40.370257
+Create Date: 2023-07-31 13:26:41.884125
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '27495b572353'
+revision = '0731ff323791'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -70,8 +70,8 @@ def upgrade():
     sa.Column('description', sa.String(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('competition_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], name=op.f('fk_entries_competition_id_competitions')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_entries_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('results',
@@ -79,8 +79,8 @@ def upgrade():
     sa.Column('placement', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('competition_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], name=op.f('fk_results_competition_id_competitions')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_results_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user_hobbies',
@@ -88,8 +88,8 @@ def upgrade():
     sa.Column('expertise', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('hobby_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['hobby_id'], ['hobbies.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['hobby_id'], ['hobbies.id'], name=op.f('fk_user_hobbies_hobby_id_hobbies')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_user_hobbies_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

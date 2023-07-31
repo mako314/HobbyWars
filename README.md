@@ -153,3 +153,30 @@ Ideally I want the birthday to be a date selection and math to get the correct b
 registration limits / maybe requirements to register also? like user_hobby expertise level? Two layers?
 
 entries may need more than just a submission? but submission can be anything, text, video, mail, etc
+
+
+
+7-31-23
+BackEnd basically done. Few things left to add:
+------------------------------------------------
+Validations:
+USER 
+thinking required email, some password requirements, firstname at least.
+
+
+hobby:
+cannot be an existing hobby,
+!hasattr?
+
+competitions:
+need a schedule, location, contact, scoring information, objective, prizing. + registration schedule
+
+result:
+a result must exist for competitions. <- this will probably be the trickiest one>
+would need a placement
+
+
+entry:
+
+NEED submission
+need competition ID, user ID should be already logged from being logged in

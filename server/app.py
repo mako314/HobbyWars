@@ -1,33 +1,42 @@
-from models import db, User, Hobby, UserHobby, Competition, Result, Entry
-from flask_bcrypt import Bcrypt
-from flask_cors import CORS
-from flask_migrate import Migrate
+# from models import db, User, Hobby, UserHobby, Competition, Result, Entry #original import
+from models import User, Hobby, UserHobby, Competition, Result, Entry
+# from flask_bcrypt import Bcrypt
+# from flask_cors import CORS
+# from flask_migrate import Migrate
 from flask import Flask, request, make_response, jsonify, session
-from flask_restful import Api, Resource
-import os
+# from flask_restful import Api, Resource #original import
+from flask_restful import Resource
+from config import db, app, api
+# import os #original import
 
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DATABASE = os.environ.get(
-    "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
+#all of the below was commented out. I will need to remove db from models import when i fix the config file
 
-app = Flask(__name__)
+# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+# DATABASE = os.environ.get(
+#     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
 
-app.secret_key = "TESTING123456789"
+# app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.json.compact = False
+# app.secret_key = "TESTING123456789"
 
-bcrypt = Bcrypt(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# app.json.compact = False
 
-migrate = Migrate(app, db)
+# bcrypt = Bcrypt(app)
 
-db.init_app(app)
-api = Api(app)
-CORS(app)
+# migrate = Migrate(app, db)
+
+# db.init_app(app)
+# api = Api(app)
+# CORS(app)
+
+#CONFIG.PY allows me to remove all the above ^ ? 
+
 #------------------------------------------------------------------------------------------------------------------------------
 #Questions
 #1. Should I do the request.get_json() above my try and excepts?
+#2. Do I need to jsonify this stuff below for login and such? Eleanor had jsonified it, so I am curious as to why.
 
 
 #------------------------------------User LOGIN------------------------------------------------------------------------------
@@ -38,14 +47,19 @@ class Login(Resource):
         pass
 
     def post(self):
-        username = request.get_json()['username']
-        user = User.query.filter(User.username == username)
-
-        password = request.get_json()['password']
-
-        if user.authenticate(password):
-            session['user_id'] = user.id
-            return user.to_dict(), 200
+        data = request.get_json()
+        #Test to find username,
+        username = data['username']
+        user = User.query.filter(User.username == username).first()
+        #Grab password
+        password = data['password']
+        print(user)
+        #Test to see if password matches
+        if user:
+            if user.authenticate(password):
+                session['user_id'] = user.id
+                return user.to_dict(), 200
+        #Do I need to JSONIFY^ ?
 
         return make_response({'error': 'Invalid username or password'}, 401)
 
@@ -68,6 +82,17 @@ api.add_resource(Logout, '/logout')
 class CheckSession(Resource):
 
     def get(self):
+
+        # user_id = session.get('user_id')
+
+        # if user_id:
+
+        #     user_row = User.query.filter(User.id == user_id).first()
+
+        #     response = make_response(jsonify(user_row.to_dict()), 200)
+
+
+
         user = User.query.filter(User.id == session.get('user_id')).first()
         if user:
             return user.to_dict()

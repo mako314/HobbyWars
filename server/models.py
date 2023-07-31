@@ -3,13 +3,14 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.hybrid import hybrid_property
-from app import bcrypt
+# from app import bcrypt #<--- this is giving me the circular import error ImportError: cannot import name 'db' from partially initialized module 'models' (most likely due to a circular import)
+from config import db, bcrypt
 
-metadata = MetaData(naming_convention={
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-})
+# metadata = MetaData(naming_convention={
+#     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+# })
 
-db = SQLAlchemy()
+# db = SQLAlchemy() #<- I had not commented this or ^ that out, maybe that was what was giving me issues.
 
 class User(db.Model, SerializerMixin):
     __tablename__ = "users"
@@ -54,21 +55,21 @@ class User(db.Model, SerializerMixin):
     #'-user_hobby.hobby_id', <- This would remove the hobby id from the user hobby in the user data. I want the hobby id though.
 
 
-    #PROPERTIES
-    # @hybrid_property
-    # def password_hash(self):
-    #     return self._password_hash
+    # #PROPERTIES
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
 
-    # @password_hash.setter
-    # def password_hash(self, password):
-    #     # utf-8 encoding and decoding is required in python 3
-    #     password_hash = bcrypt.generate_password_hash(
-    #         password.encode('utf-8'))
-    #     self._password_hash = password_hash.decode('utf-8')
+    @password_hash.setter
+    def password_hash(self, password):
+        # utf-8 encoding and decoding is required in python 3
+        password_hash = bcrypt.generate_password_hash(
+            password.encode('utf-8'))
+        self._password_hash = password_hash.decode('utf-8')
 
-    # def authenticate(self, password):
-    #     return bcrypt.check_password_hash(
-    #         self._password_hash, password.encode('utf-8'))
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(
+            self._password_hash, password.encode('utf-8'))
 
 
 

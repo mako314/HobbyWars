@@ -1,8 +1,8 @@
-"""<table trial 82>
+"""<hopefully final table with pwords hash>
 
-Revision ID: 918ca2542cf2
+Revision ID: 0731ff323791
 Revises: 
-Create Date: 2023-07-28 16:32:46.983813
+Create Date: 2023-07-31 13:26:41.884125
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '918ca2542cf2'
+revision = '0731ff323791'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -53,6 +53,7 @@ def upgrade():
     sa.Column('firstName', sa.String(), nullable=True),
     sa.Column('lastName', sa.String(), nullable=True),
     sa.Column('username', sa.String(), nullable=True),
+    sa.Column('_password_hash', sa.String(), nullable=False),
     sa.Column('age', sa.Integer(), nullable=True),
     sa.Column('bio', sa.String(), nullable=True),
     sa.Column('location', sa.String(), nullable=True),
@@ -60,7 +61,8 @@ def upgrade():
     sa.Column('email', sa.String(), nullable=True),
     sa.Column('profileImg', sa.String(), nullable=True),
     sa.Column('bannerImg', sa.String(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('entries',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -68,8 +70,8 @@ def upgrade():
     sa.Column('description', sa.String(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('competition_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], name=op.f('fk_entries_competition_id_competitions')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_entries_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('results',
@@ -77,8 +79,8 @@ def upgrade():
     sa.Column('placement', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('competition_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['competition_id'], ['competitions.id'], name=op.f('fk_results_competition_id_competitions')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_results_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user_hobbies',
@@ -86,8 +88,8 @@ def upgrade():
     sa.Column('expertise', sa.Integer(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('hobby_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['hobby_id'], ['hobbies.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['hobby_id'], ['hobbies.id'], name=op.f('fk_user_hobbies_hobby_id_hobbies')),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], name=op.f('fk_user_hobbies_user_id_users')),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

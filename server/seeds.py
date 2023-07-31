@@ -19,12 +19,12 @@ if __name__ == '__main__':
 #------------------------------------------------------------------------------------------USER SEEDING---------------------------------------------------------------------------------------
         #Seed users
         print("Seeding potential Users...")
-        users = [
-            User(
+        # users = [
+        user_1 = User(
             firstName="Emily",
             lastName="Everwood",
             username="EnchantingEmily88",
-            _password_hash="Magic42!Paints",
+            _password_hash="",
             age=28,
             bio="Hey there! I'm Emily, a nature enthusiast, artist, and dreamer. I find so much inspiration in the breathtaking beauty of national parks that I try to capture through my vibrant paintings. My art aims to evoke a sense of tranquility and wonder, reflecting my deep connection with nature. Exploring the world's natural wonders has become a life-changing journey that keeps me endlessly curious.",
             location="Aspen, Colorado, USA",
@@ -32,12 +32,14 @@ if __name__ == '__main__':
             email="Emily.paints.magic88@gmail.com",
             profileImg="link_to_profile_image_1",
             bannerImg="link_to_banner_image_1",
-            ),
-            User(
+            )
+        
+        
+        user_2 = User(
             firstName="Zephyr",
             lastName="Wilde",
             username="WandererZephyr_42",
-            _password_hash="Seeker19!Wander",
+            _password_hash="",
             age=35,
             bio="Greetings, everyone! I'm Zephyr, an adventurer and storyteller with an insatiable curiosity for unraveling mysteries. My thrilling journeys take me to the far reaches of our country, where I document forgotten tales and weave them into captivating narratives that leave my readers in awe. With my trusty journal and an explorer's spirit, I roam the wilderness, seeking untold stories and adventures that ignite the imagination.",
             location="Mystic Falls, Vermont, USA",
@@ -45,12 +47,13 @@ if __name__ == '__main__':
             email="zephyr.explores42@gmail.com",
             profileImg="link_to_profile_image_2",
             bannerImg="link_to_banner_image_2",
-            ),
-            User(
+            )
+            
+        user_3 = User(
             firstName="Seren",
             lastName="Hawthorne",
             username="melodic_scribe_22",
-            _password_hash="Serenade66@Scribe",
+            _password_hash="",
             age=22,
             bio="Hello, lovely people! I'm Seren, a music lover, tea enthusiast, and aspiring writer. My days are filled with the soul-stirring melodies of my own composition and heartfelt ballads that express emotions words can't capture. Armed with a pen and my favorite chamomile tea, I'm on a journey to craft my first novel and share my unique voice with the world. Embracing the magic of storytelling and music, I hope to touch hearts and inspire others.",
             location="Melodyville, Tennessee, USA",
@@ -58,12 +61,13 @@ if __name__ == '__main__':
             email="seren.hawthorne.scribe@gmail.com",
             profileImg="link_to_profile_image_3",
             bannerImg="link_to_banner_image_3",
-            ),
-            User(
+            )
+        
+        user_4 = User(
             firstName="Atlas",
             lastName="Stone",
             username="mountainseeker_atlas",
-            _password_hash="Summit@Peaks99",
+            _password_hash="",
             age=42,
             bio="Hey! I'm Atlas, an explorer and adrenaline junkie. My life revolves around conquering mountains, both literal and metaphorical, as I strive to inspire others to embrace an active and adventurous lifestyle. My passion lies in guiding people towards unforgettable experiences and empowering them to lead fulfilling lives. Exploring the world and helping others discover their potential keeps me energized and grateful every day.",
             location="Summitville, California, USA",
@@ -71,12 +75,13 @@ if __name__ == '__main__':
             email="atlas.stone_explores42@gmail.com",
             profileImg="link_to_profile_image_4",
             bannerImg="link_to_banner_image_4",
-            ),
-            User(
+            )
+        
+        user_5 = User(
             firstName="Aria",
             lastName="Nightingale",
             username="Harmonic_Aria31",
-            _password_hash="Melody77?Singer",
+            _password_hash="",
             age=31,
             bio="Hello, wonderful souls! I'm Aria, a classical musician and opera aficionado. My deepest passion is to enchant audiences with soul-stirring performances in grand theaters. The stage becomes my canvas, where I paint emotions with every note I sing. Through my art, I hope to touch hearts and connect with the shared human experience. Join me on this musical journey that transcends boundaries and brings harmony to our lives.",
             location="Harmonyville, New York, USA",
@@ -84,12 +89,13 @@ if __name__ == '__main__':
             email="Aria.Harmonic31@gmail.com",
             profileImg="link_to_profile_image_5",
             bannerImg="link_to_banner_image_5",
-            ),
-            User(
+            )
+        
+        user_6 = User(
             firstName="Max",
             lastName="Adler",
             username="CosmicMax46",
-            _password_hash="Galaxy55!Explorer",
+            _password_hash="",
             age=46,
             bio="Greetings, stargazers! I'm Max, an amateur astronomer and space enthusiast. The night sky has always held a special place in my heart, and I find immense joy in gazing at the wonders of the cosmos. Armed with my telescope, I explore the universe from my backyard observatory, marveling at the beauty and vastness of the stars. Join me on this cosmic journey as we uncover the mysteries of the universe together.",
             location="Starlight City, Arizona, USA",
@@ -97,12 +103,13 @@ if __name__ == '__main__':
             email="Max.Cosmic46@gmail.com",
             profileImg="link_to_profile_image_6",
             bannerImg="link_to_banner_image_6",
-            ),
-            User(
+            )
+        
+        user_7 = User(
             firstName="Eliza",
             lastName="Bard",
             username="InkWanderlust",
-            _password_hash="Pen&Traveler27",
+            _password_hash="",
             age=25,
             bio="Hello, fellow bookworms! I'm Eliza, and I absolutely adore losing myself in the enchanting world of literature. Imagination and adventure await within the pages of each book I dive into. Armed with my favorite novels, I embark on literary journeys through enchanted lands and epic tales. Join me on these captivating adventures as we explore the magic and wonder that words can weave.",
             location="Enchanted Hollow, Massachusetts, USA",
@@ -110,12 +117,13 @@ if __name__ == '__main__':
             email="eliza.inkwander25@gmail.com",
             profileImg="link_to_profile_image_7",
             bannerImg="link_to_banner_image_7",
-            ),
-            User(
+            )
+        
+        user_8 = User(
             firstName="Phoenix",
             lastName="Blaze",
             username="FieryEntertainer_53",
-            _password_hash="Blaze99!Showtime",
+            _password_hash="",
             age=53,
             bio="Greetings, fellow thrill-seekers! I'm Phoenix, a fire performer and adrenaline junkie. My passion lies in mesmerizing audiences with daring fire dancing shows that leave everyone breathless. Embracing the thrill of the flames, I've found a profound connection with the elements and the liberating feeling of transcending fear. Join me on this fiery journey as we embrace the heat and explore the beauty that lies within the flames.",
             location="Emberbrook, Texas, USA",
@@ -123,12 +131,13 @@ if __name__ == '__main__':
             email="Phoenix.Fiery53@gmail.com",
             profileImg="link_to_profile_image_8",
             bannerImg="link_to_banner_image_8",
-            ),
-            User(
+            )
+        
+        user_9 = User(
             firstName="Stella",
             lastName="Morgan",
             username="stellar_journey",
-            _password_hash="Cosmic!Traveler23",
+            _password_hash="",
             age=30,
             bio="Hello, cosmic dreamers! I'm Stella, an astronomy enthusiast and night-sky admirer. With my telescope as my guide, I embark on a stellar journey through galaxies and nebulae, seeking the wonders of the universe. Join me on this astronomical adventure as we explore the beauty and mysteries of the cosmos together.",
             location="Astroville, California, USA",
@@ -136,12 +145,13 @@ if __name__ == '__main__':
             email="stella.morgan_astro@gmail.com",
             profileImg="link_to_profile_image_9",
             bannerImg="link_to_banner_image_9",
-            ),
-            User(
+            )
+        
+        user_10 = User(
             firstName="Asher",
             lastName="Kane",
             username="RusticAdventurer_37",
-            _password_hash="Trekker18?Forest",
+            _password_hash="",
             age=37,
             bio="Hey, fellow wanderers! I'm Asher, a nature-loving adventurer with a passion for the great outdoors. My heart finds solace in the wilderness, where I embark on rustic journeys, camping under starlit skies, and hiking through lush trails. The rugged beauty of nature fuels my soul, and I seek to inspire others to embrace the untamed spirit of the wild.",
             location="Wildwood, Oregon, USA",
@@ -149,12 +159,13 @@ if __name__ == '__main__':
             email="asher.kane37@gmail.com",
             profileImg="link_to_profile_image_10",
             bannerImg="link_to_banner_image_10",
-            ),
-            User(
+            )
+        
+        user_11 = User(
             firstName="Ivy",
             lastName="Greene",
             username="WhimsicalWanderer_29",
-            _password_hash="WanderEnchant88",
+            _password_hash="",
             age=29,
             bio="Greetings, wanderers of wonder! I'm Ivy, a free-spirited soul with a penchant for whimsical adventures. My heart finds joy in exploring hidden gems, from secret gardens to charming villages. With a camera in hand, I capture the essence of each place I visit, spreading enchantment through my photography. Join me on this magical journey as we uncover the extraordinary in the ordinary.",
             location="Enchantia, Maine, USA",
@@ -162,12 +173,13 @@ if __name__ == '__main__':
             email="ivy.greene29@gmail.com",
             profileImg="link_to_profile_image_11",
             bannerImg="link_to_banner_image_11",
-            ),
-            User(
+            )
+        
+        user_12 = User(
             firstName="Carter",
             lastName="Reeves",
             username="ThrillPursuer_44",
-            _password_hash="Daredevil67!Adventurer",
+            _password_hash="",
             age=44,
             bio="Hello, adrenaline seekers! I'm Carter, an adventure junkie with an insatiable thirst for thrills. My life revolves around heart-pounding activities, from skydiving to extreme sports. My motto is to embrace fear and push boundaries, for that's where true growth lies. Join me on this daring journey as we chase the ultimate adrenaline rush and conquer new heights.",
             location="Rushville, Indiana, USA",
@@ -175,12 +187,13 @@ if __name__ == '__main__':
             email="carter.reeves44@gmail.com",
             profileImg="link_to_profile_image_12",
             bannerImg="link_to_banner_image_12",
-            ),
-            User(
+            )
+        
+        user_13 = User(
             firstName="Jasmine",
             lastName="Hart",
             username="SoulfulSeeker_25",
-            _password_hash="Journey22?Soulful",
+            _password_hash="",
             age=25,
             bio="Hey, soulful souls! I'm Jasmine, a wanderer in search of life's deeper meaning and spiritual connections. My journey leads me to sacred places, yoga retreats, and meditation sanctuaries. I find peace and enlightenment through mindfulness practices and soulful conversations. Embrace your inner journey as we explore the beauty of mindfulness and the magic within ourselves.",
             location="Serene Springs, Arizona, USA",
@@ -188,12 +201,13 @@ if __name__ == '__main__':
             email="jasmine.hart25@gmail.com",
             profileImg="link_to_profile_image_13",
             bannerImg="link_to_banner_image_13",
-            ),
-            User(
+            )
+        
+        user_14 = User(
             firstName="Oliver",
             lastName="Hudson",
             username="TechNomad",
-            _password_hash="Geek&Trekker36",
+            _password_hash="",
             age=32,
             bio="Greetings, fellow tech enthusiasts! I'm Oliver, a digital nomad and tech explorer. My laptop is my gateway to the world as I roam from one destination to another, embracing the freedom of a nomadic lifestyle. I'm fascinated by cutting-edge technologies and their impact on our lives. Join me on this virtual journey as we explore the ever-evolving landscape of the digital world.",
             location="Pixelville, California, USA",
@@ -201,12 +215,13 @@ if __name__ == '__main__':
             email="oliver.hudson.tech@gmail.com",
             profileImg="link_to_profile_image_14",
             bannerImg="link_to_banner_image_14",
-            ),
-            User(
+            )
+        
+        user_15 = User(
             firstName="Ava",
             lastName="Morgan",
             username="FuzzyPaws_29",
-            _password_hash="Pawprints94@Furry",
+            _password_hash="",
             age=29,
             bio="Hello, furry friends! I'm Ava, an animal lover and dedicated volunteer at animal shelters. My days are filled with joy as I care for and provide love to adorable four-legged companions. I'm passionate about animal welfare and hope to create a better world for our furry buddies. Join me on this heartwarming journey as we celebrate the unconditional love and happiness that animals bring to our lives.",
             location="Petropolis, Texas, USA",
@@ -214,12 +229,13 @@ if __name__ == '__main__':
             email="ava.morgan.fuzzypaws@gmail.com",
             profileImg="link_to_profile_image_15",
             bannerImg="link_to_banner_image_15",
-            ),
-            User(
+            )
+        
+        user_16 = User(
             firstName="Ash",
             lastName="Hunter",
             username="HikingAsh_36",
-            _password_hash="Hiker88!Outdoors",
+            _password_hash="",
             age=36,
             bio="Hello, fellow hikers! I'm Ash, a nature enthusiast and avid hiker. My passion for the great outdoors leads me on epic journeys through rugged terrains and breathtaking landscapes. I believe that connecting with nature is a transformative experience that renews the soul. Join me on this hiking adventure as we conquer trails, summit mountains, and forge unforgettable memories in the wild.",
             location="Trailblazer Peak, Arizona, USA",
@@ -227,12 +243,13 @@ if __name__ == '__main__':
             email="adventurous_ash36@gmail.com",
             profileImg="link_to_profile_image_29",
             bannerImg="link_to_banner_image_29",
-            ),
-            User(
+            )
+        
+        user_17 = User(
             firstName="Ari",
             lastName="James",
             username="ariwanders",
-            _password_hash="Odyssey21@Explorer",
+            _password_hash="",
             age=31,
             bio="Greetings, fellow explorers! I'm Ari, an adventurer with an insatiable curiosity for the unknown. From ancient ruins to hidden caves, I seek to uncover the wonders that history has left behind. My journey transcends time as I immerse myself in the stories of past civilizations. Join me on this wandering odyssey as we traverse through the pages of history and embrace the magic that lies beneath the surface.",
             location="Discovery Haven, Montana, USA",
@@ -240,12 +257,13 @@ if __name__ == '__main__':
             email="wandering_ari31@gmail.com",
             profileImg="link_to_profile_image_30",
             bannerImg="link_to_banner_image_30",
-            ),
-            User(
+            )
+        
+        user_18 = User(
             firstName="Aiden",
             lastName="Hartman",
             username="MindfulWanderer_28",
-            _password_hash=" Zen&Traveler21",
+            _password_hash="",
             age=28,
             bio="Hey, mindful souls! I'm Aiden, a seeker of serenity and a lover of mindfulness practices. I believe that nurturing the mind is as important as exploring the world. Whether through meditation, yoga, or self-reflection, I find balance and harmony in my inner journey. Join me on this path of mindfulness as we embrace the present moment and savor the beauty of self-awareness.",
             location="Tranquility Cove, Oregon, USA",
@@ -253,12 +271,13 @@ if __name__ == '__main__':
             email="mindful_aiden28@gmail.com",
             profileImg="link_to_profile_image_31",
             bannerImg="link_to_banner_image_31",
-            ),
-            User(
+            )
+        
+        user_19 = User(
             firstName="Luna",
             lastName="Knight",
             username="lunainspires",
-            _password_hash="Moonlight@Dreamer30",
+            _password_hash="",
             age=26,
             bio="Greetings, stargazers! I'm Luna, a dreamer and admirer of celestial wonders. My telescope is my portal to the cosmos, where I lose myself in the enchanting beauty of stars and galaxies. Join me on this celestial journey as we explore the vastness of space and uncover the mysteries of the universe.",
             location="Starfall Heights, Nevada, USA",
@@ -266,12 +285,13 @@ if __name__ == '__main__':
             email="luna_inspires26@gmail.com",
             profileImg="link_to_profile_image_32",
             bannerImg="link_to_banner_image_32",
-            ),
-            User(
+            )
+        
+        user_20 = User(
             firstName="Ryder",
             lastName="Moss",
             username="wanderlustryder_30",
-            _password_hash="rydmoss42!Nomad",
+            _password_hash="",
             age=30,
             bio="Hello, fellow wanderers! I'm Ryder, a traveler with a passion for embracing cultures and immersing myself in new experiences. Whether exploring ancient cities or trekking through remote villages, I seek to understand the diversity that enriches our world. Join me on this adventure of wanderlust as we connect with people, discover traditions, and weave unforgettable tales.",
             location="Global Nomadville, California, USA",
@@ -279,12 +299,13 @@ if __name__ == '__main__':
             email="wanderlust_ryder30@gmail.com",
             profileImg="link_to_profile_image_33",
             bannerImg="link_to_banner_image_33",
-            ),
-            User(
+            )
+        
+        user_21 = User(
             firstName="Nova",
             lastName="Sullivan",
             username="CosmicWander_32",
-            _password_hash="AstralJourney23?",
+            _password_hash="",
             age=32,
             bio="Hey, cosmic explorers! I'm Nova, a stargazing enthusiast and admirer of celestial events. My nights are filled with wonder as I observe meteor showers and eclipse phenomena. Join me on this cosmic journey as we navigate through the galaxies and witness the magic of the universe unfold before our eyes.",
             location="Stellarium Haven, New York, USA",
@@ -292,12 +313,13 @@ if __name__ == '__main__':
             email="cosmic_nova32@gmail.com",
             profileImg="link_to_profile_image_34",
             bannerImg="link_to_banner_image_34",
-            ),
-            User(
+            )
+        
+        user_22 = User(
             firstName="Silas",
             lastName="Rivera",
             username="natureseeker_29",
-            _password_hash="Wilderness80&Hiker?",
+            _password_hash="",
             age=29,
             bio="Hello, nature enthusiasts! I'm Silas, a nature seeker and eco-conscious explorer. My heart finds solace in the wilderness, where I immerse myself in the beauty of untouched landscapes. Join me on this green journey as we celebrate the wonders of Mother Nature and strive to protect the delicate balance of our environment.",
             location="EcoHaven, Oregon, USA",
@@ -305,12 +327,13 @@ if __name__ == '__main__':
             email="nature_silas29@gmail.com",
             profileImg="link_to_profile_image_35",
             bannerImg="link_to_banner_image_35",
-            ),
-            User(
+            )
+        
+        user_23 = User(
             firstName="Ivy",
             lastName="Lawrence",
             username="greenthumbivy",
-            _password_hash="GardenVibes19!Grow",
+            _password_hash="",
             age=27,
             bio="Greetings, fellow plant lovers! I'm Ivy, a green thumb enthusiast and gardener extraordinaire. My days are filled with nurturing botanical wonders and creating lush gardens. Join me on this green journey as we dive into the secrets of horticulture and cultivate beauty all around us.",
             location="Botanical Grove, Florida, USA",
@@ -318,12 +341,13 @@ if __name__ == '__main__':
             email="green_ivy27@gmail.com",
             profileImg="link_to_profile_image_36",
             bannerImg="link_to_banner_image_36",
-            ),
-            User(
+            )
+        
+        user_24 = User(
             firstName="Zoe",
             lastName="Harrison",
             username="WanderZoe_25",
-            _password_hash="DiscoverWorld69",
+            _password_hash="",
             age=25,
             bio="Hello, wanderlust souls! I'm Zoe, a free spirit and explorer of hidden gems. Whether it's lost ruins or undiscovered caves, I'm on a quest to find the extraordinary in the ordinary. Join me on this whimsical journey as we embrace the unknown and create extraordinary memories together.",
             location="Enchanted Trails, Colorado, USA",
@@ -331,12 +355,13 @@ if __name__ == '__main__':
             email="wander.Zoe25@gmail.com",
             profileImg="link_to_profile_image_37",
             bannerImg="link_to_banner_image_37",
-            ),
-            User(
+            )
+        
+        user_25 = User(
             firstName="Finn",
             lastName="Collins",
             username="WanderFinn",
-            _password_hash="Explore32@Globetrot",
+            _password_hash="",
             age=34,
             bio="Greetings, fellow adventurers! I'm Finn, a globetrotter with an insatiable appetite for travel. From bustling cities to remote islands, I seek to unravel the world's wonders one destination at a time. Join me on this thrilling journey as we embark on unforgettable escapades and make lasting connections across borders.",
             location="Wanderlust Haven, Hawaii, USA",
@@ -344,12 +369,13 @@ if __name__ == '__main__':
             email="wander.finn34@gmail.com",
             profileImg="link_to_profile_image_38",
             bannerImg="link_to_banner_image_38",
-            ),
-            User(
+            )
+    
+        user_26 = User(
             firstName="Lila",
             lastName="Morris",
             username="LilaLens",
-            _password_hash="Shutterbug21!Memories",
+            _password_hash="",
             age=29,
             bio="Hey there, shutterbugs! I'm Lila, a photography enthusiast and capturer of moments. Through my lens, I strive to freeze time and convey emotions in a single frame. Join me on this photographic odyssey as we explore landscapes, immerse in cultures, and preserve memories that will stand the test of time.",
             location="Shutterville, California, USA",
@@ -357,12 +383,13 @@ if __name__ == '__main__':
             email="lila.lens29@gmail.com",
             profileImg="link_to_profile_image_39",
             bannerImg="link_to_banner_image_39",
-            ),
-            User(
+            )
+        
+        user_27 = User(
             firstName="Miles",
             lastName="Cooper",
             username="MilesToGo",
-            _password_hash="JourneyOn50@Miles!",
+            _password_hash="",
             age=31,
             bio="Greetings, fellow seekers! I'm Miles, an adventurer with an undying thirst for knowledge. From ancient texts to cryptic maps, I strive to uncover hidden truths and unravel historical enigmas. Join me on this quest for knowledge as we journey through the annals of time and discover the mysteries that lie beneath the surface.",
             location="Explorer's Ridge, Kentucky, USA",
@@ -370,12 +397,13 @@ if __name__ == '__main__':
             email="miles.to.go31@gmail.com",
             profileImg="link_to_profile_image_40",
             bannerImg="link_to_banner_image_40",
-            ),
-            User(
+            )
+        
+        user_28 = User(
             firstName="Zoe",
             lastName="Manning",
             username="ZestfulZoe_27",
-            _password_hash="ZestLife15!Adventures",
+            _password_hash="",
             age=27,
             bio="Hello, zestful souls! I'm Zoe, a lively spirit and connoisseur of all things delightful. From savoring exotic cuisines to indulging in artistic performances, I celebrate the richness of life. Join me on this zestful journey as we immerse ourselves in the flavors, colors, and melodies that make every day an adventure worth savoring.",
             location="Blissful Bistro, New York, USA",
@@ -383,12 +411,13 @@ if __name__ == '__main__':
             email="zestful.zoe27@gmail.com",
             profileImg="link_to_profile_image_41",
             bannerImg="link_to_banner_image_41",
-            ),
-            User(
+            )
+        
+        user_29 = User(
             firstName="Caleb",
             lastName="Williams",
             username="SteadfastCaleb",
-            _password_hash="Persevere76?Strength",
+            _password_hash="",
             age=32,
             bio="Greetings, steadfast souls! I'm Caleb, a firm believer in perseverance and unwavering determination. From conquering mountains to facing life's challenges head-on, I find strength in resilience. Join me on this steadfast journey as we navigate the twists and turns of life, forging a path of courage and unwavering resolve.",
             location="Fortitude Valley, Arizona, USA",
@@ -396,12 +425,13 @@ if __name__ == '__main__':
             email="steadfast_caleb32@gmail.com",
             profileImg="link_to_profile_image_42",
             bannerImg="link_to_banner_image_42",
-            ),
-            User(
+            )
+        
+        user_30 = User(
             firstName="Zara",
             lastName="Knight",
             username="ZaraZephyr_28",
-            _password_hash="Breeze&Dreams25",
+            _password_hash="",
             age=28,
             bio="Hello, fellow dreamers! I'm Zara, a lover of the winds and the poetry they carry. From sailing on vast oceans to dancing in meadows, I embrace the freedom that life offers. Join me on this ethereal journey as we chase the whispers of the wind and let our souls soar in its gentle caress.",
             location="Zephyr Hills, Montana, USA",
@@ -409,9 +439,145 @@ if __name__ == '__main__':
             email="zara.zephyr28@gmail.com",
             profileImg="link_to_profile_image_43",
             bannerImg="link_to_banner_image_43",
-            ),
-        ]
-        db.session.add_all(users)
+            )
+        # ]
+        # db.session.add_all(users)
+
+        #Add all users
+        db.session.add(user_1)
+        db.session.add(user_2)
+        db.session.add(user_3)
+        db.session.add(user_4)
+        db.session.add(user_5)
+        db.session.add(user_6)
+        db.session.add(user_7)
+        db.session.add(user_8)
+        db.session.add(user_9)
+        db.session.add(user_10)
+        db.session.add(user_11)
+        db.session.add(user_12)
+        db.session.add(user_13)
+        db.session.add(user_14)
+        db.session.add(user_15)
+        db.session.add(user_16)
+        db.session.add(user_17)
+        db.session.add(user_18)
+        db.session.add(user_19)
+        db.session.add(user_20)
+        db.session.add(user_21)
+        db.session.add(user_22)
+        db.session.add(user_23)
+        db.session.add(user_24)
+        db.session.add(user_25)
+        db.session.add(user_26)
+        db.session.add(user_27)
+        db.session.add(user_28)
+        db.session.add(user_29)
+        db.session.add(user_30)
+
+        db.session.commit()
+        #This commit handles adding the users without their passwords for the time being.
+        #COMMIT INDIVIDUAL USERS, NEED TO REMOVE THEIR PASSWORDS AND ASSIGN THE BELOW.
+        
+        #Add user passwords (Real)
+        user_1_password = 'Magic42!Paints'
+        user_2_password = 'Seeker19!Wander'
+        user_3_password = 'Serenade66@Scribe'
+        user_4_password = 'Summit@Peaks99'
+        user_5_password = 'Melody77?Singer'
+        user_6_password = 'Galaxy55!Explorer'
+        user_7_password = 'Pen&Traveler27"'
+        user_8_password = 'Blaze99!Showtime'
+        user_9_password = 'Cosmic!Traveler23'
+        user_10_password = 'Trekker18?Forest'
+        user_11_password = 'WanderEnchant88'
+        user_12_password = 'Daredevil67!Adventurer'
+        user_13_password = 'Journey22?Soulful'
+        user_14_password = 'Geek&Trekker36'
+        user_15_password = 'Pawprints94@Furry'
+        user_16_password = 'Hiker88!Outdoors'
+        user_17_password = 'Odyssey21@Explorer'
+        user_18_password = 'Zen&Traveler21'
+        user_19_password = 'Moonlight@Dreamer30'
+        user_20_password = 'rydmoss42!Nomad'
+        user_21_password = 'AstralJourney23?'
+        user_22_password = 'Wilderness80&Hiker?'
+        user_23_password = 'GardenVibes19!Grow'
+        user_24_password = 'DiscoverWorld69'
+        user_25_password = 'Explore32@Globetrot'
+        user_26_password = 'Shutterbug21!Memories'
+        user_27_password = 'JourneyOn50@Miles!'
+        user_28_password = 'ZestLife15!Adventures'
+        user_29_password = 'Persevere76?Strength'
+        user_30_password = 'Breeze&Dreams25'
+
+        #hash users passwords
+        user_1.password_hash = user_1_password
+        user_2.password_hash = user_2_password
+        user_3.password_hash = user_3_password
+        user_4.password_hash = user_4_password
+        user_5.password_hash = user_5_password
+        user_6.password_hash = user_6_password
+        user_7.password_hash = user_7_password
+        user_8.password_hash = user_8_password
+        user_9.password_hash = user_9_password
+        user_10.password_hash = user_10_password
+        user_11.password_hash = user_11_password
+        user_12.password_hash = user_12_password
+        user_13.password_hash = user_13_password
+        user_14.password_hash = user_14_password
+        user_15.password_hash = user_15_password
+        user_16.password_hash = user_16_password
+        user_17.password_hash = user_17_password
+        user_18.password_hash = user_18_password
+        user_19.password_hash = user_19_password
+        user_20.password_hash = user_20_password
+        user_21.password_hash = user_21_password
+        user_22.password_hash = user_22_password
+        user_23.password_hash = user_23_password
+        user_24.password_hash = user_24_password
+        user_25.password_hash = user_25_password
+        user_26.password_hash = user_26_password
+        user_27.password_hash = user_27_password
+        user_28.password_hash = user_28_password
+        user_29.password_hash = user_29_password
+        user_30.password_hash = user_30_password
+        
+        #Re-add all users to include passwords
+        db.session.add(user_1)
+        db.session.add(user_2)
+        db.session.add(user_3)
+        db.session.add(user_4)
+        db.session.add(user_5)
+        db.session.add(user_6)
+        db.session.add(user_7)
+        db.session.add(user_8)
+        db.session.add(user_9)
+        db.session.add(user_10)
+        db.session.add(user_11)
+        db.session.add(user_12)
+        db.session.add(user_13)
+        db.session.add(user_14)
+        db.session.add(user_15)
+        db.session.add(user_16)
+        db.session.add(user_17)
+        db.session.add(user_18)
+        db.session.add(user_19)
+        db.session.add(user_20)
+        db.session.add(user_21)
+        db.session.add(user_22)
+        db.session.add(user_23)
+        db.session.add(user_24)
+        db.session.add(user_25)
+        db.session.add(user_26)
+        db.session.add(user_27)
+        db.session.add(user_28)
+        db.session.add(user_29)
+        db.session.add(user_30)
+
+        db.session.commit()
+        #Adds users with their passwords hashed.
+
 #------------------------------------------------------------------------------------------HOBBY SEEDING--------------------------------------------------------------------------------------
         print("Seeding Hobbies...")
         hobbies = [

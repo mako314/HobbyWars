@@ -3,7 +3,8 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.hybrid import hybrid_property
-from app import bcrypt
+# from app import bcrypt #<--- this is giving me the circular import error ImportError: cannot import name 'db' from partially initialized module 'models' (most likely due to a circular import)
+# from config import db, bcrypt
 
 metadata = MetaData(naming_convention={
     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
@@ -54,7 +55,7 @@ class User(db.Model, SerializerMixin):
     #'-user_hobby.hobby_id', <- This would remove the hobby id from the user hobby in the user data. I want the hobby id though.
 
 
-    #PROPERTIES
+    # #PROPERTIES
     # @hybrid_property
     # def password_hash(self):
     #     return self._password_hash

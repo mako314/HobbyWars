@@ -4,6 +4,7 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask import Flask, request, make_response, jsonify, session
 from flask_restful import Api, Resource
+# from config import db, app, api
 import os
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -25,6 +26,9 @@ migrate = Migrate(app, db)
 db.init_app(app)
 api = Api(app)
 CORS(app)
+
+#CONFIG.PY allows me to remove all the above ^ ? 
+
 #------------------------------------------------------------------------------------------------------------------------------
 #Questions
 #1. Should I do the request.get_json() above my try and excepts?
@@ -38,6 +42,14 @@ class Login(Resource):
         pass
 
     def post(self):
+        # user = User.query.filter(
+        #     User.username == request.get_json()['username']
+        # ).first()
+
+        # session['user_id'] = user.id
+        # return make_response(jsonify(user.to_dict()), 200)
+
+        #BELOW WORKS WITH PASSWORD? ISSUES WITH BYCRPT
         username = request.get_json()['username']
         user = User.query.filter(User.username == username)
 
@@ -46,6 +58,7 @@ class Login(Resource):
         if user.authenticate(password):
             session['user_id'] = user.id
             return user.to_dict(), 200
+        #Do I need to JSONIFY^ ?
 
         return make_response({'error': 'Invalid username or password'}, 401)
 
@@ -68,6 +81,17 @@ api.add_resource(Logout, '/logout')
 class CheckSession(Resource):
 
     def get(self):
+
+        # user_id = session.get('user_id')
+
+        # if user_id:
+
+        #     user_row = User.query.filter(User.id == user_id).first()
+
+        #     response = make_response(jsonify(user_row.to_dict()), 200)
+
+
+
         user = User.query.filter(User.id == session.get('user_id')).first()
         if user:
             return user.to_dict()

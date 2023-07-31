@@ -19,8 +19,8 @@ if __name__ == '__main__':
 #------------------------------------------------------------------------------------------USER SEEDING---------------------------------------------------------------------------------------
         #Seed users
         print("Seeding potential Users...")
-        users = [
-            User(
+        # users = [
+        user_1 = User(
             firstName="Emily",
             lastName="Everwood",
             username="EnchantingEmily88",
@@ -32,8 +32,9 @@ if __name__ == '__main__':
             email="Emily.paints.magic88@gmail.com",
             profileImg="link_to_profile_image_1",
             bannerImg="link_to_banner_image_1",
-            ),
-            User(
+            )
+        
+        user_2 = User(
             firstName="Zephyr",
             lastName="Wilde",
             username="WandererZephyr_42",
@@ -45,8 +46,9 @@ if __name__ == '__main__':
             email="zephyr.explores42@gmail.com",
             profileImg="link_to_profile_image_2",
             bannerImg="link_to_banner_image_2",
-            ),
-            User(
+            )
+            
+        user_3 = User(
             firstName="Seren",
             lastName="Hawthorne",
             username="melodic_scribe_22",
@@ -58,8 +60,9 @@ if __name__ == '__main__':
             email="seren.hawthorne.scribe@gmail.com",
             profileImg="link_to_profile_image_3",
             bannerImg="link_to_banner_image_3",
-            ),
-            User(
+            )
+        
+        user_4 = User(
             firstName="Atlas",
             lastName="Stone",
             username="mountainseeker_atlas",
@@ -71,8 +74,9 @@ if __name__ == '__main__':
             email="atlas.stone_explores42@gmail.com",
             profileImg="link_to_profile_image_4",
             bannerImg="link_to_banner_image_4",
-            ),
-            User(
+            )
+        
+        user_5 = User(
             firstName="Aria",
             lastName="Nightingale",
             username="Harmonic_Aria31",
@@ -84,8 +88,9 @@ if __name__ == '__main__':
             email="Aria.Harmonic31@gmail.com",
             profileImg="link_to_profile_image_5",
             bannerImg="link_to_banner_image_5",
-            ),
-            User(
+            )
+        
+        user_6 = User(
             firstName="Max",
             lastName="Adler",
             username="CosmicMax46",
@@ -97,8 +102,9 @@ if __name__ == '__main__':
             email="Max.Cosmic46@gmail.com",
             profileImg="link_to_profile_image_6",
             bannerImg="link_to_banner_image_6",
-            ),
-            User(
+            )
+        
+        user_7 = User(
             firstName="Eliza",
             lastName="Bard",
             username="InkWanderlust",
@@ -110,8 +116,9 @@ if __name__ == '__main__':
             email="eliza.inkwander25@gmail.com",
             profileImg="link_to_profile_image_7",
             bannerImg="link_to_banner_image_7",
-            ),
-            User(
+            )
+        
+        user_8 = User(
             firstName="Phoenix",
             lastName="Blaze",
             username="FieryEntertainer_53",
@@ -123,8 +130,9 @@ if __name__ == '__main__':
             email="Phoenix.Fiery53@gmail.com",
             profileImg="link_to_profile_image_8",
             bannerImg="link_to_banner_image_8",
-            ),
-            User(
+            )
+        
+        user_9 = User(
             firstName="Stella",
             lastName="Morgan",
             username="stellar_journey",
@@ -136,8 +144,9 @@ if __name__ == '__main__':
             email="stella.morgan_astro@gmail.com",
             profileImg="link_to_profile_image_9",
             bannerImg="link_to_banner_image_9",
-            ),
-            User(
+            )
+        
+        user_10 = User(
             firstName="Asher",
             lastName="Kane",
             username="RusticAdventurer_37",
@@ -149,8 +158,9 @@ if __name__ == '__main__':
             email="asher.kane37@gmail.com",
             profileImg="link_to_profile_image_10",
             bannerImg="link_to_banner_image_10",
-            ),
-            User(
+            )
+        
+        user_11 = User(
             firstName="Ivy",
             lastName="Greene",
             username="WhimsicalWanderer_29",
@@ -162,8 +172,9 @@ if __name__ == '__main__':
             email="ivy.greene29@gmail.com",
             profileImg="link_to_profile_image_11",
             bannerImg="link_to_banner_image_11",
-            ),
-            User(
+            )
+        
+        user_12 = User(
             firstName="Carter",
             lastName="Reeves",
             username="ThrillPursuer_44",
@@ -175,8 +186,9 @@ if __name__ == '__main__':
             email="carter.reeves44@gmail.com",
             profileImg="link_to_profile_image_12",
             bannerImg="link_to_banner_image_12",
-            ),
-            User(
+            )
+        
+        user_13 = User(
             firstName="Jasmine",
             lastName="Hart",
             username="SoulfulSeeker_25",
@@ -188,8 +200,9 @@ if __name__ == '__main__':
             email="jasmine.hart25@gmail.com",
             profileImg="link_to_profile_image_13",
             bannerImg="link_to_banner_image_13",
-            ),
-            User(
+            )
+        
+        user_14 = User(
             firstName="Oliver",
             lastName="Hudson",
             username="TechNomad",
@@ -201,8 +214,9 @@ if __name__ == '__main__':
             email="oliver.hudson.tech@gmail.com",
             profileImg="link_to_profile_image_14",
             bannerImg="link_to_banner_image_14",
-            ),
-            User(
+            )
+        
+        user_15 = User(
             firstName="Ava",
             lastName="Morgan",
             username="FuzzyPaws_29",
@@ -214,8 +228,9 @@ if __name__ == '__main__':
             email="ava.morgan.fuzzypaws@gmail.com",
             profileImg="link_to_profile_image_15",
             bannerImg="link_to_banner_image_15",
-            ),
-            User(
+            )
+        
+        user_16 = User(
             firstName="Ash",
             lastName="Hunter",
             username="HikingAsh_36",
@@ -227,8 +242,9 @@ if __name__ == '__main__':
             email="adventurous_ash36@gmail.com",
             profileImg="link_to_profile_image_29",
             bannerImg="link_to_banner_image_29",
-            ),
-            User(
+            )
+        
+        user_17 = User(
             firstName="Ari",
             lastName="James",
             username="ariwanders",
@@ -240,8 +256,9 @@ if __name__ == '__main__':
             email="wandering_ari31@gmail.com",
             profileImg="link_to_profile_image_30",
             bannerImg="link_to_banner_image_30",
-            ),
-            User(
+            )
+        
+        user_18 = User(
             firstName="Aiden",
             lastName="Hartman",
             username="MindfulWanderer_28",
@@ -253,8 +270,9 @@ if __name__ == '__main__':
             email="mindful_aiden28@gmail.com",
             profileImg="link_to_profile_image_31",
             bannerImg="link_to_banner_image_31",
-            ),
-            User(
+            )
+        
+        user_19 = User(
             firstName="Luna",
             lastName="Knight",
             username="lunainspires",
@@ -266,8 +284,9 @@ if __name__ == '__main__':
             email="luna_inspires26@gmail.com",
             profileImg="link_to_profile_image_32",
             bannerImg="link_to_banner_image_32",
-            ),
-            User(
+            )
+        
+        user_20 = User(
             firstName="Ryder",
             lastName="Moss",
             username="wanderlustryder_30",
@@ -279,8 +298,9 @@ if __name__ == '__main__':
             email="wanderlust_ryder30@gmail.com",
             profileImg="link_to_profile_image_33",
             bannerImg="link_to_banner_image_33",
-            ),
-            User(
+            )
+        
+        user_21 = User(
             firstName="Nova",
             lastName="Sullivan",
             username="CosmicWander_32",
@@ -292,8 +312,9 @@ if __name__ == '__main__':
             email="cosmic_nova32@gmail.com",
             profileImg="link_to_profile_image_34",
             bannerImg="link_to_banner_image_34",
-            ),
-            User(
+            )
+        
+        user_22 = User(
             firstName="Silas",
             lastName="Rivera",
             username="natureseeker_29",
@@ -305,8 +326,9 @@ if __name__ == '__main__':
             email="nature_silas29@gmail.com",
             profileImg="link_to_profile_image_35",
             bannerImg="link_to_banner_image_35",
-            ),
-            User(
+            )
+        
+        user_23 = User(
             firstName="Ivy",
             lastName="Lawrence",
             username="greenthumbivy",
@@ -318,8 +340,9 @@ if __name__ == '__main__':
             email="green_ivy27@gmail.com",
             profileImg="link_to_profile_image_36",
             bannerImg="link_to_banner_image_36",
-            ),
-            User(
+            )
+        
+        user_24 = User(
             firstName="Zoe",
             lastName="Harrison",
             username="WanderZoe_25",
@@ -331,8 +354,9 @@ if __name__ == '__main__':
             email="wander.Zoe25@gmail.com",
             profileImg="link_to_profile_image_37",
             bannerImg="link_to_banner_image_37",
-            ),
-            User(
+            )
+        
+        user_25 = User(
             firstName="Finn",
             lastName="Collins",
             username="WanderFinn",
@@ -344,8 +368,9 @@ if __name__ == '__main__':
             email="wander.finn34@gmail.com",
             profileImg="link_to_profile_image_38",
             bannerImg="link_to_banner_image_38",
-            ),
-            User(
+            )
+    
+        user_26 = User(
             firstName="Lila",
             lastName="Morris",
             username="LilaLens",
@@ -357,8 +382,9 @@ if __name__ == '__main__':
             email="lila.lens29@gmail.com",
             profileImg="link_to_profile_image_39",
             bannerImg="link_to_banner_image_39",
-            ),
-            User(
+            )
+        
+        user_27 = User(
             firstName="Miles",
             lastName="Cooper",
             username="MilesToGo",
@@ -370,8 +396,9 @@ if __name__ == '__main__':
             email="miles.to.go31@gmail.com",
             profileImg="link_to_profile_image_40",
             bannerImg="link_to_banner_image_40",
-            ),
-            User(
+            )
+        
+        user_28 = User(
             firstName="Zoe",
             lastName="Manning",
             username="ZestfulZoe_27",
@@ -383,8 +410,9 @@ if __name__ == '__main__':
             email="zestful.zoe27@gmail.com",
             profileImg="link_to_profile_image_41",
             bannerImg="link_to_banner_image_41",
-            ),
-            User(
+            )
+        
+        user_29 = User(
             firstName="Caleb",
             lastName="Williams",
             username="SteadfastCaleb",
@@ -396,8 +424,9 @@ if __name__ == '__main__':
             email="steadfast_caleb32@gmail.com",
             profileImg="link_to_profile_image_42",
             bannerImg="link_to_banner_image_42",
-            ),
-            User(
+            )
+        
+        user_30 = User(
             firstName="Zara",
             lastName="Knight",
             username="ZaraZephyr_28",
@@ -409,9 +438,9 @@ if __name__ == '__main__':
             email="zara.zephyr28@gmail.com",
             profileImg="link_to_profile_image_43",
             bannerImg="link_to_banner_image_43",
-            ),
-        ]
-        db.session.add_all(users)
+            )
+        # ]
+        # db.session.add_all(users)
 #------------------------------------------------------------------------------------------HOBBY SEEDING--------------------------------------------------------------------------------------
         print("Seeding Hobbies...")
         hobbies = [

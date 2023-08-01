@@ -3,22 +3,34 @@ import React, { useState, useEffect } from "react";
 import HomePage from './HomePage';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 
+//-------Competition Imports--------
+import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
+
 
 function App() {
 
+    //Can't forget this so I'll need to include it now absolutely
+    const navigate = useNavigate()
+
+    const [competitions, setCompetitions] = useState([])
+
     useEffect(() => {
-        fetch("//competitions")
+        fetch("/competitions")
           .then((resp) => resp.json())
           .then((data) => {
-            setEquipmentArray(data)
+            setCompetitions(data)
           })
       }, [])
     
 
     return (
-        <>
-           <HomePage/>
-        </>
+        <div>
+            <Routes>
+                <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
+            </Routes>
+            {/* <CompetitionCollection competitions={competitions}/> */}
+           {/* <HomePage/> */}
+        </div>
     )
 }
 

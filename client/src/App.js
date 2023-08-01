@@ -1,7 +1,9 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
-import HomePage from './HomePage';
 import { useNavigate, Route, Routes } from 'react-router-dom';
+
+//-------HomePage Imports-------
+import HomePage from './HomePageComponents/HomePage'
 
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
@@ -27,8 +29,12 @@ function App() {
     return (
         <div>
             <Routes>
+                {/* HOME PAGE ROUTING */}
+                <Route path='/' element={<HomePage/>}/>
+
                 {/* COMPETITION ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
+
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
             </Routes>

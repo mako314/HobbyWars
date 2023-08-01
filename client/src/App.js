@@ -8,7 +8,7 @@ import HomePage from './HomePageComponents/HomePage'
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
-
+import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
 
 function App() {
 
@@ -37,6 +37,8 @@ function App() {
 
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
+
+                <Route path='/competition-declaration' element={<CompetitionCreation setCompetitions={setCompetitions} competitions={competitions}/>}/>
             </Routes>
             {/* <CompetitionCollection competitions={competitions}/> */}
            {/* <HomePage/> */}

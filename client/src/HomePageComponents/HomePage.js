@@ -1,10 +1,12 @@
 import React from 'react';
+import HomePageGallery from './HomePageGallery';
 
 function HomePage({}) {
 
 
     return (
         <div>
+            <HomePageGallery/>
             <section className="text-gray-400 bg-gray-900 body-font">
             <div className="container px-5 py-24 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">

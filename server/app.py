@@ -37,7 +37,7 @@ from config import db, app, api
 #Questions
 #1. Should I do the request.get_json() above my try and excepts?
 #2. Do I need to jsonify this stuff below for login and such? Eleanor had jsonified it, so I am curious as to why.
-
+#3. I'd like to make it both username or email sign in
 
 #------------------------------------User LOGIN------------------------------------------------------------------------------
 

@@ -24,6 +24,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
             firstName: '',
             lastName: '',
             username: '',
+            password: '',
             age: '',
             bio: '',
             location: '',
@@ -56,10 +57,6 @@ function UserSignUpForm({setNewUsers, newUsers}){
     })
 
 
-
-
-
-
     return(
         <div>
             <form className="signup-form" onSubmit={formik.handleSubmit}>
@@ -69,7 +66,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     {/* display errors from backend */}
                     {error && <p>{error}</p>}
 
-                    <div className="war-entries">
+                    <div className="user-signup-input">
                     <label> First Name </label>
                     <input
                     type="text"
@@ -79,7 +76,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     />
                     </div>
 
-                    <div className="war-entries">
+                    <div className="user-signup-input">
                     <label> Last Name </label>
                     <input
                     type="text"
@@ -89,7 +86,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     />
                     </div>
 
-                    <div className="war-entries">
+                    <div className="user-signup-input">
                     <label> Username </label>
                     <input
                     type="text"
@@ -99,6 +96,87 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     />
                     </div>
 
+                    <div className="user-signup-input">
+                    <label> Password </label>
+                    <input
+                    type="text"
+                    name="password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> age </label>
+                    <input
+                    type="text"
+                    name="age"
+                    value={formik.values.age}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> Bio </label>
+                    <textarea
+                    type="text"
+                    name="bio"
+                    value={formik.values.bio}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> Location </label>
+                    <input
+                    type="text"
+                    name="location"
+                    value={formik.values.location}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> Phone </label>
+                    <input
+                    type="text"
+                    name="phone"
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> Email </label>
+                    <input
+                    type="text"
+                    name="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> Profile Image  </label>
+                    <input
+                    type="text"
+                    name="profileImg"
+                    value={formik.values.profileImg}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                    <div className="user-signup-input">
+                    <label> Banner Image </label>
+                    <input
+                    type="text"
+                    name="bannerImg"
+                    value={formik.values.bannerImg}
+                    onChange={formik.handleChange}
+                    />
+                    </div>
+
+                <button type="submit" className=""> Submit! </button>
 
             </form>
 
@@ -107,3 +185,8 @@ function UserSignUpForm({setNewUsers, newUsers}){
 }
 
 export default UserSignUpForm;
+
+
+//Confirmation password ? How would I even? basically write if password && password confirmation password = password? IDK
+
+//Should I take them to the sign in page afterwards? Or should I just have it automatically sign them in?

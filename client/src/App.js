@@ -71,8 +71,10 @@ function App() {
                 <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
 
             </Routes>
+
             {/* <CompetitionCollection competitions={competitions}/> */}
-           {/* <HomePage/> */}
+            {/* <HomePage/> */}
+            
         </div>
     )
 }

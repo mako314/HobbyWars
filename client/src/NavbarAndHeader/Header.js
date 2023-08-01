@@ -14,7 +14,7 @@ function Header({user, setUser}){
 
 
     const loggedInDisplay = (
-        <div>
+        <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a className="mr-5 hover:text-white"> Declare War </a>
             <a className="mr-5 hover:text-white">Placeholder</a>
@@ -25,13 +25,13 @@ function Header({user, setUser}){
 
             {/* Logs a user OUT IF they are logged IN */}
             <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0" onClick = {handleLogout}> Logout </button>
-        </div>
+        </>
     )
 
     const loggedOutDisplay = (
 
         
-        <div>
+        <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a className="mr-5 hover:text-white">Declare War</a>
             <a className="mr-5 hover:text-white">Placeholder</a>
@@ -45,7 +45,8 @@ function Header({user, setUser}){
             <Link to='/login'>
             <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"> Login </button>
             </Link>
-        </div>
+            
+        </>
     )
 
     console.log(user)

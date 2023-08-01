@@ -18,6 +18,8 @@ import UserSignUpForm from './SignUpComponents/UserSignUp';
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';
 
+
+
 function App() {
 
     //Can't forget this so I'll need to include it now absolutely
@@ -53,9 +55,24 @@ function App() {
       }, [])
 
 
+      const loggedInDisplay = (
+        <div>
+          testing if user is logged in
+        </div>
+      )
+
+      const loggedOutDisplay = (
+        <div>
+          testing if user is logged out 
+        </div>
+      )
+
+
     return (
         <div>
-            <Header/>
+            <Header user={user} setUser={setUser}/>
+
+            {user ? loggedInDisplay : loggedOutDisplay }
             <Routes>
                 {/* HOME PAGE ROUTING */}
                 <Route path='/' element={<HomePage/>}/>

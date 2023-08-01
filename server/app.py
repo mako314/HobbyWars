@@ -134,9 +134,10 @@ class Users(Resource):
 
         #How do I make the password hash not visible after it's submitted?
         
-        new_user.password_hash = new_user._password_hash
-        
         db.session.add(new_user)
+
+        new_user.password_hash = new_user._password_hash
+
 
         print(new_user._password_hash)
 

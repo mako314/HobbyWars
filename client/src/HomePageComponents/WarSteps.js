@@ -18,8 +18,8 @@ function WarSteps({}) {
                     </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 1</h2>
-                    <p className="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
+                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 1: Enlist as a Hobby Warrior - Battle for Glory!</h2>
+                    <p className="leading-relaxed">Prepare to join the ranks of legendary Hobby Warriors and battle for creative supremacy! Enroll now in the epic Hobby Wars, where imagination becomes your arsenal, and victory leads to artistic immortality!</p>
                 </div>
                 </div>
                 <div className="flex relative pb-12">
@@ -32,8 +32,8 @@ function WarSteps({}) {
                     </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 2</h2>
-                    <p className="leading-relaxed">Vice migas literally kitsch +1 pok pok. Truffaut hot chicken slow-carb health goth, vape typewriter.</p>
+                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 2: Choose Your Warfront</h2>
+                    <p className="leading-relaxed">Gear up and choose your warfront among the finest hobby battlegrounds! From the Artillery of Artistry to the Culinary Crusades, from the Gardens of Valor to the Craftsmanship Conflict, each domain awaits your valorous endeavors!</p>
                 </div>
                 </div>
                 <div className="flex relative pb-12">
@@ -47,8 +47,8 @@ function WarSteps({}) {
                     </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 3</h2>
-                    <p className="leading-relaxed">Coloring book nar whal glossier master cleanse umami. Salvia +1 master cleanse blog taiyaki.</p>
+                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 3: Unleash Your Creative Arsenal</h2>
+                    <p className="leading-relaxed">Unleash your creative arsenal upon the hallowed grounds of Hobby Wars! Deploy your masterpieces, culinary delights, green wonders, and meticulously crafted triumphs. Your creativity shall be your mightiest weapon!</p>
                 </div>
                 </div>
                 <div className="flex relative pb-12">
@@ -62,8 +62,8 @@ function WarSteps({}) {
                     </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 4</h2>
-                    <p className="leading-relaxed">VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk bespoke try-hard cliche palo santo offal.</p>
+                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">STEP 4: Forging Alliances in the Warrior's Camp</h2>
+                    <p className="leading-relaxed">Forge unbreakable alliances within the esteemed Warrior's Camp! Participate in community voting, rally your fellow warriors, and receive strategic counsel from battle-hardened experts!</p>
                 </div>
                 </div>
                 <div className="flex relative">
@@ -74,8 +74,8 @@ function WarSteps({}) {
                     </svg>
                 </div>
                 <div className="flex-grow pl-4">
-                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">FINISH</h2>
-                    <p className="leading-relaxed">Pitchfork ugh tattooed scenester echo park gastropub whatever cold-pressed retro.</p>
+                    <h2 className="font-medium title-font text-sm text-white mb-1 tracking-wider">FINISH: Conquer and Triumph on the Field of Glory</h2>
+                    <p className="leading-relaxed">March triumphantly towards victory and conquer the challenges laid before you! Ascend the leaderboard to claim your place among the greatest Hobby Warriors! Earn badges, titles, and rewards fit for a true conqueror!</p>
                 </div>
                 </div>
             </div>

@@ -11,17 +11,25 @@ import CompetitionCollection from './CompetitionComponents/CompetitionCollection
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
 import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
 
-//-------Login / Logout Imports--------
+//-------Login / Logout  / Signup Imports--------
 import LoginForm from './LoginComponents/LoginForm';
+import UserSignUpForm from './SignUpComponents/UserSignUp';
 
 function App() {
 
     //Can't forget this so I'll need to include it now absolutely
     const navigate = useNavigate()
 
+    //User Login state capturing
     const [user, setUser] = useState(null)
+
+    //Create a new user State
+    const [newUsers, setNewUsers] = useState([])
+
+    //State grab competitions and display competitions
     const [competitions, setCompetitions] = useState([])
 
+    //Competition Fetching, used to DISPLAY competitions and POST to competitions.
     useEffect(() => {
         fetch("/competitions")
           .then((resp) => resp.json())
@@ -29,7 +37,16 @@ function App() {
             setCompetitions(data)
           })
       }, [])
-    
+    //-------------------------------------------------------------------------------
+
+    useEffect(() => {
+        fetch("/users")
+          .then((resp) => resp.json())
+          .then((data) => {
+            setNewUsers(data)
+          })
+      }, [])
+
 
     return (
         <div>
@@ -49,6 +66,9 @@ function App() {
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
+
+                {/* USER SIGNUP ROUTING*/}
+                <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
 
             </Routes>
             {/* <CompetitionCollection competitions={competitions}/> */}

@@ -15,6 +15,9 @@ import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
 import LoginForm from './LoginComponents/LoginForm';
 import UserSignUpForm from './SignUpComponents/UserSignUp';
 
+//--------------------User Imports---------------------
+import UserDashboard from './UserComponents/UserDashboard';
+
 function App() {
 
     //Can't forget this so I'll need to include it now absolutely
@@ -29,7 +32,7 @@ function App() {
     //State grab competitions and display competitions
     const [competitions, setCompetitions] = useState([])
 
-    //Competition Fetching, used to DISPLAY competitions and POST to competitions.
+    //Competition Fetching, used to DISPLAY Competition and POST to Competition//
     useEffect(() => {
         fetch("/competitions")
           .then((resp) => resp.json())
@@ -38,7 +41,9 @@ function App() {
           })
       }, [])
     //-------------------------------------------------------------------------------
+    
 
+    //USER Fetching, used to DISPLAY USERS and POST to USERS//
     useEffect(() => {
         fetch("/users")
           .then((resp) => resp.json())
@@ -69,6 +74,9 @@ function App() {
 
                 {/* USER SIGNUP ROUTING*/}
                 <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                
+                {/* USER DASHBOARD BY ID? */}
+                <Route path='/user-dashboard/:id' element={<UserDashboard newUsers={newUsers}/>}/>
 
             </Routes>
 

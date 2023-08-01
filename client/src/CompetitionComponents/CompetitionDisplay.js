@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function CompetitionDisplay(){
     const [competition, setCompetition] = useState([])
+    
     // props you'll need const {}
     const { 
         title, 

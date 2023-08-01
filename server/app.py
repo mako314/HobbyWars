@@ -138,9 +138,9 @@ class Users(Resource):
 
         new_user.password_hash = new_user._password_hash
 
-
         print(new_user._password_hash)
 
+        #So I actually needed to add the user before I can hash lol
 
         db.session.commit()
 

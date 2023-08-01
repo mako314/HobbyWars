@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 function Header({user, setUser}){
 
-    const {id} = user // Destructure the ID so I can use it in useParams
+    // const {id} = user // Destructure the ID so I can use it in useParams
 
     const navigate = useNavigate();
     // Here I'll have to do somethings with the user, so I'd like to make sure my users can login first.
@@ -17,7 +17,8 @@ function Header({user, setUser}){
 
     //Navigates a user to their dashboard
     function UserDashClick(e) {
-        navigate(`/user-dashboard/${id}`)
+        const {id} = user
+        navigate(`/user-dashboard/${user.id}`)
     }
 
 
@@ -93,7 +94,7 @@ function Header({user, setUser}){
             </div>
             </Link>
 
-            {user ? loggedInDisplay : loggedOutDisplay }
+            {user ? loggedInDisplay : loggedOutDisplay}
 
 
         </div>

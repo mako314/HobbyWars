@@ -20,6 +20,10 @@ import UserDashboard from './UserComponents/UserDashboard';
 
 
 
+// I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
+
+
+
 function App() {
 
     //Can't forget this so I'll need to include it now absolutely
@@ -93,7 +97,7 @@ function App() {
                 <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
-                <Route path='/user-dashboard/:id' element={<UserDashboard newUsers={newUsers}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user}/>}/>
 
             </Routes>
 

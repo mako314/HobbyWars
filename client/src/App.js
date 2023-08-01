@@ -34,7 +34,7 @@ function App() {
 
                 {/* COMPETITION ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
-                
+
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
             </Routes>

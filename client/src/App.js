@@ -45,7 +45,7 @@ function App() {
     //-------------------------------------------------------------------------------
     
 
-    //USER Fetching, used to DISPLAY USERS and POST to USERS//
+    //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
         fetch("/users")
           .then((resp) => resp.json())
@@ -77,7 +77,7 @@ function App() {
                 {/* HOME PAGE ROUTING */}
                 <Route path='/' element={<HomePage/>}/>
 
-                {/* COMPETITION ROUTING */}
+                {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
 
                 {/* COMPETITION ID ROUTE */}

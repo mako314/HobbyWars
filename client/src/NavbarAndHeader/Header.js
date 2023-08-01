@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function Header({user, setUser}){
 
+    const {id} = user // Destructure the ID so I can use it in useParams
+
+    const navigate = useNavigate();
     // Here I'll have to do somethings with the user, so I'd like to make sure my users can login first.
 
     //Handle a USER LOGGING OUT, IF they are LOGGED IN
@@ -12,14 +15,29 @@ function Header({user, setUser}){
         }).then(setUser(null))
     }
 
+    //Navigates a user to their dashboard
+    function UserDashClick(e) {
+        navigate(`/user-dashboard/${id}`)
+    }
+
 
     const loggedInDisplay = (
         <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+
             <a className="mr-5 hover:text-white"> Declare War </a>
+
             <a className="mr-5 hover:text-white">Placeholder</a>
+
+            {/* Link to all wars / existing and current */}
+            <Link to='/competitions'>
             <a className="mr-5 hover:text-white">Previous Wars</a>
-            <a className="mr-5 hover:text-white">User Dashboard</a>
+            </Link>
+
+            <a className="mr-5 hover:text-white" onClick={UserDashClick}>User Dashboard</a>
+
+            {/* So it seems I can either use UserDashClick or find a way to make link to take me there */}
+
             </nav>
 
 
@@ -33,12 +51,22 @@ function Header({user, setUser}){
         
         <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+
+            {/* May have to login for this */}
             <a className="mr-5 hover:text-white">Declare War</a>
+
             <a className="mr-5 hover:text-white">Placeholder</a>
+            
+            {/* Link to all wars / existing and current */}
+            <Link to='/competitions'>
             <a className="mr-5 hover:text-white">Previous Wars</a>
+            </Link>
+            
+            {/* Link for logged OUT user to sign up */}
             <Link to='/user-signup'>
             <a className="mr-5 hover:text-white">Enlist</a>
             </Link>
+
             </nav>
 
             {/* Links to user login and prompts them to login */}

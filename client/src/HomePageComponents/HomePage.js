@@ -1,6 +1,6 @@
 import React from 'react';
 import HomePageGallery from './HomePageGallery';
-import WarSteps from './WarSteps'
+import WarSteps from './WarSteps';
 
 function HomePage({}) {
 

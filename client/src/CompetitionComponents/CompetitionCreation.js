@@ -70,6 +70,7 @@ function CompetitionCreation({setCompetitions, competitions}){
     return (
         <div>
             <form className="war-form" onSubmit={formik.handleSubmit}>
+                
                     {/* display errors from formik/yup */}
                     { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
 
@@ -275,6 +276,8 @@ function CompetitionCreation({setCompetitions, competitions}){
                     onChange={formik.handleChange}
                     />
                     </div>
+                
+                <button type="submit" className=""> Submit! </button>
 
             </form>
 

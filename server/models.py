@@ -219,3 +219,5 @@ class Entry(db.Model, SerializerMixin):
 
 
     #might need an image for my competitions >.< devil emoji 2x
+
+    #may need to include a host ID and track it with user ID to decide who can close / delete the competitions

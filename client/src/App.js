@@ -4,6 +4,7 @@ import { useNavigate, Route, Routes } from 'react-router-dom';
 
 //-------HomePage Imports-------
 import HomePage from './HomePageComponents/HomePage'
+import Header from './NavbarAndHeader/Header';
 
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
@@ -28,6 +29,7 @@ function App() {
 
     return (
         <div>
+            <Header/>
             <Routes>
                 {/* HOME PAGE ROUTING */}
                 <Route path='/' element={<HomePage/>}/>

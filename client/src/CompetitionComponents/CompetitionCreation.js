@@ -289,3 +289,5 @@ export default CompetitionCreation;
 
 
 // is there a cost to enter? == Is there an enlistment fee?
+
+// need way to grab the key

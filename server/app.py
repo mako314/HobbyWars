@@ -409,6 +409,8 @@ class Competitions(Resource):
             registration_schedule = data['registration_schedule']
         )
 
+        print(new_competition)
+        print("these prints are on line 412")
         db.session.add(new_competition)
         db.session.commit()
 

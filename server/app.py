@@ -122,6 +122,7 @@ class Users(Resource):
             firstName = data['firstName'],
             lastName = data['lastName'],
             username = data['username'],
+            _password_hash = data['_password_hash'],
             age = data['age'],
             bio = data['bio'],
             location = data['location'],
@@ -130,6 +131,8 @@ class Users(Resource):
             profileImg = data['profileImg'],
             bannerImg = data['bannerImg']
         )
+
+        #How do I make the password hash not visible after it's submitted?
 
         db.session.add(new_user)
         db.session.commit()
@@ -409,8 +412,8 @@ class Competitions(Resource):
             registration_schedule = data['registration_schedule']
         )
 
-        print(new_competition)
-        print("these prints are on line 412")
+        # print(new_competition)
+        # print("these prints are on line 412")
         db.session.add(new_competition)
         db.session.commit()
 

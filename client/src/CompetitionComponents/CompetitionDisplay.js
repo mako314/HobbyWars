@@ -33,7 +33,7 @@ function CompetitionDisplay(){
     const {id} = useParams()
 
     useEffect(() => {
-        fetch(`/competitions/${id}`)
+        fetch(`/competition/${id}`)
           .then((resp) => resp.json())
           .then((data) => {
             setCompetition(data)

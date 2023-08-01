@@ -13,7 +13,7 @@ import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
 
 //-------Login / Logout  / Signup Imports--------
 import LoginForm from './LoginComponents/LoginForm';
-import UserSignUpForm from './SignUpComponents/UserSignUp';
+import UserSignUpForm from './UserComponents/UserSignUp';
 
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';

@@ -3,28 +3,46 @@ import React, { useState, useEffect } from "react";
 import HomePage from './HomePage';
 import { useNavigate, Route, Routes } from 'react-router-dom';
 
+//-------Competition Imports--------
+import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
+import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
+
 
 function App() {
 
+    //Can't forget this so I'll need to include it now absolutely
+    const navigate = useNavigate()
+
+    const [competitions, setCompetitions] = useState([])
+
     useEffect(() => {
-        fetch("//competitions")
+        fetch("/competitions")
           .then((resp) => resp.json())
           .then((data) => {
-            setEquipmentArray(data)
+            setCompetitions(data)
           })
       }, [])
     
 
     return (
-        <>
-           <HomePage/>
-        </>
+        <div>
+            <Routes>
+                {/* COMPETITION ROUTING */}
+                <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
+                {/* COMPETITION ID ROUTE */}
+                <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
+            </Routes>
+            {/* <CompetitionCollection competitions={competitions}/> */}
+           {/* <HomePage/> */}
+        </div>
     )
 }
 
 export default App;
 
+//May need to ask Tyler, I'm sure i took equipment by type and such, but I wonder if i can make routes by type like I did ID above, just use params and take in whatever I'm looking for?
 
+//Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'browsing-topics'. I keep getting this damn error
 
 //Pass user around through props, so this will be it's own state, then do like if user: 
 // load account page, if we have a user show this otherwise show a signup form

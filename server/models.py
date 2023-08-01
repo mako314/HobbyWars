@@ -215,3 +215,7 @@ class Entry(db.Model, SerializerMixin):
 
     #originally had this '-user.entry' switching to just '-user'
     # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example
+
+
+
+    #might need an image for my competitions >.< devil emoji 2x

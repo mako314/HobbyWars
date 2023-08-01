@@ -4,17 +4,22 @@ import { useNavigate, Route, Routes } from 'react-router-dom';
 
 //-------HomePage Imports-------
 import HomePage from './HomePageComponents/HomePage'
+import Header from './NavbarAndHeader/Header';
 
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
 import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
 
+//-------Login / Logout Imports--------
+import LoginForm from './LoginComponents/LoginForm';
+
 function App() {
 
     //Can't forget this so I'll need to include it now absolutely
     const navigate = useNavigate()
 
+    const [user, setUser] = useState(null)
     const [competitions, setCompetitions] = useState([])
 
     useEffect(() => {
@@ -28,6 +33,7 @@ function App() {
 
     return (
         <div>
+            <Header/>
             <Routes>
                 {/* HOME PAGE ROUTING */}
                 <Route path='/' element={<HomePage/>}/>
@@ -38,7 +44,12 @@ function App() {
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
 
+                {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/competition-declaration' element={<CompetitionCreation setCompetitions={setCompetitions} competitions={competitions}/>}/>
+
+                {/* LOGIN FORM ROUTING */}
+                <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
+
             </Routes>
             {/* <CompetitionCollection competitions={competitions}/> */}
            {/* <HomePage/> */}

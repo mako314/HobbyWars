@@ -20,6 +20,7 @@ function Header({}){
             </div>
             </Link>
 
+            {/* This will hold other links */}
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
             <a className="mr-5 hover:text-white"> Declare War </a>
             <a className="mr-5 hover:text-white"> </a>

@@ -29,7 +29,9 @@ function Header({user, setUser}){
         <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
-            <a className="mr-5 hover:text-white"> Declare War </a>
+            <Link to='/war-declaration'>
+            <a className="mr-5 hover:text-white">Declare War</a>
+            </Link>
 
             <a className="mr-5 hover:text-white">Placeholder</a>
 
@@ -57,7 +59,8 @@ function Header({user, setUser}){
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
             {/* May have to login for this */}
-            <a className="mr-5 hover:text-white">Declare War</a>
+            
+            <a className="mr-5 hover:text-white"> Declare War </a>
 
             <a className="mr-5 hover:text-white">Placeholder</a>
             

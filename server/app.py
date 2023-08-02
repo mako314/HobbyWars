@@ -423,11 +423,12 @@ class Competitions(Resource):
             prize6 = data['prize6'],
             prize7 = data['prize7'],
             prize8 = data['prize8'],
-            registration_schedule = data['registration_schedule']
+            registration_schedule = data['registration_schedule'],
+            user_id = data['user_id']
         )
 
-        # print(new_competition)
-        # print("these prints are on line 412")
+        print(new_competition)
+        print("these prints are on line 412")
         db.session.add(new_competition)
         db.session.commit()
 

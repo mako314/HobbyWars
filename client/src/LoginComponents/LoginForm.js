@@ -1,6 +1,9 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom"
 
 function LoginForm({user, setUser}){
+    //Take me to my page scotty,
+    const navigate = useNavigate();
 
     // Here I'll have to do somethings with the user, so I'd like to make sure my users can login first.
     // LOGIN / sends information to server-side, sets session, and sets state
@@ -19,6 +22,7 @@ function LoginForm({user, setUser}){
             method: "DELETE"
         }).then(setUser(null))
     }
+
     //Basic login functionality. Send them back to the homepage or dashboard
     function handleLogin(e) {
         e.preventDefault();
@@ -35,9 +39,16 @@ function LoginForm({user, setUser}){
         }).then((resp) => {
             if (resp.ok) {
             resp.json().then((user) => setUser(user));
-            }
+        }
         });
 }
+
+    //Navigation back to homepage or dashboard
+
+    // function handleNavigation(user){
+    //     navigate(`/user-dashboard/${user.id}`)
+    // }
+
 //Checks to see if user was logged in
 console.log(user)
 

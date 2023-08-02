@@ -41,6 +41,8 @@ import UserEdit from './UserComponents/UserEdit';
 //It's gotten late, so for now this list will have to suffice.
 
 
+//3:02 8/2/23: going to work on doing the post properly for a user that is logged in, having his data already populated. 
+
 // Stretch goals
 // 10: Comments under competitions? Also not required
 
@@ -128,7 +130,7 @@ function App() {
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
-                <Route path='/competition-declaration' element={<CompetitionCreation setCompetitions={setCompetitions} competitions={competitions}/>}/>
+                <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>

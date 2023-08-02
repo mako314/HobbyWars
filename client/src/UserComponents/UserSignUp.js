@@ -19,6 +19,10 @@ function UserSignUpForm({setNewUsers, newUsers}){
         email: string().required("You'll need an email address")
     })
 
+    const HobbySchema = object({
+        expertise: number.required('You need an expertise level')
+    })
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -56,6 +60,19 @@ function UserSignUpForm({setNewUsers, newUsers}){
                 })
         }
     })
+
+    //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
+
+    // function handleHobbySelection(){
+    //     const formikHobby = useFormik({
+    //         initialValues: {
+    //             expertise: '',
+    //             user_id: user.id,
+    //             hobby_id: ''
+    //         }, 
+    //         validationSchema: HobbySchema,
+    //     })
+    // }
 
 
     return(

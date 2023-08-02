@@ -49,7 +49,7 @@ class User(db.Model, SerializerMixin):
                        #Entry rules
                        '-entries.user', #Removes recursion back to our user
                        '-entries.user_id', #Removes recursion back to our user
-                    #    '-competitions',
+                       '-competitions.user',
                        ) 
     
     #Random serialize rules that could've been done
@@ -94,6 +94,8 @@ class Hobby(db.Model, SerializerMixin):
     #user_hobby.user removes user data that gets populated from user_hobby
     serialize_rules = ('-user_hobby.hobby', '-user_hobby.user') # SHOULD I ADD THIS -> ('-user_hobby.user')
 
+    #Validations
+
 
 class UserHobby(db.Model, SerializerMixin):
     __tablename__= "user_hobbies"
@@ -109,6 +111,8 @@ class UserHobby(db.Model, SerializerMixin):
     
     #Serialize Rules
     serialize_rules = ('-user','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
+
+    #Validations
 
 
 class Competition(db.Model, SerializerMixin):
@@ -169,12 +173,18 @@ class Competition(db.Model, SerializerMixin):
                        '-results.competitions',
                        #remove user from result portion
                        '-results.user',
-                       '-user'
+                       #Remove users competitions from the user table to avoid maximum recursion (FIRST ONE)
+                       '-user.competitions',
+                       '-user.results',
+                       '-user.entries',         #These 3 remove unnecessary information we'd already have available to us with the ID and such, I just want some basic information from the user.
+                       '-user.user_hobby',       #competitions already holds the entries and results, shouldn't need that from our users. Just basic info
+                       '-user._password_hash'   #Remove hashed passwords.
                        )
     #'-user.competitions'
 
     #The way I see it, all of our user information is readily available within the entries and results. Meaning no user information technically has to appear. You can access it with entry.user_id and results.user_id?
 
+    #Validations
 
 class Result(db.Model, SerializerMixin):
     __tablename__ = "results"
@@ -197,6 +207,8 @@ class Result(db.Model, SerializerMixin):
 
     #'-competitions.result', taking this out for now, it stops infinite recursion but I am just going to remove all of the competitions information.
 
+    #Validations
+
 class Entry(db.Model, SerializerMixin):
     __tablename__ = "entries"
     #Columns
@@ -218,6 +230,25 @@ class Entry(db.Model, SerializerMixin):
 
     #originally had this '-user.entry' switching to just '-user'
     # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example
+
+    #Validations
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

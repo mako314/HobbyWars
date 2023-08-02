@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function CompetitionCreation({setCompetitions, competitions}){
+function CompetitionCreation({user, setCompetitions, competitions}){
 
     // is there a cost to enter? == Is there an enlistment fee?
 
@@ -31,7 +31,7 @@ function CompetitionCreation({setCompetitions, competitions}){
             scoring: '',
             cost_of_entry: '',
             schedule: '',
-            contact: '',
+            contact: user.email, //user.firstName + " " + user.lastName,
             location: '',
             requirements: '',
             competition_tasks: '',
@@ -44,7 +44,8 @@ function CompetitionCreation({setCompetitions, competitions}){
             prize6: '', 
             prize7: '', 
             prize8: '', 
-            registration_schedule: ''
+            registration_schedule: '',
+            user_id: user.id
         },
         validationSchema: formSchema,
         onSubmit: (values) => {

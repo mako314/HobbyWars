@@ -70,7 +70,7 @@ function App() {
     const [userHobbies, setUserHobbies] = useState([])
 
     //State grab HOBBIES and display them need to make a hobby poster
-    const [hobbies, setHobbies] = useState([])
+    // const [hobbies, setHobbies] = useState([]) // Moved this to userHobbyForms
     //-------------------------------------------------------------------------------
 
 
@@ -117,13 +117,16 @@ function App() {
     }, [])
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
-    useEffect(() => {
-      fetch("/hobbies")
-        .then((resp) => resp.json())
-        .then((data) => {
-          setHobbies(data)
-        })
-    }, [])
+    // useEffect(() => {
+    //   fetch("/hobbies")
+    //     .then((resp) => resp.json())
+    //     .then((data) => {
+    //       setHobbies(data)
+    //     })
+    // }, [])
+
+    //Moved to userHobbyForm
+    //hobbies={hobbies}
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
@@ -167,7 +170,7 @@ function App() {
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
-                <Route path='' element ={<UserHobbyForm user={user} hobbies={hobbies} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                <Route path='' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
             </Routes>
 

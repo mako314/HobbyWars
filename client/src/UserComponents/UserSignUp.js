@@ -5,6 +5,10 @@ import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
 
+//-----------------Import UserHobby Form----------------------------
+import UserHobbyForm from "./UserHobbyForm";
+
+
 function UserSignUpForm({setNewUsers, newUsers}){
 
     //display errors
@@ -17,10 +21,6 @@ function UserSignUpForm({setNewUsers, newUsers}){
         firstName: string().required('You need a name'),
         username: string().required("You'll need a username to sign in"),
         email: string().required("You'll need an email address")
-    })
-
-    const HobbySchema = object({
-        expertise: number.required('You need an expertise level')
     })
 
     const formik = useFormik({
@@ -180,6 +180,10 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     onChange={formik.handleChange}
                     />
                     </div>
+
+                    <UserHobbyForm/>
+
+
 
                 <button type="submit" className=""> Submit! </button>
 

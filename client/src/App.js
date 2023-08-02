@@ -28,11 +28,11 @@ import UserEdit from './UserComponents/UserEdit';
 // 1 : CSS of course,
 // 2: Make the competitions hold a user id or something of the sort to make it easy for them to create a competition?
 // 3: Do slight more edits of whether a user is logged in, for example, modify the home page
-// 4: Possibly after signing up either log the user in immediately, or direct them to the login page for them to login.
+// 4: Possibly after signing up either log the user in immediately, or direct them to the login page for them to login. (Preference)
 // 5: Find an additional link to include in the header or remove the place holder
 // 6: Work on the sites theme
-// 7: Possibly make a leaderboard?
-// 8: Actually flesh out validations and such in the backend
+// 7: Possibly make a leaderboard? ( I can use the results table)
+// 8: Actually flesh out validations and such in the backend (@validates)
 // 9: Quite frankly, I'm not sure what much else is required. Likely a lot of the work is going to be in comparisons inside of the user dashboard, so I'll need to throw more things in there or remove things.
 // 11: Delete for competitions, user deletion but confirmation prior to deletion, like a delete button becomes an are you sure with state?
 // 12: Edit for competitions, so users can edit the information inside of the competitions.

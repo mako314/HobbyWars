@@ -19,7 +19,7 @@ function LoginForm({user, setUser}){
             method: "DELETE"
         }).then(setUser(null))
     }
-    //Basic login functionality.
+    //Basic login functionality. Send them back to the homepage or dashboard
     function handleLogin(e) {
         e.preventDefault();
 

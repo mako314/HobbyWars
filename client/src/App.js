@@ -18,7 +18,7 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
-import UserHobby from './UserComponents/UserHobbyForm';
+import UserHobbyForm from './UserComponents/UserHobbyForm';
 
 
 
@@ -70,7 +70,7 @@ function App() {
     const [userHobbies, setUserHobbies] = useState([])
 
     //State grab HOBBIES and display them need to make a hobby poster
-    const [hobbies, setHobbies] = useState([])
+    // const [hobbies, setHobbies] = useState([]) // Moved this to HobbySelector
     //-------------------------------------------------------------------------------
 
 
@@ -117,13 +117,16 @@ function App() {
     }, [])
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
-    useEffect(() => {
-      fetch("/hobbies")
-        .then((resp) => resp.json())
-        .then((data) => {
-          setHobbies(data)
-        })
-    }, [])
+    // useEffect(() => {
+    //   fetch("/hobbies")
+    //     .then((resp) => resp.json())
+    //     .then((data) => {
+    //       setHobbies(data)
+    //     })
+    // }, [])
+
+    //Moved to userHobbyForm
+    //hobbies={hobbies}
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
@@ -161,13 +164,13 @@ function App() {
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 
                 {/* USER SIGNUP ROUTING*/}
-                <Route path='/enlist' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
-                <Route path='' element ={<UserHobby user={user} hobbies={hobbies} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                <Route path='' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
             </Routes>
 

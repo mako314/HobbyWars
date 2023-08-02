@@ -1,21 +1,35 @@
 import React from "react";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function UserHobby({hobbies, user, setUserHobbies, userHobbies}) {
+function UserHobbyForm({user, setUserHobbies, userHobbies}) {
  //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
     const [error, setError] = useState()
 
+    const [hobbies, setHobbies] = useState([])
+
+    useEffect(() => {
+        fetch("/hobbies")
+          .then((resp) => resp.json())
+          .then((data) => {
+            setHobbies(data)
+          })
+      }, [])
+
+      //FRICK, THIS DANG FORMIK IS FOR USER-HOBBY, SO I REALLY NEED TO THINK ABOUT HOW TO DO THIS.
+
+
+
     const formSchema = object({
-        expertise: number().required('You need an expertise level'),
+        expertise: number().positive().required('You need an expertise level'),
     })
-  // I can probably just do this three times? <userHobbyForm/> inside of my user sign up to make three?
+  // I can probably just do this three times? <UserHobbyForm/> inside of my user sign up to make three?
     const formik = useFormik({
         initialValues: {
             expertise: '',
-            user_id: user.id,
+            user_id: '',
             hobby_id: ''
         }, 
         validationSchema: formSchema,
@@ -39,16 +53,16 @@ function UserHobby({hobbies, user, setUserHobbies, userHobbies}) {
                 })
         }
     })
-
+    
     const mappedHobby = hobbies.map((hobby) =>(
-        <option value={hobby.id}> Hobby: {hobby.type_of_hobby}  Description: {hobby.description}</option>
+        <option key={hobby.id} value={hobby.id}> Hobby: {hobby.type_of_hobby}  Description: {hobby.description}</option>
     ))
 
 
     return (
         <select
         className="text-black"
-        name="equipment_id"
+        name="hobby_id"
         value={formik.values.hobby_id}
         onChange={formik.handleChange}>
             <option> Select from the Hobbies below</option>
@@ -57,4 +71,4 @@ function UserHobby({hobbies, user, setUserHobbies, userHobbies}) {
     )
 }
 
-export default UserHobby;
+export default UserHobbyForm;

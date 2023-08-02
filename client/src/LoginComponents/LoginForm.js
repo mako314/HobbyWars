@@ -40,7 +40,7 @@ function LoginForm({user, setUser}){
             if (resp.ok) {
             resp.json().then((user) => {
                 setUser(user)
-                navigate(`/user-dashboard/${user.id}`)});
+                navigate(`/user-dashboard/${user.id}`)}); // <-------- navigates to the dashboard
         }
         });
 }

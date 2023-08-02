@@ -1,4 +1,6 @@
 import React from "react";
+
+//------IMPORT CARDS TO MAP------
 import CompetitionCard from "./CompetitionCard"
 
 function CompetitionCollection({competitions}){

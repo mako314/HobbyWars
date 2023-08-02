@@ -19,7 +19,7 @@ function handleLogout() {
         method: "DELETE"
     }).then(setUser(null))
 }
-
+    //Basic login functionality.
     function handleLogin(e) {
         e.preventDefault();
 
@@ -38,7 +38,7 @@ function handleLogout() {
             }
         });
 }
-
+//Checks to see if user was logged in
 console.log(user)
 
 

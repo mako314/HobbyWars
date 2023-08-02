@@ -4,6 +4,7 @@ import WarSteps from './WarSteps';
 
 function HomePage({}) {
 
+    //Basic home page stuff, it is called inside of app.js
 
     return (
         <div>

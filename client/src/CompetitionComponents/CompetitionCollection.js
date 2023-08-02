@@ -2,7 +2,8 @@ import React from "react";
 import CompetitionCard from "./CompetitionCard"
 
 function CompetitionCollection({competitions}){
-
+    
+    //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
     const competitionCards = competitions.map((competition) =>{
         return <CompetitionCard key={competition.id} 
         id={competition.id}

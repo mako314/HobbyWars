@@ -1,7 +1,7 @@
 import React from 'react';
 
 function WarSteps({}) {
- 
+    // A basic introduction on how the stie works, there are steps a none logged in user can take, but I should possibly edit to include information for a user who has already signed up.
 
     return (
         <section className="text-gray-400 bg-gray-900 body-font">

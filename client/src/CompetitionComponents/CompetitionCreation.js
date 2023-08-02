@@ -6,6 +6,10 @@ import { object, string, number} from 'yup'
 
 function CompetitionCreation({setCompetitions, competitions}){
 
+    // is there a cost to enter? == Is there an enlistment fee?
+
+    // need way to grab the key
+
     //display errors
     const [error, setError] = useState()
 
@@ -288,6 +292,3 @@ function CompetitionCreation({setCompetitions, competitions}){
 export default CompetitionCreation;
 
 
-// is there a cost to enter? == Is there an enlistment fee?
-
-// need way to grab the key

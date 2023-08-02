@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 
 function CompetitionDisplay(){
+
+    //State to capture the competition that was clicked on,
     const [competition, setCompetition] = useState([])
     
     // props you'll need const {}
@@ -31,7 +33,7 @@ function CompetitionDisplay(){
     } = competition 
 
 
-    //call this before trying to use it in the useEffect
+    //call this before trying to use it in the useEffect. You get this data from the navigate inside of competitionCard
     const {id} = useParams()
 
     //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.

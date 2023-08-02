@@ -7,6 +7,7 @@ function CompetitionCard({id,title, objective}){
   //Will need this bad boy later
   const navigate = useNavigate();
 
+  //Once you click on a card it takes you to the display page of said card it is called on the whole div.
   function handleClick(e) {
     navigate(`/competition/${id}`)
 }

@@ -48,7 +48,7 @@ function UserEdit({user, updateUser}){
                     if (res.ok){
                         res.json().then(user =>{
                         updateUser(user)
-                        navigate(`/user-dashboard/${user.id}`)
+                        navigate(`/user-dashboard/${user.id}`) // Return to dashboard
                         console.log(user)
                         })
                     } else {

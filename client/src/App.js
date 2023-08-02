@@ -22,7 +22,29 @@ import UserEdit from './UserComponents/UserEdit';
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
-//So There are definitely some questions I have, they are littered amongst my components. Will continue though. Lets see what else I can really get doing
+// So There are definitely some questions I have, they are littered amongst my components. Will continue though. Lets see what else I can really get doing
+
+//Things left to do include:
+// 1 : CSS of course,
+// 2: Make the competitions hold a user id or something of the sort to make it easy for them to create a competition?
+// 3: Do slight more edits of whether a user is logged in, for example, modify the home page
+// 4: Possibly after signing up either log the user in immediately, or direct them to the login page for them to login.
+// 5: Find an additional link to include in the header or remove the place holder
+// 6: Work on the sites theme
+// 7: Possibly make a leaderboard?
+// 8: Actually flesh out validations and such in the backend
+// 9: Quite frankly, I'm not sure what much else is required. Likely a lot of the work is going to be in comparisons inside of the user dashboard, so I'll need to throw more things in there or remove things.
+// 11: Delete for competitions, user deletion but confirmation prior to deletion, like a delete button becomes an are you sure with state?
+// 12: Edit for competitions, so users can edit the information inside of the competitions.
+// 13: a way to declare results and entries for a competition. So entries should come in, and competitions should give them a result. This will be once again seeing who is logged in, matching it with an ID for the competitions host ID and allowing them to assign placements and look at entries.
+
+//It's gotten late, so for now this list will have to suffice.
+
+
+// Stretch goals
+// 10: Comments under competitions? Also not required
+
+// succesfully logged out page?
 
 
 function App() {

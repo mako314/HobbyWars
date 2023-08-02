@@ -10,7 +10,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
     //display errors
     const [error, setError] = useState()
 
-    //Handle navigation after submission, likely take to display page
+    //Handle navigation after submission, likely take to display page atm takes user home, could take them to their display page if anything with /user-dashboard/user.id
     const navigate = useNavigate()
 
     const formSchema = object({

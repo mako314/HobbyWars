@@ -13,6 +13,9 @@ function UserDashboard({user}) { //newUsers Don't think I'll need this prop
     //State to hold the selected fetched user
     const [selectedUser, setSelectedUser] = useState([])
 
+    //State to confirm deletion (makes a button appear?)
+    const [toggleDelete, setToggleDelete] = useState(true)
+
     //Destructure for props
     const {
         firstName, 
@@ -40,6 +43,25 @@ function UserDashboard({user}) { //newUsers Don't think I'll need this prop
       }, [])
 
 
+    //Time to make a delete for the user, will e a 2 point confirmation. We'll start with a button that is toggled
+    function handleToggle() {
+        setToggleDelete(!toggleDelete)
+    }
+
+    const deleteBtn = (
+        <button onClick={handleToggle}> Delete my account </button>
+    )
+
+    const confirmDelete = (
+        <div>
+        <button> Are you sure you want to delete your account?</button>
+        <button onClick={handleToggle}> No it was a mistake</button>
+        </div>
+    )
+
+    console.log(toggleDelete)
+
+
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     
     //To handle going to the edit page 
@@ -63,6 +85,7 @@ function UserDashboard({user}) { //newUsers Don't think I'll need this prop
             <p>{bannerImg}</p>
 
             <button className="" onClick={handleEdit} > Edit my information. </button>
+            {toggleDelete ? deleteBtn : confirmDelete}
 
         </div>
     )

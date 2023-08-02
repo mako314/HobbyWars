@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -44,30 +44,64 @@ function UserDashboard({user}) { //newUsers Don't think I'll need this prop
 
 
     //Time to make a delete for the user, will e a 2 point confirmation. We'll start with a button that is toggled
+    //This goes in and resets our user data, basically checking all users id to not match up with the user ID that is deleted, meaning it's gone.
+    const userDelete = (userToDelete) => {
+        setNewUsers(newUsers =>
+          newUsers.filter(users => users.id !== userToDelete.id))
+      }
+    
+    //This SHOULD LOG OUT the user after deletion. Could this go inside of the delete itself?
+    function handleLogout() {
+        fetch("/logout", {
+            method: "DELETE"
+        }).then(setUser(null))
+    }
+
+    //Actual DELETE request to the backend.
+    const handleUserDelete = (user) => {
+        console.log(user)
+        fetch(`/user/${user.id}`, {
+          method: "DELETE"
+        })
+          .then(() => {
+            userDelete(user)
+            handleLogout() // By calling log out here, after the account is deleted, the user is then logged out.
+            navigate('/')
+          })
+      }
+
+
+
+    // Button toggle to confirm that the user is wanting to delete their account. 
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
 
+
+    //This button allows you to confirm
     const deleteBtn = (
         <button onClick={handleToggle}> Delete my account </button>
     )
-
+    
+    //maybe confirmation modal after?
     const confirmDelete = (
         <div>
-        <button> Are you sure you want to delete your account?</button>
+        <button onClick={() => handleUserDelete(user)}> Yes DELETE my account.</button>
         <button onClick={handleToggle}> No it was a mistake</button>
         </div>
     )
 
-    console.log(toggleDelete)
+    // console.log(toggleDelete)
+    // console.log(user)
 
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     
     //To handle going to the edit page 
     function handleEdit(e) {
-        const {user_id } = user
-        navigate(`/user-edit/${user_id}`)
+        // const {user_id } = user <- don't need to do this
+        console.log(user.id)
+        navigate(`/user-edit/${user.id}`)
     }
 
     const loggedInDisplay=(

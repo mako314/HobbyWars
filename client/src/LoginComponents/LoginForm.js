@@ -14,11 +14,11 @@ function LoginForm({user, setUser}){
 }
 
     // removes session, removes state
-function handleLogout() {
-    fetch("/logout", {
-        method: "DELETE"
-    }).then(setUser(null))
-}
+    function handleLogout() {
+        fetch("/logout", {
+            method: "DELETE"
+        }).then(setUser(null))
+    }
     //Basic login functionality.
     function handleLogin(e) {
         e.preventDefault();

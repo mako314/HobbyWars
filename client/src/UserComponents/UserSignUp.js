@@ -46,6 +46,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     if (res.ok){
                         res.json().then(user =>{
                         setNewUsers([...newUsers, user])
+                        //If I want the user to login after the account is created, I can pass the login function and call it here with ()
                         navigate('/')
                         console.log(user)
                         })

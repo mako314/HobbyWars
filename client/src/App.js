@@ -134,7 +134,7 @@ function App() {
                 {/* USER SIGNUP ROUTING*/}
                 <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 {/* USER DASHBOARD BY ID? */}
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
             
             </Routes>

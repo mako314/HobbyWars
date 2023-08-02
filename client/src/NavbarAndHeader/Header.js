@@ -81,7 +81,7 @@ function Header({user, setUser}){
         </>
     )
 
-    console.log(user)
+    // console.log(user)
 
     return(
         <header className="text-gray-400 bg-gray-900 body-font">

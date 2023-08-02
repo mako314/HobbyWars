@@ -18,6 +18,7 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
+import UserHobby from './UserComponents/UserHobbyForm';
 
 
 
@@ -64,10 +65,16 @@ function App() {
 
     //State grab competitions and display competitions
     const [competitions, setCompetitions] = useState([])
+
+    //State grab user_hobbies and display them
+    const [userHobbies, setUserHobbies] = useState([])
+
+    //State grab HOBBIES and display them need to make a hobby poster
+    const [hobbies, setHobbies] = useState([])
     //-------------------------------------------------------------------------------
 
 
-    //-------------------------------------------- COMPETITION CODE--------------------------
+    //-------------------------------------------- COMPETITION FETCH / CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
     useEffect(() => {
         fetch("/competitions")
@@ -78,7 +85,7 @@ function App() {
       }, [])
     //-------------------------------------------------------------------------------
     
-    //-------------------------------------------- USER CODE--------------------------
+    //-------------------------------------------- USER FETCH / CODE--------------------------
     
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
@@ -98,7 +105,25 @@ function App() {
           return nUser
         }
       }))
-    }      
+    }
+
+    //-------------------------------------------- USER HOBBIES FETCH / CODE--------------------------
+    useEffect(() => {
+      fetch("/user-hobbies")
+        .then((resp) => resp.json())
+        .then((data) => {
+          setUserHobbies(data)
+        })
+    }, [])
+
+    //-------------------------------------------- HOBBY FETCH / CODE--------------------------
+    useEffect(() => {
+      fetch("/hobbies")
+        .then((resp) => resp.json())
+        .then((data) => {
+          setHobbies(data)
+        })
+    }, [])
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
@@ -140,7 +165,10 @@ function App() {
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
-            
+
+                {/* ALL USER HOBBY ROUTING  */}
+                <Route path='' element ={<UserHobby user={user} hobbies={hobbies} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}

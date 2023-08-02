@@ -38,7 +38,9 @@ function LoginForm({user, setUser}){
             body: JSON.stringify( { username, password } ), //, password
         }).then((resp) => {
             if (resp.ok) {
-            resp.json().then((user) => setUser(user));
+            resp.json().then((user) => {
+                setUser(user)
+                navigate(`/user-dashboard/${user.id}`)});
         }
         });
 }

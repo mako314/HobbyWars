@@ -22,7 +22,7 @@ import UserEdit from './UserComponents/UserEdit';
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
-
+//So There are definitely some questions I have, they are littered amongst my components. Will continue though. Lets see what else I can really get doing
 
 
 function App() {

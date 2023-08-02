@@ -10,13 +10,17 @@ function UserSignUpForm({setNewUsers, newUsers}){
     //display errors
     const [error, setError] = useState()
 
-    //Handle navigation after submission, likely take to display page
+    //Handle navigation after submission, likely take to display page atm takes user home, could take them to their display page if anything with /user-dashboard/user.id
     const navigate = useNavigate()
 
     const formSchema = object({
         firstName: string().required('You need a name'),
         username: string().required("You'll need a username to sign in"),
         email: string().required("You'll need an email address")
+    })
+
+    const HobbySchema = object({
+        expertise: number.required('You need an expertise level')
     })
 
     const formik = useFormik({
@@ -46,6 +50,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
                     if (res.ok){
                         res.json().then(user =>{
                         setNewUsers([...newUsers, user])
+                        //If I want the user to login after the account is created, I can pass the login function and call it here with ()
                         navigate('/')
                         console.log(user)
                         })

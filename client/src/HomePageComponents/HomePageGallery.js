@@ -2,6 +2,8 @@ import React from 'react';
 
 function HomePageGallery({}) {
 
+    //Attempt at a gallery, but it definitely needs work.
+
 
     return (
         <div

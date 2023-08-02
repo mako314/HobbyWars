@@ -1023,6 +1023,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place team will be granted a $25 outdoor gear voucher, allowing them to choose equipment or accessories to enhance their future trekking adventures.",
                 prize8="Eighth Place: The eighth-place team will receive a $20 outdoor gear voucher, providing them with an opportunity to acquire quality gear for their outdoor pursuits.",
                 registration_schedule="Participants can register for the competition through [provide registration details]. The number of teams may be limited, so early registration is encouraged.", # need a way to grab date
+                user_id = 22,
             ),
             Competition(
                 title="Celestial Explorer Challenge",
@@ -1045,6 +1046,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place Prize: With a reward of $50, the seventh-place participant will be celebrated for their engagement in the cosmos and their astronomical feats.",
                 prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
                 registration_schedule="Secure your place in the Celestial Explorer Challenge by registering through [provide registration details]. Limited slots are available, so secure your spot early to join this cosmic quest of a lifetime.", # need a way to grab date
+                user_id = 6,
             ),
             Competition(
                 title="Virtual Culinary Showdown",
@@ -1067,6 +1069,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and culinary expertise.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 gift card to a popular online gourmet food store, allowing them to explore and indulge in gourmet ingredients and culinary delights.",
                 registration_schedule="Participants can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
+                user_id = 28,
             ),
             Competition(
                 title="Coastal Serenity Art Challenge",
@@ -1089,6 +1092,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place artist will receive a $50 cash prize, honoring their efforts and artistic expression.",
                 prize8="Eighth Place: The eighth-place artist will be granted a $25 art supply voucher, allowing them to acquire additional tools and materials to nurture their artistic visions.",
                 registration_schedule="Artists can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
+                user_id = 1,
             ),
             Competition(
                 title="Captured Visions Photography Contest",
@@ -1111,6 +1115,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place photographer will receive a $50 cash prize, honoring their efforts and artistic vision.",
                 prize8="Eighth Place: The eighth-place photographer will be granted a $25 photography gear voucher, allowing them to enhance their photographic arsenal.",
                 registration_schedule="Photographers can submit their captivating images through [provide submission details]. Each participant may enter photographs for one or more of the competition tasks.", # need a way to grab date
+                user_id = 11,
             ),
             Competition(
                 title="Strum and Show Guitar Challenge",
@@ -1133,6 +1138,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place guitarist will receive a $50 cash prize, honoring their efforts and musical expression.",
                 prize8="Eighth Place: The eighth-place guitarist will be granted a $25 gift card to a popular music store, allowing them to explore and expand their guitar gear collection.",
                 registration_schedule="Guitarists can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
+                user_id = 5,
             ),
             Competition(
                 title="ElectraTech Maker Challenge",
@@ -1155,6 +1161,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and technological ingenuity.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 electronics components voucher, allowing them to expand their toolkit and fuel their next creations.",
                 registration_schedule="Makers and DIY enthusiasts can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
+                user_id = 14,
             ),
             Competition(
                 title="CodeCrafters Coding Challenge",
@@ -1177,6 +1184,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and coding ingenuity.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 coding resource voucher, allowing them to enhance their toolkit and explore new coding horizons.",
                 registration_schedule="Programmers can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
+                user_id = 14,
             ),
         ]
         db.session.add_all(competitions)

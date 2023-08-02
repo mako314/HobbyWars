@@ -13,6 +13,8 @@ function UserEdit({user, updateUser}){
     //Handle navigation after submission, likely take to display page
     const navigate = useNavigate()
 
+    //I may want to have them just navigate back to their user dashboard after all is said and done.
+
     const formSchema = object({
         firstName: string().required('You need a name'),
         username: string().required("You'll need a username to sign in"),
@@ -30,8 +32,8 @@ function UserEdit({user, updateUser}){
             location: user.location,
             phone: user.phone,
             email: user.email,
-            profileImg: user.profileImg,
-            bannerImg:user.bannerImg,
+            profileImg: user.profileImg, //this and the one below remain the same as the first time they were logged in.
+            bannerImg:user.bannerImg, 
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
@@ -46,7 +48,7 @@ function UserEdit({user, updateUser}){
                     if (res.ok){
                         res.json().then(user =>{
                         updateUser(user)
-                        navigate('/')
+                        navigate(`/user-dashboard/${user.id}`) // Return to dashboard
                         console.log(user)
                         })
                     } else {
@@ -176,7 +178,7 @@ function UserEdit({user, updateUser}){
                     />
                     </div>
 
-                <button type="submit" className=""> Submit! </button>
+                <button type="submit" className=""> Submit and return to my Dashboard </button>
 
             </form>
 
@@ -185,3 +187,6 @@ function UserEdit({user, updateUser}){
 }
 
 export default UserEdit;
+
+
+// It does not seem possible to edit a password?

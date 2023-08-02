@@ -29,7 +29,9 @@ function Header({user, setUser}){
         <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
-            <a className="mr-5 hover:text-white"> Declare War </a>
+            <Link to='/war-declaration'>
+            <a className="mr-5 hover:text-white">Declare War</a>
+            </Link>
 
             <a className="mr-5 hover:text-white">Placeholder</a>
 
@@ -57,7 +59,8 @@ function Header({user, setUser}){
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 
             {/* May have to login for this */}
-            <a className="mr-5 hover:text-white">Declare War</a>
+            
+            <a className="mr-5 hover:text-white"> Declare War </a>
 
             <a className="mr-5 hover:text-white">Placeholder</a>
             
@@ -67,7 +70,7 @@ function Header({user, setUser}){
             </Link>
             
             {/* Link for logged OUT user to sign up */}
-            <Link to='/user-signup'>
+            <Link to='/enlist'>
             <a className="mr-5 hover:text-white">Enlist</a>
             </Link>
 
@@ -81,7 +84,7 @@ function Header({user, setUser}){
         </>
     )
 
-    console.log(user)
+    // console.log(user)
 
     return(
         <header className="text-gray-400 bg-gray-900 body-font">
@@ -118,7 +121,7 @@ export default Header;
             // </nav>
 
             // {/* Links to user-signup */}
-            // <Link to='/user-signup'>
+            // <Link to='/enlist'>
             // <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"> Enlist </button>
             // </Link>
 

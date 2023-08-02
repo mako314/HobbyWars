@@ -1,7 +1,7 @@
 import React from 'react';
 
 function WarSteps({}) {
- 
+    // A basic introduction on how the stie works, there are steps a none logged in user can take, but I should possibly edit to include information for a user who has already signed up.
 
     return (
         <section className="text-gray-400 bg-gray-900 body-font">
@@ -79,7 +79,7 @@ function WarSteps({}) {
                 </div>
                 </div>
             </div>
-            <img className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://dummyimage.com/1200x500" alt="step"/>
+            <img className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://i.imgur.com/zJNeGXa.png" alt="step"/>
             </div>
         </div>
         </section>

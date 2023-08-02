@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function UserHobby({hobbies, user, setUserHobbies, userHobbies}) {
+function UserHobbyForm({hobbies, user, setUserHobbies, userHobbies}) {
  //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
     const [error, setError] = useState()
 
@@ -57,4 +57,4 @@ function UserHobby({hobbies, user, setUserHobbies, userHobbies}) {
     )
 }
 
-export default UserHobby;
+export default UserHobbyForm;

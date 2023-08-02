@@ -18,7 +18,7 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
-import UserHobby from './UserComponents/UserHobbyForm';
+import UserHobbyForm from './UserComponents/UserHobbyForm';
 
 
 
@@ -167,7 +167,7 @@ function App() {
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
-                <Route path='' element ={<UserHobby user={user} hobbies={hobbies} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                <Route path='' element ={<UserHobbyForm user={user} hobbies={hobbies} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
             </Routes>
 

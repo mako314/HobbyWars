@@ -1,4 +1,6 @@
 import React from 'react';
+
+//-------------------HomePage Component Props-------------------------
 import HomePageGallery from './HomePageGallery';
 import WarSteps from './WarSteps';
 

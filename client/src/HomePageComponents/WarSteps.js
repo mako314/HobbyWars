@@ -79,7 +79,7 @@ function WarSteps({}) {
                 </div>
                 </div>
             </div>
-            <img className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://dummyimage.com/1200x500" alt="step"/>
+            <img className="lg:w-3/5 md:w-1/2 object-cover object-center rounded-lg md:mt-0 mt-12" src="https://i.imgur.com/zJNeGXa.png" alt="step"/>
             </div>
         </div>
         </section>

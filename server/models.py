@@ -150,7 +150,7 @@ class Competition(db.Model, SerializerMixin):
     # notes = db.Column(db.String) # May incldue this as an editable text area
 
     # #Foreign Keys Likely will link this to entries and results instead of a user id
-    # user_id = db.Column(db.Integer, db.ForeignKey('users.id')) <- UNSURE IF NEEDED
+    # user_id = db.Column(db.Integer, db.ForeignKey('users.id')) <- INCORPORATE
     # entry_id = db.Column(db.Integer, db.ForeignKey('entries.id'))
 
     #Relationships

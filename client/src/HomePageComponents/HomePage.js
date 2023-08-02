@@ -13,7 +13,7 @@ function HomePage({}) {
             <div className="container px-5 py-24 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">
                 <div className="rounded-lg h-64 overflow-hidden">
-                    <img alt="content" className="object-cover object-center h-full w-full" src="/home/mako77/code/Flatiron/Projects/HobbyWars/client/public/hobby.png"/>
+                    <img alt="content" className="object-cover object-center h-full w-full" src="https://i.imgur.com/dtGpn8v.png"/>
                 </div>
                 </div>
             </div>

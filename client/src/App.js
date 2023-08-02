@@ -77,6 +77,7 @@ function App() {
     //-------------------------------------------------------------------------------
     
     //-------------------------------------------- USER CODE--------------------------
+    
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
         fetch("/users")
@@ -86,6 +87,7 @@ function App() {
           })
       }, [])
 
+    //This handles updating the user, PATCH
     const updateUser = (userToUpdate) =>{
       setNewUsers(newUsers => newUsers.map(nUser =>{
         if (nUser.id === userToUpdate.id) {
@@ -132,7 +134,7 @@ function App() {
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 
                 {/* USER SIGNUP ROUTING*/}
-                <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                <Route path='/enlist' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>

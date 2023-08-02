@@ -4,16 +4,17 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 function UserDashboard({user}) { //newUsers Don't think I'll need this prop
 
+    //This is used for getting to the edit form portion
+    const navigate = useNavigate();
+
     //This user being passed in as a prop is the state of our logged in user like we have done prior. 
     //The newUsers comment is way in App.js to fetch ALL users and POST a new USER.
 
     //State to hold the selected fetched user
     const [selectedUser, setSelectedUser] = useState([])
 
-    
-    
     //Destructure for props
-    const { 
+    const {
         firstName, 
         lastName, 
         username, 
@@ -38,6 +39,15 @@ function UserDashboard({user}) { //newUsers Don't think I'll need this prop
           })
       }, [])
 
+
+    //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+    
+    //To handle going to the edit page 
+    function handleEdit(e) {
+        const {user_id } = user
+        navigate(`/user-edit/${user_id}`)
+    }
+
     const loggedInDisplay=(
         <div>
             <p>{firstName}</p>
@@ -51,6 +61,9 @@ function UserDashboard({user}) { //newUsers Don't think I'll need this prop
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
+
+            <button className="" onClick={handleEdit} > Edit my information. </button>
+
         </div>
     )
 

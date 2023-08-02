@@ -177,6 +177,12 @@ class UserByID(Resource):
             for key in data:
                 setattr(user, key, data[key])
             db.session.add(user)
+
+            #The below two lines should be able to take the password and hash it after it has been patched, if it has been patched
+            user.password_hash = user._password_hash
+
+            print(user._password_hash)
+
             db.session.commit()
 
             response = make_response(user.to_dict(), 202)

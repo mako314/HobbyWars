@@ -17,6 +17,7 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';
+import UserEdit from './UserComponents/UserEdit';
 
 
 
@@ -25,6 +26,8 @@ import UserDashboard from './UserComponents/UserDashboard';
 
 
 function App() {
+
+    //---------------------------------USE STATES----------------------------
 
     //Can't forget this so I'll need to include it now absolutely
     const navigate = useNavigate()
@@ -37,7 +40,10 @@ function App() {
 
     //State grab competitions and display competitions
     const [competitions, setCompetitions] = useState([])
+    //-------------------------------------------------------------------------------
 
+
+    //-------------------------------------------- COMPETITION CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
     useEffect(() => {
         fetch("/competitions")
@@ -48,7 +54,7 @@ function App() {
       }, [])
     //-------------------------------------------------------------------------------
     
-
+    //-------------------------------------------- USER CODE--------------------------
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
         fetch("/users")
@@ -58,6 +64,17 @@ function App() {
           })
       }, [])
 
+    const updateUser = (userToUpdate) =>{
+      setNewUsers(newUsers => newUsers.map(nUser =>{
+        if (nUser.id === userToUpdate.id) {
+          return userToUpdate
+        } else {
+          return nUser
+        }
+      }))
+    }      
+
+    //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
       const loggedInDisplay = (
         <div>
@@ -78,15 +95,14 @@ function App() {
 
             {user ? loggedInDisplay : loggedOutDisplay }
             <Routes>
+
                 {/* HOME PAGE ROUTING */}
                 <Route path='/' element={<HomePage/>}/>
 
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
-
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
-
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/competition-declaration' element={<CompetitionCreation setCompetitions={setCompetitions} competitions={competitions}/>}/>
 
@@ -95,10 +111,10 @@ function App() {
 
                 {/* USER SIGNUP ROUTING*/}
                 <Route path='/user-signup' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
-                
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user}/>}/>
-
+                <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
+            
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}

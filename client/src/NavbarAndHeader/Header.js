@@ -22,6 +22,9 @@ function Header({user, setUser}){
     }
 
 
+    
+    //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+
     const loggedInDisplay = (
         <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -118,3 +121,5 @@ export default Header;
             // <Link to='/user-signup'>
             // <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"> Enlist </button>
             // </Link>
+
+    //Could there possibly be nested <a> </a>?

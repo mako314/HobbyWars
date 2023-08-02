@@ -134,12 +134,13 @@ class Users(Resource):
 
         #How do I make the password hash not visible after it's submitted?
         
-        new_user.password_hash = new_user._password_hash
-        
         db.session.add(new_user)
+
+        new_user.password_hash = new_user._password_hash
 
         print(new_user._password_hash)
 
+        #So I actually needed to add the user before I can hash lol
 
         db.session.commit()
 
@@ -176,6 +177,12 @@ class UserByID(Resource):
             for key in data:
                 setattr(user, key, data[key])
             db.session.add(user)
+
+            #The below two lines should be able to take the password and hash it after it has been patched, if it has been patched
+            user.password_hash = user._password_hash
+
+            print(user._password_hash)
+
             db.session.commit()
 
             response = make_response(user.to_dict(), 202)

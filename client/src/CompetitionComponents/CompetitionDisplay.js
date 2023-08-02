@@ -31,8 +31,10 @@ function CompetitionDisplay(){
     } = competition 
 
 
+    //call this before trying to use it in the useEffect
     const {id} = useParams()
 
+    //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
     useEffect(() => {
         fetch(`/competition/${id}`)
           .then((resp) => resp.json())
@@ -40,6 +42,8 @@ function CompetitionDisplay(){
             setCompetition(data)
           })
       }, [])
+
+    // (TYLER) May want to put this stuff ABOVE the prop deconstruction, but when state is set it reloads the thing anyway
 
 
     return(

@@ -18,8 +18,9 @@ function UserSignUpForm({setUser, setNewUsers, newUsers}){
     const navigate = useNavigate()
 
     //-------------------------------Login after SignUP-----------------------------------------
-    function handleLogin(e) {
-        e.preventDefault();
+    function handleLogin() {
+        // e.preventDefault();
+        // Was passing in (e)
 
         let username = formik.values.username;
         let password = formik.values.password;
@@ -208,6 +209,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers}){
                     </div>
 
                     <UserHobbyForm/>
+                    {/* I STILL NEED TO MAKE A FORM FOR THE  ACTUAL USERHOBBY THIS IS JUST HOBBIES... MAN... */}
 
 
 

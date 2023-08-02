@@ -18,7 +18,7 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 //--------------------User Imports---------------------
 import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
-import UserHobbyForm from './UserComponents/UserHobbyForm';
+import HobbySelector from './UserComponents/HobbySelector';
 
 
 
@@ -70,7 +70,7 @@ function App() {
     const [userHobbies, setUserHobbies] = useState([])
 
     //State grab HOBBIES and display them need to make a hobby poster
-    // const [hobbies, setHobbies] = useState([]) // Moved this to userHobbyForms
+    // const [hobbies, setHobbies] = useState([]) // Moved this to HobbySelector
     //-------------------------------------------------------------------------------
 
 
@@ -125,7 +125,7 @@ function App() {
     //     })
     // }, [])
 
-    //Moved to userHobbyForm
+    //Moved to HobbySelector
     //hobbies={hobbies}
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
@@ -170,7 +170,7 @@ function App() {
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
-                <Route path='' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                <Route path='' element ={<HobbySelector user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
             </Routes>
 

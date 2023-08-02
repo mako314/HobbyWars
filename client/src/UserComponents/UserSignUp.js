@@ -209,7 +209,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers}){
                     </div>
 
                     <UserHobbyForm/>
-                    {/* I STILL NEED TO MAKE A FORM FOR THE  ACTUAL USERHOBBY THIS IS JUST HOBBIES... MAN... */}
+                    {/* I STILL NEED TO MAKE A FORM FOR THE  ACTUAL USERHOBBY THIS IS JUST HOBBy SELECTION. MAN... */}
 
 
 

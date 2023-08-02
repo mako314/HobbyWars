@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function HobbySelector({user, setUserHobbies, userHobbies}) {
+function UserHobbyForm({user, setUserHobbies, userHobbies}) {
  //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
     const [error, setError] = useState()
 
@@ -25,7 +25,7 @@ function HobbySelector({user, setUserHobbies, userHobbies}) {
     const formSchema = object({
         expertise: number().positive().required('You need an expertise level'),
     })
-  // I can probably just do this three times? <HobbySelector/> inside of my user sign up to make three?
+  // I can probably just do this three times? <UserHobbyForm/> inside of my user sign up to make three?
     const formik = useFormik({
         initialValues: {
             expertise: '',
@@ -71,4 +71,4 @@ function HobbySelector({user, setUserHobbies, userHobbies}) {
     )
 }
 
-export default HobbySelector;
+export default UserHobbyForm;

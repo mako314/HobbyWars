@@ -164,7 +164,7 @@ function App() {
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 
                 {/* USER SIGNUP ROUTING*/}
-                <Route path='/enlist' element={<UserSignUpForm setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>

@@ -60,7 +60,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     return (
         <select
         className="text-black"
-        name="equipment_id"
+        name="hobby_id"
         value={formik.values.hobby_id}
         onChange={formik.handleChange}>
             <option> Select from the Hobbies below</option>

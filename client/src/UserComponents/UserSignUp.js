@@ -9,7 +9,7 @@ import { object, string, number} from 'yup'
 import UserHobbyForm from "./UserHobbyForm";
 
 
-function UserSignUpForm({setNewUsers, newUsers}){
+function UserSignUpForm({setUser, setNewUsers, newUsers}){
 
     //display errors
     const [error, setError] = useState()
@@ -17,6 +17,31 @@ function UserSignUpForm({setNewUsers, newUsers}){
     //Handle navigation after submission, likely take to display page atm takes user home, could take them to their display page if anything with /user-dashboard/user.id
     const navigate = useNavigate()
 
+    //-------------------------------Login after SignUP-----------------------------------------
+    function handleLogin(e) {
+        e.preventDefault();
+
+        let username = formik.values.username;
+        let password = formik.values.password;
+
+        fetch("/login", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            },
+            body: JSON.stringify( { username, password } ), //, password
+        }).then((resp) => {
+            if (resp.ok) {
+            resp.json().then((user) => {
+                setUser(user)
+                // navigate(`/user-dashboard/${user.id}`)
+            });
+        }
+        });
+}
+
+
+    //Formik stuff --------------------------------------------
     const formSchema = object({
         firstName: string().required('You need a name'),
         username: string().required("You'll need a username to sign in"),
@@ -51,6 +76,7 @@ function UserSignUpForm({setNewUsers, newUsers}){
                         res.json().then(user =>{
                         setNewUsers([...newUsers, user])
                         //If I want the user to login after the account is created, I can pass the login function and call it here with ()
+                        handleLogin()
                         navigate('/')
                         console.log(user)
                         })

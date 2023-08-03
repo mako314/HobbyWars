@@ -550,16 +550,17 @@ class ResultsByID(Resource):
         result = Result.query.filter(Result.id == id).first()
 
         if result:
-            #try:
-            data = request.get_json()
-            for key in data:
-                setattr(result, key, data[key])
-            db.session.add(result)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(result, key, data[key])
+                db.session.add(result)
+                db.session.commit()
 
-            response = make_response(result.to_dict(), 202)
+                response = make_response(result.to_dict(), 202)
 
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -600,22 +601,23 @@ class Entries(Resource):
     
     #POST an Entry
     def post(self):
-        #try:
-        data = request.get_json()
-        entry = Entry(
-            submission = data['submission'],
-            description = data['description'],
-            user_id = data['user_id'],
-            competition_id = data['competition_id']
-        )
+        try:
+            data = request.get_json()
+            entry = Entry(
+                submission = data['submission'],
+                description = data['description'],
+                user_id = data['user_id'],
+                competition_id = data['competition_id']
+            )
 
-        db.session.add(entry)
-        db.session.commit()
+            db.session.add(entry)
+            db.session.commit()
 
-        return make_response(entry.to_dict(), 201)
+            return make_response(entry.to_dict(), 201)
         
-        #except ValueError:
-  
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
 api.add_resource(Entries, '/entries')
 #------------------------------------------------------------------------------------------------------------------------------
 
@@ -640,16 +642,17 @@ class EntriesByID(Resource):
         entry = Entry.query.filter(Entry.id == id).first()
 
         if entry:
-            #try
-            data = request.get_json()
-            for key in data:
-                setattr(entry, key, data[key])
-            db.session.add(entry)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(entry, key, data[key])
+                db.session.add(entry)
+                db.session.commit()
 
-            response = make_response(entry.to_dict(), 202)
+                response = make_response(entry.to_dict(), 202)
             
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({

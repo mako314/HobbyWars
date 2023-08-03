@@ -100,6 +100,11 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     const loggedInDisplay = (
         <>
 
+        {/* display errors from formik/yup */}
+        { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+
+        {/* display errors from backend */}
+
         <form>
         {/* {formik.values.user_id = user.id} */}
         <div>

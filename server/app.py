@@ -401,39 +401,41 @@ class Competitions(Resource):
     
     #POST a Competition
     def post(self):
-        #try:
-        data = request.get_json()
-        new_competition = Competition(
-            title = data['title'],
-            objective = data['objective'],
-            description = data['description'],
-            scoring = data['scoring'],
-            cost_of_entry = data['cost_of_entry'],
-            schedule = data['schedule'],
-            contact = data['contact'],
-            location = data['location'],
-            requirements = data['requirements'],
-            competition_tasks = data['competition_tasks'],
-            safety_measures = data['safety_measures'],
-            prize1 = data['prize1'],
-            prize2 = data['prize2'],
-            prize3 = data['prize3'],
-            prize4 = data['prize4'],
-            prize5 = data['prize5'],
-            prize6 = data['prize6'],
-            prize7 = data['prize7'],
-            prize8 = data['prize8'],
-            registration_schedule = data['registration_schedule'],
-            user_id = data['user_id']
-        )
+        try:
+            data = request.get_json()
+            new_competition = Competition(
+                title = data['title'],
+                objective = data['objective'],
+                description = data['description'],
+                scoring = data['scoring'],
+                cost_of_entry = data['cost_of_entry'],
+                schedule = data['schedule'],
+                contact = data['contact'],
+                location = data['location'],
+                requirements = data['requirements'],
+                competition_tasks = data['competition_tasks'],
+                safety_measures = data['safety_measures'],
+                prize1 = data['prize1'],
+                prize2 = data['prize2'],
+                prize3 = data['prize3'],
+                prize4 = data['prize4'],
+                prize5 = data['prize5'],
+                prize6 = data['prize6'],
+                prize7 = data['prize7'],
+                prize8 = data['prize8'],
+                registration_schedule = data['registration_schedule'],
+                user_id = data['user_id']
+            )
 
-        print(new_competition)
-        print("these prints are on line 412")
-        db.session.add(new_competition)
-        db.session.commit()
+            print(new_competition)
+            print("these prints are on line 412")
+            db.session.add(new_competition)
+            db.session.commit()
 
-        return make_response(new_competition.to_dict(), 201)
-        #except ValueError:
+            return make_response(new_competition.to_dict(), 201)
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
 
 api.add_resource(Competitions,'/competitions')
 #------------------------------------------------------------------------------------------------------------------------------
@@ -459,16 +461,17 @@ class CompetitionByID(Resource):
         competition = Competition.query.filter(Competition.id == id).first()
 
         if competition:
-            #try:
-            data = request.get_json()
-            for key in data:
-                setattr(competition, key, data[key])
-            db.session.add(competition)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(competition, key, data[key])
+                db.session.add(competition)
+                db.session.commit()
 
-            response = make_response(competition.to_dict(), 202)
+                response = make_response(competition.to_dict(), 202)
 
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -511,20 +514,21 @@ class Results(Resource):
     
     #POST a Result
     def post(self):
-        #try:
-        data = request.get_json()
-        result = Result(
-            placement = data['placement'],
-            user_id = data['user_id'],
-            competition_id = data['competition_id']
-        )
+        try:
+            data = request.get_json()
+            result = Result(
+                placement = data['placement'],
+                user_id = data['user_id'],
+                competition_id = data['competition_id']
+            )
 
-        db.session.add(result)
-        db.session.commit()
+            db.session.add(result)
+            db.session.commit()
 
-        return make_response(result.to_dict(), 201)
+            return make_response(result.to_dict(), 201)
     
-        #except ValueError:
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
 api.add_resource(Results, '/results')
 #------------------------------------------------------------------------------------------------------------------------------

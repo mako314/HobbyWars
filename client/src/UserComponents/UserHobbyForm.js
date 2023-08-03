@@ -36,7 +36,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     const formik = useFormik({
         initialValues: {
             expertise: '',
-            user_id: '',
+            user_id: user.id,
             hobby_id: ''
         }, 
         validationSchema: formSchema,
@@ -89,14 +89,16 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
 
     // formik.values.user_id = user.id
-    console.log(user.id)
-    console.log(hobbyDescription)
-    console.log(hobbyID)
+    // console.log(user.id)
+    // console.log(hobbyDescription)
+    // console.log(hobbyID)
     
 
 //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     const loggedInDisplay = (
         <>
+
+        <form>
         {/* {formik.values.user_id = user.id} */}
         <div>
             <select
@@ -124,9 +126,14 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
             />
         </div>
 
+        <button type="submit" className=""> Submit! </button>
+        <div> </div> 
+        </form>
+
         <Link to= '/user-dashboard/'>
         <button> Back </button>
         </Link>
+        {/* ^can delete this later */}
         </>
     )
 

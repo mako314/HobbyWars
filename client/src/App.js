@@ -71,9 +71,18 @@ function App() {
 
     //State grab HOBBIES and display them need to make a hobby poster
     // const [hobbies, setHobbies] = useState([]) // Moved this to HobbySelector
-    //-------------------------------------------------------------------------------
-
-
+    
+    
+    //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
+    
+    useEffect(() => {
+      fetch("/check_session").then((response) => {
+        if (response.ok) {
+          response.json().then((user) => setUser(user));
+        }
+      });
+    }, []);
+    
     //-------------------------------------------- COMPETITION FETCH / CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
     useEffect(() => {

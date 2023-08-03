@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect, useState } from 'react'
 import { Link ,useNavigate } from "react-router-dom";
-// import {useFormik} from "formik"
-// import { object, string, number} from 'yup'
+import {useFormik} from "formik"
+import { object, string, number} from 'yup'
 import UserHobbyForm from "./UserHobbyForm";
 
 function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
@@ -10,22 +10,84 @@ function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
     //Handle navigation
     const navigate = useNavigate()
 
-
+    //handle Errors
+    const [error, setError] = useState()
+    
     //set the amount of hobby forms to render
     const [hobbyAmount, setHobbyAmount] = useState(0)
 
     //toggle buttons
-    const [formsGenerated, setFormsGenerated] = useState(true)
+    const [buttonsGenerated, setButtonsGenerated] = useState(true)
 
+    console.log(user)
+//-------------------------------Trying it with formik... XD---------------------------------------------------------------------------------
+    const formSchema = object({
+        expertise: number().positive().required('You need an expertise level 1-10'),
+    })
 
-    console.log(hobbyAmount)
-
+    const formik = useFormik({
+        initialValues: {
+            expertise: '',
+            user_id: '',
+            hobby_id: ''
+        }, 
+        validationSchema: formSchema,
+        onSubmit: (values) => {
+            console.log("here")
+            fetch('/user-hobbies' , {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(values)
+            })
+                .then(res => {
+                    if (res.ok){
+                        res.json().then(userHobby =>{
+                        userHobby.user_id = user.id
+                        setUserHobbies([...userHobbies, userHobby]) //spreads and updates our userHobby state in APP.js allowing it to post
+                        console.log(userHobby)
+                        })
+                    } else {
+                        res.json().then(error => setError(error)) //for backend errors
+                    }
+                })
+        }
+    })
+//---------------------------------------Can Delete this stuff likely------------------------------------------------------------------------
+    
     //set the amount of hobby addition forms to populate. 
     //I may not even need this, I can just pass it to the mega function.
     // const handleAmount = (event) => {
     //     setHobbyAmount(event.target.value)
     //     hobbiesToAdd()
     // }
+
+    //Toggle to display submit, back, and hobby add button. This might not be needed if I can just find a way to toggle the buttons after an event value has been declared
+    //Toggle was not the way to do it.
+    // const toggleButtons = (event) => {
+    //     setButtonsGenerated(!buttonsGenerated)
+    // }
+
+//-------------------------------------------------------------------------------------------------------------------------------
+
+    //Function to fire off other functions above.
+    const handleChanges = (event) =>{
+        // hold the number of forms to populate
+        let selectedValue = Number(event.target.value)
+
+        //Set the amount of hobby values i.e 5 hobby forms, this gets used in hobbieToADD
+        setHobbyAmount(selectedValue)
+
+        if (selectedValue){
+            setButtonsGenerated(false)
+        } else if (selectedValue === 0){
+            setButtonsGenerated(true)
+        }
+
+        //Takes the hobbyAmount and Adds x amount of user hobby forms
+        hobbiesToAdd()
+    }
 
     //display as many hobby additions as the user 
     const hobbiesToAdd = () => {
@@ -35,31 +97,13 @@ function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
             <div key={i}>
                 <UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>
             </div>
-        )
-        }
+            
+        )}
         return hobbyForms
     }
-    
-    //Toggle to display submit, back, and hobby add button. This might not be needed if I can just find a way to toggle the buttons after an event value has been declared
-    //Toggle was not the way to do it.
-    // const toggleButtons = (event) => {
-    //     setFormsGenerated(!formsGenerated)
-    // }
 
-    //Function to fire off other functions above.
-    const handleChanges = (event) =>{
-        let selectedValue = Number(event.target.value)
-        setHobbyAmount(selectedValue)
-        if (selectedValue){
-            setFormsGenerated(false)
-        } else if (selectedValue === 0){
-            setFormsGenerated(true)
-        }
-        hobbiesToAdd()
-        // toggleButtons()
-    }
-
-    console.log(formsGenerated)
+    console.log(hobbyAmount)
+    console.log(buttonsGenerated)
 
 
 
@@ -121,11 +165,12 @@ function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
                 <option value={4}> 4 </option>
                 <option value={5}> 5 </option>
             </select>
-            
-            {hobbiesToAdd(displayButtons)}
 
-            {formsGenerated ? noButtons : displayButtons} 
+            <form onSubmit={formik.handleSubmit}>
+            {hobbiesToAdd()}
 
+            {buttonsGenerated ? noButtons : displayButtons} 
+            </form>
 
         </div>
 

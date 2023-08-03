@@ -93,7 +93,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     )
 
     // console.log(toggleDelete)
-    // console.log(user)
+    console.log(user)
 
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------

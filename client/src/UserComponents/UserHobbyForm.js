@@ -103,9 +103,9 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         setHobbyID(event.target.value); //this can grab the ID
     }
 
-    const backToDash =  () => {
-        navigate(`/user-dashboard/${user.id}`)
-    }
+    // const backToDash =  () => {
+    //     navigate(`/user-dashboard/${user.id}`)
+    // }
 
 
     //Map over hobby descriptions that were set above and solely take out the descriptions,
@@ -120,16 +120,16 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     
 
 //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+// Going to try and remove the form portion here and add it to MasterUserHobbyForm
     const loggedInDisplay = (
         <>
-
+        
         {/* display errors from formik/yup */}
         { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
 
         {/* display errors from backend */}
 
         <form onSubmit={formik.handleSubmit}>
-        {/* {formik.values.user_id = user.id} */}
         <div>
             <select
             className="text-black"
@@ -194,6 +194,8 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         <>
         {user ? loggedInDisplay : loggedOutDisplay}
         </>
+
+        //I can either add the buttons in here depending on the state buttonsGenerated
 
     )
 }

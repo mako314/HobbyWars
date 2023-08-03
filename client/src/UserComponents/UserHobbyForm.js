@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
@@ -16,7 +16,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 //Grab hobby ID
     const [hobbyID, setHobbyID] = useState([])
 
-
+//This useEffect grabs the data for the hobbies itself, there's probably a way to filter the descriptions out to display them on a div but alas.
     useEffect(() => {
         fetch("/hobbies")
           .then((resp) => resp.json())
@@ -63,8 +63,10 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     
     //map over description data
     const mappedHobby = hobbies.map((hobby) =>(
-        <option key={hobby.id} value={hobby.id}> Hobby: {hobby.type_of_hobby}  Description: {hobby.description}</option>
+        <option key={hobby.id} value={hobby.id}> Hobby: {hobby.type_of_hobby}</option>
     ))
+
+    //Description: {hobby.description}
 
 
     //This will handle conditional rendering and making it where we can update the id / fetch the description data
@@ -73,27 +75,29 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         setHobbyID(event.target.value); //this can grab the ID
     }
 
+    //wait for hobby id to be set and then use it to pull out data for that hobby, just description.
     useEffect(() => {
-        fetch(`/hobby/${hobbyID}}`)
+        fetch(`/hobby/${hobbyID}`)
           .then((resp) => resp.json())
           .then((data) => {
             setHobbyDescription(data)
           })
       }, [hobbyID]) 
 
-    const mappedHobbyDescriptions = hobbyDescription.map((hobby) =>(
-        <div>
-        Description
-        <p>{hobby.description} </p>
-        </div>
-    ))
-
-    formik.values.user_id = user.id
+    //Map over hobby descriptions that were set above and solely take out the descriptions,
+   //Originally I had a map over here, but hobbyDescription returns me one piece of data. I can't map over one piece of data...
 
 
+    // formik.values.user_id = user.id
+    console.log(user.id)
+    console.log(hobbyDescription)
+    console.log(hobbyID)
+    
 
-    return (
+//---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+    const loggedInDisplay = (
         <>
+        {/* {formik.values.user_id = user.id} */}
         <div>
             <select
             className="text-black"
@@ -105,7 +109,10 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
             </select>
         </div>
 
-        {mappedHobbyDescriptions}
+        <div>
+        Description
+        <p>{hobbyDescription.description} </p>
+        </div>
 
         <div className="user-signup-input">
             <label> Expertise Level? </label>
@@ -116,8 +123,61 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
             onChange={formik.handleChange}
             />
         </div>
+
+        <Link to= '/user-dashboard/'>
+        <button> Back </button>
+        </Link>
         </>
+    )
+
+    const loggedOutDisplay = (
+        <>
+        <div>
+        Please Log in to access this data
+        </div>
+        <Link to='/login'>
+        <button> Login </button>
+        </Link>
+        </>
+        
+    )
+
+
+
+    return (
+        <>
+        {user ? loggedInDisplay : loggedOutDisplay}
+        </>
+
     )
 }
 
 export default UserHobbyForm;
+
+{/* <>
+<div>
+    <select
+    className="text-black"
+    name="hobby_id"
+    value={formik.values.hobby_id}
+    onChange={handleHobbyDisplay}>
+        <option> Select from the Hobbies below</option>
+        {mappedHobby}
+    </select>
+</div>
+
+<div>
+Description
+<p>{hobbyDescription.description} </p>
+</div>
+
+<div className="user-signup-input">
+    <label> Expertise Level? </label>
+    <input
+    type="text"
+    name="expertise"
+    value={formik.values.expertise}
+    onChange={formik.handleChange}
+    />
+</div>
+</> */}

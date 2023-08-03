@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { Link ,useParams, useNavigate } from 'react-router-dom'
 
 function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don't think I'll need this prop
 
@@ -117,7 +117,10 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-
+            
+            <Link to='/user-hobby-selection'>
+            <button> Add more hobbies!</button>
+            </Link>
             <button className="" onClick={handleEdit} > Edit my information. </button>
             {toggleDelete ? deleteBtn : confirmDelete}
 

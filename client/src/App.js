@@ -20,6 +20,9 @@ import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
 import UserHobbyForm from './UserComponents/UserHobbyForm';
 
+//--------------------Hobby Imports---------------------
+import HobbyAdd from './HobbyComponents.js/HobbyAdd';
+
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
@@ -69,10 +72,10 @@ function App() {
     //State grab user_hobbies and display them
     const [userHobbies, setUserHobbies] = useState([])
 
-    //State grab HOBBIES and display them need to make a hobby poster
-    // const [hobbies, setHobbies] = useState([]) // Moved this to HobbySelector
+    //State grab HOBBIES and display them need to make a hobby post, 
+    const [hobbyAdder, setHobbyAdder] = useState([]) // Moved this to UserHobbyForm
     
-    
+
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
     useEffect(() => {
@@ -126,13 +129,13 @@ function App() {
     }, [])
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
-    // useEffect(() => {
-    //   fetch("/hobbies")
-    //     .then((resp) => resp.json())
-    //     .then((data) => {
-    //       setHobbies(data)
-    //     })
-    // }, [])
+    useEffect(() => {
+      fetch("/hobbies")
+        .then((resp) => resp.json())
+        .then((data) => {
+          setHobbyAdder(data)
+        })
+    }, [])
 
     //Moved to userHobbyForm
     //hobbies={hobbies}
@@ -181,6 +184,8 @@ function App() {
                 {/* ALL USER HOBBY ROUTING  */}
                 <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
+                {/* ADD A HOBBY ROUTE */}
+                <Route path='add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}

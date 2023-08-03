@@ -6,6 +6,8 @@ import { object, string, number} from 'yup'
 
 function UserHobbyForm({user, setUserHobbies, userHobbies}) {
  //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
+    
+ //generate errors Please grab the error code portion and input into the userdisplay div
     const [error, setError] = useState()
 
 // Grab ALL Hobbies
@@ -134,6 +136,11 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         <button> Back </button>
         </Link>
         {/* ^can delete this later */}
+
+
+        <button>
+            Don't see your hobby from the drop down? Add It here!
+        </button>
         </>
     )
 

@@ -5,6 +5,10 @@ import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
 function UserHobbyForm({user, setUserHobbies, userHobbies}) {
+    
+    //Handle navigation
+    const navigate = useNavigate()
+
  //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
     
  //generate errors Please grab the error code portion and input into the userdisplay div
@@ -20,12 +24,32 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
 //This useEffect grabs the data for the hobbies itself, there's probably a way to filter the descriptions out to display them on a div but alas.
     useEffect(() => {
+        if (user)
         fetch("/hobbies")
           .then((resp) => resp.json())
           .then((data) => {
             setHobbies(data)
           })
       }, [])
+
+
+//wait for hobby id to be set and then use it to pull out data for that hobby, just description.
+    // const FetchHobbyDescriptions = () => {
+    //     useEffect(() => {
+    //     fetch(`/hobby/${hobbyID}`)
+    //       .then((resp) => resp.json())
+    //       .then((data) => {
+    //         setHobbyDescription(data)
+    //       })
+    //   }, [hobbyID])}
+
+      useEffect(() => {
+        fetch(`/hobby/${hobbyID}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setHobbyDescription(data)
+          })
+      }, [hobbyID]) 
 
       //I'd like to add some if (users) around the useEffects, maybe group them together for cleaner code and less error. ATM if a person visits the site and is not signed in, they still fire off.
 //FRICK, THIS DANG FORMIK IS FOR USER-HOBBY, SO I REALLY NEED TO THINK ABOUT HOW TO DO THIS.
@@ -79,14 +103,10 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         setHobbyID(event.target.value); //this can grab the ID
     }
 
-    //wait for hobby id to be set and then use it to pull out data for that hobby, just description.
-    useEffect(() => {
-        fetch(`/hobby/${hobbyID}`)
-          .then((resp) => resp.json())
-          .then((data) => {
-            setHobbyDescription(data)
-          })
-      }, [hobbyID]) 
+    const backToDash =  () => {
+        navigate(`/user-dashboard/${user.id}`)
+    }
+
 
     //Map over hobby descriptions that were set above and solely take out the descriptions,
    //Originally I had a map over here, but hobbyDescription returns me one piece of data. I can't map over one piece of data...
@@ -143,10 +163,8 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
         </form>
 
-        <Link to= '/user-dashboard/'>
-        <button> Back </button>
-        </Link>
-        {/* ^can delete this later */}
+        <button onClick={backToDash}> Back </button>
+        {/* working now */}
 
         <div> </div>
         <button>

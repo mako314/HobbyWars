@@ -43,11 +43,9 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
         }
     })
 
-
-
-    return(
-
+    const loggedInDisplay = (
         <div>
+
         <form onSubmit={formik.handleSubmit}>
 
         <div className="user-signup-input">
@@ -73,10 +71,59 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
         <button type="submit" className=""> Add my Hobby! </button>
 
         </form>
-            
-
+    
         </div>
+    )
+
+    const loggedOutDisplay = (
+    <div>
+        <p> Please login to add any hobbies to our available hobby list.</p>
+        <div></div>
+        <Link to='/login'>
+        <button> Login </button>
+        </Link>
+    </div>
+    )
+
+
+
+    return(
+        <>
+        
+        {user ? loggedInDisplay : loggedOutDisplay}
+
+        </>
     )
 }
 
 export default HobbyAdd;
+
+{/* <div>
+<form onSubmit={formik.handleSubmit}>
+
+<div className="user-signup-input">
+    <label> What is your hobby? </label>
+    <input
+    type="text"
+    name="type_of_hobby"
+    value={formik.values.type_of_hobby}
+    onChange={formik.handleChange}
+    />
+</div>
+
+<div className="user-signup-input">
+    <label> Please enter a short description of the hobby </label>
+    <textarea
+    type="text"
+    name="description"
+    value={formik.values.description}
+    onChange={formik.handleChange}
+    />
+</div>
+
+<button type="submit" className=""> Add my Hobby! </button>
+
+</form>
+    
+
+</div> */}

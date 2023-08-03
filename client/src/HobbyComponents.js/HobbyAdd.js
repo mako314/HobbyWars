@@ -48,7 +48,7 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
     return(
 
         <div>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
 
         <div className="user-signup-input">
             <label> What is your hobby? </label>

@@ -87,6 +87,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     const confirmDelete = (
         <div>
         <button onClick={() => handleUserDelete(user)}> Yes DELETE my account.</button>
+        <div></div>
         <button onClick={handleToggle}> No it was a mistake</button>
         </div>
     )
@@ -117,11 +118,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-            
+            <div>-------------buttons!---------------</div>
             <Link to='/user-hobby-selection'>
             <button> Add more hobbies!</button>
             </Link>
+            <div></div>
             <button className="" onClick={handleEdit} > Edit my information. </button>
+            <div></div>
             {toggleDelete ? deleteBtn : confirmDelete}
 
         </div>

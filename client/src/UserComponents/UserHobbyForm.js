@@ -27,9 +27,10 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
           })
       }, [])
 
-      //FRICK, THIS DANG FORMIK IS FOR USER-HOBBY, SO I REALLY NEED TO THINK ABOUT HOW TO DO THIS.
+      //I'd like to add some if (users) around the useEffects, maybe group them together for cleaner code and less error. ATM if a person visits the site and is not signed in, they still fire off.
+//FRICK, THIS DANG FORMIK IS FOR USER-HOBBY, SO I REALLY NEED TO THINK ABOUT HOW TO DO THIS.
 
-
+    console.log(user)
 
     const formSchema = object({
         expertise: number().positive().required('You need an expertise level 1-10'),
@@ -43,6 +44,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         }, 
         validationSchema: formSchema,
         onSubmit: (values) => {
+            console.log("here")
             fetch('/user-hobbies' , {
                 method: "POST",
                 headers: {
@@ -92,6 +94,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
     // formik.values.user_id = user.id
     // console.log(user.id)
+
     // console.log(hobbyDescription)
     // console.log(hobbyID)
     
@@ -105,7 +108,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
         {/* display errors from backend */}
 
-        <form>
+        <form onSubmit={formik.handleSubmit}>
         {/* {formik.values.user_id = user.id} */}
         <div>
             <select
@@ -133,8 +136,11 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
             />
         </div>
 
-        <button type="submit" className=""> Submit! </button>
-        <div> </div> 
+        <button type="submit" className=""> Submit! </button> 
+        {/* ^This button can take them to a new page */}
+
+        <div> </div>
+
         </form>
 
         <Link to= '/user-dashboard/'>
@@ -142,7 +148,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         </Link>
         {/* ^can delete this later */}
 
-
+        <div> </div>
         <button>
             Don't see your hobby from the drop down? Add It here!
         </button>

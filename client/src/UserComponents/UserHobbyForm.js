@@ -51,10 +51,9 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
           })
       }, [hobbyID]) 
 
-      //I'd like to add some if (users) around the useEffects, maybe group them together for cleaner code and less error. ATM if a person visits the site and is not signed in, they still fire off.
-//FRICK, THIS DANG FORMIK IS FOR USER-HOBBY, SO I REALLY NEED TO THINK ABOUT HOW TO DO THIS.
-
-    // console.log(user)
+    //I'd like to add some if (users) around the useEffects, maybe group them together for cleaner code and less error. ATM if a person visits the site and is not signed in, they still fire off.
+    
+    console.log(user)
 
     const formSchema = object({
         expertise: number().positive().required('You need an expertise level 1-10'),
@@ -94,8 +93,6 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         <option key={hobby.id} value={hobby.id}> Hobby: {hobby.type_of_hobby}</option>
     ))
 
-    //Description: {hobby.description}
-
 
     //This will handle conditional rendering and making it where we can update the id / fetch the description data
     const handleHobbyDisplay = (event) => {
@@ -103,6 +100,8 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         setHobbyID(event.target.value); //this can grab the ID
     }
 
+
+    // ----- NAVIGATION BACK TO DASH AFTER HITTING BACK BUTTON-------
     // const backToDash =  () => {
     //     navigate(`/user-dashboard/${user.id}`)
     // }
@@ -154,23 +153,23 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
             />
         </div>
 
-        {/* <button type="submit" className=""> Submit! </button>  */}
+        <button type="submit" className=""> Submit! </button> 
         {/* ^ UNCOMMENT THIS IT WORKS ///This button can take them to a new page */}
-        {/* <div> </div> */}
+        <div> </div>
         {/* UNCOMMENT THIS DIV this top div right here is just for spacing purposes */}
         </form>
 
         {/* <button onClick={backToDash}> Back </button> */}
         {/* UNCOMMENT BUTTON TO HAVE IT WORKING working now */}
 
-        {/* <div> </div> */}
+        <div> </div>
         {/* UNCOMMENT THESE DIVS this top div right here is just for spacing purposes */}
 
-        {/* <Link to='/add-a-hobby'>
+        <Link to='/add-a-hobby'>
         <button>
             Don't see your hobby from the drop down? Add It here!
         </button>
-        </Link> */}
+        </Link>
         {/* UNCOMMENT THIS BUTTON IT IS FUNCTIONING, EDITING TO TEST */}
         </>
     )

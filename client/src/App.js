@@ -170,7 +170,7 @@ function App() {
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
-                <Route path='' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
             </Routes>
 

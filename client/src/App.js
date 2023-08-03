@@ -185,7 +185,7 @@ function App() {
                 <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
 
                 {/* ADD A HOBBY ROUTE */}
-                <Route path='add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
+                <Route path='/add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}

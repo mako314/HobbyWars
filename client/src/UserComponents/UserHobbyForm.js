@@ -158,18 +158,21 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
         <button type="submit" className=""> Submit! </button> 
         {/* ^This button can take them to a new page */}
-
         <div> </div>
-
+        {/* this top div right here is just for spacing purposes */}
         </form>
 
         <button onClick={backToDash}> Back </button>
         {/* working now */}
 
         <div> </div>
+        {/* this top div right here is just for spacing purposes */}
+
+        <Link to='/add-a-hobby'>
         <button>
             Don't see your hobby from the drop down? Add It here!
         </button>
+        </Link>
         </>
     )
 

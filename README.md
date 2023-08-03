@@ -179,4 +179,7 @@ would need a placement
 entry:
 
 NEED submission
-need competition ID, user ID should be already logged from being logged in
+need competition ID, user ID should be already logged from being logged in'
+
+
+should freaking make it where you can't submit the same exact hobby like in validations

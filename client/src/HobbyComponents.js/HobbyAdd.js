@@ -34,6 +34,7 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
                 if (res.ok){
                     res.json().then(newHobby => {
                         setHobbyAdder([...hobbyAdder, newHobby])
+                        // navigate('/user-hobby-selection')
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -42,6 +43,11 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
             })
         }
     })
+
+    //Ideally I'd want this fire off after they're done adding a hobby, but I'd like to make it so they can add multiple at a time.
+    const navigateToSelection = () => {
+        navigate('/user-hobby-selection')  
+    }
 
     const loggedInDisplay = (
         <div>
@@ -67,8 +73,9 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
             onChange={formik.handleChange}
             />
         </div>
-
-        <button type="submit" className=""> Add my Hobby! </button>
+ 
+        <button type="submit" className="" onSubmit= {navigateToSelection}> Add my Hobby! </button>
+        {/* onSubmit={navigateToSelection} */}
 
         </form>
     

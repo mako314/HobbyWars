@@ -109,10 +109,8 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
 
     //Map over hobby descriptions that were set above and solely take out the descriptions,
-   //Originally I had a map over here, but hobbyDescription returns me one piece of data. I can't map over one piece of data...
+    //Originally I had a map over here, but hobbyDescription returns me one piece of data. I can't map over one piece of data...
 
-
-    // formik.values.user_id = user.id
     // console.log(user.id)
 
     // console.log(hobbyDescription)
@@ -157,22 +155,23 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         </div>
 
         {/* <button type="submit" className=""> Submit! </button>  */}
-        {/* ^This button can take them to a new page */}
+        {/* ^ UNCOMMENT THIS IT WORKS ///This button can take them to a new page */}
         {/* <div> </div> */}
-        {/* this top div right here is just for spacing purposes */}
+        {/* UNCOMMENT THIS DIV this top div right here is just for spacing purposes */}
         </form>
 
         {/* <button onClick={backToDash}> Back </button> */}
-        {/* working now */}
+        {/* UNCOMMENT BUTTON TO HAVE IT WORKING working now */}
 
-        <div> </div>
-        {/* this top div right here is just for spacing purposes */}
+        {/* <div> </div> */}
+        {/* UNCOMMENT THESE DIVS this top div right here is just for spacing purposes */}
 
         {/* <Link to='/add-a-hobby'>
         <button>
             Don't see your hobby from the drop down? Add It here!
         </button>
         </Link> */}
+        {/* UNCOMMENT THIS BUTTON IT IS FUNCTIONING, EDITING TO TEST */}
         </>
     )
 

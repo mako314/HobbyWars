@@ -4,7 +4,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function HobbyAdd({user}) {
+function EntryForm({user, setEntries, entries, updateEntry}) {
     
     const [error, setError] = useState()
     
@@ -18,8 +18,10 @@ function HobbyAdd({user}) {
 
     const formik = useFormik({
         initialValues: {
-            type_of_hobby: '',
+            submission: '',
             description: '',
+            user_id: '',
+            competition_id: ''
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
@@ -32,9 +34,9 @@ function HobbyAdd({user}) {
             })
             .then(res => {
                 if (res.ok){
-                    res.json().then(newHobby => {
-                        setHobbyAdder([...hobbyAdder, newHobby])
-                        navigate('/user-hobby-selection')
+                    res.json().then(entry => {
+                        setEntries([...entries, entry])
+                        // navigate('/user-hobby-selection')
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -85,7 +87,7 @@ function HobbyAdd({user}) {
 
     const loggedOutDisplay = (
     <div>
-        <p> Please login to add any hobbies to our available hobby list.</p>
+        <p> Please login to submit any entries to this competition.</p>
         <div></div>
         <Link to='/login'>
         <button> Login </button>
@@ -104,4 +106,4 @@ function HobbyAdd({user}) {
     )
 }
 
-export default HobbyAdd;
+export default EntryForm;

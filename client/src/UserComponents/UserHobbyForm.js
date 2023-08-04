@@ -49,7 +49,7 @@ const navigate = useNavigate()
 
     //I'd like to add some if (users) around the useEffects, maybe group them together for cleaner code and less error. ATM if a person visits the site and is not signed in, they still fire off.
     
-    console.log(user)
+    // console.log(user)
 
     const formSchema = object({
         expertise: number().positive().required('You need an expertise level 1-10'),
@@ -102,6 +102,8 @@ const navigate = useNavigate()
         navigate(`/user-dashboard/${user.id}`)
     }
 
+
+    //Magic code, waits for the user data to be populates, and then allows for setting the values.
     useEffect(() => {
         if (user && user.id){
         formik.setValues({
@@ -128,6 +130,7 @@ const navigate = useNavigate()
         { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
 
         {/* display errors from backend */}
+        {error && <p>{error}</p>}
 
         <form onSubmit={formik.handleSubmit}>
         <div>

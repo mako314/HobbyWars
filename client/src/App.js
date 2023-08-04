@@ -74,7 +74,10 @@ function App() {
     const [userHobbies, setUserHobbies] = useState([])
 
     //State grab HOBBIES and display them need to make a hobby post, 
-    const [hobbyAdder, setHobbyAdder] = useState([]) // Moved this to UserHobbyForm
+    const [hobbyAdder, setHobbyAdder] = useState([])
+
+    //State to grab ENTRIES and display them, working on post:
+    const [entries, setEntries] = useState([])
     
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
@@ -100,6 +103,30 @@ function App() {
       }, [])
     //-------------------------------------------------------------------------------
     
+    //-------------------------------------------- ENTRY FETCH / CODE--------------------------
+    
+    useEffect(() => {
+        fetch("/entries")
+          .then((resp) => resp.json())
+          .then((data) => {
+            setEntries(data)
+          })
+      }, [])
+
+
+      //This handles updating the ENTRY [PATCH]
+      const updateEntry = (entryToUpdate) =>{
+        setEntries(entries => entries.map(entry =>{
+          if (entry.id === entryToUpdate.id) {
+            return entryToUpdate
+          } else {
+            return entry
+          }
+        }))
+      }
+
+    //-------------------------------------------------------------------------------
+
     //-------------------------------------------- USER FETCH / CODE--------------------------
     
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//

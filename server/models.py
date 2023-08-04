@@ -83,20 +83,22 @@ class User(db.Model, SerializerMixin):
         
     @validates("age")
     def validates_age(self, key, age):
+        age = int(age)
         if age >= 18:
             return age
         else:
             raise ValueError("Sorry, but you must be 18 years or older to sign up.")
     
-    @validates("username")
-    def validate_username(self, key, username):
-        if not username or len(username) <= 0:
-            raise ValueError("Username is required.")
-        else:
-            user = User.query.filter(User.username == username).first()
-            if user:
-                raise ValueError("Sorry, but this username is already taken.")
-        return username
+    # @validates("username")
+    # def validate_username(self, key, username):
+    #     if not username or len(username) <= 0:
+    #         raise ValueError("Username is required.")
+    #     else:
+    #         user = User.query.filter(User.username == username).first()
+    #         if user:
+    #             raise ValueError("Sorry, but this username is already taken.")
+    #     return username
+    #This kind of breaks my patch
     
     @validates(" _password_hash")
     def validate_password(self, key,  _password_hash):

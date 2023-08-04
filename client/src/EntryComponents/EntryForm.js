@@ -4,7 +4,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
+function HobbyAdd({user}) {
     
     const [error, setError] = useState()
     
@@ -23,7 +23,7 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/hobbies' , {
+            fetch('/entries' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -105,33 +105,3 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
 }
 
 export default HobbyAdd;
-
-{/* <div>
-<form onSubmit={formik.handleSubmit}>
-
-<div className="user-signup-input">
-    <label> What is your hobby? </label>
-    <input
-    type="text"
-    name="type_of_hobby"
-    value={formik.values.type_of_hobby}
-    onChange={formik.handleChange}
-    />
-</div>
-
-<div className="user-signup-input">
-    <label> Please enter a short description of the hobby </label>
-    <textarea
-    type="text"
-    name="description"
-    value={formik.values.description}
-    onChange={formik.handleChange}
-    />
-</div>
-
-<button type="submit" className=""> Add my Hobby! </button>
-
-</form>
-    
-
-</div> */}

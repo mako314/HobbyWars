@@ -53,7 +53,7 @@ class Login(Resource):
         user = User.query.filter(User.username == username).first()
         #Grab password
         password = data['password']
-        print(user)
+        # print(user)
         #Test to see if password matches
         if user:
             if user.authenticate(password):
@@ -138,7 +138,7 @@ class Users(Resource):
 
             new_user.password_hash = new_user._password_hash
 
-            print(new_user._password_hash)
+            # print(new_user._password_hash)
 
             #So I actually needed to add the user before I can hash lol
 
@@ -183,7 +183,7 @@ class UserByID(Resource):
                 #Actually it does not seem possible to edit a password
                 user.password_hash = user._password_hash
 
-                print(user._password_hash)
+                # print(user._password_hash)
 
                 db.session.commit()
 

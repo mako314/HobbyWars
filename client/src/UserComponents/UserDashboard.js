@@ -18,7 +18,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     
     //Destructure for props
     
-    console.log(selectedUser)
+    // console.log(selectedUser)
     const {
         firstName, 
         lastName, 
@@ -34,11 +34,18 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         competitions
     } = selectedUser;
 
-    console.log(competitions)
+
+    // console.log(competitions)
+
+    // console.log(selectedUser.username)
 
     const mappedCompetitions = competitions?.map((competition) => {
-        return <p>{competition.title}</p>
+        return <div>{competition.title}</div>
     })
+
+    // function handleCompNavigation(competition) {
+    //     navigate(`/competition/${competition.id}`)
+    // }
 
     console.log(mappedCompetitions)
 
@@ -135,7 +142,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
             <p>--------------------</p>
-            {mappedCompetitions}
+            <div> {mappedCompetitions} </div>
+            
 
 
             <div>-------------buttons!---------------</div>

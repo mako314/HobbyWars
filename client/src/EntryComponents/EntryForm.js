@@ -35,7 +35,6 @@ function EntryForm({user, setEntries, entries, compID}) {
             .then(res => {
                 if (res.ok){
                     res.json().then(entry => {
-                        console.log("I've ran")
                         setEntries([...entries, entry])
                         // navigate('/user-hobby-selection')
                         //Add where you want it to go here / anything else you want it to do
@@ -98,6 +97,9 @@ function EntryForm({user, setEntries, entries, compID}) {
         })
     }
       }, [user])
+
+    // console.log(user.id)
+    // console.log(compID)
 
 
 

@@ -15,6 +15,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
     //State to confirm deletion (makes a button appear?)
     const [toggleDelete, setToggleDelete] = useState(true)
+
+    //State to display some info on the competitions a user has entered:
+    const [enteredComps, setEnteredComps] = useState([])
     
     //Destructure for props
     
@@ -31,28 +34,69 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         email, 
         profileImg, 
         bannerImg,
-        competitions
+        competitions,
+        entries,
     } = selectedUser;
 
+    console.log(selectedUser)
 
-    // console.log(competitions)
+    console.log(entries)
 
-    // console.log(selectedUser.username)
 
+    //Display the competitions the user hosts
     const mappedCompetitions = competitions?.map((competition) => {
-        return <div>{competition.title}</div>
+        return <>
+        <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
+        </>
     })
+
+    //click and navigate to the competition display page
+    function navigateToCompetition(id) {
+        // const {user_id } = user <- don't need to do this
+        console.log(user.id)
+        navigate(`/competition/${id}`)
+    }
 
     // function handleCompNavigation(competition) {
     //     navigate(`/competition/${competition.id}`)
     // }
 
-    console.log(mappedCompetitions)
+    //This is bugging where it tells me .map is not a thing again, I wonder why?
+    //Display users entries
+    // useEffect(() => {
+    //     if (entries){
+    //         return  mappedEntires = entries?.map((entry) => {
+    //             return (<div>
+    //                 {entry.submission}
+    //                 {entry.description}
+                    
+    //                 </div>)
+    //         })
+    // }
+    //   }, [entries])
+
+    // const mappedEntires = entries?.map((entry) => {
+    //         return <div>
+    //             {entry.submission}
+    //             {entry.description}
+                
+    //             </div>
+    //     })
+
+
+    // Going to fetch the competition ID's
+    // useEffect(() => {
+    //     fetch(`/competition/${entry.competition_id}`)
+    //       .then((resp) => resp.json())
+    //       .then((data) => {
+    //         setEnteredComps(data)
+    //       })
+    //   }, [])
+
+
+    // console.log(mappedCompetitions)
 
     
-
-
-
     // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
     const {id} = useParams()
 
@@ -141,8 +185,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-            <p>--------------------</p>
+            <p>---------------------------------Competitions------------------------</p>
             <div> {mappedCompetitions} </div>
+
+            <p>---------------------------------Entries------------------------</p>
+
+            {/* <div>{mappedEntires}</div> */}
+
             
 
 

@@ -26,6 +26,7 @@ import HobbyAdd from './HobbyComponents.js/HobbyAdd';
 
 //--------------------Entry Imports---------------------
 import EntryForm from './EntryComponents/EntryForm';
+import EntryEdit from './EntryComponents/EditEntry';
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
@@ -233,6 +234,7 @@ function App() {
 
                 {/* ADD AN ENTRY ROUTE */}
                 <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
+                <Route path='/edit-entry' element={<EntryEdit user={user} />}/>
 
             </Routes>
 

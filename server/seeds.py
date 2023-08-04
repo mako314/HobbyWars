@@ -4,7 +4,7 @@ from app import app
 from models import db, User, Hobby, UserHobby, Competition, Result, Entry
 
 from random import randint, choice as rc
-import pandas as pd
+
 
 if __name__ == '__main__':
     with app.app_context():

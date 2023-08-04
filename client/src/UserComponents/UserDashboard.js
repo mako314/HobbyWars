@@ -155,7 +155,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p> Sorry, but you must be logged in to view this page.</p>
             {/* Maybe a button here that takes them to login? */}
             {/* Or I could incorporate the functionality here and also allow for them to login here? */}
+            <Link to='/login'>
             <button> Login </button>
+            </Link>
         </div>
     )
 

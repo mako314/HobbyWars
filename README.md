@@ -183,3 +183,7 @@ need competition ID, user ID should be already logged from being logged in'
 
 
 should freaking make it where you can't submit the same exact hobby like in validations
+^ done I think
+
+
+need to make more front end validations with yup for competitions and other things.

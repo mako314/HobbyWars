@@ -6,6 +6,20 @@ import { object, string, number} from 'yup'
 
 function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+
     //Handle navigation
     const navigate = useNavigate()
 
@@ -102,9 +116,9 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
 
     // ----- NAVIGATION BACK TO DASH AFTER HITTING BACK BUTTON-------
-    // const backToDash =  () => {
-    //     navigate(`/user-dashboard/${user.id}`)
-    // }
+    const backToDash =  () => {
+        navigate(`/user-dashboard/${user.id}`)
+    }
 
 
     //Map over hobby descriptions that were set above and solely take out the descriptions,
@@ -159,7 +173,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         {/* UNCOMMENT THIS DIV this top div right here is just for spacing purposes */}
         </form>
 
-        {/* <button onClick={backToDash}> Back </button> */}
+        <button onClick={backToDash}> Back </button>
         {/* UNCOMMENT BUTTON TO HAVE IT WORKING working now */}
 
         <div> </div>

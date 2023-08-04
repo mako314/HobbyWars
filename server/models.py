@@ -73,9 +73,7 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
 
-
-
-    #Validations ( need to add one to make sure user has username > 3 characters)
+   #Validations ( need to add one to make sure user has username > 3 characters)
     @validates("email")
     def validates_email(self, key, email):
         if len(email) > 0 and "@"  in email:
@@ -95,7 +93,7 @@ class User(db.Model, SerializerMixin):
         if not username or len(username) <= 0:
             raise ValueError("Username is required.")
         else:
-            user = User.query.filter_by(username=username).first()
+            user = User.query.filter(User.username == username).first()
             if user:
                 raise ValueError("Sorry, but this username is already taken.")
         return username
@@ -127,10 +125,13 @@ class Hobby(db.Model, SerializerMixin):
     #Validations
     @validates("type_of_hobby")
     def validate_type_of_hobby(self, key, type_of_hobby):
-        if not type_of_hobby and len( type_of_hobby) <= 0:
+        if not type_of_hobby or len( type_of_hobby) <= 6:
             raise ValueError("A hobby requires more than 6 characters, the more specific the better")
         else:
-            return type_of_hobby
+            hobby = Hobby.query.filter(Hobby.type_of_hobby == type_of_hobby).first()
+            if hobby:
+                raise ValueError("Sorry, but this hobby already exists.")
+        return type_of_hobby
         
     @validates("description")
     def validate_description(self, key, description):
@@ -158,6 +159,7 @@ class UserHobby(db.Model, SerializerMixin):
     #Validations
     @validates("expertise")
     def validate_expertise(self, key, expertise):
+        expertise = int(expertise)
         if expertise and 0 <= expertise < 10:
             return expertise
         else:

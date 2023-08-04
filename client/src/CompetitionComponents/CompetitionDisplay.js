@@ -1,15 +1,36 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function CompetitionDisplay(){
+function CompetitionDisplay({user, setCompetitions, competitions}){
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
+
+    //Link you to another realm
+    const navigate = useNavigate();
 
     //State to capture the competition that was clicked on,
     const [competition, setCompetition] = useState([])
+
+    //Toggle to confirm deletion of competition
+    const [toggleDelete, setToggleDelete] = useState(true)
+
     
     // props you'll need const {}
-    const { 
+    const {
+        user_id,
         title, 
         objective, 
         description, 
@@ -45,10 +66,56 @@ function CompetitionDisplay(){
           })
       }, [])
 
+
+    //-----------------------------------DELETE PORTION--------------------------------
+    const competitionDelete = (competitionToDelete) => {
+        setCompetitions(setCompetitions =>
+          setCompetitions.filter(competition => competition.id !== competitionToDelete.id))
+      }
+    
+    
+    const handleCompetitionDelete = (competition) => {
+        console.log(competition)
+        fetch(`/competition/${competition.id}`, {
+          method: "DELETE"
+        })
+          .then(() => {
+            competitionDelete(competition)
+            navigate('/competitions')
+          })
+      }
+    
+    const deleteBtn = (
+    <div>
+        <button onClick={handleToggle}> Delete my competition </button>
+    </div>
+    )
+
+    const confirmDelete = (
+        <div>
+        <button onClick={() => handleCompetitionDelete(competition)}> Yes DELETE my competition.</button>
+        <div></div>
+        <button onClick={handleToggle}> No it was a mistake</button>
+        </div>
+    )
+
+    function handleToggle() {
+        setToggleDelete(!toggleDelete)
+    }
+
+    const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
+
+
+
+    
+    //-----------------------------------------------------------------------------------
+
     // (TYLER) May want to put this stuff ABOVE the prop deconstruction, but when state is set it reloads the thing anyway
+    if (user.id === user_id) {
 
-
-    return(
+    }
+    
+    const loggedInDisplay=(
         <div>
             <p>{title}</p>
             <p>{objective}</p>
@@ -71,7 +138,40 @@ function CompetitionDisplay(){
             <p>{prize8}</p>
             <p>{registration_schedule}</p>
 
+            
+            {user.id === user_id ? userConfirm : "Would you like to submit an entry? BUTTON"}
         </div>
+    )
+    const loggedOutDisplay=(
+        <div>
+            <p>{title}</p>
+            <p>{objective}</p>
+            <p>{description}</p>
+            <p>{scoring}</p>
+            <p>{cost_of_entry}</p>
+            <p>{schedule}</p>
+            <p>{contact}</p>
+            <p>{location}</p>
+            <p>{requirements}</p>
+            <p>{competition_tasks}</p>
+            <p>{safety_measures}</p>
+            <p>{prize1}</p>
+            <p>{prize2}</p>
+            <p>{prize3}</p>
+            <p>{prize4}</p>
+            <p>{prize5}</p>
+            <p>{prize6}</p>
+            <p>{prize7}</p>
+            <p>{prize8}</p>
+            <p>{registration_schedule}</p>
+        </div>
+    )
+
+    return(
+        <>
+        {user ? loggedInDisplay : loggedOutDisplay}
+        </>
+        
     )
 }
 

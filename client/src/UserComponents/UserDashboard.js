@@ -28,8 +28,12 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         phone, 
         email, 
         profileImg, 
-        bannerImg 
+        bannerImg,
+        competitions
     } = selectedUser;
+
+
+
 
     const {id} = useParams()
 
@@ -118,6 +122,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
+            {/* <p>{selectedUser.competitions.objective}</p> */}
+
+
             <div>-------------buttons!---------------</div>
             <Link to='/user-hobby-selection'>
             <button> Add more hobbies!</button>

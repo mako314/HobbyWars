@@ -169,7 +169,7 @@ function App() {
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
 

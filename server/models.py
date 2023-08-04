@@ -125,8 +125,8 @@ class Hobby(db.Model, SerializerMixin):
     #Validations
     @validates("type_of_hobby")
     def validate_type_of_hobby(self, key, type_of_hobby):
-        if not type_of_hobby or len( type_of_hobby) <= 6:
-            raise ValueError("A hobby requires more than 6 characters, the more specific the better")
+        if not type_of_hobby or len( type_of_hobby) <= 3:
+            raise ValueError("A hobby requires more than 3 characters, the more specific the better")
         else:
             hobby = Hobby.query.filter(Hobby.type_of_hobby == type_of_hobby).first()
             if hobby:
@@ -258,12 +258,12 @@ class Competition(db.Model, SerializerMixin):
         else:
             raise ValueError("A scoring system is required.")
         
-    @validates("schedule")
-    def validate_schedule(self, key, schedule):
-        if schedule and len(schedule) > 0:
-            return schedule
-        else:
-            raise ValueError("A schedule system is required.")
+    # @validates("schedule")
+    # def validate_schedule(self, key, schedule):
+    #     if schedule and len(schedule) > 0:
+    #         return schedule
+    #     else:
+    #         raise ValueError("A schedule system is required.")
     
     @validates("prize1")
     def validate_prize1(self, key, prize1):
@@ -286,12 +286,12 @@ class Competition(db.Model, SerializerMixin):
         else:
             raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
         
-    @validates("requirements")
-    def validate_requirements(self, key, requirements):
-        if requirements and len(requirements) > 0:
-            return requirements
-        else:
-            raise ValueError("You need to set some basic requirements")
+    # @validates("requirements")
+    # def validate_requirements(self, key, requirements):
+    #     if requirements and len(requirements) > 0:
+    #         return requirements
+    #     else:
+    #         raise ValueError("You need to set some basic requirements")
 
 class Result(db.Model, SerializerMixin):
     __tablename__ = "results"
@@ -317,7 +317,7 @@ class Result(db.Model, SerializerMixin):
     #Validations
     @validates("placement")
     def validate_placement(self, key, placement):
-        if placement and len(placement) > 0:
+        if placement and placement > 0:
             return placement
         else:
             raise ValueError("You need to have placements for your results.")
@@ -346,12 +346,12 @@ class Entry(db.Model, SerializerMixin):
     # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example
 
     #Validations
-    @validates("submission")
-    def validate_submission(self, key, submission):
-        if submission and len(submission) > 0:
-            return submission
-        else:
-            raise ValueError("To submit an entry, you need a submission.")
+    # @validates("submission")
+    # def validate_submission(self, key, submission):
+    #     if submission and len(submission) > 0:
+    #         return submission
+    #     else:
+    #         raise ValueError("To submit an entry, you need a submission.")
 
 
 

@@ -7,6 +7,11 @@ import UserHobbyForm from "./UserHobbyForm";
 
 function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
     
+
+    // STREEEEEEEEEEETCH  GOALLL
+
+
+
     //Handle navigation
     const navigate = useNavigate()
 
@@ -19,7 +24,9 @@ function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
     //toggle buttons
     const [buttonsGenerated, setButtonsGenerated] = useState(true)
 
-    console.log(user)
+    //Store information back as an array, then likely send it back, every time you have a submit, or a general click, it can go through each of the objects and grab the information, append them to the state array and then send that state array as the values
+
+    // console.log(user)
 //-------------------------------Trying it with formik... XD---------------------------------------------------------------------------------
     const formSchema = object({
         expertise: number().positive().required('You need an expertise level 1-10'),
@@ -102,8 +109,8 @@ function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
         return hobbyForms
     }
 
-    console.log(hobbyAmount)
-    console.log(buttonsGenerated)
+    // console.log(hobbyAmount)
+    // console.log(buttonsGenerated)
 
 
 
@@ -134,9 +141,11 @@ function MasterUserHobbyForm({user, setUserHobbies, userHobbies}) {
             </button>
         </Link>
 
+        <div></div>
         <button onClick={backToDash}> Back </button>
 
-        <button type="submit" className=""> Submit! </button> 
+        <div></div> 
+        <button type="submit" className=""> Submit! </button>  
         
         </>
     )

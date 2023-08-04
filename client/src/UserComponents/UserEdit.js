@@ -58,6 +58,10 @@ function UserEdit({user, updateUser}){
         }
     })
 
+    const backToDash =  () => {
+        navigate(`/user-dashboard/${user.id}`)
+    }
+
 
     return(
         <div>
@@ -177,10 +181,11 @@ function UserEdit({user, updateUser}){
                     onChange={formik.handleChange}
                     />
                     </div>
-
+                <div>--------------------------------------</div>
                 <button type="submit" className=""> Submit and return to my Dashboard </button>
 
             </form>
+                <button onClick={backToDash}> Back </button>
 
         </div>
     )

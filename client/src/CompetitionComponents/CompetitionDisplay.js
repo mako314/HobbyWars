@@ -68,6 +68,9 @@ function CompetitionDisplay({user, setCompetitions, competitions}){
 
 
     //-----------------------------------DELETE PORTION--------------------------------
+    //need a way for user to view the page if they hit logout while on a display page.
+    //Breaks if a user is not signed in.
+    
     const competitionDelete = (competitionToDelete) => {
         setCompetitions(setCompetitions =>
           setCompetitions.filter(competition => competition.id !== competitionToDelete.id))
@@ -102,19 +105,15 @@ function CompetitionDisplay({user, setCompetitions, competitions}){
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
+ 
 
+    //This allows the USER to confirm if they are the correct user,
     const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
-
-
-
     
     //-----------------------------------------------------------------------------------
 
     // (TYLER) May want to put this stuff ABOVE the prop deconstruction, but when state is set it reloads the thing anyway
-    if (user.id === user_id) {
-
-    }
-    
+    // need to find a way to render this USER id stuff if only the user is logged in.
     const loggedInDisplay=(
         <div>
             <p>{title}</p>
@@ -139,7 +138,8 @@ function CompetitionDisplay({user, setCompetitions, competitions}){
             <p>{registration_schedule}</p>
 
             
-            {user.id === user_id ? userConfirm : "Would you like to submit an entry? BUTTON"}
+            {user.id === user_id ? userConfirm : "Would you like to submit an entry? BUTTON"} 
+            {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>
     )
     const loggedOutDisplay=(
@@ -170,6 +170,7 @@ function CompetitionDisplay({user, setCompetitions, competitions}){
     return(
         <>
         {user ? loggedInDisplay : loggedOutDisplay}
+        {/* so many freaking ternaries */}
         </>
         
     )

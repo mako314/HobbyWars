@@ -86,6 +86,8 @@ function App() {
         }
       });
     }, []);
+
+    // console.log("app")
     
     //-------------------------------------------- COMPETITION FETCH / CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
@@ -155,7 +157,7 @@ function App() {
         </div>
       )
 
-
+      // console.log(user)
     return (
         <div>
             <Header user={user} setUser={setUser}/>
@@ -178,7 +180,9 @@ function App() {
 
                 {/* USER SIGNUP ROUTING*/}
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                
                 {/* USER DASHBOARD BY ID? */}
+
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 

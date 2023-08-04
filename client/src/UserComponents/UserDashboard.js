@@ -15,8 +15,10 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
     //State to confirm deletion (makes a button appear?)
     const [toggleDelete, setToggleDelete] = useState(true)
-
+    
     //Destructure for props
+    
+    console.log(selectedUser)
     const {
         firstName, 
         lastName, 
@@ -32,9 +34,19 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         competitions
     } = selectedUser;
 
+    console.log(competitions)
+
+    const mappedCompetitions = competitions?.map((competition) => {
+        return <p>{competition.title}</p>
+    })
+
+    console.log(mappedCompetitions)
+
+    
 
 
 
+    // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
     const {id} = useParams()
 
     //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
@@ -97,7 +109,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     )
 
     // console.log(toggleDelete)
-    console.log(user)
+    // console.log(user)
 
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
@@ -122,7 +134,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-            {/* <p>{selectedUser.competitions.objective}</p> */}
+            <p>--------------------</p>
+            {mappedCompetitions}
 
 
             <div>-------------buttons!---------------</div>
@@ -142,6 +155,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p> Sorry, but you must be logged in to view this page.</p>
             {/* Maybe a button here that takes them to login? */}
             {/* Or I could incorporate the functionality here and also allow for them to login here? */}
+            <button> Login </button>
         </div>
     )
 

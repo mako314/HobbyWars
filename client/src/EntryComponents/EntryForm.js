@@ -4,7 +4,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryForm({user, setEntries, entries, updateEntry}) {
+function EntryForm({user, setEntries, entries}) {
     
     const [error, setError] = useState()
     
@@ -61,14 +61,14 @@ function EntryForm({user, setEntries, entries, updateEntry}) {
             <label> What is your hobby? </label>
             <input
             type="text"
-            name="type_of_hobby"
-            value={formik.values.type_of_hobby}
+            name="submission"
+            value={formik.values.submission}
             onChange={formik.handleChange}
             />
         </div>
 
         <div className="user-signup-input">
-            <label> Please enter a short description of the hobby </label>
+            <label> Please enter a short description of your submission </label>
             <textarea
             type="text"
             name="description"
@@ -77,7 +77,7 @@ function EntryForm({user, setEntries, entries, updateEntry}) {
             />
         </div>
  
-        <button type="submit" className="" > Add my Hobby! </button>
+        <button type="submit" className="" > Submit my entry! </button>
         {/* onSubmit={navigateToSelection} */}
 
         </form>

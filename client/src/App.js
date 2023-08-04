@@ -24,6 +24,8 @@ import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
 //--------------------Hobby Imports---------------------
 import HobbyAdd from './HobbyComponents.js/HobbyAdd';
 
+//--------------------Entry Imports---------------------
+import EntryForm from './EntryComponents/EntryForm';
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
@@ -78,6 +80,8 @@ function App() {
 
     //State to grab ENTRIES and display them, working on post:
     const [entries, setEntries] = useState([])
+    //State to grab the competition ID to be pasased to Entry Post
+    const [compID, setCompID] = useState([])
     
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
@@ -115,15 +119,21 @@ function App() {
 
 
       //This handles updating the ENTRY [PATCH]
-      const updateEntry = (entryToUpdate) =>{
-        setEntries(entries => entries.map(entry =>{
-          if (entry.id === entryToUpdate.id) {
-            return entryToUpdate
-          } else {
-            return entry
-          }
-        }))
-      }
+    const updateEntry = (entryToUpdate) =>{
+      setEntries(entries => entries.map(entry =>{
+        if (entry.id === entryToUpdate.id) {
+          return entryToUpdate
+        } else {
+          return entry
+        }
+      }))
+    }
+
+    //Need something to grab the competition ID when it's been clicked:
+    
+    const grabCompId = (id) =>{
+      setCompID(id)
+    }
 
     //-------------------------------------------------------------------------------
 
@@ -198,7 +208,7 @@ function App() {
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} grabCompId={grabCompId} compID={compID}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
 
@@ -222,7 +232,7 @@ function App() {
 
 
                 {/* ADD AN ENTRY ROUTE */}
-                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} updateEntry={updateEntry}/>}/>
+                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
 
             </Routes>
 

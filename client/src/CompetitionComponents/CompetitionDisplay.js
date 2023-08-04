@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function CompetitionDisplay({user, setCompetitions, competitions}){
+function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, compID}){
 
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
@@ -63,20 +63,26 @@ function CompetitionDisplay({user, setCompetitions, competitions}){
           .then((resp) => resp.json())
           .then((data) => {
             setCompetition(data)
+            grabCompId(id)
           })
       }, [])
+
+      console.log(compID)
 
 
     //-----------------------------------DELETE PORTION--------------------------------
     //need a way for user to view the page if they hit logout while on a display page.
     //Breaks if a user is not signed in.
     
+
+    //resets the competition state in a sense, basically makes sure the competition to delete does not exist in there, filtering it out
     const competitionDelete = (competitionToDelete) => {
         setCompetitions(setCompetitions =>
           setCompetitions.filter(competition => competition.id !== competitionToDelete.id))
       }
     
     
+      //Handles the deletion of the competition on the back end
     const handleCompetitionDelete = (competition) => {
         console.log(competition)
         fetch(`/competition/${competition.id}`, {
@@ -137,7 +143,11 @@ function CompetitionDisplay({user, setCompetitions, competitions}){
             <p>{prize8}</p>
             <p>{registration_schedule}</p>
 
-            
+            <div>-------------------------</div>
+            <Link to='/competitions'>
+            <button> BACK BUTTON</button>
+            </Link>
+            <div></div>
             {user.id === user_id ? userConfirm : "Would you like to submit an entry? BUTTON"} 
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>

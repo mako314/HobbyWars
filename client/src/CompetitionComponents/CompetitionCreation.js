@@ -45,7 +45,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
             prize7: '', 
             prize8: '', 
             registration_schedule: '',
-            user_id: user.id
+            user_id: user.id //May need to do useEffect like we did for hobbyUser
         },
         validationSchema: formSchema,
         onSubmit: (values) => {

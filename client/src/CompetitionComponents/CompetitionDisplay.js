@@ -108,6 +108,16 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
         </div>
     )
 
+    const entryButton = (
+        <div>
+            <Link to='/submit-entry'>
+            <button>
+                Submit an Entry
+            </button>
+            </Link>
+        </div>
+    )
+
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
@@ -148,7 +158,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
             <button> BACK BUTTON</button>
             </Link>
             <div></div>
-            {user.id === user_id ? userConfirm : "Would you like to submit an entry? BUTTON"} 
+            {user.id === user_id ? userConfirm : entryButton} 
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>
     )

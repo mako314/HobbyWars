@@ -4,15 +4,15 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryForm({user, setEntries, entries}) {
+function EntryForm({user, setEntries, entries, compID}) {
     
     const [error, setError] = useState()
     
     const navigate = useNavigate()
 
     const formSchema = object({
-        type_of_hobby: string().required('You need a short title of your hobby. Ex: Knitting, Surfing, Writing. The more specific the better!'),
-        description: string().required('You need a short description of your hobby!')
+        submission: string().required('You need a submission!'),
+        description: string().required('You need a short description of your submission!')
 
     })
 
@@ -35,6 +35,7 @@ function EntryForm({user, setEntries, entries}) {
             .then(res => {
                 if (res.ok){
                     res.json().then(entry => {
+                        console.log("I've ran")
                         setEntries([...entries, entry])
                         // navigate('/user-hobby-selection')
                         //Add where you want it to go here / anything else you want it to do
@@ -46,19 +47,13 @@ function EntryForm({user, setEntries, entries}) {
         }
     })
 
-    //Ideally I'd want this fire off after they're done adding a hobby, but I'd like to make it so they can add multiple at a time.
-    // const navigateToSelection = () => {
-    //     console.log("I fired")
-    //     navigate('/user-hobby-selection')  
-    // }
-
     const loggedInDisplay = (
         <div>
 
         <form onSubmit={formik.handleSubmit}>
 
         <div className="user-signup-input">
-            <label> What is your hobby? </label>
+            <label> Enter your submission? </label>
             <input
             type="text"
             name="submission"
@@ -94,6 +89,15 @@ function EntryForm({user, setEntries, entries}) {
         </Link>
     </div>
     )
+
+    useEffect(() => {
+        if (user && user.id && compID){
+        formik.setValues({
+          user_id: user.id,
+          competition_id: compID
+        })
+    }
+      }, [user])
 
 
 

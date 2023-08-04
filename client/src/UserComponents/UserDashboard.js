@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { Link ,useParams, useNavigate } from 'react-router-dom'
 
 function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don't think I'll need this prop
 
@@ -28,8 +28,12 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         phone, 
         email, 
         profileImg, 
-        bannerImg 
+        bannerImg,
+        competitions
     } = selectedUser;
+
+
+
 
     const {id} = useParams()
 
@@ -87,12 +91,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     const confirmDelete = (
         <div>
         <button onClick={() => handleUserDelete(user)}> Yes DELETE my account.</button>
+        <div></div>
         <button onClick={handleToggle}> No it was a mistake</button>
         </div>
     )
 
     // console.log(toggleDelete)
-    // console.log(user)
+    console.log(user)
 
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
@@ -117,8 +122,16 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
+            {/* <p>{selectedUser.competitions.objective}</p> */}
 
+
+            <div>-------------buttons!---------------</div>
+            <Link to='/user-hobby-selection'>
+            <button> Add more hobbies!</button>
+            </Link>
+            <div></div>
             <button className="" onClick={handleEdit} > Edit my information. </button>
+            <div></div>
             {toggleDelete ? deleteBtn : confirmDelete}
 
         </div>

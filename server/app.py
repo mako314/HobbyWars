@@ -116,37 +116,38 @@ class Users(Resource):
     
     #POST a USER
     def post(self):
-        #try:
-        data = request.get_json()
-        new_user = User(
-            firstName = data['firstName'],
-            lastName = data['lastName'],
-            username = data['username'],
-            _password_hash = data['password'],
-            age = data['age'],
-            bio = data['bio'],
-            location = data['location'],
-            phone = data['phone'],
-            email = data['email'],
-            profileImg = data['profileImg'],
-            bannerImg = data['bannerImg']
-        )
+        try:
+            data = request.get_json()
+            new_user = User(
+                firstName = data['firstName'],
+                lastName = data['lastName'],
+                username = data['username'],
+                _password_hash = data['password'],
+                age = data['age'],
+                bio = data['bio'],
+                location = data['location'],
+                phone = data['phone'],
+                email = data['email'],
+                profileImg = data['profileImg'],
+                bannerImg = data['bannerImg']
+            )
 
-        #How do I make the password hash not visible after it's submitted?
-        
-        db.session.add(new_user)
+            #How do I make the password hash not visible after it's submitted?
+            
+            db.session.add(new_user)
 
-        new_user.password_hash = new_user._password_hash
+            new_user.password_hash = new_user._password_hash
 
-        print(new_user._password_hash)
+            print(new_user._password_hash)
 
-        #So I actually needed to add the user before I can hash lol
+            #So I actually needed to add the user before I can hash lol
 
-        db.session.commit()
+            db.session.commit()
 
-        return make_response(new_user.to_dict(), 201)
+            return make_response(new_user.to_dict(), 201)
     
-        #except ValueError:
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
         
 api.add_resource(Users, '/users')
 #------------------------------------------------------------------------------------------------------------------------------
@@ -172,23 +173,24 @@ class UserByID(Resource):
         user = User.query.filter(User.id == id).first()
 
         if user:
-            #try
-            data = request.get_json()
-            for key in data:
-                setattr(user, key, data[key])
-            db.session.add(user)
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(user, key, data[key])
+                db.session.add(user)
 
-            #The below two lines should be able to take the password and hash it after it has been patched, if it has been patched
-            #Actually it does not seem possible to edit a password
-            user.password_hash = user._password_hash
+                #The below two lines should be able to take the password and hash it after it has been patched, if it has been patched
+                #Actually it does not seem possible to edit a password
+                user.password_hash = user._password_hash
 
-            print(user._password_hash)
+                print(user._password_hash)
 
-            db.session.commit()
+                db.session.commit()
 
-            response = make_response(user.to_dict(), 202)
+                response = make_response(user.to_dict(), 202)
             
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -227,19 +229,20 @@ class Hobbies(Resource):
     
     #POST a Hobby
     def post(self):
-        #try:
-        data = request.get_json()
-        new_hobby = Hobby(
-            type_of_hobby = data['type_of_hobby'],
-            description = data['description']
-        )
+        try:
+            data = request.get_json()
+            new_hobby = Hobby(
+                type_of_hobby = data['type_of_hobby'],
+                description = data['description']
+            )
 
-        db.session.add(new_hobby)
-        db.session.commit()
+            db.session.add(new_hobby)
+            db.session.commit()
 
-        return make_response(new_hobby.to_dict(), 201)
-    
-        #except ValueError:
+            return make_response(new_hobby.to_dict(), 201)
+        
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
     
 api.add_resource(Hobbies, '/hobbies')
 #------------------------------------------------------------------------------------------------------------------------------
@@ -265,16 +268,17 @@ class HobbiesByID(Resource):
         hobby = Hobby.query.filter(Hobby.id == id).first()
 
         if hobby:
-            #try
-            data = request.get_json()
-            for key in data:
-                setattr(hobby, key, data[key])
-            db.session.add(hobby)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(hobby, key, data[key])
+                db.session.add(hobby)
+                db.session.commit()
 
-            response = make_response(hobby.to_dict(), 202)
+                response = make_response(hobby.to_dict(), 202)
             
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -314,20 +318,21 @@ class UserHobbies(Resource):
     
     #POST a USER Hobby
     def post(self):
-        #try:
-        data = request.get_json()
-        new_user_hobby = UserHobby(
-            expertise = data['expertise'],
-            user_id = data['user_id'],
-            hobby_id = data['hobby_id']
-        )
+        try:
+            data = request.get_json()
+            new_user_hobby = UserHobby(
+                expertise = data['expertise'],
+                user_id = data['user_id'],
+                hobby_id = data['hobby_id']
+            )
 
-        db.session.add(new_user_hobby)
-        db.session.commit()
+            db.session.add(new_user_hobby)
+            db.session.commit()
 
-        return make_response(new_user_hobby.to_dict(), 201)
+            return make_response(new_user_hobby.to_dict(), 201)
         
-        #except ValueError:
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
     
 api.add_resource(UserHobbies, '/user-hobbies')
@@ -354,15 +359,16 @@ class UserHobbiesByID(Resource):
         user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
 
         if user_hobby:
-            #try:
-            data = request.get_json()
-            for key in data:
-                setattr(user_hobby, key, data[key])
-            db.session.add(user_hobby)
-            db.session.commit()
-            
-            response = make_response(user_hobby.to_dict(), 202)
-            #except ValueError:
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(user_hobby, key, data[key])
+                db.session.add(user_hobby)
+                db.session.commit()
+                
+                response = make_response(user_hobby.to_dict(), 202)
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -401,39 +407,41 @@ class Competitions(Resource):
     
     #POST a Competition
     def post(self):
-        #try:
-        data = request.get_json()
-        new_competition = Competition(
-            title = data['title'],
-            objective = data['objective'],
-            description = data['description'],
-            scoring = data['scoring'],
-            cost_of_entry = data['cost_of_entry'],
-            schedule = data['schedule'],
-            contact = data['contact'],
-            location = data['location'],
-            requirements = data['requirements'],
-            competition_tasks = data['competition_tasks'],
-            safety_measures = data['safety_measures'],
-            prize1 = data['prize1'],
-            prize2 = data['prize2'],
-            prize3 = data['prize3'],
-            prize4 = data['prize4'],
-            prize5 = data['prize5'],
-            prize6 = data['prize6'],
-            prize7 = data['prize7'],
-            prize8 = data['prize8'],
-            registration_schedule = data['registration_schedule'],
-            user_id = data['user_id']
-        )
+        try:
+            data = request.get_json()
+            new_competition = Competition(
+                title = data['title'],
+                objective = data['objective'],
+                description = data['description'],
+                scoring = data['scoring'],
+                cost_of_entry = data['cost_of_entry'],
+                schedule = data['schedule'],
+                contact = data['contact'],
+                location = data['location'],
+                requirements = data['requirements'],
+                competition_tasks = data['competition_tasks'],
+                safety_measures = data['safety_measures'],
+                prize1 = data['prize1'],
+                prize2 = data['prize2'],
+                prize3 = data['prize3'],
+                prize4 = data['prize4'],
+                prize5 = data['prize5'],
+                prize6 = data['prize6'],
+                prize7 = data['prize7'],
+                prize8 = data['prize8'],
+                registration_schedule = data['registration_schedule'],
+                user_id = data['user_id']
+            )
 
-        print(new_competition)
-        print("these prints are on line 412")
-        db.session.add(new_competition)
-        db.session.commit()
+            print(new_competition)
+            print("these prints are on line 412")
+            db.session.add(new_competition)
+            db.session.commit()
 
-        return make_response(new_competition.to_dict(), 201)
-        #except ValueError:
+            return make_response(new_competition.to_dict(), 201)
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
 
 api.add_resource(Competitions,'/competitions')
 #------------------------------------------------------------------------------------------------------------------------------
@@ -459,16 +467,17 @@ class CompetitionByID(Resource):
         competition = Competition.query.filter(Competition.id == id).first()
 
         if competition:
-            #try:
-            data = request.get_json()
-            for key in data:
-                setattr(competition, key, data[key])
-            db.session.add(competition)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(competition, key, data[key])
+                db.session.add(competition)
+                db.session.commit()
 
-            response = make_response(competition.to_dict(), 202)
+                response = make_response(competition.to_dict(), 202)
 
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -511,20 +520,21 @@ class Results(Resource):
     
     #POST a Result
     def post(self):
-        #try:
-        data = request.get_json()
-        result = Result(
-            placement = data['placement'],
-            user_id = data['user_id'],
-            competition_id = data['competition_id']
-        )
+        try:
+            data = request.get_json()
+            result = Result(
+                placement = data['placement'],
+                user_id = data['user_id'],
+                competition_id = data['competition_id']
+            )
 
-        db.session.add(result)
-        db.session.commit()
+            db.session.add(result)
+            db.session.commit()
 
-        return make_response(result.to_dict(), 201)
+            return make_response(result.to_dict(), 201)
     
-        #except ValueError:
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
 api.add_resource(Results, '/results')
 #------------------------------------------------------------------------------------------------------------------------------
@@ -550,16 +560,17 @@ class ResultsByID(Resource):
         result = Result.query.filter(Result.id == id).first()
 
         if result:
-            #try:
-            data = request.get_json()
-            for key in data:
-                setattr(result, key, data[key])
-            db.session.add(result)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(result, key, data[key])
+                db.session.add(result)
+                db.session.commit()
 
-            response = make_response(result.to_dict(), 202)
+                response = make_response(result.to_dict(), 202)
 
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({
@@ -600,22 +611,23 @@ class Entries(Resource):
     
     #POST an Entry
     def post(self):
-        #try:
-        data = request.get_json()
-        entry = Entry(
-            submission = data['submission'],
-            description = data['description'],
-            user_id = data['user_id'],
-            competition_id = data['competition_id']
-        )
+        try:
+            data = request.get_json()
+            entry = Entry(
+                submission = data['submission'],
+                description = data['description'],
+                user_id = data['user_id'],
+                competition_id = data['competition_id']
+            )
 
-        db.session.add(entry)
-        db.session.commit()
+            db.session.add(entry)
+            db.session.commit()
 
-        return make_response(entry.to_dict(), 201)
+            return make_response(entry.to_dict(), 201)
         
-        #except ValueError:
-  
+        except ValueError:
+            return make_response({"error": ["validations errors, check your input and try again"]} , 400)
+
 api.add_resource(Entries, '/entries')
 #------------------------------------------------------------------------------------------------------------------------------
 
@@ -640,16 +652,17 @@ class EntriesByID(Resource):
         entry = Entry.query.filter(Entry.id == id).first()
 
         if entry:
-            #try
-            data = request.get_json()
-            for key in data:
-                setattr(entry, key, data[key])
-            db.session.add(entry)
-            db.session.commit()
+            try:
+                data = request.get_json()
+                for key in data:
+                    setattr(entry, key, data[key])
+                db.session.add(entry)
+                db.session.commit()
 
-            response = make_response(entry.to_dict(), 202)
+                response = make_response(entry.to_dict(), 202)
             
-            #except ValueError:
+            except ValueError:
+                return make_response({"error": ["validations errors, check your input and try again"]} , 400)
 
         else:
             response = make_response({

@@ -73,9 +73,37 @@ class User(db.Model, SerializerMixin):
         return bcrypt.check_password_hash(
             self._password_hash, password.encode('utf-8'))
 
-
-
-    #Validations ( need to add one to make sure user has username > 3 characters)
+   #Validations ( need to add one to make sure user has username > 3 characters)
+    @validates("email")
+    def validates_email(self, key, email):
+        if len(email) > 0 and "@"  in email:
+            return email
+        else:
+            raise ValueError("Please check that you entered your email correctly")
+        
+    @validates("age")
+    def validates_age(self, key, age):
+        if age >= 18:
+            return age
+        else:
+            raise ValueError("Sorry, but you must be 18 years or older to sign up.")
+    
+    @validates("username")
+    def validate_username(self, key, username):
+        if not username or len(username) <= 0:
+            raise ValueError("Username is required.")
+        else:
+            user = User.query.filter(User.username == username).first()
+            if user:
+                raise ValueError("Sorry, but this username is already taken.")
+        return username
+    
+    @validates(" _password_hash")
+    def validate_password(self, key,  _password_hash):
+        if  not _password_hash and len( _password_hash) <= 6:
+            raise ValueError("A Password greater than 6 characters is required")
+        else:
+            return _password_hash
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
@@ -95,6 +123,22 @@ class Hobby(db.Model, SerializerMixin):
     serialize_rules = ('-user_hobby.hobby', '-user_hobby.user') # SHOULD I ADD THIS -> ('-user_hobby.user')
 
     #Validations
+    @validates("type_of_hobby")
+    def validate_type_of_hobby(self, key, type_of_hobby):
+        if not type_of_hobby or len( type_of_hobby) <= 6:
+            raise ValueError("A hobby requires more than 6 characters, the more specific the better")
+        else:
+            hobby = Hobby.query.filter(Hobby.type_of_hobby == type_of_hobby).first()
+            if hobby:
+                raise ValueError("Sorry, but this hobby already exists.")
+        return type_of_hobby
+        
+    @validates("description")
+    def validate_description(self, key, description):
+        if description and len(description) >= 10:
+            return description
+        else:
+            raise ValueError("A description is required to better understand the hobby you are adding. A minimum of 10 characters.")
 
 
 class UserHobby(db.Model, SerializerMixin):
@@ -113,6 +157,14 @@ class UserHobby(db.Model, SerializerMixin):
     serialize_rules = ('-user','-hobby.user_hobby',) #'-user_hobby.user', 'user_hobby.hobby'
 
     #Validations
+    @validates("expertise")
+    def validate_expertise(self, key, expertise):
+        expertise = int(expertise)
+        if expertise and 0 <= expertise < 10:
+            return expertise
+        else:
+            raise ValueError("An expertise level is required, the acceptable levels are 1-10.")
+
 
 
 class Competition(db.Model, SerializerMixin):
@@ -185,6 +237,61 @@ class Competition(db.Model, SerializerMixin):
     #The way I see it, all of our user information is readily available within the entries and results. Meaning no user information technically has to appear. You can access it with entry.user_id and results.user_id?
 
     #Validations
+    @validates("title")
+    def validate_title(self, key, title):
+        if title and len(title) > 0:
+            return title
+        else:
+            raise ValueError("A title is required.")
+        
+    @validates("objective")
+    def validate_objective(self, key, objective):
+        if objective and len(objective) > 0:
+            return objective
+        else:
+            raise ValueError("An objective is required.")
+        
+    @validates("scoring")
+    def validate_scoring(self, key, scoring):
+        if scoring and len(scoring) > 0:
+            return scoring
+        else:
+            raise ValueError("A scoring system is required.")
+        
+    @validates("schedule")
+    def validate_schedule(self, key, schedule):
+        if schedule and len(schedule) > 0:
+            return schedule
+        else:
+            raise ValueError("A schedule system is required.")
+    
+    @validates("prize1")
+    def validate_prize1(self, key, prize1):
+        if prize1 and len(prize1) > 0:
+            return prize1
+        else:
+            raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
+
+    @validates("prize2")
+    def validate_prize2(self, key, prize2):
+        if prize2 and len(prize2) > 0:
+            return prize2
+        else:
+            raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
+
+    @validates("prize3")
+    def validate_prize3(self, key, prize3):
+        if prize3 and len(prize3) > 0:
+            return prize3
+        else:
+            raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
+        
+    @validates("requirements")
+    def validate_requirements(self, key, requirements):
+        if requirements and len(requirements) > 0:
+            return requirements
+        else:
+            raise ValueError("You need to set some basic requirements")
 
 class Result(db.Model, SerializerMixin):
     __tablename__ = "results"
@@ -208,6 +315,13 @@ class Result(db.Model, SerializerMixin):
     #'-competitions.result', taking this out for now, it stops infinite recursion but I am just going to remove all of the competitions information.
 
     #Validations
+    @validates("placement")
+    def validate_placement(self, key, placement):
+        if placement and len(placement) > 0:
+            return placement
+        else:
+            raise ValueError("You need to have placements for your results.")
+
 
 class Entry(db.Model, SerializerMixin):
     __tablename__ = "entries"
@@ -232,6 +346,12 @@ class Entry(db.Model, SerializerMixin):
     # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example
 
     #Validations
+    @validates("submission")
+    def validate_submission(self, key, submission):
+        if submission and len(submission) > 0:
+            return submission
+        else:
+            raise ValueError("To submit an entry, you need a submission.")
 
 
 

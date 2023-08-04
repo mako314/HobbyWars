@@ -19,6 +19,10 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
 import UserHobbyForm from './UserComponents/UserHobbyForm';
+import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
+
+//--------------------Hobby Imports---------------------
+import HobbyAdd from './HobbyComponents.js/HobbyAdd';
 
 
 
@@ -69,11 +73,20 @@ function App() {
     //State grab user_hobbies and display them
     const [userHobbies, setUserHobbies] = useState([])
 
-    //State grab HOBBIES and display them need to make a hobby poster
-    // const [hobbies, setHobbies] = useState([]) // Moved this to HobbySelector
-    //-------------------------------------------------------------------------------
+    //State grab HOBBIES and display them need to make a hobby post, 
+    const [hobbyAdder, setHobbyAdder] = useState([]) // Moved this to UserHobbyForm
+    
 
-
+    //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
+    
+    useEffect(() => {
+      fetch("/check_session").then((response) => {
+        if (response.ok) {
+          response.json().then((user) => setUser(user));
+        }
+      });
+    }, []);
+    
     //-------------------------------------------- COMPETITION FETCH / CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
     useEffect(() => {
@@ -117,13 +130,13 @@ function App() {
     }, [])
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
-    // useEffect(() => {
-    //   fetch("/hobbies")
-    //     .then((resp) => resp.json())
-    //     .then((data) => {
-    //       setHobbies(data)
-    //     })
-    // }, [])
+    useEffect(() => {
+      fetch("/hobbies")
+        .then((resp) => resp.json())
+        .then((data) => {
+          setHobbyAdder(data)
+        })
+    }, [])
 
     //Moved to userHobbyForm
     //hobbies={hobbies}
@@ -156,7 +169,7 @@ function App() {
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
 
@@ -170,8 +183,10 @@ function App() {
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
-                <Route path='' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
-
+                <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/>
+                {/* ADD A HOBBY ROUTE */}
+                <Route path='/add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}

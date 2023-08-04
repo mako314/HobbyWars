@@ -74,7 +74,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers}){
             })
                 .then(res => {
                     if (res.ok){
-                        res.json().then(user =>{
+                        res.json().then(user => {
                         setNewUsers([...newUsers, user])
                         //If I want the user to login after the account is created, I can pass the login function and call it here with ()
                         handleLogin()
@@ -99,118 +99,118 @@ function UserSignUpForm({setUser, setNewUsers, newUsers}){
                     {error && <p>{error}</p>}
 
                     <div className="user-signup-input">
-                    <label> First Name </label>
-                    <input
-                    type="text"
-                    name="firstName"
-                    value={formik.values.firstName}
-                    onChange={formik.handleChange}
-                    />
+                        <label> First Name </label>
+                        <input
+                        type="text"
+                        name="firstName"
+                        value={formik.values.firstName}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Last Name </label>
-                    <input
-                    type="text"
-                    name="lastName"
-                    value={formik.values.lastName}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Last Name </label>
+                        <input
+                        type="text"
+                        name="lastName"
+                        value={formik.values.lastName}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Username </label>
-                    <input
-                    type="text"
-                    name="username"
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Username </label>
+                        <input
+                        type="text"
+                        name="username"
+                        value={formik.values.username}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Password </label>
-                    <input
-                    type="text"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Password </label>
+                        <input
+                        type="text"
+                        name="password"
+                        value={formik.values.password}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> age </label>
-                    <input
-                    type="text"
-                    name="age"
-                    value={formik.values.age}
-                    onChange={formik.handleChange}
-                    />
+                        <label> age </label>
+                        <input
+                        type="text"
+                        name="age"
+                        value={formik.values.age}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Bio </label>
-                    <textarea
-                    type="text"
-                    name="bio"
-                    value={formik.values.bio}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Bio </label>
+                        <textarea
+                        type="text"
+                        name="bio"
+                        value={formik.values.bio}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Location </label>
-                    <input
-                    type="text"
-                    name="location"
-                    value={formik.values.location}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Location </label>
+                        <input
+                        type="text"
+                        name="location"
+                        value={formik.values.location}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Phone </label>
-                    <input
-                    type="text"
-                    name="phone"
-                    value={formik.values.phone}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Phone </label>
+                        <input
+                        type="text"
+                        name="phone"
+                        value={formik.values.phone}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Email </label>
-                    <input
-                    type="text"
-                    name="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Email </label>
+                        <input
+                        type="text"
+                        name="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Profile Image  </label>
-                    <input
-                    type="text"
-                    name="profileImg"
-                    value={formik.values.profileImg}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Profile Image  </label>
+                        <input
+                        type="text"
+                        name="profileImg"
+                        value={formik.values.profileImg}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Banner Image </label>
-                    <input
-                    type="text"
-                    name="bannerImg"
-                    value={formik.values.bannerImg}
-                    onChange={formik.handleChange}
-                    />
+                        <label> Banner Image </label>
+                        <input
+                        type="text"
+                        name="bannerImg"
+                        value={formik.values.bannerImg}
+                        onChange={formik.handleChange}
+                        />
                     </div>
 
-                    <UserHobbyForm/>
+                    {/* <UserHobbyForm/> */}
                     {/* I STILL NEED TO MAKE A FORM FOR THE  ACTUAL USERHOBBY THIS IS JUST HOBBy SELECTION. MAN... */}
-
+                    {/* This is going to be removed ^ */}
 
 
                 <button type="submit" className=""> Submit! </button>

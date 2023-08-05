@@ -68,7 +68,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     
     // let mappedEntries
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
-
+    
+    // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
     useEffect(() => {
         if (entry){
             setMappedEntries(
@@ -77,8 +78,17 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                 <div>
                     {console.log(oneEntry)}
                     {oneEntry.competitions.title}
+                    <br></br>
+                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition info</button>
+                    {/* maybe something like "clicked from dash state?" 
+                    it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
+                    <br></br>
+                    <br></br>
                     {oneEntry.submission}
                     {oneEntry.description}
+                    {/* need an edit entry button here to take you to edit entry page */}
+                    <br></br>
+                    <br></br>
                 </div>)
                 })
             )

@@ -40,7 +40,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
 
 
-    // console.log(selectedUser)
+    console.log(selectedUser)
     // console.log(competitions)
     // console.log(entryArray)
 

@@ -196,3 +196,10 @@ need to make a way to submit entries + get results and such
 
 
 need to go through and make sure I have logged in and logged out displays
+
+
+need a submission page,
+results
+
+need to see flow, like what takes me where, how do I want to get back to x y or z?
+need edit competition page

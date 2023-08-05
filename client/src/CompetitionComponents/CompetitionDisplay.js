@@ -126,7 +126,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     //This allows the USER to confirm if they are the correct user,
     const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
     
-    //-----------------------------------------------------------------------------------
+    //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
     // (TYLER) May want to put this stuff ABOVE the prop deconstruction, but when state is set it reloads the thing anyway
     // need to find a way to render this USER id stuff if only the user is logged in.
@@ -166,6 +166,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
 
             <br></br>
             {user.id === user_id ? userConfirm : entryButton}
+            {/* need a button to edit the competition */}
             
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>

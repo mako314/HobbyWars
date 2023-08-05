@@ -35,12 +35,14 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         profileImg, 
         bannerImg,
         competitions,
-        entries,
+        // entries // Fix in the backend 
     } = selectedUser;
 
-    console.log(selectedUser)
 
-    console.log(entries)
+
+    // console.log(selectedUser)
+    // console.log(competitions)
+    // console.log(entryArray)
 
 
     //Display the competitions the user hosts
@@ -63,9 +65,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
     //This is bugging where it tells me .map is not a thing again, I wonder why?
     //Display users entries
+    
+    let mappedEntires
+    //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
+
     // useEffect(() => {
     //     if (entries){
-    //         return  mappedEntires = entries?.map((entry) => {
+    //         mappedEntires = entries?.map((entry) => {
     //             return (<div>
     //                 {entry.submission}
     //                 {entry.description}

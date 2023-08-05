@@ -130,7 +130,10 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
 
     // (TYLER) May want to put this stuff ABOVE the prop deconstruction, but when state is set it reloads the thing anyway
     // need to find a way to render this USER id stuff if only the user is logged in.
-    const loggedInDisplay=(
+    let loggedInDisplay
+    //SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE 
+
+    if(user) {loggedInDisplay=(
         <div>
             <p>{title}</p>
             <p>{objective}</p>
@@ -161,7 +164,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
             {user.id === user_id ? userConfirm : entryButton} 
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>
-    )
+    )}
     const loggedOutDisplay=(
         <div>
             <p>{title}</p>

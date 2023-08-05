@@ -16,7 +16,12 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     //State to confirm deletion (makes a button appear?)
     const [toggleDelete, setToggleDelete] = useState(true)
 
+    //State to display some info on the competitions a user has entered:
+    const [enteredComps, setEnteredComps] = useState([])
+    
     //Destructure for props
+    
+    // console.log(selectedUser)
     const {
         firstName, 
         lastName, 
@@ -29,12 +34,76 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         email, 
         profileImg, 
         bannerImg,
-        competitions
+        competitions,
+        // entries // Fix in the backend 
     } = selectedUser;
 
 
 
+    // console.log(selectedUser)
+    // console.log(competitions)
+    // console.log(entryArray)
 
+
+    //Display the competitions the user hosts
+    const mappedCompetitions = competitions?.map((competition) => {
+        return <>
+        <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
+        </>
+    })
+
+    //click and navigate to the competition display page
+    function navigateToCompetition(id) {
+        // const {user_id } = user <- don't need to do this
+        console.log(user.id)
+        navigate(`/competition/${id}`)
+    }
+
+    // function handleCompNavigation(competition) {
+    //     navigate(`/competition/${competition.id}`)
+    // }
+
+    //This is bugging where it tells me .map is not a thing again, I wonder why?
+    //Display users entries
+    
+    let mappedEntires
+    //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
+
+    // useEffect(() => {
+    //     if (entries){
+    //         mappedEntires = entries?.map((entry) => {
+    //             return (<div>
+    //                 {entry.submission}
+    //                 {entry.description}
+                    
+    //                 </div>)
+    //         })
+    // }
+    //   }, [entries])
+
+    // const mappedEntires = entries?.map((entry) => {
+    //         return <div>
+    //             {entry.submission}
+    //             {entry.description}
+                
+    //             </div>
+    //     })
+
+
+    // Going to fetch the competition ID's
+    // useEffect(() => {
+    //     fetch(`/competition/${entry.competition_id}`)
+    //       .then((resp) => resp.json())
+    //       .then((data) => {
+    //         setEnteredComps(data)
+    //       })
+    //   }, [])
+
+
+    // console.log(mappedCompetitions)
+
+    
+    // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
     const {id} = useParams()
 
     //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
@@ -97,7 +166,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     )
 
     // console.log(toggleDelete)
-    console.log(user)
+    // console.log(user)
 
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
@@ -122,7 +191,14 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-            {/* <p>{selectedUser.competitions.objective}</p> */}
+            <p>---------------------------------Competitions------------------------</p>
+            <div> {mappedCompetitions} </div>
+
+            <p>---------------------------------Entries------------------------</p>
+
+            {/* <div>{mappedEntires}</div> */}
+
+            
 
 
             <div>-------------buttons!---------------</div>
@@ -142,6 +218,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p> Sorry, but you must be logged in to view this page.</p>
             {/* Maybe a button here that takes them to login? */}
             {/* Or I could incorporate the functionality here and also allow for them to login here? */}
+            <Link to='/login'>
+            <button> Login </button>
+            </Link>
         </div>
     )
 

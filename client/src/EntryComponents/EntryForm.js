@@ -4,26 +4,28 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
+function EntryForm({user, setEntries, entries, compID}) {
     
     const [error, setError] = useState()
     
     const navigate = useNavigate()
 
     const formSchema = object({
-        type_of_hobby: string().required('You need a short title of your hobby. Ex: Knitting, Surfing, Writing. The more specific the better!'),
-        description: string().required('You need a short description of your hobby!')
+        submission: string().required('You need a submission!'),
+        description: string().required('You need a short description of your submission!')
 
     })
 
     const formik = useFormik({
         initialValues: {
-            type_of_hobby: '',
+            submission: '',
             description: '',
+            user_id: '',
+            competition_id: ''
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/hobbies' , {
+            fetch('/entries' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -32,9 +34,9 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
             })
             .then(res => {
                 if (res.ok){
-                    res.json().then(newHobby => {
-                        setHobbyAdder([...hobbyAdder, newHobby])
-                        navigate('/user-hobby-selection')
+                    res.json().then(entry => {
+                        setEntries([...entries, entry])
+                        // navigate('/user-hobby-selection')
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -44,29 +46,23 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
         }
     })
 
-    //Ideally I'd want this fire off after they're done adding a hobby, but I'd like to make it so they can add multiple at a time.
-    // const navigateToSelection = () => {
-    //     console.log("I fired")
-    //     navigate('/user-hobby-selection')  
-    // }
-
     const loggedInDisplay = (
         <div>
 
         <form onSubmit={formik.handleSubmit}>
 
         <div className="user-signup-input">
-            <label> What is your hobby? </label>
+            <label> Enter your submission? </label>
             <input
             type="text"
-            name="type_of_hobby"
-            value={formik.values.type_of_hobby}
+            name="submission"
+            value={formik.values.submission}
             onChange={formik.handleChange}
             />
         </div>
 
         <div className="user-signup-input">
-            <label> Please enter a short description of the hobby </label>
+            <label> Please enter a short description of your submission </label>
             <textarea
             type="text"
             name="description"
@@ -75,7 +71,7 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
             />
         </div>
  
-        <button type="submit" className="" > Add my Hobby! </button>
+        <button type="submit" className="" > Submit my entry! </button>
         {/* onSubmit={navigateToSelection} */}
 
         </form>
@@ -85,13 +81,25 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
 
     const loggedOutDisplay = (
     <div>
-        <p> Please login to add any hobbies to our available hobby list.</p>
+        <p> Please login to submit any entries to this competition.</p>
         <div></div>
         <Link to='/login'>
         <button> Login </button>
         </Link>
     </div>
     )
+
+    useEffect(() => {
+        if (user && user.id && compID){
+        formik.setValues({
+          user_id: user.id,
+          competition_id: compID
+        })
+    }
+      }, [user])
+
+    // console.log(user.id)
+    // console.log(compID)
 
 
 
@@ -104,34 +112,4 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
     )
 }
 
-export default HobbyAdd;
-
-{/* <div>
-<form onSubmit={formik.handleSubmit}>
-
-<div className="user-signup-input">
-    <label> What is your hobby? </label>
-    <input
-    type="text"
-    name="type_of_hobby"
-    value={formik.values.type_of_hobby}
-    onChange={formik.handleChange}
-    />
-</div>
-
-<div className="user-signup-input">
-    <label> Please enter a short description of the hobby </label>
-    <textarea
-    type="text"
-    name="description"
-    value={formik.values.description}
-    onChange={formik.handleChange}
-    />
-</div>
-
-<button type="submit" className=""> Add my Hobby! </button>
-
-</form>
-    
-
-</div> */}
+export default EntryForm;

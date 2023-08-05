@@ -9,19 +9,10 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
 
-    //Handle navigation
-    const navigate = useNavigate()
+//Handle navigation
+const navigate = useNavigate()
 
  //map over hobbies to generate radio buttons? Let them select however many hobbies they'd like?
     
@@ -48,15 +39,6 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
 
 //wait for hobby id to be set and then use it to pull out data for that hobby, just description.
-    // const FetchHobbyDescriptions = () => {
-    //     useEffect(() => {
-    //     fetch(`/hobby/${hobbyID}`)
-    //       .then((resp) => resp.json())
-    //       .then((data) => {
-    //         setHobbyDescription(data)
-    //       })
-    //   }, [hobbyID])}
-
       useEffect(() => {
         fetch(`/hobby/${hobbyID}`)
           .then((resp) => resp.json())
@@ -67,7 +49,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 
     //I'd like to add some if (users) around the useEffects, maybe group them together for cleaner code and less error. ATM if a person visits the site and is not signed in, they still fire off.
     
-    console.log(user)
+    // console.log(user)
 
     const formSchema = object({
         expertise: number().positive().required('You need an expertise level 1-10'),
@@ -76,7 +58,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     const formik = useFormik({
         initialValues: {
             expertise: '',
-            user_id: user.id,
+            user_id: '',
             hobby_id: ''
         }, 
         validationSchema: formSchema,
@@ -121,8 +103,17 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
     }
 
 
+    //Magic code, waits for the user data to be populates, and then allows for setting the values.
+    useEffect(() => {
+        if (user && user.id){
+        formik.setValues({
+          user_id: user.id
+        })
+    }
+      }, [user])
+
+
     //Map over hobby descriptions that were set above and solely take out the descriptions,
-    //Originally I had a map over here, but hobbyDescription returns me one piece of data. I can't map over one piece of data...
 
     // console.log(user.id)
 
@@ -139,6 +130,7 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
         { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
 
         {/* display errors from backend */}
+        {error && <p>{error}</p>}
 
         <form onSubmit={formik.handleSubmit}>
         <div>
@@ -213,31 +205,3 @@ function UserHobbyForm({user, setUserHobbies, userHobbies}) {
 }
 
 export default UserHobbyForm;
-
-{/* <>
-<div>
-    <select
-    className="text-black"
-    name="hobby_id"
-    value={formik.values.hobby_id}
-    onChange={handleHobbyDisplay}>
-        <option> Select from the Hobbies below</option>
-        {mappedHobby}
-    </select>
-</div>
-
-<div>
-Description
-<p>{hobbyDescription.description} </p>
-</div>
-
-<div className="user-signup-input">
-    <label> Expertise Level? </label>
-    <input
-    type="text"
-    name="expertise"
-    value={formik.values.expertise}
-    onChange={formik.handleChange}
-    />
-</div>
-</> */}

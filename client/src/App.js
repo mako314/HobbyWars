@@ -24,6 +24,9 @@ import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
 //--------------------Hobby Imports---------------------
 import HobbyAdd from './HobbyComponents.js/HobbyAdd';
 
+//--------------------Entry Imports---------------------
+import EntryForm from './EntryComponents/EntryForm';
+import EntryEdit from './EntryComponents/EditEntry';
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
@@ -74,7 +77,12 @@ function App() {
     const [userHobbies, setUserHobbies] = useState([])
 
     //State grab HOBBIES and display them need to make a hobby post, 
-    const [hobbyAdder, setHobbyAdder] = useState([]) // Moved this to UserHobbyForm
+    const [hobbyAdder, setHobbyAdder] = useState([])
+
+    //State to grab ENTRIES and display them, working on post:
+    const [entries, setEntries] = useState([])
+    //State to grab the competition ID to be pasased to Entry Post
+    const [compID, setCompID] = useState([])
     
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
@@ -86,6 +94,8 @@ function App() {
         }
       });
     }, []);
+
+    // console.log("app")
     
     //-------------------------------------------- COMPETITION FETCH / CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
@@ -98,6 +108,36 @@ function App() {
       }, [])
     //-------------------------------------------------------------------------------
     
+    //-------------------------------------------- ENTRY FETCH / CODE--------------------------
+    
+    useEffect(() => {
+        fetch("/entries")
+          .then((resp) => resp.json())
+          .then((data) => {
+            setEntries(data)
+          })
+      }, [])
+
+
+      //This handles updating the ENTRY [PATCH]
+    const updateEntry = (entryToUpdate) =>{
+      setEntries(entries => entries.map(entry =>{
+        if (entry.id === entryToUpdate.id) {
+          return entryToUpdate
+        } else {
+          return entry
+        }
+      }))
+    }
+
+    //Need something to grab the competition ID when it's been clicked:
+    
+    const grabCompId = (id) =>{
+      setCompID(id)
+    }
+
+    //-------------------------------------------------------------------------------
+
     //-------------------------------------------- USER FETCH / CODE--------------------------
     
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
@@ -155,7 +195,7 @@ function App() {
         </div>
       )
 
-
+      // console.log(user)
     return (
         <div>
             <Header user={user} setUser={setUser}/>
@@ -169,7 +209,7 @@ function App() {
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} grabCompId={grabCompId} compID={compID}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
 
@@ -178,15 +218,24 @@ function App() {
 
                 {/* USER SIGNUP ROUTING*/}
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                
                 {/* USER DASHBOARD BY ID? */}
+
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
                 <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
                 <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/>
+                
                 {/* ADD A HOBBY ROUTE */}
                 <Route path='/add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
+
+
+                {/* ADD AN ENTRY ROUTE */}
+                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
+                <Route path='/edit-entry' element={<EntryEdit user={user} />}/>
+
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}
@@ -204,63 +253,3 @@ export default App;
 
 //Pass user around through props, so this will be it's own state, then do like if user: 
 // load account page, if we have a user show this otherwise show a signup form
-
-
-// const [user, setUser] = useState(null); // stores user on client-side
-
-// console.log(user);
-
-// // grabs current session from server-side and sets state
-// function handleCheckSession() {
-//     fetch("/check_session").then((resp) => {
-//       if (resp.ok) {
-//         resp.json().then((user) => setUser(user));
-//       }
-//     });
-// }
-
-// // LOGIN / sends information to server-side, sets session, and sets state
-// function handleLogin(e) {
-//     e.preventDefault();
-
-//     let username = e.target.username.value;
-//     let password = e.target.password.value;
-
-//     fetch("/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify( { username, password } ), //, password
-//       }).then((resp) => {
-//         if (resp.ok) {
-//           resp.json().then((user) => setUser(user));
-//         }
-//       });
-// }
-
-// // removes session, removes state
-// function handleLogout() {
-//     fetch("/logout", {
-//         method: "DELETE"
-//     }).then(setUser(null))
-// }
-// return (
-//     <>
-//         <h1>Login Form</h1>
-//         <form onSubmit = {handleLogin}>
-//             <label>Username: </label>
-//             <input id = "username" type = "text" />
-//             <label>Password: </label>
-//             <input id = "password" type = "text" />
-//             <button type = "submit">Login</button>
-//         </form>
-
-//         <h1>Logout Form</h1>
-//         <button onClick = {handleLogout}>Logout</button>
-
-//         <br />
-
-//         <button onClick = {handleCheckSession}>Check Session</button>
-//     </>
-// )

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
@@ -21,19 +21,22 @@ function UserEdit({user, updateUser}){
         email: string().required("You'll need an email address")
     })
 
+    // console.log(user.username)
+
+    //Takes the form and makes a patch request
     const formik = useFormik({
         initialValues: {
-            firstName: user.firstName,
-            lastName: user.lastName,
-            username: user.username,
-            password: user.password,
-            age: user.age,
-            bio: user.bio,
-            location: user.location,
-            phone: user.phone,
-            email: user.email,
-            profileImg: user.profileImg, //this and the one below remain the same as the first time they were logged in.
-            bannerImg:user.bannerImg, 
+            firstName: " ",
+            lastName: " ",
+            username: " ",
+            password: " ",
+            age: " ",
+            bio: " ",
+            location: " ",
+            phone: " ",
+            email: " ",
+            profileImg: " ", //this and the one below remain the same as the first time they were logged in.
+            bannerImg: " " 
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
@@ -57,6 +60,32 @@ function UserEdit({user, updateUser}){
                 })
         }
     })
+
+
+    //Takes the user back to the dashboard if they didn't want to click it
+    const backToDash =  () => {
+        navigate(`/user-dashboard/${user.id}`)
+    }
+
+    //Magic code, waits for the user data to be populates, and then allows for setting the values.
+    //For some reason, they still see their old username
+    useEffect(() => {
+        if (user && user.username){
+        formik.setValues({
+            firstName: user.firstName,
+            lastName: user.lastName,
+            username: user.username,
+            password: user.password,
+            age: user.age,
+            bio: user.bio,
+            location: user.location,
+            phone: user.phone,
+            email: user.email,
+            profileImg: user.profileImg, //this and the one below remain the same as the first time they were logged in.
+            bannerImg:user.bannerImg, 
+        })
+    }
+      }, [user])
 
 
     return(
@@ -177,10 +206,11 @@ function UserEdit({user, updateUser}){
                     onChange={formik.handleChange}
                     />
                     </div>
-
+                <div>--------------------------------------</div>
                 <button type="submit" className=""> Submit and return to my Dashboard </button>
 
             </form>
+                <button onClick={backToDash}> Back </button>
 
         </div>
     )

@@ -9,29 +9,6 @@ from flask_restful import Resource
 from config import db, app, api
 # import os #original import
 
-#all of the below was commented out. I will need to remove db from models import when i fix the config file
-
-# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-# DATABASE = os.environ.get(
-#     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
-
-# app = Flask(__name__)
-
-# app.secret_key = "TESTING123456789"
-
-# app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# app.json.compact = False
-
-# bcrypt = Bcrypt(app)
-
-# migrate = Migrate(app, db)
-
-# db.init_app(app)
-# api = Api(app)
-# CORS(app)
-
-#CONFIG.PY allows me to remove all the above ^ ? 
 
 #------------------------------------------------------------------------------------------------------------------------------
 #Questions
@@ -53,7 +30,7 @@ class Login(Resource):
         user = User.query.filter(User.username == username).first()
         #Grab password
         password = data['password']
-        print(user)
+        # print(user)
         #Test to see if password matches
         if user:
             if user.authenticate(password):
@@ -138,7 +115,7 @@ class Users(Resource):
 
             new_user.password_hash = new_user._password_hash
 
-            print(new_user._password_hash)
+            # print(new_user._password_hash)
 
             #So I actually needed to add the user before I can hash lol
 
@@ -183,7 +160,7 @@ class UserByID(Resource):
                 #Actually it does not seem possible to edit a password
                 user.password_hash = user._password_hash
 
-                print(user._password_hash)
+                # print(user._password_hash)
 
                 db.session.commit()
 

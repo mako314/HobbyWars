@@ -187,3 +187,11 @@ should freaking make it where you can't submit the same exact hobby like in vali
 
 
 need to make more front end validations with yup for competitions and other things.
+
+
+
+
+
+need to make a way to submit entries + get results and such
+
+holy fuck this refresh bug pisses me off

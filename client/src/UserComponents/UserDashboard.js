@@ -73,12 +73,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         if (entry){
             setMappedEntries(
                 entry?.map((oneEntry) => {
-                return (<div>
+                return (
+                <div>
                     {console.log(oneEntry)}
+                    {oneEntry.competitions.title}
                     {oneEntry.submission}
                     {oneEntry.description}
-                    
-                    </div>)
+                </div>)
                 })
             )
         }

@@ -16,8 +16,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     //State to confirm deletion (makes a button appear?)
     const [toggleDelete, setToggleDelete] = useState(true)
 
-    //State to display some info on the competitions a user has entered:
-    const [enteredComps, setEnteredComps] = useState([])
+    //State to keep track of the users mapped entries:
+    const [mappedEntries, setMappedEntries] = useState([]);
     
     //Destructure for props
     
@@ -35,14 +35,14 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         profileImg, 
         bannerImg,
         competitions,
-        // entries // Fix in the backend 
+        entry // Fix in the backend 
     } = selectedUser;
 
 
 
     console.log(selectedUser)
     // console.log(competitions)
-    // console.log(entryArray)
+    console.log(entry)
 
 
     //Display the competitions the user hosts
@@ -59,29 +59,34 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         navigate(`/competition/${id}`)
     }
 
-    // function handleCompNavigation(competition) {
-    //     navigate(`/competition/${competition.id}`)
-    // }
+
+
+
 
     //This is bugging where it tells me .map is not a thing again, I wonder why?
     //Display users entries
     
-    let mappedEntires
+    // let mappedEntries
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
 
-    // useEffect(() => {
-    //     if (entries){
-    //         mappedEntires = entries?.map((entry) => {
-    //             return (<div>
-    //                 {entry.submission}
-    //                 {entry.description}
+    useEffect(() => {
+        if (entry){
+            setMappedEntries(
+                entry?.map((oneEntry) => {
+                return (<div>
+                    {console.log(oneEntry)}
+                    {oneEntry.submission}
+                    {oneEntry.description}
                     
-    //                 </div>)
-    //         })
-    // }
-    //   }, [entries])
+                    </div>)
+                })
+            )
+        }
+      }, [entry])
 
-    // const mappedEntires = entries?.map((entry) => {
+    // console.log(mappedEntries)
+
+    // const mappedEntries = entries?.map((entry) => {
     //         return <div>
     //             {entry.submission}
     //             {entry.description}
@@ -89,16 +94,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     //             </div>
     //     })
 
-
-    // Going to fetch the competition ID's
-    // useEffect(() => {
-    //     fetch(`/competition/${entry.competition_id}`)
-    //       .then((resp) => resp.json())
-    //       .then((data) => {
-    //         setEnteredComps(data)
-    //       })
-    //   }, [])
-
+    // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
+    // and also navigate to it
 
     // console.log(mappedCompetitions)
 
@@ -196,7 +193,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
             <p>---------------------------------Entries------------------------</p>
 
-            {/* <div>{mappedEntires}</div> */}
+            <div>{mappedEntries}</div>
 
             
 
@@ -232,20 +229,3 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 }
 
 export default UserDashboard
-
-
-{/* <div>
-<p>{firstName}</p>
-<p>{lastName}</p>
-<p>{username}</p>
-<p>{password}</p>
-<p>{age}</p>
-<p>{bio}</p>
-<p>{location}</p>
-<p>{phone}</p>
-<p>{email}</p>
-<p>{profileImg}</p>
-<p>{bannerImg}</p>
-</div> */}
-
-// stuff that was in the return prior

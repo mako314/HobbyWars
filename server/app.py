@@ -580,8 +580,9 @@ class Entries(Resource):
 
     #GET all Entries
     def get(self):
-        entries = [entry.to_dict() for entry in Entry.query.all()]
-
+        entries = [entry.to_dict( rules = ('-')) for entry in Entry.query.all()]
+        # description
+        # submission
         response = make_response(entries, 200)
 
         return response

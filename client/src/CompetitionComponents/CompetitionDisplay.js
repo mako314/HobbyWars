@@ -117,6 +117,10 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
+
+    function handleCompSubmissionNav(e) {
+        navigate(`/competition-submissions/${id}`)
+    }
  
 
     //This allows the USER to confirm if they are the correct user,
@@ -156,8 +160,13 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <Link to='/competitions'>
             <button> BACK BUTTON</button>
             </Link>
-            <div></div>
-            {user.id === user_id ? userConfirm : entryButton} 
+
+            <br></br>
+            <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
+
+            <br></br>
+            {user.id === user_id ? userConfirm : entryButton}
+            
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>
     )}

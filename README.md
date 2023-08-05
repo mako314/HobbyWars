@@ -194,4 +194,5 @@ need to make more front end validations with yup for competitions and other thin
 
 need to make a way to submit entries + get results and such
 
-holy fuck this refresh bug pisses me off
+
+need to go through and make sure I have logged in and logged out displays

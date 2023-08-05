@@ -9,7 +9,8 @@ import Header from './NavbarAndHeader/Header';
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
-import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
+import CompetitionCreation from './CompetitionComponents/CompetitionCreation';
+import CompetitionSubmissions from './CompetitionComponents/CompetitionSubmissions';
 
 //-------Login / Logout  / Signup Imports--------
 import LoginForm from './LoginComponents/LoginForm';
@@ -211,6 +212,7 @@ function App() {
                 <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} setCompID={setCompID} compID={compID}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user}/>}/>
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>

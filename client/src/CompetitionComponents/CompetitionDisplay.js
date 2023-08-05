@@ -6,17 +6,6 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, compID}){
 
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
-
-//THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
     //Link you to another realm
     const navigate = useNavigate();
@@ -132,7 +121,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
     // need to find a way to render this USER id stuff if only the user is logged in.
     let loggedInDisplay
     //SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE 
-
+    // not in use effect so the global scoping works here
     if(user) {loggedInDisplay=(
         <div>
             <p>{title}</p>

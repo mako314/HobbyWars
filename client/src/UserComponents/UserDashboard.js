@@ -68,7 +68,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     
     // let mappedEntries
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
-
+    
+    // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
     useEffect(() => {
         if (entry){
             setMappedEntries(
@@ -85,6 +86,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                     <br></br>
                     {oneEntry.submission}
                     {oneEntry.description}
+                    {/* need an edit entry button here to take you to edit entry page */}
+                    <br></br>
                     <br></br>
                 </div>)
                 })

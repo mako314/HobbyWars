@@ -53,6 +53,7 @@ function CompetitionSubmissions({user, setEntryID}){
         navigate(`/competition/${id}`)
     }
 
+    //Takes you to a single display page for the submission, ENTRY DISPLAY
     function viewSubmission(id) {
         navigate(`/entry/${id}`)
         setEntryID(id)

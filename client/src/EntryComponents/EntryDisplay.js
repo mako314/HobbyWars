@@ -9,6 +9,16 @@ function EntryDisplay({user, entryID}){
 
     const [mappedEntry, setMappedEntry] = useState([])
 
+    //I can likely use the code inside of the userdashboard (the code from competition submission to get here)
+
+        // //Takes you to a single display page for the submission, ENTRY DISPLAY
+        // function viewSubmission(id) {
+        //     navigate(`/entry/${id}`)
+        //     setEntryID(id)
+        // }
+    
+
+
     //Use effect to grab the data when you initially load into this page
     useEffect(() => {
         fetch(`/entry/${entryID}`)
@@ -17,32 +27,55 @@ function EntryDisplay({user, entryID}){
             // console.log("Ive fired")
             setSingleEntry(data)
           })
-      }, [])
+      }, [entryID])
+
+      console.log(entryID)
+      console.log(singleEntry)
+    
+
+    //Use effect after singleEntry data is populated to retrieve data and display it
+    // useEffect(() => {
+    //     if (singleEntry){
+    //         setMappedEntry(singleEntry.map((oneEntry) => {
+    //             return(
+    //                 <div>
+    //                     <p>
+    //                         {singleEntry.submission}
+    //                     </p>
+
+    //                     <p>
+    //                         {oneEntry.description}
+    //                     </p>
+
+    //                 </div>
+    //             )
+    //         })
+    //         )
+
+    // }
+    //   }, [singleEntry])
 
     useEffect(() => {
         if (singleEntry){
-            singleEntry.map((oneEntry) => {
-                return(
-                    <div>
-                        <p>
-                            {oneEntry.submission}
-                        </p>
+            setMappedEntry(
+                <div>
+                    <p>
+                        {singleEntry.submission}
+                    </p>
 
-                        <p>
-                            {oneEntry.description}
-                        </p>
+                    <p>
+                        {singleEntry.description}
+                    </p>
 
-                    </div>
-                )
-            })
-
-    }
-      }, [singleEntry])
+                </div>
+            )
+        }
+    }, [singleEntry])
 
 
     return (
         <div>
-
+            {mappedEntry}
         </div>
     )
 }

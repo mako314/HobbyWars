@@ -4,15 +4,20 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryEdit({user, updateEntry, compID}){
+function EntryEdit({user, updateEntry, compID, entryID}){
 
     //display errors
     const [error, setError] = useState()
+
+    //grab entry info to display, check the useeffect at the bottom
+    const [entryInfo, setEntryInfo] = useState([])
+
 
     //Handle navigation after submission, likely take to display page
     const navigate = useNavigate()
 
     //I may want to have them just navigate back to their user dashboard after all is said and done.
+
 
     const formSchema = object({
         submission: string().required('You need a submission!'),
@@ -32,8 +37,8 @@ function EntryEdit({user, updateEntry, compID}){
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/entries' , {
-                method: "POST",
+            fetch(`/entry/${entryID}` , {
+                method: "Patch",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -42,8 +47,9 @@ function EntryEdit({user, updateEntry, compID}){
             .then(res => {
                 if (res.ok){
                     res.json().then(entry => {
+                        console.log(entry)
                         updateEntry(entry)
-                        // navigate('/user-hobby-selection')
+                        navigate(`/user-dashboard/${user.id}`)
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -61,18 +67,34 @@ function EntryEdit({user, updateEntry, compID}){
         navigate(`/user-dashboard/${user.id}`)
     }
 
-    //Magic code, waits for the user data to be populates, and then allows for setting the values.
+    //Use effect waiting for user to load, then afterwards if user exists, comp id exists, and entry ID all exist, it fetches the entries information such as description and submission.
     useEffect(() => {
-        if (user && compID){
-        formik.setValues({
-            submission: '',
-            description: '',
-            user_id: user.id,
-            competition_id: compID , 
-        })
+        if (user && compID && entryID){
+        fetch(`/entry/${entryID}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data.submission)
+            setEntryInfo(data)
+          })
     }
       }, [user])
 
+    //This useEffect waits for EntryInfo to be populated, then it uses formik.setValues to input the existing information in the patch.
+      useEffect(() => {
+        if (entryInfo && user && compID){
+            formik.setValues({
+                submission: entryInfo.submission,
+                description: entryInfo.description,
+                user_id: user.id,
+                competition_id: compID
+            })
+    }
+      }, [entryInfo])
+
+
+
+      console.log(entryInfo)
+    //   console.log(entryID)
 
     return(
         <div>

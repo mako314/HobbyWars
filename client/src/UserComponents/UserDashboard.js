@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link ,useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -43,7 +43,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     // console.log(entry)
 
 
-    //Display the competitions the user hosts
+    //Display the competitions the user hosts on their dashboard
     const mappedCompetitions = competitions?.map((competition) => {
         return <>
         <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
@@ -61,6 +61,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     //Button to navigate to submission edit
     function navSubmissionEdit(id) {
         navigate(`/edit-entry/${id}`)
+        setEntryID(id)
     }
 
 
@@ -70,6 +71,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     // let mappedEntries
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
     
+    //This portion handles displaying a users entry on their dashboard
     // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
     useEffect(() => {
         if (entry){
@@ -77,7 +79,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                 entry?.map((oneEntry) => {
                 return (
                 <div>
-                    {console.log(oneEntry)}
+                    {/* {console.log(oneEntry)} */}
                     
                     
                     <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> {oneEntry.competitions.title} </button>

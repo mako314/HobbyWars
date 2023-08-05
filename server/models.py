@@ -215,13 +215,13 @@ class Competition(db.Model, SerializerMixin):
 
     #Relationships
     user = db.relationship('User', back_populates="competitions") #COMMENTED OUT NOT SURE IF NEEDED
-    entries = db.relationship('Entry', back_populates="competitions")
+    entries = db.relationship('Entry', back_populates="competitions") #CHANGE TO ENTRY DUE TO FREAKING OBJECT.ENTRIES
     results = db.relationship('Result', back_populates="competitions")
 
     #Serialize Rules
     serialize_rules = (#remove recursing back to competitions from entry
                        '-entries.competitions',
-                       #remove user from entry portion
+                       #remove user from entry portion ## NEED TO CHANGE ENTRIES TO ENTRY UNFORTUNATELY
                        '-entries.user',
                        #remove recursing back to competitions from result
                        '-results.competitions',
@@ -338,7 +338,7 @@ class Entry(db.Model, SerializerMixin):
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
 
     #Relationships
-    user = db.relationship('User', back_populates="entries")
+    user = db.relationship('User', back_populates="entries") #need to change this to something better becuase object.entries is reserved
     competitions = db.relationship('Competition', back_populates="entries" )
 
     #Serialize Rules

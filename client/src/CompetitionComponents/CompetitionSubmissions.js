@@ -6,11 +6,16 @@ function CompetitionSubmissions({user, setEntryID}){
 
     const navigate = useNavigate();
 
+    //Grab all the comp entries
     const [compEntries, setCompEntries] = useState([])
-
+   
+    //Map competition entries for logged in user
     const [userMappedCompEntries, setUserMappedCompEntries] = useState([])
 
+    //Map competition entries for logged out user
     const [loMappedCompEntries, setLoMappedCompEntries] = useState([])
+
+    //Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
 
 
 
@@ -47,12 +52,15 @@ function CompetitionSubmissions({user, setEntryID}){
     function backToComp(id) {
         navigate(`/competition/${id}`)
     }
-    //Button to take user to edit their entry, 
-    // let userLoggedEditButton = <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>  
 
-    //once data is fetched, and if the data exists, map over it and display the submissions and entries
-    // This one will populate the logged in display, the next useEffect has no edit button
-    
+    function viewSubmission(id) {
+        navigate(`/entry/${id}`)
+        setEntryID(id)
+    }
+
+
+    //once data is fetched, and if the data exists, map over it and display the submissions and entries for a logged in user
+    //This one will populate the logged in display, the next useEffect has no edit button
     useEffect(() =>{
         if (entry && user && user_id){
             setUserMappedCompEntries(
@@ -62,16 +70,25 @@ function CompetitionSubmissions({user, setEntryID}){
                             <br></br>
                             Entry
                             <br></br>
+
                             <div>
                                 Submission:
                             <p>{oneEntry.submission}</p>
                             </div>
+
                             <br></br>
+
                             <div>
                                 Description:
                             <p>{oneEntry.description}</p>
                             </div>
+
                             <br></br>
+
+                            <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+                            
+                            <br></br>
+
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""} 
                         </div>
                     )
@@ -90,15 +107,21 @@ function CompetitionSubmissions({user, setEntryID}){
                             <br></br>
                             Entry:
                             <br></br>
+
                             <div>
                                 Submission:
                             <p>{oneEntry.submission}</p>
                             </div>
+
                             <br></br>
+
                             <div>
                                 Description:
                             <p>{oneEntry.description}</p>
                             </div>
+
+                            <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+                        
                         </div>
                     )
                 })

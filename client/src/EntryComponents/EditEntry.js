@@ -67,7 +67,7 @@ function EntryEdit({user, updateEntry, entryID}){
 
     //Use effect waiting for user to load, then afterwards if user exists, comp id exists, and entry ID all exist, it fetches the entries information such as description and submission.
     useEffect(() => {
-        if (user && entryID){ //compID &&
+        if (user && entryID){ 
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
@@ -79,7 +79,7 @@ function EntryEdit({user, updateEntry, entryID}){
 
     //This useEffect waits for EntryInfo to be populated, then it uses formik.setValues to input the existing information in the patch.
       useEffect(() => {
-        if (entryInfo && user){ //&& compID
+        if (entryInfo && user){
             formik.setValues({
                 submission: entryInfo.submission,
                 description: entryInfo.description,

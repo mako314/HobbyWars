@@ -203,3 +203,6 @@ results
 
 need to see flow, like what takes me where, how do I want to get back to x y or z?
 need edit competition page
+
+Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
+This can go for each and every 1 of the thingamajiggies (pages)

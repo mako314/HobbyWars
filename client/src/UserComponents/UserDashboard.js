@@ -77,8 +77,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                 <div>
                     {console.log(oneEntry)}
                     {oneEntry.competitions.title}
+                    <br></br>
+                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition info</button>
+                    <br></br>
+                    <br></br>
                     {oneEntry.submission}
                     {oneEntry.description}
+                    <br></br>
                 </div>)
                 })
             )

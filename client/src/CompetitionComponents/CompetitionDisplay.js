@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, compID}){
+function CompetitionDisplay({user, setCompetitions, competitions, setCompID, compID}){
 
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
@@ -52,11 +52,11 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
           .then((resp) => resp.json())
           .then((data) => {
             setCompetition(data)
-            grabCompId(id)
+            setCompID(id)
           })
       }, [])
 
-      console.log(compID)
+    //   console.log(compID)
 
 
     //-----------------------------------DELETE PORTION--------------------------------

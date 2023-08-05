@@ -7,6 +7,8 @@ import { object, string, number} from 'yup'
 function EntryForm({user, setEntries, entries, compID}) {
     
     const [error, setError] = useState()
+
+    // const [compID, setCompID] = useState(0)
     
     const navigate = useNavigate()
 

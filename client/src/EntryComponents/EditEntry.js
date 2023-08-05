@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryEdit({user, updateUser}){
+function EntryEdit({user, updateEntry, compID}){
 
     //display errors
     const [error, setError] = useState()
@@ -42,7 +42,7 @@ function EntryEdit({user, updateUser}){
             .then(res => {
                 if (res.ok){
                     res.json().then(entry => {
-                        // setEntries([...entries, entry])
+                        updateEntry(entry)
                         // navigate('/user-hobby-selection')
                         //Add where you want it to go here / anything else you want it to do
                     })
@@ -63,10 +63,12 @@ function EntryEdit({user, updateUser}){
 
     //Magic code, waits for the user data to be populates, and then allows for setting the values.
     useEffect(() => {
-        if (user){
+        if (user && compID){
         formik.setValues({
+            submission: '',
+            description: '',
             user_id: user.id,
-            competition_id:" " , 
+            competition_id: compID , 
         })
     }
       }, [user])
@@ -82,21 +84,21 @@ function EntryEdit({user, updateUser}){
                     {error && <p>{error}</p>}
 
                     <div className="user-signup-input">
-                    <label> First Name </label>
+                    <label>  Enter your submission </label>
                     <input
                     type="text"
-                    name="firstName"
-                    value={formik.values.firstName}
+                    name="submission"
+                    value={formik.values.submission}
                     onChange={formik.handleChange}
                     />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Last Name </label>
+                    <label> Edit your description </label>
                     <input
                     type="text"
-                    name="lastName"
-                    value={formik.values.lastName}
+                    name="description"
+                    value={formik.values.description}
                     onChange={formik.handleChange}
                     />
                     </div>

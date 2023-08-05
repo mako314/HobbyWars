@@ -20,8 +20,6 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     const [mappedEntries, setMappedEntries] = useState([]);
     
     //Destructure for props
-    
-    // console.log(selectedUser)
     const {
         firstName, 
         lastName, 
@@ -40,9 +38,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
 
 
-    console.log(selectedUser)
+    // console.log(selectedUser)
     // console.log(competitions)
-    console.log(entry)
+    // console.log(entry)
 
 
     //Display the competitions the user hosts
@@ -52,15 +50,18 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         </>
     })
 
+    // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
+    // and also navigate to it
     //click and navigate to the competition display page
     function navigateToCompetition(id) {
-        // const {user_id } = user <- don't need to do this
         console.log(user.id)
         navigate(`/competition/${id}`)
     }
 
-
-
+    //Button to navigate to submission edit
+    function navSubmissionEdit(id) {
+        navigate(`/edit-entry/${id}`)
+    }
 
 
     //This is bugging where it tells me .map is not a thing again, I wonder why?
@@ -77,9 +78,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                 return (
                 <div>
                     {console.log(oneEntry)}
-                    {oneEntry.competitions.title}
-                    <br></br>
-                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition info</button>
+                    
+                    
+                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> {oneEntry.competitions.title} </button>
                     {/* maybe something like "clicked from dash state?" 
                     it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
                     <br></br>
@@ -89,24 +90,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                     {/* need an edit entry button here to take you to edit entry page */}
                     <br></br>
                     <br></br>
+                    <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>
                 </div>)
                 })
             )
         }
       }, [entry])
 
-    // console.log(mappedEntries)
-
-    // const mappedEntries = entries?.map((entry) => {
-    //         return <div>
-    //             {entry.submission}
-    //             {entry.description}
-                
-    //             </div>
-    //     })
-
-    // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
-    // and also navigate to it
 
     // console.log(mappedCompetitions)
 
@@ -159,7 +149,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     }
 
 
-    //This button allows you to confirm
+    //This button allows you to confirm deletion
     const deleteBtn = (
         <button onClick={handleToggle}> Delete my account </button>
     )
@@ -181,7 +171,6 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
     
     //To handle going to the edit page 
     function handleEdit(e) {
-        // const {user_id } = user <- don't need to do this
         console.log(user.id)
         navigate(`/user-edit/${user.id}`)
     }
@@ -199,7 +188,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-            <p>---------------------------------Competitions------------------------</p>
+            <p>---------------------------------Competitions You Currently Host------------------------</p>
             <div> {mappedCompetitions} </div>
 
             <p>---------------------------------Entries------------------------</p>

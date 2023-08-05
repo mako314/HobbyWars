@@ -81,8 +81,13 @@ function App() {
 
     //State to grab ENTRIES and display them, working on post:
     const [entries, setEntries] = useState([])
+
     //State to grab the competition ID to be pasased to Entry Post
+    //Need something to grab the competition ID when it's been clicked, gets called in useEffect inside of competition display:
     const [compID, setCompID] = useState([])
+
+    //Grab the entry ID and send it to edit for the data to prepopulate the form
+    const [entryID, setEntryID] = useState(0)
     
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
@@ -128,12 +133,6 @@ function App() {
           return entry
         }
       }))
-    }
-
-    //Need something to grab the competition ID when it's been clicked:
-    
-    const grabCompId = (id) =>{
-      setCompID(id)
     }
 
     //-------------------------------------------------------------------------------
@@ -209,7 +208,7 @@ function App() {
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} grabCompId={grabCompId} compID={compID}/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} setCompID={setCompID} compID={compID}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
 
@@ -221,7 +220,7 @@ function App() {
                 
                 {/* USER DASHBOARD BY ID? */}
 
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
@@ -234,7 +233,7 @@ function App() {
 
                 {/* ADD AN ENTRY ROUTE */}
                 <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
-                <Route path='/edit-entry' element={<EntryEdit user={user} />}/>
+                <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry}/>}/>
 
             </Routes>
 

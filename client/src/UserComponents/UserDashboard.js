@@ -79,6 +79,8 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                     {oneEntry.competitions.title}
                     <br></br>
                     <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition info</button>
+                    {/* maybe something like "clicked from dash state?" 
+                    it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
                     <br></br>
                     <br></br>
                     {oneEntry.submission}

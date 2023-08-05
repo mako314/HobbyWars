@@ -83,12 +83,16 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
           })
       }
     
+
+    //The first delete button that toggles into the confirm delete
     const deleteBtn = (
     <div>
         <button onClick={handleToggle}> Delete my competition </button>
     </div>
     )
+    
 
+    //Button to confirm that you'd like to delete the competition, this actually sends the delete request. Or you can go back.
     const confirmDelete = (
         <div>
         <button onClick={() => handleCompetitionDelete(competition)}> Yes DELETE my competition.</button>
@@ -96,7 +100,9 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         <button onClick={handleToggle}> No it was a mistake</button>
         </div>
     )
+    
 
+    //A button to take you to the submit entry page, you have to be logged in though
     const entryButton = (
         <div>
             <Link to='/submit-entry'>
@@ -106,7 +112,8 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             </Link>
         </div>
     )
-
+    
+    //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
@@ -176,6 +183,12 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <p>{prize7}</p>
             <p>{prize8}</p>
             <p>{registration_schedule}</p>
+            <br></br>
+            
+            <div>-------------------------</div>
+            <Link to='/competitions'>
+            <button> BACK BUTTON</button>
+            </Link>
         </div>
     )
 

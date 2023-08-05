@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryEdit({user, updateEntry, compID, entryID}){
+function EntryEdit({user, updateEntry, entryID}){
 
     //display errors
     const [error, setError] = useState()
@@ -88,11 +88,13 @@ function EntryEdit({user, updateEntry, compID, entryID}){
             })
     }
       }, [entryInfo])
-
+    
+    // Console logs, 
+    // Page breaks on reload and by breaks I mean the inputs no longer linger, can probably move some stuff around but I'll see
     // console.log(entryInfo.competition_id)
-    // // console.log(user.id)
-    // //   console.log(entryInfo)
-    // //   console.log(entryID)
+    // console.log(user.id)
+    // console.log(entryInfo)
+    // console.log(entryID)
 
     return(
         <div>

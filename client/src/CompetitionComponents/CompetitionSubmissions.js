@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user}){
+function CompetitionSubmissions({user, setEntryID}){
 
     const navigate = useNavigate();
 
@@ -40,8 +40,10 @@ function CompetitionSubmissions({user}){
     //Function to take you to the edit
     function navSubmissionEdit(id) {
         navigate(`/edit-entry/${id}`)
+        setEntryID(id)
     }
 
+    //Function to take you back to the competition display page
     function backToComp(id) {
         navigate(`/competition/${id}`)
     }

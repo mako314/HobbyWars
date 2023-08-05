@@ -213,7 +213,7 @@ function App() {
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
-                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user}/>}/>
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID}/>}/>
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>

@@ -25,8 +25,6 @@ function EntryEdit({user, updateEntry, compID, entryID}){
 
     })
 
-    // console.log(user.username)
-
     //Takes the form and makes a patch request
     const formik = useFormik({
         initialValues: {
@@ -38,7 +36,7 @@ function EntryEdit({user, updateEntry, compID, entryID}){
         validationSchema: formSchema,
         onSubmit: (values) =>{
             fetch(`/entry/${entryID}` , {
-                method: "Patch",
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -47,7 +45,7 @@ function EntryEdit({user, updateEntry, compID, entryID}){
             .then(res => {
                 if (res.ok){
                     res.json().then(entry => {
-                        console.log(entry)
+                        console.log("shooting")
                         updateEntry(entry)
                         navigate(`/user-dashboard/${user.id}`)
                         //Add where you want it to go here / anything else you want it to do
@@ -60,7 +58,7 @@ function EntryEdit({user, updateEntry, compID, entryID}){
     })
 
     // I need to capture the entries ID with state
-
+    // console.log(entryID)
 
     //Takes the user back to the dashboard if they didn't want to click it
     const backToDash =  () => {
@@ -69,11 +67,11 @@ function EntryEdit({user, updateEntry, compID, entryID}){
 
     //Use effect waiting for user to load, then afterwards if user exists, comp id exists, and entry ID all exist, it fetches the entries information such as description and submission.
     useEffect(() => {
-        if (user && compID && entryID){
+        if (user && entryID){ //compID &&
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
-            console.log(data.submission)
+            // console.log("Ive fired")
             setEntryInfo(data)
           })
     }
@@ -81,20 +79,20 @@ function EntryEdit({user, updateEntry, compID, entryID}){
 
     //This useEffect waits for EntryInfo to be populated, then it uses formik.setValues to input the existing information in the patch.
       useEffect(() => {
-        if (entryInfo && user && compID){
+        if (entryInfo && user){ //&& compID
             formik.setValues({
                 submission: entryInfo.submission,
                 description: entryInfo.description,
                 user_id: user.id,
-                competition_id: compID
+                competition_id: entryInfo.competition_id
             })
     }
       }, [entryInfo])
 
-
-
-      console.log(entryInfo)
-    //   console.log(entryID)
+    // console.log(entryInfo.competition_id)
+    // // console.log(user.id)
+    // //   console.log(entryInfo)
+    // //   console.log(entryID)
 
     return(
         <div>

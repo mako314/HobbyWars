@@ -35,7 +35,7 @@ function CompetitionSubmissions({user}){
         entry
       } = compEntries
       
-      console.log(entry)
+    //   console.log(entry)
     
     //Function to take you to the edit
     function navSubmissionEdit(id) {
@@ -57,9 +57,6 @@ function CompetitionSubmissions({user}){
                 entry?.map((oneEntry) => {
                     return (
                         <div>
-                            {/* {console.log(oneEntry)} */}
-                            {console.log(user_id)}
-                            {console.log(user.id)}
                             <br></br>
                             Entry
                             <br></br>
@@ -72,8 +69,8 @@ function CompetitionSubmissions({user}){
                                 Description:
                             <p>{oneEntry.description}</p>
                             </div>
-
-                            { user.id === user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""} 
+                            <br></br>
+                            { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""} 
                         </div>
                     )
                 })
@@ -88,7 +85,6 @@ function CompetitionSubmissions({user}){
                 entry?.map((oneEntry) => {
                     return (
                         <div>
-                            {console.log(oneEntry)}
                             <br></br>
                             Entry:
                             <br></br>
@@ -130,7 +126,7 @@ function CompetitionSubmissions({user}){
         <div>
             wowowoowow
             {user ? loggedInDisplay : loggedOutDisplay}
-
+            <br></br>
             <button onClick={() => backToComp(id)}> BACK BUTTON</button>
 
         </div>

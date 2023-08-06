@@ -178,7 +178,7 @@ would need a placement
 
 entry:
 
-NEED submission
+NEED submission < entry kind of done>
 need competition ID, user ID should be already logged from being logged in'
 
 
@@ -198,7 +198,7 @@ need to make a way to submit entries + get results and such
 need to go through and make sure I have logged in and logged out displays
 
 
-need a submission page,
+
 results
 
 need to see flow, like what takes me where, how do I want to get back to x y or z?
@@ -206,3 +206,16 @@ need edit competition page
 
 Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
 This can go for each and every 1 of the thingamajiggies (pages)
+
+
+Pretty good day so far in terms of work,
+submission page ??? what is that I think I did an entry form so that is the submission page.
+
+Yes it exists inside of the competition display page
+
+I still need to do everything for results except the ability to edit them (maybe unless you are the competition user_id associated with the result _user id? will have to see)
+
+but for example:
+post a result
+see an individual result?
+see results on userdashboard

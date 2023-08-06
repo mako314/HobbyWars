@@ -199,6 +199,9 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <Link to='/competitions'>
             <button> BACK BUTTON</button>
             </Link>
+
+            <br></br>
+            <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
         </div>
     )
 

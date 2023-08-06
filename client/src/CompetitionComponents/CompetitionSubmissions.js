@@ -97,8 +97,10 @@ function CompetitionSubmissions({user, setEntryID}){
                 )
         }
 
-      }, [entry || user])
-
+      }, [entry, user])
+    
+    
+    //This useEffect maps over the competitions entries, and it sets for a logged out user, there is no button to handle an edit for example.
     useEffect(() =>{
         if (entry){
             setLoMappedCompEntries(
@@ -129,7 +131,7 @@ function CompetitionSubmissions({user, setEntryID}){
                 )
         }
 
-      }, [entry || user])
+      }, [entry, user])
     
     //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
@@ -141,17 +143,17 @@ function CompetitionSubmissions({user, setEntryID}){
         </div>
 
     )}
-
-    const loggedOutDisplay= (
-        {loMappedCompEntries}
-    )
+    
+    // const loggedOutDisplay= (
+    //     {loMappedCompEntries}
+    // )
 
     //Tbh I can probably make it where a user can edit this if their ID matches the ID of the COMPETITION USER ID
 
     return(
         <div>
             wowowoowow
-            {user ? loggedInDisplay : loggedOutDisplay}
+            {user ? loggedInDisplay : loMappedCompEntries}
             <br></br>
             <button onClick={() => backToComp(id)}> BACK BUTTON</button>
 

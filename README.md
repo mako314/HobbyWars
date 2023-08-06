@@ -219,3 +219,6 @@ but for example:
 post a result
 see an individual result?
 see results on userdashboard
+
+
+There's definitely some issues with refreshes

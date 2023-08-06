@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function EntryDisplay({user, entryID}){
+function EntryDisplay({user, entryID,}){
 
     const navigate = useNavigate();
 
@@ -34,7 +34,9 @@ function EntryDisplay({user, entryID}){
       console.log(entryID)
       console.log(singleEntry)
     
-
+    function navSubmissionEdit(id) {
+    navigate(`/edit-entry/${id}`)
+    }
 
     //No need to map, it's a singular object.
     useEffect(() => {
@@ -48,9 +50,14 @@ function EntryDisplay({user, entryID}){
                     <p>
                         {singleEntry.description}
                     </p>
+                    
                     <br></br>
+                    
                     <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
+                    
+                    <br></br>
 
+                    { user.id === singleEntry.user_id ? <button onClick={() => navSubmissionEdit(singleEntry.id)}> Edit this Entry</button> : ""}
                 </div>
             )
         }

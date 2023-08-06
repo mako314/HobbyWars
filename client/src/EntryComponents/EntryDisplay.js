@@ -5,6 +5,8 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 
 function EntryDisplay({user, entryID}){
 
+    const navigate = useNavigate();
+
     const [singleEntry, setSingleEntry] = useState([])
 
     const [mappedEntry, setMappedEntry] = useState([])
@@ -33,28 +35,8 @@ function EntryDisplay({user, entryID}){
       console.log(singleEntry)
     
 
-    //Use effect after singleEntry data is populated to retrieve data and display it
-    // useEffect(() => {
-    //     if (singleEntry){
-    //         setMappedEntry(singleEntry.map((oneEntry) => {
-    //             return(
-    //                 <div>
-    //                     <p>
-    //                         {singleEntry.submission}
-    //                     </p>
 
-    //                     <p>
-    //                         {oneEntry.description}
-    //                     </p>
-
-    //                 </div>
-    //             )
-    //         })
-    //         )
-
-    // }
-    //   }, [singleEntry])
-
+    //No need to map, it's a singular object.
     useEffect(() => {
         if (singleEntry){
             setMappedEntry(
@@ -66,11 +48,17 @@ function EntryDisplay({user, entryID}){
                     <p>
                         {singleEntry.description}
                     </p>
+                    <br></br>
+                    <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
 
                 </div>
             )
         }
     }, [singleEntry])
+
+    function returnToSubmission(id){
+        navigate(`/competition-submissions/${id}`)
+    }
 
 
     return (

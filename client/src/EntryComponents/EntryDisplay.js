@@ -11,36 +11,38 @@ function EntryDisplay({user, entryID,}){
 
     const [mappedEntry, setMappedEntry] = useState([])
 
-    //I can likely use the code inside of the userdashboard (the code from competition submission to get here)
-
-        // //Takes you to a single display page for the submission, ENTRY DISPLAY
-        // function viewSubmission(id) {
-        //     navigate(`/entry/${id}`)
-        //     setEntryID(id)
-        // }
-    
-
+    const [loMappedEntry, setLoMappedEntry] = useState([])
 
     //Use effect to grab the data when you initially load into this page
     useEffect(() => {
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
-            // console.log("Ive fired")
+            console.log(data)
             setSingleEntry(data)
           })
       }, [entryID])
 
       console.log(entryID)
       console.log(singleEntry)
-    
-    function navSubmissionEdit(id) {
-    navigate(`/edit-entry/${id}`)
-    }
+
+    //navigate to the submission edit page if you are the signed in user
+    // function navSubmissionEdit(id) {
+    // navigate(`/edit-entry/${id}`)
+    // }
 
     //No need to map, it's a singular object.
     useEffect(() => {
         if (singleEntry){
+
+            function navSubmissionEdit(id) {
+            navigate(`/edit-entry/${id}`)
+            }
+            // I added these in to see if it'd fix anything, and alas, it did not.
+            function returnToSubmission(id){
+                navigate(`/competition-submissions/${id}`)
+            }
+
             setMappedEntry(
                 <div>
                     <p>
@@ -63,14 +65,39 @@ function EntryDisplay({user, entryID,}){
         }
     }, [singleEntry])
 
+
+    useEffect(() => {
     function returnToSubmission(id){
         navigate(`/competition-submissions/${id}`)
     }
+            setLoMappedEntry(
+                <div>
+                    <p>
+                        {singleEntry.submission}
+                    </p>
+
+                    <p>
+                        {singleEntry.description}
+                    </p>
+                    
+                    <br></br>
+                    
+                    <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
+                    
+                    <br></br>
+                </div>
+            )
+    }, [singleEntry])
+
+    //Return to the submissions page
+    // function returnToSubmission(id){
+    //     navigate(`/competition-submissions/${id}`)
+    // }
 
 
     return (
         <div>
-            {mappedEntry}
+            {user ? mappedEntry : loMappedEntry}
         </div>
     )
 }

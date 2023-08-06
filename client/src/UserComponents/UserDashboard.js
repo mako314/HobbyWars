@@ -21,7 +21,12 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
 
     //State to track and display a usersHobbies
     const [mappedUserHobbies, setMappedUserHobbies] = useState([])
-    
+
+    // //State to set results to map over
+    // const[userResults, setUserResults] = useState([])
+
+    //State to keep track and display a users Results
+    // const[mappedUserResults, setMappedUserResults] = useState([])
    
    
     // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
@@ -51,16 +56,18 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         bannerImg,
         competitions,
         entry, // Fix in the backend 
-        user_hobby
+        user_hobby,
+        results
     } = selectedUser;
 
-    console.log(user_hobby)
 
-    // console.log(selectedUser)
+    console.log(results)
+    // console.log(user_hobby)
+    console.log(selectedUser)
     // console.log(competitions)
     // console.log(entry)
 
-//--------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------Hosted Competitions-----------------------------------
     //Display the competitions the user hosts on their dashboard
     const mappedCompetitions = competitions?.map((competition) => {
         return <>
@@ -92,7 +99,7 @@ useEffect(()=>{
         user_hobby?.map((userHobby) =>{
             return(
             <div>
-                {console.log(userHobby)}
+                {/* {console.log(userHobby)} */}
                 <p>
                     Hobby: {userHobby.hobby.type_of_hobby}
                 </p>
@@ -155,7 +162,68 @@ useEffect(()=>{
 
     // console.log(mappedCompetitions)
 //--------------------------------------------------------------------------------------------------------
-//-----------------------------------------------USER DELETE PORTION / DOUBLE BUTTON-------------------------------------------------
+//-----------------------------------------------USER RESULTS / DOUBLE BUTTON-------------------------------------------------
+
+const mappedUserResults = results?.map((result) => {
+    return (
+    <div>
+        <p> COMPETITION: {result.competitions.title} </p>
+        <p> Placement: {result.placement}</p>
+    </div>)
+    
+})
+
+console.log(mappedUserResults)
+
+// useEffect(()=>{
+//     if(user){
+//     fetch(`/user/result/${user.id}`)
+//           .then((resp) => resp.json())
+//           .then((data) => {
+//             setUserResults(data)
+//             console.log(data)
+//           })
+//     }
+// },[user])
+
+// console.log(userResults)
+
+// useEffect(()=> {
+//     setMappedUserResults(
+//     userResults?.map((result) =>{
+//         <div>
+//             {console.log(result)}
+//             <p>
+//                 Competition: {result.competitions.title}
+//             </p>
+//             <p>
+//                 Placement: {result.Placement}
+//             </p>
+
+//         </div>
+//     })
+// )
+// }, [userResults])
+
+
+// useEffect(()=> {
+//         setMappedUserResults(
+//             <div>
+//                 {console.log(userResults)}
+//                 <p>
+//                     Competition: {userResults.competitions.title}
+//                 </p>
+//                 <p>
+//                     Placement: {userResults.Placement}
+//                 </p>
+    
+//             </div>
+//         )
+//     }, [userResults])
+
+//--------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------USER DELETE PORTION / DOUBLE CONFIRM BUTTON-------------------------------------------------
 
 
 
@@ -240,6 +308,12 @@ useEffect(()=>{
             <p>---------------------------------Entries------------------------</p>
 
             <div>{mappedEntries}</div>
+            
+            <br></br>
+
+            <p>---------------------------------Results------------------------</p>
+
+            <div>{mappedUserResults}</div>
             
             <br></br>
 

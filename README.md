@@ -213,18 +213,18 @@ submission page ??? what is that I think I did an entry form so that is the subm
 
 Yes it exists inside of the competition display page
 
-I still need to do everything for results except the ability to edit them (maybe unless you are the competition user_id associated with the result _user id? will have to see)
+            I still need to do everything for results except the ability to edit them (maybe unless you are the competition user_id associated with the result _user id? will have to see)
 
-but for example:
-post a result
-see an individual result?
-see results on userdashboard
+            but for example:
+            post a result
+            see an individual result?
+            see results on userdashboard
 
 
 There's definitely some issues with refreshes
 
 
-also need to include a User-hobby-edit form
+also need to include a User-hobby-edit form -------- DONE
 
 
-NEED A DELETE FOR USER HOBBIES
+NEED A DELETE FOR USER HOBBIES -------------- NEEED DISSSSSS CHECK HOW YOU DID USER DELETES

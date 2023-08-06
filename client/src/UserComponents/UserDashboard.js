@@ -94,6 +94,7 @@ function navUserHobby(id) {
     setUserHobbyID(id)
 }
 
+//Map over a users hobbies and display them all
 useEffect(()=>{
     setMappedUserHobbies(
         user_hobby?.map((userHobby) =>{
@@ -174,52 +175,6 @@ const mappedUserResults = results?.map((result) => {
 })
 
 console.log(mappedUserResults)
-
-// useEffect(()=>{
-//     if(user){
-//     fetch(`/user/result/${user.id}`)
-//           .then((resp) => resp.json())
-//           .then((data) => {
-//             setUserResults(data)
-//             console.log(data)
-//           })
-//     }
-// },[user])
-
-// console.log(userResults)
-
-// useEffect(()=> {
-//     setMappedUserResults(
-//     userResults?.map((result) =>{
-//         <div>
-//             {console.log(result)}
-//             <p>
-//                 Competition: {result.competitions.title}
-//             </p>
-//             <p>
-//                 Placement: {result.Placement}
-//             </p>
-
-//         </div>
-//     })
-// )
-// }, [userResults])
-
-
-// useEffect(()=> {
-//         setMappedUserResults(
-//             <div>
-//                 {console.log(userResults)}
-//                 <p>
-//                     Competition: {userResults.competitions.title}
-//                 </p>
-//                 <p>
-//                     Placement: {userResults.Placement}
-//                 </p>
-    
-//             </div>
-//         )
-//     }, [userResults])
 
 //--------------------------------------------------------------------------------------------------------
 

@@ -228,3 +228,5 @@ also need to include a User-hobby-edit form -------- DONE
 
 
 NEED A DELETE FOR USER HOBBIES -------------- NEEED DISSSSSS CHECK HOW YOU DID USER DELETES
+
+need a button after entries has been submit to take you back somewhere, maybe all entries page ?

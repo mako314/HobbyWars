@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link ,useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID, setEntries, entries}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -13,8 +13,10 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     //State to hold the selected fetched user
     const [selectedUser, setSelectedUser] = useState([])
 
-    //State to confirm deletion (makes a button appear?)
+    //State to USER confirm deletion (makes a button appear?)
     const [toggleDelete, setToggleDelete] = useState(true)
+
+    const [toggleEntryDelete, setToggleEntryDelete] = useState(true)
 
     //State to keep track of the users mapped entries:
     const [mappedEntries, setMappedEntries] = useState([]);
@@ -22,12 +24,10 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     //State to track and display a usersHobbies
     const [mappedUserHobbies, setMappedUserHobbies] = useState([])
 
-    // //State to set results to map over
-    // const[userResults, setUserResults] = useState([])
-
-    //State to keep track and display a users Results
-    // const[mappedUserResults, setMappedUserResults] = useState([])
+    //Setting entry to delete?
+    const [entryToDelete, setEntryToDelete] = useState([])
    
+
    
     // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
     const {id} = useParams()
@@ -61,9 +61,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     } = selectedUser;
 
 
-    console.log(results)
+    // console.log(results)
     // console.log(user_hobby)
-    console.log(selectedUser)
+    // console.log(selectedUser)
     // console.log(competitions)
     // console.log(entry)
 
@@ -140,28 +140,84 @@ useEffect(()=>{
                 entry?.map((oneEntry) => {
                 return (
                 <div>
-                    {/* {console.log(oneEntry)} */}
-                    
-                    
+                    {console.log(oneEntry.user_id)}
+                    <br></br>
                     <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> {oneEntry.competitions.title} </button>
                     {/* maybe something like "clicked from dash state?" 
                     it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
                     <br></br>
                     <br></br>
                     {oneEntry.submission}
+                    <br></br>
+                    <br></br>
                     {oneEntry.description}
-                    {/* need an edit entry button here to take you to edit entry page */}
                     <br></br>
                     <br></br>
                     <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>
+                    <br></br>
+
+                    {toggleEntryDelete ? entryDeleteBtn : 
+                    <div>
+                        <button onClick={() => handleEntryDelete(oneEntry)}> Yes DELETE my ENTRY.</button>
+                        <br></br>
+                        <button onClick={handleEntryToggle}> No it was a mistake</button>
+                        <br></br>
+                        {/* seems I had to move this stuff to inside of the ternary instead? */}
+                    </div>
+                    }
                 </div>)
                 })
             )
         }
-      }, [entry])
+      }, [entry, toggleEntryDelete])
 
+    //Why on earth did ^ this fix it lol, it allowed 
 
     // console.log(mappedCompetitions)
+    
+
+    //delete entry filter to make sure the ID no longer exists
+    const deleteEntry = (entryToDelete) => {
+        setEntries(entries =>
+          entries.filter(entry => entry.id !== entryToDelete.id))
+      }
+    
+    //Actual DELETE request to the backend.
+    const handleEntryDelete = (entryToDelete) => {
+        fetch(`/entry/${entryToDelete.id}`, {
+          method: "DELETE"
+        })
+          .then(() => {
+            console.log(entryToDelete)
+            console.log(entryToDelete.user_id)
+            deleteEntry(entryToDelete.id)
+            // navigate(`/user-dashboard/${entryToDelete.user_id}`)
+            // Page still doesn't refresh
+          })
+      }
+
+    // Button toggle to confirm that the user is wanting to delete their entry  just a basic toggle. 
+    function handleEntryToggle() {
+        setToggleEntryDelete(!toggleEntryDelete)
+    }
+
+    // console.log(toggleEntryDelete)
+
+
+    //This button allows you to toggle and see confirm deletion of the entry
+    const entryDeleteBtn = (
+        <button onClick={handleEntryToggle}> Delete my entry </button>
+    )
+    
+    
+    //confirm entry deletion button refuses to display
+    // const confirmEntryDelete = (
+    //     <div>
+    //     <button onClick={() => handleEntryDelete(entryToDelete)}> Yes DELETE my ENTRY.</button>
+    //     <br></br>
+    //     <button onClick={handleEntryToggle}> No it was a mistake</button>
+    //     </div>)
+
 //--------------------------------------------------------------------------------------------------------
 //-----------------------------------------------USER RESULTS / DOUBLE BUTTON-------------------------------------------------
 
@@ -174,7 +230,7 @@ const mappedUserResults = results?.map((result) => {
     
 })
 
-console.log(mappedUserResults)
+// console.log(mappedUserResults)
 
 //--------------------------------------------------------------------------------------------------------
 

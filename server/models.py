@@ -49,7 +49,7 @@ class User(db.Model, SerializerMixin):
                       #'-user_hobby.hobby', #Can uncomment this if you DONT want to see the users hobby description / type
                        #Entry rules
                        '-entry.user', #Removes recursion back to our user # had to change everything to entry so it doesn't take the object.entries reserved word
-                       '-entry.user_id', #Removes recursion back to our user # had to change everything to entry so it doesn't take the object.entries reserved word
+                    #    '-entry.user_id', #Removes recursion back to our user # had to change everything to entry so it doesn't take the object.entries reserved word
                        '-competitions.user',
                        ) 
     
@@ -342,7 +342,7 @@ class Entry(db.Model, SerializerMixin):
     competitions = db.relationship('Competition', back_populates="entry" )
 
     #Serialize Rules
-    serialize_rules = ('-user','-competitions.entry', )
+    serialize_rules = ('-user','-competitions.entry','-competitions.results' )
 
     #originally had this '-user.entry' switching to just '-user'
     # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example

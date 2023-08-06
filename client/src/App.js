@@ -90,6 +90,8 @@ function App() {
 
     //Grab the entry ID and send it to edit for the data to prepopulate the form
     const [entryID, setEntryID] = useState(0)
+
+    //State to grab hobby ID and send it to edit for the data to prepopulate the form
     
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
@@ -115,8 +117,9 @@ function App() {
       }, [])
     //-------------------------------------------------------------------------------
     
-    //-------------------------------------------- ENTRY FETCH / CODE--------------------------
+    //-------------------------------------------- ENTRY FETCH / PATCH ALSO CODE--------------------------
     
+    //Fetch entries
     useEffect(() => {
         fetch("/entries")
           .then((resp) => resp.json())
@@ -126,7 +129,7 @@ function App() {
       }, [])
 
 
-      //This handles updating the ENTRY [PATCH]
+    //This handles updating the ENTRY [PATCH]
     const updateEntry = (entryToUpdate) =>{
       setEntries(entries => entries.map(entry =>{
         if (entry.id === entryToUpdate.id) {
@@ -139,7 +142,7 @@ function App() {
 
     //-------------------------------------------------------------------------------
 
-    //-------------------------------------------- USER FETCH / CODE--------------------------
+    //-------------------------------------------- USER FETCH /  PATCH, CODE--------------------------
     
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
@@ -161,7 +164,7 @@ function App() {
       }))
     }
 
-    //-------------------------------------------- USER HOBBIES FETCH / CODE--------------------------
+    //-------------------------------------------- USER HOBBIES FETCH /  PATCH CODE--------------------------
     useEffect(() => {
       fetch("/user-hobbies")
         .then((resp) => resp.json())
@@ -169,6 +172,16 @@ function App() {
           setUserHobbies(data)
         })
     }, [])
+
+    const updateUserHobby = (hobbyToUpdate) =>{
+      setUserHobbies(userHobbies => userHobbies.map(userHobby =>{
+        if (userHobby.id === hobbyToUpdate.id) {
+          return hobbyToUpdate
+        } else {
+          return userHobby
+        }
+      }))
+    }
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
     useEffect(() => {

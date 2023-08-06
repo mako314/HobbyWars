@@ -19,6 +19,20 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
     //State to keep track of the users mapped entries:
     const [mappedEntries, setMappedEntries] = useState([]);
     
+   
+   
+    // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
+    const {id} = useParams()
+
+    //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
+    useEffect(() => {
+        fetch(`/user/${id}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setSelectedUser(data)
+          })
+      }, [])
+
     //Destructure for props
     const {
         firstName, 
@@ -33,23 +47,24 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
         profileImg, 
         bannerImg,
         competitions,
-        entry // Fix in the backend 
+        entry, // Fix in the backend 
+        user_hobby
     } = selectedUser;
 
-
+    console.log(user_hobby)
 
     // console.log(selectedUser)
     // console.log(competitions)
     // console.log(entry)
 
-
+//--------------------------------------------------------------------------------------------------------
     //Display the competitions the user hosts on their dashboard
     const mappedCompetitions = competitions?.map((competition) => {
         return <>
         <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
         </>
     })
-
+    
     // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
     // and also navigate to it
     //click and navigate to the competition display page
@@ -58,17 +73,31 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
         navigate(`/competition/${id}`)
     }
 
+//--------------------------------------------------------------------------------------------------------
+//---------------------------------------------User Hobby Info ./ Button to edit it-----------------------------------------------
+let mappedUserHobbies = user_hobby.map((userHobby) => {
+    return(
+        <div>
+            <p>
+                Hobby: {userHobby.hobby.type_of_hobby}
+            </p>
+            <p>
+                Level: {userHobby.expertise}
+            </p>
+
+        </div>
+    )
+})
+
+//--------------------------------Submission / Entry information / code----------------------------------
     //Button to navigate to submission edit
     function navSubmissionEdit(id) {
         navigate(`/edit-entry/${id}`)
         setEntryID(id)
     }
 
-
-    //This is bugging where it tells me .map is not a thing again, I wonder why?
     //Display users entries
-    
-    // let mappedEntries
+
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
     
     //This portion handles displaying a users entry on their dashboard
@@ -101,19 +130,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
 
 
     // console.log(mappedCompetitions)
+//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------USER DELETE PORTION / DOUBLE BUTTON-------------------------------------------------
 
-    
-    // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
-    const {id} = useParams()
-
-    //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
-    useEffect(() => {
-        fetch(`/user/${id}`)
-          .then((resp) => resp.json())
-          .then((data) => {
-            setSelectedUser(data)
-          })
-      }, [])
 
 
     //Time to make a delete for the user, will e a 2 point confirmation. We'll start with a button that is toggled
@@ -143,8 +162,6 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
           })
       }
 
-
-
     // Button toggle to confirm that the user is wanting to delete their account. 
     function handleToggle() {
         setToggleDelete(!toggleDelete)
@@ -165,9 +182,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
         </div>
     )
 
-    // console.log(toggleDelete)
-    // console.log(user)
-
+//--------------------------------------------------------------------------------------------------------
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     
@@ -190,13 +205,23 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
+
+            <br></br>
             <p>---------------------------------Competitions You Currently Host------------------------</p>
+            
             <div> {mappedCompetitions} </div>
+
+            <br></br>
 
             <p>---------------------------------Entries------------------------</p>
 
             <div>{mappedEntries}</div>
+            
+            <br></br>
 
+            <p>---------------------------------Users Hobbies------------------------</p>
+
+            <div>{mappedUserHobbies}</div>
             
 
 

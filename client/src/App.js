@@ -21,6 +21,7 @@ import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
 import UserHobbyForm from './UserComponents/UserHobbyForm';
 import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
+import UserHobbyEdit from './UserComponents/UserHobbyEdit';
 
 //--------------------Hobby Imports---------------------
 import HobbyAdd from './HobbyComponents.js/HobbyAdd';
@@ -242,7 +243,8 @@ function App() {
 
                 {/* ALL USER HOBBY ROUTING  */}
                 <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
-                <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/>
+                {/* <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/> */}
+                <Route path='/edit/userhobby/:id' element ={<UserHobbyEdit user={user} updateUserHobby={updateUserHobby}/>}/>
                 
                 {/* ADD A HOBBY ROUTE */}
                 <Route path='/add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>

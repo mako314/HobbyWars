@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link ,useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -80,17 +80,27 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
 //---------------------------------------------User Hobby Info ./ Button to edit it-----------------------------------------------
 
 //Had to put this mapping of user hobbies inside of a useEffect that only fires off when the data is made available in user_hobby (destructured prop), always need a ? in map now
+
+//Navigate to the edit user hobby page, and then set the ID to be used to fetch data there
+function navUserHobby(id) {
+    navigate(`/edit/userhobby/${id}`)
+    setUserHobbyID(id)
+}
+
 useEffect(()=>{
     setMappedUserHobbies(
         user_hobby?.map((userHobby) =>{
             return(
             <div>
+                {console.log(userHobby)}
                 <p>
                     Hobby: {userHobby.hobby.type_of_hobby}
                 </p>
                 <p>
                     Level: {userHobby.expertise}
                 </p>
+
+                <button onClick={() => navUserHobby(userHobby.id)}> Edit this hobby</button>
 
             </div>
 
@@ -99,6 +109,8 @@ useEffect(()=>{
     )
 
 },[user_hobby])
+
+//setUserHobbyID Need this in a navigation button
 
 
 //--------------------------------Submission / Entry information / code----------------------------------

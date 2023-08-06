@@ -237,22 +237,27 @@ function App() {
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
-
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID}/>}/>
+                {/* EDIT USER BY ID, BUTTONS FOUND IN DASHBOARD */}
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
                 <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
+                
                 {/* <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/> */}
-                <Route path='/edit/userhobby/:id' element ={<UserHobbyEdit user={user} updateUserHobby={updateUserHobby}/>}/>
+                
+                {/* EDIT USER HOBBY BY ID */}
+                <Route path='/edit/userhobby/:id' element ={<UserHobbyEdit user={user} updateUserHobby={updateUserHobby} userHobbyID={userHobbyID}/>}/>
                 
                 {/* ADD A HOBBY ROUTE */}
                 <Route path='/add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
 
-
+                  {/* ENTRY ROUTES */}
                 {/* ADD AN ENTRY ROUTE */}
                 <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
+                {/* EDIT ENTRY BY ID ROUTE */}
                 <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID}/>}/>
+                {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
                 <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID}/>}/>
 
             </Routes>

@@ -4,21 +4,29 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function UserHobbyEdit({user, updateUserHobby}){
+function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
     
     
     //display errors
     const [error, setError] = useState()
 
+    //user Hobby info?
+    const [userHobbyInfo, setUserHobbyInfo] = useState([])
+
     //Handle navigation after submission, likely take to display page
     const navigate = useNavigate()
 
-    //I may want to have them just navigate back to their user dashboard after all is said and done.
+    useEffect(() => {
+        fetch(`/user/hobbies/${userHobbyID}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setUserHobbyInfo(data)
+          })
+      }, [userHobbyID]) 
 
+    // Only really changing expertise level
     const formSchema = object({
-        firstName: string().required('You need a name'),
-        username: string().required("You'll need a username to sign in"),
-        email: string().required("You'll need an email address")
+        expertise: number().positive().required('You need an expertise level 1-10'),
     })
 
     // console.log(user.username)
@@ -26,21 +34,13 @@ function UserHobbyEdit({user, updateUserHobby}){
     //Takes the form and makes a patch request
     const formik = useFormik({
         initialValues: {
-            firstName: " ",
-            lastName: " ",
-            username: " ",
-            password: " ",
-            age: " ",
-            bio: " ",
-            location: " ",
-            phone: " ",
-            email: " ",
-            profileImg: " ", //this and the one below remain the same as the first time they were logged in.
-            bannerImg: " " 
+            expertise: '',
+            user_id: '',
+            hobby_id: ''
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch(`/user/${user.id}` , {
+            fetch(`/user/hobbies/${user.id}` , {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -70,22 +70,14 @@ function UserHobbyEdit({user, updateUserHobby}){
     //Magic code, waits for the user data to be populates, and then allows for setting the values.
     //For some reason, they still see their old username
     useEffect(() => {
-        if (user && user.username){
+        if (user && userHobbyInfo){
         formik.setValues({
-            firstName: user.firstName,
-            lastName: user.lastName,
-            username: user.username,
-            password: user.password,
-            age: user.age,
-            bio: user.bio,
-            location: user.location,
-            phone: user.phone,
-            email: user.email,
-            profileImg: user.profileImg, //this and the one below remain the same as the first time they were logged in.
-            bannerImg:user.bannerImg, 
+            expertise: userHobbyInfo.expertise,
+            user_id: userHobbyInfo.user_id,
+            hobby_id: userHobbyInfo.hobby_id
         })
     }
-      }, [user])
+      }, [userHobbyInfo])
 
 
     return(
@@ -98,114 +90,15 @@ function UserHobbyEdit({user, updateUserHobby}){
                     {error && <p>{error}</p>}
 
                     <div className="user-signup-input">
-                    <label> First Name </label>
+                    <label> New Expertise Level </label>
                     <input
                     type="text"
-                    name="firstName"
-                    value={formik.values.firstName}
+                    name="expertise"
+                    value={formik.values.expertise}
                     onChange={formik.handleChange}
                     />
                     </div>
 
-                    <div className="user-signup-input">
-                    <label> Last Name </label>
-                    <input
-                    type="text"
-                    name="lastName"
-                    value={formik.values.lastName}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Username </label>
-                    <input
-                    type="text"
-                    name="username"
-                    value={formik.values.username}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Password </label>
-                    <input
-                    type="text"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> age </label>
-                    <input
-                    type="text"
-                    name="age"
-                    value={formik.values.age}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Bio </label>
-                    <textarea
-                    type="text"
-                    name="bio"
-                    value={formik.values.bio}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Location </label>
-                    <input
-                    type="text"
-                    name="location"
-                    value={formik.values.location}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Phone </label>
-                    <input
-                    type="text"
-                    name="phone"
-                    value={formik.values.phone}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Email </label>
-                    <input
-                    type="text"
-                    name="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Profile Image  </label>
-                    <input
-                    type="text"
-                    name="profileImg"
-                    value={formik.values.profileImg}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
-
-                    <div className="user-signup-input">
-                    <label> Banner Image </label>
-                    <input
-                    type="text"
-                    name="bannerImg"
-                    value={formik.values.bannerImg}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
                 <div>--------------------------------------</div>
                 <button type="submit" className=""> Submit and return to my Dashboard </button>
 

@@ -9,7 +9,8 @@ import Header from './NavbarAndHeader/Header';
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
-import CompetitionCreation from './CompetitionComponents/CompetitionCreation'
+import CompetitionCreation from './CompetitionComponents/CompetitionCreation';
+import CompetitionSubmissions from './CompetitionComponents/CompetitionSubmissions';
 
 //-------Login / Logout  / Signup Imports--------
 import LoginForm from './LoginComponents/LoginForm';
@@ -20,6 +21,7 @@ import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
 import UserHobbyForm from './UserComponents/UserHobbyForm';
 import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
+import UserHobbyEdit from './UserComponents/UserHobbyEdit';
 
 //--------------------Hobby Imports---------------------
 import HobbyAdd from './HobbyComponents.js/HobbyAdd';
@@ -27,6 +29,7 @@ import HobbyAdd from './HobbyComponents.js/HobbyAdd';
 //--------------------Entry Imports---------------------
 import EntryForm from './EntryComponents/EntryForm';
 import EntryEdit from './EntryComponents/EditEntry';
+import EntryDisplay from './EntryComponents/EntryDisplay';
 
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
@@ -81,9 +84,16 @@ function App() {
 
     //State to grab ENTRIES and display them, working on post:
     const [entries, setEntries] = useState([])
+
     //State to grab the competition ID to be pasased to Entry Post
+    //Need something to grab the competition ID when it's been clicked, gets called in useEffect inside of competition display:
     const [compID, setCompID] = useState([])
-    
+
+    //Grab the entry ID and send it to edit for the data to prepopulate the form
+    const [entryID, setEntryID] = useState(0)
+
+    //State to grab hobby ID and send it to edit for the data to prepopulate the form
+    const [userHobbyID, setUserHobbyID] = useState(0)
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
@@ -108,8 +118,9 @@ function App() {
       }, [])
     //-------------------------------------------------------------------------------
     
-    //-------------------------------------------- ENTRY FETCH / CODE--------------------------
+    //-------------------------------------------- ENTRY FETCH / PATCH ALSO CODE--------------------------
     
+    //Fetch entries
     useEffect(() => {
         fetch("/entries")
           .then((resp) => resp.json())
@@ -119,7 +130,7 @@ function App() {
       }, [])
 
 
-      //This handles updating the ENTRY [PATCH]
+    //This handles updating the ENTRY [PATCH]
     const updateEntry = (entryToUpdate) =>{
       setEntries(entries => entries.map(entry =>{
         if (entry.id === entryToUpdate.id) {
@@ -130,15 +141,9 @@ function App() {
       }))
     }
 
-    //Need something to grab the competition ID when it's been clicked:
-    
-    const grabCompId = (id) =>{
-      setCompID(id)
-    }
-
     //-------------------------------------------------------------------------------
 
-    //-------------------------------------------- USER FETCH / CODE--------------------------
+    //-------------------------------------------- USER FETCH /  PATCH, CODE--------------------------
     
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
@@ -160,7 +165,7 @@ function App() {
       }))
     }
 
-    //-------------------------------------------- USER HOBBIES FETCH / CODE--------------------------
+    //-------------------------------------------- USER HOBBIES FETCH /  PATCH CODE--------------------------
     useEffect(() => {
       fetch("/user-hobbies")
         .then((resp) => resp.json())
@@ -168,6 +173,16 @@ function App() {
           setUserHobbies(data)
         })
     }, [])
+
+    const updateUserHobby = (hobbyToUpdate) =>{
+      setUserHobbies(userHobbies => userHobbies.map(userHobby =>{
+        if (userHobby.id === hobbyToUpdate.id) {
+          return hobbyToUpdate
+        } else {
+          return userHobby
+        }
+      }))
+    }
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
     useEffect(() => {
@@ -209,9 +224,11 @@ function App() {
                 {/* ALL COMPETITIONS ROUTING */}
                 <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} grabCompId={grabCompId} compID={compID}/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} setCompID={setCompID} compID={compID}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
+                {/* COMPETITION SEE ALL SUBMISSIONS */}
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID}/>}/>
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
@@ -220,21 +237,28 @@ function App() {
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
-
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID}/>}/>
+                {/* EDIT USER BY ID, BUTTONS FOUND IN DASHBOARD */}
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}
                 <Route path='/user-hobby-selection' element ={<UserHobbyForm user={user} setUserHobbies={setUserHobbies} userHobbies={userHobbies}/>}/>
-                <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/>
+                
+                {/* <Route path='/add-my-hobbies' element ={<MasterUserHobbyForm user={user}/>}/> */}
+                
+                {/* EDIT USER HOBBY BY ID */}
+                <Route path='/edit/userhobby/:id' element ={<UserHobbyEdit user={user} updateUserHobby={updateUserHobby} userHobbyID={userHobbyID}/>}/>
                 
                 {/* ADD A HOBBY ROUTE */}
                 <Route path='/add-a-hobby' element={<HobbyAdd user={user} hobbyAdder={hobbyAdder} setHobbyAdder={setHobbyAdder}/>}/>
 
-
+                  {/* ENTRY ROUTES */}
                 {/* ADD AN ENTRY ROUTE */}
                 <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
-                <Route path='/edit-entry' element={<EntryEdit user={user} />}/>
+                {/* EDIT ENTRY BY ID ROUTE */}
+                <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID}/>}/>
+                {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
+                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID}/>}/>
 
             </Routes>
 

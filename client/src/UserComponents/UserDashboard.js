@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link ,useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -18,10 +18,25 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
 
     //State to keep track of the users mapped entries:
     const [mappedEntries, setMappedEntries] = useState([]);
+
+    //State to track and display a usersHobbies
+    const [mappedUserHobbies, setMappedUserHobbies] = useState([])
     
+   
+   
+    // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
+    const {id} = useParams()
+
+    //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
+    useEffect(() => {
+        fetch(`/user/${id}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setSelectedUser(data)
+          })
+      }, [])
+
     //Destructure for props
-    
-    // console.log(selectedUser)
     const {
         firstName, 
         lastName, 
@@ -35,40 +50,81 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         profileImg, 
         bannerImg,
         competitions,
-        entry // Fix in the backend 
+        entry, // Fix in the backend 
+        user_hobby
     } = selectedUser;
 
+    console.log(user_hobby)
 
-
-    console.log(selectedUser)
+    // console.log(selectedUser)
     // console.log(competitions)
-    console.log(entry)
+    // console.log(entry)
 
-
-    //Display the competitions the user hosts
+//--------------------------------------------------------------------------------------------------------
+    //Display the competitions the user hosts on their dashboard
     const mappedCompetitions = competitions?.map((competition) => {
         return <>
         <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
         </>
     })
-
+    
+    // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
+    // and also navigate to it
     //click and navigate to the competition display page
     function navigateToCompetition(id) {
-        // const {user_id } = user <- don't need to do this
         console.log(user.id)
         navigate(`/competition/${id}`)
     }
 
+//--------------------------------------------------------------------------------------------------------
+//---------------------------------------------User Hobby Info ./ Button to edit it-----------------------------------------------
+
+//Had to put this mapping of user hobbies inside of a useEffect that only fires off when the data is made available in user_hobby (destructured prop), always need a ? in map now
+
+//Navigate to the edit user hobby page, and then set the ID to be used to fetch data there
+function navUserHobby(id) {
+    navigate(`/edit/userhobby/${id}`)
+    setUserHobbyID(id)
+}
+
+useEffect(()=>{
+    setMappedUserHobbies(
+        user_hobby?.map((userHobby) =>{
+            return(
+            <div>
+                {console.log(userHobby)}
+                <p>
+                    Hobby: {userHobby.hobby.type_of_hobby}
+                </p>
+                <p>
+                    Level: {userHobby.expertise}
+                </p>
+
+                <button onClick={() => navUserHobby(userHobby.id)}> Edit this hobby</button>
+
+            </div>
+
+            )
+        })
+    )
+
+},[user_hobby])
+
+//setUserHobbyID Need this in a navigation button
 
 
+//--------------------------------Submission / Entry information / code----------------------------------
+    //Button to navigate to submission edit
+    function navSubmissionEdit(id) {
+        navigate(`/edit-entry/${id}`)
+        setEntryID(id)
+    }
 
-
-    //This is bugging where it tells me .map is not a thing again, I wonder why?
     //Display users entries
-    
-    // let mappedEntries
+
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
     
+    //This portion handles displaying a users entry on their dashboard
     // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
     useEffect(() => {
         if (entry){
@@ -76,10 +132,10 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                 entry?.map((oneEntry) => {
                 return (
                 <div>
-                    {console.log(oneEntry)}
-                    {oneEntry.competitions.title}
-                    <br></br>
-                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition info</button>
+                    {/* {console.log(oneEntry)} */}
+                    
+                    
+                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> {oneEntry.competitions.title} </button>
                     {/* maybe something like "clicked from dash state?" 
                     it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
                     <br></br>
@@ -89,39 +145,18 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
                     {/* need an edit entry button here to take you to edit entry page */}
                     <br></br>
                     <br></br>
+                    <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>
                 </div>)
                 })
             )
         }
       }, [entry])
 
-    // console.log(mappedEntries)
-
-    // const mappedEntries = entries?.map((entry) => {
-    //         return <div>
-    //             {entry.submission}
-    //             {entry.description}
-                
-    //             </div>
-    //     })
-
-    // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
-    // and also navigate to it
 
     // console.log(mappedCompetitions)
+//--------------------------------------------------------------------------------------------------------
+//-----------------------------------------------USER DELETE PORTION / DOUBLE BUTTON-------------------------------------------------
 
-    
-    // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
-    const {id} = useParams()
-
-    //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
-    useEffect(() => {
-        fetch(`/user/${id}`)
-          .then((resp) => resp.json())
-          .then((data) => {
-            setSelectedUser(data)
-          })
-      }, [])
 
 
     //Time to make a delete for the user, will e a 2 point confirmation. We'll start with a button that is toggled
@@ -151,15 +186,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
           })
       }
 
-
-
     // Button toggle to confirm that the user is wanting to delete their account. 
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
 
 
-    //This button allows you to confirm
+    //This button allows you to confirm deletion
     const deleteBtn = (
         <button onClick={handleToggle}> Delete my account </button>
     )
@@ -173,15 +206,12 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
         </div>
     )
 
-    // console.log(toggleDelete)
-    // console.log(user)
-
+//--------------------------------------------------------------------------------------------------------
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     
     //To handle going to the edit page 
     function handleEdit(e) {
-        // const {user_id } = user <- don't need to do this
         console.log(user.id)
         navigate(`/user-edit/${user.id}`)
     }
@@ -199,13 +229,23 @@ function UserDashboard({user, setNewUsers, newUsers, setUser}) { //newUsers Don'
             <p>{email}</p>
             <p>{profileImg}</p>
             <p>{bannerImg}</p>
-            <p>---------------------------------Competitions------------------------</p>
+
+            <br></br>
+            <p>---------------------------------Competitions You Currently Host------------------------</p>
+            
             <div> {mappedCompetitions} </div>
+
+            <br></br>
 
             <p>---------------------------------Entries------------------------</p>
 
             <div>{mappedEntries}</div>
+            
+            <br></br>
 
+            <p>---------------------------------Users Hobbies------------------------</p>
+
+            <div>{mappedUserHobbies}</div>
             
 
 

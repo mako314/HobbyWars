@@ -4,23 +4,26 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryEdit({user, updateUser}){
+function EntryEdit({user, updateEntry, entryID}){
 
     //display errors
     const [error, setError] = useState()
+
+    //grab entry info to display, check the useeffect at the bottom
+    const [entryInfo, setEntryInfo] = useState([])
+
 
     //Handle navigation after submission, likely take to display page
     const navigate = useNavigate()
 
     //I may want to have them just navigate back to their user dashboard after all is said and done.
 
+
     const formSchema = object({
         submission: string().required('You need a submission!'),
         description: string().required('You need a short description of your submission!')
 
     })
-
-    // console.log(user.username)
 
     //Takes the form and makes a patch request
     const formik = useFormik({
@@ -32,8 +35,8 @@ function EntryEdit({user, updateUser}){
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/entries' , {
-                method: "POST",
+            fetch(`/entry/${entryID}` , {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -42,8 +45,9 @@ function EntryEdit({user, updateUser}){
             .then(res => {
                 if (res.ok){
                     res.json().then(entry => {
-                        // setEntries([...entries, entry])
-                        // navigate('/user-hobby-selection')
+                        console.log("shooting")
+                        updateEntry(entry)
+                        navigate(`/user-dashboard/${user.id}`)
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -54,23 +58,43 @@ function EntryEdit({user, updateUser}){
     })
 
     // I need to capture the entries ID with state
-
+    // console.log(entryID)
 
     //Takes the user back to the dashboard if they didn't want to click it
     const backToDash =  () => {
         navigate(`/user-dashboard/${user.id}`)
     }
 
-    //Magic code, waits for the user data to be populates, and then allows for setting the values.
+    //Use effect waiting for user to load, then afterwards if user exists, comp id exists, and entry ID all exist, it fetches the entries information such as description and submission.
     useEffect(() => {
-        if (user){
-        formik.setValues({
-            user_id: user.id,
-            competition_id:" " , 
-        })
+        if (user && entryID){ 
+        fetch(`/entry/${entryID}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+            // console.log("Ive fired")
+            setEntryInfo(data)
+          })
     }
       }, [user])
 
+    //This useEffect waits for EntryInfo to be populated, then it uses formik.setValues to input the existing information in the patch.
+      useEffect(() => {
+        if (entryInfo && user){
+            formik.setValues({
+                submission: entryInfo.submission,
+                description: entryInfo.description,
+                user_id: user.id,
+                competition_id: entryInfo.competition_id
+            })
+    }
+      }, [entryInfo])
+    
+    // Console logs, 
+    // Page breaks on reload and by breaks I mean the inputs no longer linger, can probably move some stuff around but I'll see
+    // console.log(entryInfo.competition_id)
+    // console.log(user.id)
+    // console.log(entryInfo)
+    // console.log(entryID)
 
     return(
         <div>
@@ -82,21 +106,21 @@ function EntryEdit({user, updateUser}){
                     {error && <p>{error}</p>}
 
                     <div className="user-signup-input">
-                    <label> First Name </label>
+                    <label>  Enter your submission </label>
                     <input
                     type="text"
-                    name="firstName"
-                    value={formik.values.firstName}
+                    name="submission"
+                    value={formik.values.submission}
                     onChange={formik.handleChange}
                     />
                     </div>
 
                     <div className="user-signup-input">
-                    <label> Last Name </label>
+                    <label> Edit your description </label>
                     <input
                     type="text"
-                    name="lastName"
-                    value={formik.values.lastName}
+                    name="description"
+                    value={formik.values.description}
                     onChange={formik.handleChange}
                     />
                     </div>

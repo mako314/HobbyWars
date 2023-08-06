@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, compID}){
+function CompetitionDisplay({user, setCompetitions, competitions, setCompID, compID}){
 
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
@@ -52,11 +52,11 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
           .then((resp) => resp.json())
           .then((data) => {
             setCompetition(data)
-            grabCompId(id)
+            setCompID(id)
           })
       }, [])
 
-      console.log(compID)
+    //   console.log(compID)
 
 
     //-----------------------------------DELETE PORTION--------------------------------
@@ -83,12 +83,16 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
           })
       }
     
+
+    //The first delete button that toggles into the confirm delete
     const deleteBtn = (
     <div>
         <button onClick={handleToggle}> Delete my competition </button>
     </div>
     )
+    
 
+    //Button to confirm that you'd like to delete the competition, this actually sends the delete request. Or you can go back.
     const confirmDelete = (
         <div>
         <button onClick={() => handleCompetitionDelete(competition)}> Yes DELETE my competition.</button>
@@ -96,7 +100,9 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
         <button onClick={handleToggle}> No it was a mistake</button>
         </div>
     )
+    
 
+    //A button to take you to the submit entry page, you have to be logged in though
     const entryButton = (
         <div>
             <Link to='/submit-entry'>
@@ -106,16 +112,21 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
             </Link>
         </div>
     )
-
+    
+    //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.
     function handleToggle() {
         setToggleDelete(!toggleDelete)
+    }
+
+    function handleCompSubmissionNav(e) {
+        navigate(`/competition-submissions/${id}`)
     }
  
 
     //This allows the USER to confirm if they are the correct user,
     const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
     
-    //-----------------------------------------------------------------------------------
+    //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
     // (TYLER) May want to put this stuff ABOVE the prop deconstruction, but when state is set it reloads the thing anyway
     // need to find a way to render this USER id stuff if only the user is logged in.
@@ -149,8 +160,14 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
             <Link to='/competitions'>
             <button> BACK BUTTON</button>
             </Link>
-            <div></div>
-            {user.id === user_id ? userConfirm : entryButton} 
+
+            <br></br>
+            <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
+
+            <br></br>
+            {user.id === user_id ? userConfirm : entryButton}
+            {/* need a button to edit the competition */}
+            
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>
     )}
@@ -176,6 +193,15 @@ function CompetitionDisplay({user, setCompetitions, competitions, grabCompId, co
             <p>{prize7}</p>
             <p>{prize8}</p>
             <p>{registration_schedule}</p>
+            <br></br>
+            
+            <div>-------------------------</div>
+            <Link to='/competitions'>
+            <button> BACK BUTTON</button>
+            </Link>
+
+            <br></br>
+            <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
         </div>
     )
 

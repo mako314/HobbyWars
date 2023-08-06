@@ -93,7 +93,7 @@ function App() {
     const [entryID, setEntryID] = useState(0)
 
     //State to grab hobby ID and send it to edit for the data to prepopulate the form
-    
+    const [userHobbyID, setUserHobbyID] = useState(0)
 
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
@@ -238,7 +238,7 @@ function App() {
                 
                 {/* USER DASHBOARD BY ID? */}
 
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID}/>}/>
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
                 {/* ALL USER HOBBY ROUTING  */}

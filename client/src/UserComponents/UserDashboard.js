@@ -18,6 +18,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
 
     //State to keep track of the users mapped entries:
     const [mappedEntries, setMappedEntries] = useState([]);
+
+    //State to track and display a usersHobbies
+    const [mappedUserHobbies, setMappedUserHobbies] = useState([])
     
    
    
@@ -75,19 +78,28 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID}) { //n
 
 //--------------------------------------------------------------------------------------------------------
 //---------------------------------------------User Hobby Info ./ Button to edit it-----------------------------------------------
-let mappedUserHobbies = user_hobby.map((userHobby) => {
-    return(
-        <div>
-            <p>
-                Hobby: {userHobby.hobby.type_of_hobby}
-            </p>
-            <p>
-                Level: {userHobby.expertise}
-            </p>
 
-        </div>
+//Had to put this mapping of user hobbies inside of a useEffect that only fires off when the data is made available in user_hobby (destructured prop), always need a ? in map now
+useEffect(()=>{
+    setMappedUserHobbies(
+        user_hobby?.map((userHobby) =>{
+            return(
+            <div>
+                <p>
+                    Hobby: {userHobby.hobby.type_of_hobby}
+                </p>
+                <p>
+                    Level: {userHobby.expertise}
+                </p>
+
+            </div>
+
+            )
+        })
     )
-})
+
+},[user_hobby])
+
 
 //--------------------------------Submission / Entry information / code----------------------------------
     //Button to navigate to submission edit

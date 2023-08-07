@@ -314,7 +314,7 @@ class Result(db.Model, SerializerMixin):
     #Serialize Rules
     #this first serliazer removes all the user information. I remove competitions.result so no infinite recursion. 
     #May be a good idea to just remove competitions as it should be accesible via the competition.id, so I could even get the entries with competition.id.entry?
-    serialize_rules = ('-user','-competitions.result') #'-competitions.results', '-competitions.entry
+    serialize_rules = ('-user.results','-competitions.result') #'-competitions.results', '-competitions.entry
     #'-competitions.result', taking this out for now, it stops infinite recursion but I am just going to remove all of the competitions information.
 
     #Validations

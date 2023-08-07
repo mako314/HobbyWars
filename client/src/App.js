@@ -31,6 +31,10 @@ import EntryForm from './EntryComponents/EntryForm';
 import EntryEdit from './EntryComponents/EditEntry';
 import EntryDisplay from './EntryComponents/EntryDisplay';
 
+//--------------------Result Imports---------------------
+import ResultForm from './ResultComponents/ResultForm';
+import ResultCollection from './ResultComponents/ResultCollection';
+
 
 // I may want to edit my form components, userSignUp and competitionCreation to be in my signUpComponents folder
 // So There are definitely some questions I have, they are littered amongst my components. Will continue though. Lets see what else I can really get doing
@@ -84,6 +88,9 @@ function App() {
 
     //State to grab ENTRIES and display them, working on post:
     const [entries, setEntries] = useState([])
+
+    //State to grab RESULTS and display them, working on post:
+    const [results, setResults] = useState([])
 
     //State to grab the competition ID to be pasased to Entry Post
     //Need something to grab the competition ID when it's been clicked, gets called in useEffect inside of competition display:
@@ -205,6 +212,18 @@ function App() {
     //Moved to userHobbyForm
     //hobbies={hobbies}
 
+      //-------------------------------------------- Result FETCH / CODE--------------------------
+      useEffect(() => {
+        fetch("/results")
+          .then((resp) => resp.json())
+          .then((data) => {
+            setResults(data)
+          })
+      }, [])
+  
+      //Moved to userHobbyForm
+      //hobbies={hobbies}
+
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
       const loggedInDisplay = (
@@ -269,6 +288,11 @@ function App() {
                 {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
                 <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
 
+                {/* RESULT ROUTES */}
+                <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results}/>}/>
+                <Route path='/results' element={<ResultCollection results={results}/>}/>
+
+            
             </Routes>
 
             {/* <CompetitionCollection competitions={competitions}/> */}

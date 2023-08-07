@@ -100,6 +100,10 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         <button onClick={handleToggle}> No it was a mistake</button>
         </div>
     )
+
+    
+    //This allows the USER to confirm if they are the correct user,
+    const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
     
 
     //A button to take you to the submit entry page, you have to be logged in though
@@ -113,19 +117,25 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         </div>
     )
     
+    //This should take you to the submissions page for the competition, where you'll see all the entries
+    function handleCompSubmissionNav(e) {
+        navigate(`/competition-submissions/${id}`)
+        setCompID(id)
+    }
+    
     //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.
     function handleToggle() {
         setToggleDelete(!toggleDelete)
     }
 
-    function handleCompSubmissionNav(e) {
-        navigate(`/competition-submissions/${id}`)
-        setCompID(id)
+    //Takes you to the page to declare results
+    const navToSubmitResults = () => {
+        navigate(`/declare-results/`)
     }
- 
 
-    //This allows the USER to confirm if they are the correct user,
-    const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
+    let submitResultButton = <button onClick={navToSubmitResults}>Submit Results</button>
+
+
     
     //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
@@ -168,6 +178,8 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <br></br>
             {user.id === user_id ? userConfirm : entryButton}
             {/* need a button to edit the competition */}
+
+            {user.id === user_id ? submitResultButton : ""}
             
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>

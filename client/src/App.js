@@ -98,6 +98,9 @@ function App() {
     //State to determine where edit Entries was clicked from
     const [editFromSubmissions, setEditFromSubmissions] = useState(false)
 
+    //State to determine if the view was from the USER DASH
+    const [viewedFromUser, setViewedFromUser] = useState(false)
+
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
     useEffect(() => {
@@ -240,7 +243,7 @@ function App() {
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries} setEditFromSubmissions={setEditFromSubmissions}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries} setEditFromSubmissions={setEditFromSubmissions} setViewedFromUser={setViewedFromUser}/>}/>
                 {/* EDIT USER BY ID, BUTTONS FOUND IN DASHBOARD */}
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
@@ -261,7 +264,7 @@ function App() {
                 {/* EDIT ENTRY BY ID ROUTE */}
                 <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID} editFromSubmissions={editFromSubmissions}/>}/>
                 {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
-                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} />}/>
+                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
 
             </Routes>
 

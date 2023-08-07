@@ -20,7 +20,8 @@ function ResultForm({user, setResults, results, compID}) {
         initialValues: {
             placement: '',
             user_id: '',
-            competition_id: ''
+            competition_id: '',
+            entry_id
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{

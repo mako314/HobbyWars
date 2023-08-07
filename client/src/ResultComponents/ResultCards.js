@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function ResultCards({competition, placement, userResult}){
+function ResultCards({competition, placement, userResult, submission}){
 
   //Will need this bad boy later
   const navigate = useNavigate();
@@ -24,8 +24,9 @@ function ResultCards({competition, placement, userResult}){
         {/* don't know if i want this href */}
 
         <p>Competition: {competition.title}</p>
+        <p>Submission: {submission} </p>
         <p>User: {userResult.username}</p>
-        <p> Placement: {placement}</p>
+        <p>Placement: {placement}</p>
         {/* <p>Reward: {competition.prize1}</p> */}
 
 

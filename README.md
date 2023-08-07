@@ -256,3 +256,4 @@ maybe a button to take you to entry display page in user dashboard?
 Entry display has a button to delete the entry if your user ID matches that entries user_id
 
 
+need to take out all users password hashes with rules in to_dict for the gets.

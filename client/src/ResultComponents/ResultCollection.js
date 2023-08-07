@@ -14,6 +14,7 @@ function ResultCollection({results}){
         competition = {result.competitions}
         placement = {result.placement}
         userResult={result.user}
+        submission={result.entry.submission}
         />   
     })
 

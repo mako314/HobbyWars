@@ -4,7 +4,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryForm({user, setEntries, entries, compID}) {
+function EntryForm({user, setEntries, entries, compID, setEntryID}) {
     
     const [error, setError] = useState()
     
@@ -36,7 +36,11 @@ function EntryForm({user, setEntries, entries, compID}) {
                 if (res.ok){
                     res.json().then(entry => {
                         setEntries([...entries, entry])
-                        navigate(`/competition-submissions/${compID}`)
+                        // navigate(`/competition-submissions/${compID}`)
+                        setEntryID(entry.id)
+                        console.log(entry.id)
+                        navigate(`/entry/${entry.id}`)
+                        //can add state here to say it came from user entry submission
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -46,15 +50,10 @@ function EntryForm({user, setEntries, entries, compID}) {
         }
     })
 
-    // trying to handle navigiation back when I'm submitting an entry
-//     function handleCompSubmissionNav(compID) {
-//         navigate(`/competition-submissions/${compID}`)
-//     }
-
-// console.log(compID)
-//      function handleCompSubmissionNav(compID) {
-            
-//     }
+    //Takes you back to the competition ID if you hit the back button
+    const backToCompetition =  () => {
+        navigate(`/competition/${compID}`)
+    }
 
 // //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
@@ -85,9 +84,9 @@ function EntryForm({user, setEntries, entries, compID}) {
         
         {/* adding buttons to go back and for a submission to take you back to the page */}
         <button type="submit" className="" > Submit my entry! </button>
+        <br></br>
+        <button onClick={backToCompetition}> Back </button>
         
-        {/* <button onClick={backToSubmissions}> Back </button>
-         */}
 
         </form>
     

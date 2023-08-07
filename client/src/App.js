@@ -95,6 +95,15 @@ function App() {
     //State to grab hobby ID and send it to edit for the data to prepopulate the form
     const [userHobbyID, setUserHobbyID] = useState(0)
 
+    //State to determine where edit Entries was clicked from
+    const [editFromSubmissions, setEditFromSubmissions] = useState(false)
+
+    //State to determine if the view was from the USER DASH
+    const [viewedFromUser, setViewedFromUser] = useState(false)
+
+    //State to determine if it was viewed from submissions
+    const [viewFromSubmissions, setViewFromSubmissions] = useState(false)
+
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
     useEffect(() => {
@@ -228,7 +237,7 @@ function App() {
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
-                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID}/>}/>
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions}/>}/>
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
@@ -237,7 +246,7 @@ function App() {
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries} setEditFromSubmissions={setEditFromSubmissions} setViewedFromUser={setViewedFromUser}/>}/>
                 {/* EDIT USER BY ID, BUTTONS FOUND IN DASHBOARD */}
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 
@@ -254,11 +263,11 @@ function App() {
 
                   {/* ENTRY ROUTES */}
                 {/* ADD AN ENTRY ROUTE */}
-                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} />}/>
+                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} setEntryID={setEntryID}/>}/>
                 {/* EDIT ENTRY BY ID ROUTE */}
-                <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID}/>}/>
+                <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID} editFromSubmissions={editFromSubmissions}/>}/>
                 {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
-                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID}/>}/>
+                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
 
             </Routes>
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function EntryDisplay({user, entryID,}){
+function EntryDisplay({user, entryID, viewedFromUser }){
 
     const navigate = useNavigate();
 
@@ -15,6 +15,7 @@ function EntryDisplay({user, entryID,}){
 
     //Use effect to grab the data when you initially load into this page
     useEffect(() => {
+        
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
@@ -22,6 +23,8 @@ function EntryDisplay({user, entryID,}){
             setSingleEntry(data)
           })
       }, [entryID])
+
+    //   if (entryID){}
 
       console.log(entryID)
       console.log(singleEntry)
@@ -31,17 +34,31 @@ function EntryDisplay({user, entryID,}){
     // navigate(`/edit-entry/${id}`)
     // }
 
+    //Going to make two back buttons,
+
     //No need to map, it's a singular object.
     useEffect(() => {
         if (singleEntry){
-
+            
             function navSubmissionEdit(id) {
             navigate(`/edit-entry/${id}`)
+            
             }
             // I added these in to see if it'd fix anything, and alas, it did not.
             function returnToSubmission(id){
                 navigate(`/competition-submissions/${id}`)
             }
+
+            let submissionsBackBtn = <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
+
+            //Return to userdashboard if the view button was clicked from the user dash
+            function returnToUserDash(user){
+                navigate(`/user-dashboard/${user.id}`)
+            }
+
+            let userDashBackBtn = <button onClick={() => returnToUserDash(user)}> Back </button>
+
+
 
             setMappedEntry(
                 <div>
@@ -55,7 +72,7 @@ function EntryDisplay({user, entryID,}){
                     
                     <br></br>
                     
-                    <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
+                    {viewedFromUser ? userDashBackBtn : submissionsBackBtn}
                     
                     <br></br>
 
@@ -87,7 +104,10 @@ function EntryDisplay({user, entryID,}){
                     <br></br>
                 </div>
             )
-    }, [singleEntry])
+}, [singleEntry])
+
+    console.log(singleEntry)
+    if (singleEntry){}
 
     //Return to the submissions page
     // function returnToSubmission(id){

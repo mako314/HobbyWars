@@ -305,7 +305,7 @@ class Result(db.Model, SerializerMixin):
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
-    entry_id = db.Column(db.Integer, db.ForeignKey('entry.'))
+    entry_id = db.Column(db.Integer, db.ForeignKey('entry.id'))
     #Maybe a entry ID to tie it to the users entry
 
     #Relationships

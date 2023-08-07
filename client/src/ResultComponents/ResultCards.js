@@ -13,8 +13,10 @@ function ResultCards({competition, placement, userEntry, submission}){
 // }
 
   console.log(userEntry)
-    let prizeReward = placement
+    // let prizeReward = placement
 
+
+    //Destructure this userEntry to grab the user data for that specific entry. CANNOT PASS USER TO THESE CARDS
     const{
       user
     } = userEntry

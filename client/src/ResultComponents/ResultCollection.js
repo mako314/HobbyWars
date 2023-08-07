@@ -6,6 +6,8 @@ import ResultCards from "./ResultCards";
 function ResultCollection({results}){
 
     console.log(results)
+
+    //Changed my serialziation to allow for the userEntries... don't even ask how because jesus helped me
     
     //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
     const resultCards = results.map((result) =>{

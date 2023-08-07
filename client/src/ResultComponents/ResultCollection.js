@@ -5,7 +5,7 @@ import ResultCards from "./ResultCards";
 
 function ResultCollection({results}){
 
-    console.log(results)
+    // console.log(results)
 
     //Changed my serialziation to allow for the userEntries... don't even ask how because jesus helped me
     

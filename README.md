@@ -241,12 +241,12 @@ freaking,
 
 8/6/2023
 previous wars - 
-submit an entry, post works, but doesn't take you anywhere after
-Also needs back button in case you don't want to submit an entry
+submit an entry, post works, but doesn't take you anywhere after  --- TAKES YOU TO ENTRY DISPLAY PAGE //// DONE
+Also needs back button in case you don't want to submit an entry --- takes you back to competition display page //// DONE
 
 RESULTS
-need a results page, results currently show in user dashboard but nowhere else
-need a way to submit results, (probably click the competition if you're the owner and then a button near the prizes to assign results? + placement?)
+need a results page, results currently show in user dashboard but nowhere else / KINDA BROKE THIS TODAY 8/7/23
+need a way to submit results, (probably click the competition if you're the owner and then a button near the prizes to assign results? + placement?) DONE
 
 
 need a way to refresh userdashboard after entry deletion?
@@ -260,6 +260,11 @@ need to take out all users password hashes with rules in to_dict for the gets.
 
 
 
+8/7/23
 
 //SUBMISSION STUFF
-AFTER SUBMITTING AN ENTRY IT TAKES THEM TO USER DASHBOARD?
+AFTER SUBMITTING AN ENTRY IT TAKES THEM TO USER DASHBOARD? < - need this done-  >
+
+
+submitting a result needs to do something, like maybe take you to the results page?
+

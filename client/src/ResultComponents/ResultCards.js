@@ -12,7 +12,7 @@ function ResultCards({competition, placement, userEntry, submission}){
 //     navigate(`/competition/${id}`)
 // }
 
-  console.log(userEntry)
+  // console.log(userEntry)
     // let prizeReward = placement
 
 

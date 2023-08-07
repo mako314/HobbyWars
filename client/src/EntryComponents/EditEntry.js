@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function EntryEdit({user, updateEntry, entryID}){
+function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
     //display errors
     const [error, setError] = useState()
@@ -47,8 +47,12 @@ function EntryEdit({user, updateEntry, entryID}){
                     res.json().then(entry => {
                         console.log("shooting")
                         updateEntry(entry)
+                        if (editFromSubmissions === true){
+                            navigate(`/competition-submissions/${entry.competition_id}`)
+                        } else {
                         navigate(`/user-dashboard/${user.id}`)
                         //Add where you want it to go here / anything else you want it to do
+                        }
                     })
                 } else {
                     res.json().then(error => setError(error)) //for backend errors
@@ -57,13 +61,26 @@ function EntryEdit({user, updateEntry, entryID}){
         }
     })
 
+//---------------------------------------------------------------------------------BACK BUTTON NAVIGATIONS-----------------------------------------------------------------------
+
     // I need to capture the entries ID with state
     // console.log(entryID)
 
-    //Takes the user back to the dashboard if they didn't want to click it
+    //Takes the user back to the dashboard if they didn't want to click it IF YOU CAME FROM USER DASH
     const backToDash =  () => {
         navigate(`/user-dashboard/${user.id}`)
     }
+    //Button to return to the userdash board, conditionally rendered
+    let userDashButton = <button onClick={backToDash}> Back </button>
+
+    //takes you back to submissions if you came from submissions
+    const backToSubmissions = () => {
+        navigate(`/competition-submissions/${entryInfo.competition_id}`)
+    }
+    //Button to return to the submissions board, conditionally rendered
+    let submissionsReturnbtn = <button onClick={backToSubmissions}> Back </button>
+
+//---------------------------------------------------------------------------------USE EFFECTS FOR PREPOPULATING DATA -----------------------------------------------------------------------
 
     //Use effect waiting for user to load, then afterwards if user exists, comp id exists, and entry ID all exist, it fetches the entries information such as description and submission.
     useEffect(() => {
@@ -128,8 +145,15 @@ function EntryEdit({user, updateEntry, entryID}){
                 <div>--------------------------------------</div>
                 <button type="submit" className=""> Submit and return to my Dashboard </button>
 
+                <br></br>
+
+                {/* working toggle button, if they came from submission, return them to submissions 
+                    or if they came from the userDashBoard, I give them the userDashboard button
+                */}
+                {editFromSubmissions ? submissionsReturnbtn : userDashButton}
+
             </form>
-                <button onClick={backToDash}> Back </button>
+                
 
         </div>
     )

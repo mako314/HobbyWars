@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link ,useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID, setEntries, entries}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID, setEntries, setEditFromSubmissions}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -122,10 +122,11 @@ useEffect(()=>{
 
 
 //--------------------------------Submission / Entry information / code----------------------------------
-    //Button to navigate to submission edit
+    //Button to navigate to submission edit // also sets setEditFromSubmissions to false, meaning I came from the userDash
     function navSubmissionEdit(id) {
         navigate(`/edit-entry/${id}`)
         setEntryID(id)
+        setEditFromSubmissions(false)
     }
 
     //Display users entries

@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions}){
 
     const navigate = useNavigate();
 
@@ -46,6 +46,8 @@ function CompetitionSubmissions({user, setEntryID}){
     function navSubmissionEdit(id) {
         navigate(`/edit-entry/${id}`)
         setEntryID(id)
+        setEditFromSubmissions(true)
+        console.log(editFromSubmissions)
     }
 
     //Function to take you back to the competition display page

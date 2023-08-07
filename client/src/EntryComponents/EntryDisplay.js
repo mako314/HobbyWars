@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function EntryDisplay({user, entryID,}){
+function EntryDisplay({user, entryID, setEditFromSubmissions, }){
 
     const navigate = useNavigate();
 
@@ -37,9 +37,10 @@ function EntryDisplay({user, entryID,}){
     //No need to map, it's a singular object.
     useEffect(() => {
         if (singleEntry){
-
+            
             function navSubmissionEdit(id) {
             navigate(`/edit-entry/${id}`)
+            
             }
             // I added these in to see if it'd fix anything, and alas, it did not.
             function returnToSubmission(id){

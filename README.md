@@ -230,3 +230,29 @@ also need to include a User-hobby-edit form -------- DONE
 NEED A DELETE FOR USER HOBBIES -------------- NEEED DISSSSSS CHECK HOW YOU DID USER DELETES
 
 need a button after entries has been submit to take you back somewhere, maybe all entries page ?
+
+
+
+so entry button needs some work for deletion and to refresh the page
+
+
+
+freaking,
+
+8/6/2023
+previous wars - 
+submit an entry, post works, but doesn't take you anywhere after
+Also needs back button in case you don't want to submit an entry
+
+RESULTS
+need a results page, results currently show in user dashboard but nowhere else
+need a way to submit results, (probably click the competition if you're the owner and then a button near the prizes to assign results? + placement?)
+
+
+need a way to refresh userdashboard after entry deletion?
+
+
+maybe a button to take you to entry display page in user dashboard?
+Entry display has a button to delete the entry if your user ID matches that entries user_id
+
+

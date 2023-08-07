@@ -132,6 +132,13 @@ useEffect(()=>{
 
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
     
+    //navigate to entry display page for that entry going to have to do some working, maybe put it in a useEffect
+    function viewSubmission(id) {
+        navigate(`/entry/${id}`)
+        console.log(id)
+        // setEntryID(id)
+    }
+
     //This portion handles displaying a users entry on their dashboard
     // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
     useEffect(() => {
@@ -165,6 +172,8 @@ useEffect(()=>{
                         {/* seems I had to move this stuff to inside of the ternary instead? */}
                     </div>
                     }
+
+                    <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
                 </div>)
                 })
             )

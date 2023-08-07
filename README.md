@@ -257,3 +257,9 @@ Entry display has a button to delete the entry if your user ID matches that entr
 
 
 need to take out all users password hashes with rules in to_dict for the gets.
+
+
+
+
+//SUBMISSION STUFF
+AFTER SUBMITTING AN ENTRY IT TAKES THEM TO USER DASHBOARD?

@@ -129,11 +129,11 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     }
 
     //Takes you to the page to declare results
-    const navToSubmitResults = () => {
-        navigate(`/declare-results/`)
-    }
+    // const navToSubmitResults = () => {
+    //     navigate(`/declare-results/`)
+    // }
 
-    let submitResultButton = <button onClick={navToSubmitResults}>Submit Results</button>
+    // let submitResultButton = <button onClick={navToSubmitResults}>Submit Results</button>
 
 
     
@@ -179,7 +179,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             {user.id === user_id ? userConfirm : entryButton}
             {/* need a button to edit the competition */}
 
-            {user.id === user_id ? submitResultButton : ""}
+            {/* {user.id === user_id ? submitResultButton : ""} */}
             
             {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
         </div>

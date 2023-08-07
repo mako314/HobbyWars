@@ -9,15 +9,18 @@ function ResultCollection({results}){
     
     //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
     const resultCards = results.map((result) =>{
+        // console.log(result)
         return <ResultCards 
         key={result.id}
         competition = {result.competitions}
         placement = {result.placement}
-        userResult={result.user}
+        userEntry={result.entry}
         submission={result.entry.submission}
         />   
     })
 
+
+    //would it be a better idea to take the entry user ID and fetch that data to then populate this with that users entry information?
 
 
 

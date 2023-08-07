@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function ResultCards({competition, placement, userResult, submission}){
+function ResultCards({competition, placement, userEntry, submission}){
 
   //Will need this bad boy later
   const navigate = useNavigate();
@@ -12,8 +12,12 @@ function ResultCards({competition, placement, userResult, submission}){
 //     navigate(`/competition/${id}`)
 // }
 
+  console.log(userEntry)
     let prizeReward = placement
 
+    const{
+      user
+    } = userEntry
 
     return(  
     <div
@@ -25,7 +29,7 @@ function ResultCards({competition, placement, userResult, submission}){
 
         <p>Competition: {competition.title}</p>
         <p>Submission: {submission} </p>
-        <p>User: {userResult.username}</p>
+        <p>User: {user.username}</p>
         <p>Placement: {placement}</p>
         {/* <p>Reward: {competition.prize1}</p> */}
 

@@ -172,7 +172,7 @@ useEffect(()=>{
                         {/* seems I had to move this stuff to inside of the ternary instead? */}
                     </div>
                     }
-
+                    <br></br>
                     <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
                 </div>)
                 })

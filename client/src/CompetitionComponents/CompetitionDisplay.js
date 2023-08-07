@@ -120,6 +120,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
 
     function handleCompSubmissionNav(e) {
         navigate(`/competition-submissions/${id}`)
+        setCompID(id)
     }
  
 

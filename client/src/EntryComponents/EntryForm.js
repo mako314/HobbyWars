@@ -7,8 +7,6 @@ import { object, string, number} from 'yup'
 function EntryForm({user, setEntries, entries, compID}) {
     
     const [error, setError] = useState()
-
-    // const [compID, setCompID] = useState(0)
     
     const navigate = useNavigate()
 
@@ -38,7 +36,7 @@ function EntryForm({user, setEntries, entries, compID}) {
                 if (res.ok){
                     res.json().then(entry => {
                         setEntries([...entries, entry])
-                        // navigate('/user-hobby-selection')
+                        navigate(`/competition-submissions/${compID}`)
                         //Add where you want it to go here / anything else you want it to do
                     })
                 } else {
@@ -53,13 +51,11 @@ function EntryForm({user, setEntries, entries, compID}) {
 //         navigate(`/competition-submissions/${compID}`)
 //     }
 
-//     useEffect(() => {
-//         if (compID){
-//             let handleNavBackToSubmission {
-
-//             }
+// console.log(compID)
+//      function handleCompSubmissionNav(compID) {
+            
 //     }
-//       }, [compID])
+
 // //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
     const loggedInDisplay = (
@@ -91,7 +87,7 @@ function EntryForm({user, setEntries, entries, compID}) {
         <button type="submit" className="" > Submit my entry! </button>
         
         {/* <button onClick={backToSubmissions}> Back </button>
-        onClick={() => handleCompSubmissionNav()} */}
+         */}
 
         </form>
     

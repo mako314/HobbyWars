@@ -15,6 +15,7 @@ function EntryDisplay({user, entryID,}){
 
     //Use effect to grab the data when you initially load into this page
     useEffect(() => {
+        
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
@@ -22,6 +23,8 @@ function EntryDisplay({user, entryID,}){
             setSingleEntry(data)
           })
       }, [entryID])
+
+    //   if (entryID){}
 
       console.log(entryID)
       console.log(singleEntry)
@@ -87,7 +90,10 @@ function EntryDisplay({user, entryID,}){
                     <br></br>
                 </div>
             )
-    }, [singleEntry])
+}, [singleEntry])
+
+    console.log(singleEntry)
+    if (singleEntry){}
 
     //Return to the submissions page
     // function returnToSubmission(id){

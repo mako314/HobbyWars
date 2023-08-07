@@ -305,6 +305,7 @@ class Result(db.Model, SerializerMixin):
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
+    entry_id = db.Column(db.Integer, db.ForeignKey('entry.'))
     #Maybe a entry ID to tie it to the users entry
 
     #Relationships
@@ -327,7 +328,7 @@ class Result(db.Model, SerializerMixin):
 
 
 class Entry(db.Model, SerializerMixin):
-    __tablename__ = "entries"
+    __tablename__ = "entry"
     #Columns
     id = db.Column(db.Integer, primary_key = True)
     submission = db.Column(db.String)

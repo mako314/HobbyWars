@@ -1195,56 +1195,67 @@ if __name__ == '__main__':
             placement=2,
             user_id=6,
             competition_id=2,
+            entry_id = 1,
             ),
             Result(
             placement=5,
             user_id=10,
             competition_id=2,
+            entry_id = 2,
             ),
             Result(
             placement=1,
             user_id=19,
             competition_id=2,
+            entry_id = 3,
             ),
             Result(
             placement=3,
             user_id=21,
             competition_id=2,
+            entry_id = 4,
             ),
             Result(
             placement=5,
             user_id=26,
             competition_id=5,
+            entry_id = 5,
             ),
             Result(
             placement=1,
             user_id=11,
             competition_id=5,
+            entry_id = 6,
             ),
             Result(
             placement=3,
             user_id=2,
             competition_id=1,
+            entry_id = 7,
             ),
             Result(
             placement=5,
             user_id=4,
             competition_id=1,
+            entry_id = 8,
             ),
             Result(
             placement=6,
             user_id=10,
             competition_id=1,
+            entry_id = 9,
             ),
             Result(
             placement=1,
             user_id=22,
             competition_id=1,
+            entry_id = 10,
             ),
             Result(
             placement=2,
             user_id=29,
             competition_id=1,
+            entry_id = 11,
             ),
         ]
         db.session.add_all(results)

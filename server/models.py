@@ -305,16 +305,27 @@ class Result(db.Model, SerializerMixin):
     #Foreign Keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id'))
+    entry_id = db.Column(db.Integer, db.ForeignKey('entry.id')) # <- maybe I can replace this with ? Or leave it
     #Maybe a entry ID to tie it to the users entry
 
     #Relationships
     user = db.relationship('User', back_populates="results")
     competitions = db.relationship('Competition', back_populates="results")
+    entry = db.relationship('Entry', back_populates="results")
 
     #Serialize Rules
     #this first serliazer removes all the user information. I remove competitions.result so no infinite recursion. 
     #May be a good idea to just remove competitions as it should be accesible via the competition.id, so I could even get the entries with competition.id.entry?
-    serialize_rules = ('-user','-competitions.result') #'-competitions.results', '-competitions.entry
+    serialize_rules = ('-user.results',
+                       '-user.competitions',
+                       '-user.entry',
+                       '-competitions.results',
+                       '-competitions.entry',
+                       '-competitions.user',
+                       '-entry.competitions',
+                       '-entry.user',       #These three are new because of my new relationship to entries so I can get entry information.
+                       '-entry.results',) #Had result here instead of results
+    #'-competitions.results', '-competitions.entry
     #'-competitions.result', taking this out for now, it stops infinite recursion but I am just going to remove all of the competitions information.
 
     #Validations
@@ -327,7 +338,7 @@ class Result(db.Model, SerializerMixin):
 
 
 class Entry(db.Model, SerializerMixin):
-    __tablename__ = "entries"
+    __tablename__ = "entry"
     #Columns
     id = db.Column(db.Integer, primary_key = True)
     submission = db.Column(db.String)
@@ -341,9 +352,16 @@ class Entry(db.Model, SerializerMixin):
     #Relationships
     user = db.relationship('User', back_populates="entry") #need to change this to something better becuase object.entries is reserved
     competitions = db.relationship('Competition', back_populates="entry" )
+    results = db.relationship('Result', back_populates="entry")
 
-    #Serialize Rules
-    serialize_rules = ('-user','-competitions.entry','-competitions.results' )
+    #Serialize Rules                                                            
+    serialize_rules = ('-user',
+                       '-competitions.entry',
+                       '-competitions.results',
+                    #    '-competitions.user', 
+                       '-results.entry',            #These three are new because of the new relationship
+                       '-results.competitions', 
+                       '-results.user' )
 
     #originally had this '-user.entry' switching to just '-user'
     # This likely looks the cleanest, or else I'd have to have a bunch of to_dict rules. You can still access things I believe with entry.user_id.name for example

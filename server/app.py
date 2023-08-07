@@ -502,7 +502,8 @@ class Results(Resource):
             result = Result(
                 placement = data['placement'],
                 user_id = data['user_id'],
-                competition_id = data['competition_id']
+                competition_id = data['competition_id'],
+                entry_id = data['entry_id']
             )
 
             db.session.add(result)
@@ -573,6 +574,8 @@ class ResultsByID(Resource):
 
 api.add_resource(ResultsByID, '/result/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
+
+# This might not be a bad idea to do with the entry ID if it matches the entry ID of the result for example
 # class ResultsByUserID(Resource):
 #     #GET Result by User ID?
 #     def get(self, id):

@@ -111,6 +111,14 @@ function App() {
     //State to determine if it was viewed from submissions
     const [viewFromSubmissions, setViewFromSubmissions] = useState(false)
 
+    //Result State for IDs
+    const [entryResultID, setEntryResultID] = useState(0)
+
+    const [compResultID, setCompResultID] = useState(0) 
+
+    //setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} this was in compsubmission page, but I think I just failed to pass the props to the wrong place...
+    //compID={compID} entryID={entryID} this was in the /results route
+
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
     useEffect(() => {
@@ -256,7 +264,7 @@ function App() {
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
-                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions}/>}/>
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID}/>}/>
 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
@@ -289,8 +297,8 @@ function App() {
                 <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
 
                 {/* RESULT ROUTES */}
-                <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results}/>}/>
-                <Route path='/results' element={<ResultCollection results={results}/>}/>
+                <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results} compID={compID} entryID={entryID} entryResultID={entryResultID} compResultID={compResultID}/>}/>
+                <Route path='/results' element={<ResultCollection results={results} />}/>
 
             
             </Routes>

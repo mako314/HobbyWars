@@ -4,13 +4,16 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function ResultForm({user, setResults, results, compID}) {
+function ResultForm({user, setResults, results, compID, entryID, compResultID, entryResultID}) {
     
     // I could do something where this ties with the entry tbh.
 
     const [error, setError] = useState()
     
     const navigate = useNavigate()
+
+    console.log(compResultID)
+    console.log(entryResultID)
 
     const formSchema = object({
         placement: string().required('You need a submission!'),
@@ -20,7 +23,8 @@ function ResultForm({user, setResults, results, compID}) {
         initialValues: {
             placement: '',
             user_id: '',
-            competition_id: ''
+            competition_id: '',
+            entry_id: ''
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
@@ -93,10 +97,11 @@ function ResultForm({user, setResults, results, compID}) {
 
     //Set FORMIK values upon user existing
     useEffect(() => {
-        if (user && user.id && compID){
+        if (user && user.id && compResultID && entryResultID){
         formik.setValues({
           user_id: user.id,
-          competition_id: compID
+          competition_id: compResultID,
+          entry_id: entryResultID
         })
     }
       }, [user])

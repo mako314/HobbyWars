@@ -2,8 +2,9 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID}){
 
+    //setCompID
     const navigate = useNavigate();
 
     //Grab all the comp entries
@@ -41,6 +42,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
       } = compEntries
       
     //   console.log(entry)
+    console.log(compEntries)
     
     //Function to take you to the edit
     function navSubmissionEdit(id) {
@@ -61,6 +63,20 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
         setEntryID(id)
         navigate(`/entry/${id}`)
     }
+
+    //Takes you to a page to declare result for that entry need a back button there to bring me back to this page.
+    function navToSubmitResults (id, idForCompetition) {
+        console.log(id)
+        console.log(idForCompetition)
+
+        setEntryResultID(id)
+        setCompResultID(idForCompetition)
+        //This above works!
+
+        navigate(`/declare-results/`)
+    }
+
+    // let resultSubmitButton = <button onClick={navToSubmitResults (oneEntry.id, oneEntry.competition_id)}> Declare a result </button>
 
 
     //once data is fetched, and if the data exists, map over it and display the submissions and entries for a logged in user
@@ -93,7 +109,9 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             
                             <br></br>
 
-                            { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""} 
+                            { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
+                            
+                            {user.id === user_id ?  <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : ""}
                         </div>
                     )
                 })

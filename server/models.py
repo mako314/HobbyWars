@@ -323,7 +323,7 @@ class Result(db.Model, SerializerMixin):
                        '-competitions.entry',
                        '-competitions.user',
                        '-entry.competitions',
-                       '-entry.user',       #These three are new because of my new relationship to entries so I can get entry information.
+                       #'-entry.user',       #These three are new because of my new relationship to entries so I can get entry information.
                        '-entry.results',) #Had result here instead of results
     #'-competitions.results', '-competitions.entry
     #'-competitions.result', taking this out for now, it stops infinite recursion but I am just going to remove all of the competitions information.
@@ -331,6 +331,7 @@ class Result(db.Model, SerializerMixin):
     #Validations
     @validates("placement")
     def validate_placement(self, key, placement):
+        placement = int(placement)
         if placement and placement > 0:
             return placement
         else:
@@ -355,7 +356,9 @@ class Entry(db.Model, SerializerMixin):
     results = db.relationship('Result', back_populates="entry")
 
     #Serialize Rules                                                            
-    serialize_rules = ('-user',
+    serialize_rules = ('-user.results',
+                       '-user.entry',
+                       '-user.competitions',
                        '-competitions.entry',
                        '-competitions.results',
                     #    '-competitions.user', 

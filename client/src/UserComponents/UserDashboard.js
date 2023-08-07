@@ -26,6 +26,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
 
     //Setting entry to delete?
     const [entryToDelete, setEntryToDelete] = useState([])
+
+    //State for setting user results for their entries:
+    const [usersResults, setUserResults] = useState([])
    
 
    
@@ -57,7 +60,6 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         competitions,
         entry, // Fix in the backend 
         user_hobby,
-        results
     } = selectedUser;
 
 
@@ -230,14 +232,49 @@ useEffect(()=>{
 //--------------------------------------------------------------------------------------------------------
 //-----------------------------------------------USER RESULTS / DOUBLE BUTTON-------------------------------------------------
 
-const mappedUserResults = results?.map((result) => {
-    return (
-    <div>
-        <p> COMPETITION: {result.competitions.title} </p>
-        <p> Placement: {result.placement}</p>
-    </div>)
+
+// I think I just need help wit this part tbh
+
+
+
+
+// Need help getting my results to properly display in this persons results
+
+
+
+
+//==================== SOS
+// useEffect(() => {
+//     if (entry){
+//         setUserResults(entry?.map((uResultForEntry)=>{
+//             return(  
+//             <div>
+//                 {console.log(uResultForEntry.results)}
+//                 <p>COMPETITION: {uResultForEntry.competitions.title} </p>
+//                 <p>Submission: {uResultForEntry.submission}</p>
+//                 <p>Placement: {uResultForEntry.results.placement}</p>
+//             </div>)
+//         }))
+// }
+//   }, [entry])
+
+//   console.log(usersResults)
+
+
+
+// const mappedUserResults = selectedUser?.map((selectedUserResult) => {
     
-})
+//     console.log(results)
+    
+//     return (
+    // <div>
+    //     {/* {console.log(entryResult.results)} */}
+    //     <p>COMPETITION: {selectedUserResult.entry.competitions.title} </p>
+    //     <p>Submission: {selectedUserResult.entry.submission}</p>
+    //     <p> Placement: {selectedUserResult.entry.results.placement}</p>
+    // </div>)
+    
+// })
 
 // console.log(mappedUserResults)
 
@@ -333,7 +370,7 @@ const mappedUserResults = results?.map((result) => {
 
             <p>---------------------------------Results------------------------</p>
 
-            <div>{mappedUserResults}</div>
+            <div>{usersResults}</div>
             
             <br></br>
 

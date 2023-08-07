@@ -186,26 +186,24 @@ should freaking make it where you can't submit the same exact hobby like in vali
 ^ done I think
 
 
-need to make more front end validations with yup for competitions and other things.
 
 
 
 
 
-need to make a way to submit entries + get results and such
+
+need to make a way to submit entries + get results and such //////////////// DONE 
 
 
-need to go through and make sure I have logged in and logged out displays
+need to go through and make sure I have logged in and logged out displays /////////////// MOSTLY DONE 
 
 
 
 results
 
-need to see flow, like what takes me where, how do I want to get back to x y or z?
-need edit competition page
+need to see flow, like what takes me where, how do I want to get back to x y or z? ////////////////FLOW MOSTLY DONE 
+need edit competition page < --- way done>
 
-Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
-This can go for each and every 1 of the thingamajiggies (pages)
 
 
 Pretty good day so far in terms of work,
@@ -215,10 +213,7 @@ Yes it exists inside of the competition display page
 
             I still need to do everything for results except the ability to edit them (maybe unless you are the competition user_id associated with the result _user id? will have to see)
 
-            but for example:
-            post a result
-            see an individual result?
-            see results on userdashboard
+
 
 
 There's definitely some issues with refreshes
@@ -227,13 +222,6 @@ There's definitely some issues with refreshes
 also need to include a User-hobby-edit form -------- DONE
 
 
-NEED A DELETE FOR USER HOBBIES -------------- NEEED DISSSSSS CHECK HOW YOU DID USER DELETES
-
-need a button after entries has been submit to take you back somewhere, maybe all entries page ?
-
-
-
-so entry button needs some work for deletion and to refresh the page
 
 
 
@@ -241,18 +229,45 @@ freaking,
 
 8/6/2023
 previous wars - 
-submit an entry, post works, but doesn't take you anywhere after
-Also needs back button in case you don't want to submit an entry
+submit an entry, post works, but doesn't take you anywhere after  --- TAKES YOU TO ENTRY DISPLAY PAGE //// DONE
+Also needs back button in case you don't want to submit an entry --- takes you back to competition display page //// DONE
+
+
+
+
+
+
+8/7/23
+
+//SUBMISSION STUFF
+AFTER SUBMITTING AN ENTRY IT TAKES THEM TO USER DASHBOARD? < - need this done-  >
+
+
+submitting a result needs to do something, like maybe take you to the results page?
+
+NEED A DELETE FOR USER HOBBIES -------------- NEEED DISSSSSS CHECK HOW YOU DID USER DELETES
+
+
 
 RESULTS
-need a results page, results currently show in user dashboard but nowhere else
-need a way to submit results, (probably click the competition if you're the owner and then a button near the prizes to assign results? + placement?)
+need a results page, results currently show in user dashboard but nowhere else / KINDA BROKE THIS TODAY 8/7/23
+need a way to submit results, (probably click the competition if you're the owner and then a button near the prizes to assign results? + placement?) DONE
+            but for example:
+            post a result
+            see an individual result? < ----- MAYBE RESULT DISPLAY PAGE?>
+            see results on userdashboard
 
-
-need a way to refresh userdashboard after entry deletion?
-
+                                                    need a way to refresh userdashboard after entry deletion? //// NEEDS WORK .///
+                                                    so entry button needs some work for deletion and to refresh the page
 
 maybe a button to take you to entry display page in user dashboard?
 Entry display has a button to delete the entry if your user ID matches that entries user_id
 
 
+need to take out all users password hashes with rules in to_dict for the gets.
+
+need to make more front end validations with yup for competitions and other things. //////// CHECK FORMS FOR VALIDATIONS AND ERROR MESSAGES
+
+
+Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back //////////////// got a lot of this done today 8/7/23
+This can go for each and every 1 of the thingamajiggies (pages)

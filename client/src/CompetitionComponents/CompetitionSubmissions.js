@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions}){
 
     const navigate = useNavigate();
 
@@ -57,8 +57,9 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
     //Takes you to a single display page for the submission, ENTRY DISPLAY
     function viewSubmission(id) {
-        navigate(`/entry/${id}`)
+        setViewFromSubmissions(true)
         setEntryID(id)
+        navigate(`/entry/${id}`)
     }
 
 

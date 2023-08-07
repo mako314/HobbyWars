@@ -63,13 +63,20 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
 //---------------------------------------------------------------------------------BACK BUTTON NAVIGATIONS-----------------------------------------------------------------------
 
-    // I need to capture the entries ID with state
-    // console.log(entryID)
+    //COMMENTED OUT FOR TIME BEING, TRYING TO SEE COMPLEXITY
+    //function that lets you go back to the entry display page instead of straight back to the dash from the display page, then the next back in the display page lets you go back to the USER DASH
+    // const backToEntryDisplay = () => {
+    //     navigate(`/entry/${entryInfo.id}`)
+    // }
 
+    // //button for the above
+    // let backToDisplayPageBtn = <button onClick={backToEntryDisplay}> Back </button>
+    
     //Takes the user back to the dashboard if they didn't want to click it IF YOU CAME FROM USER DASH
     const backToDash =  () => {
         navigate(`/user-dashboard/${user.id}`)
     }
+    
     //Button to return to the userdash board, conditionally rendered
     let userDashButton = <button onClick={backToDash}> Back </button>
 

@@ -48,6 +48,20 @@ function EntryForm({user, setEntries, entries, compID}) {
         }
     })
 
+    // trying to handle navigiation back when I'm submitting an entry
+//     function handleCompSubmissionNav(compID) {
+//         navigate(`/competition-submissions/${compID}`)
+//     }
+
+//     useEffect(() => {
+//         if (compID){
+//             let handleNavBackToSubmission {
+
+//             }
+//     }
+//       }, [compID])
+// //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+
     const loggedInDisplay = (
         <div>
 
@@ -72,9 +86,12 @@ function EntryForm({user, setEntries, entries, compID}) {
             onChange={formik.handleChange}
             />
         </div>
- 
+        
+        {/* adding buttons to go back and for a submission to take you back to the page */}
         <button type="submit" className="" > Submit my entry! </button>
-        {/* onSubmit={navigateToSelection} */}
+        
+        {/* <button onClick={backToSubmissions}> Back </button>
+        onClick={() => handleCompSubmissionNav()} */}
 
         </form>
     
@@ -90,7 +107,9 @@ function EntryForm({user, setEntries, entries, compID}) {
         </Link>
     </div>
     )
+    
 
+    //Set FORMIK values upon user existing
     useEffect(() => {
         if (user && user.id && compID){
         formik.setValues({

@@ -573,14 +573,27 @@ class ResultsByID(Resource):
 
 api.add_resource(ResultsByID, '/result/<int:id>')
 #------------------------------------------------------------------------------------------------------------------------------
+# class ResultsByUserID(Resource):
+#     #GET Result by User ID?
+#     def get(self, id):
+#         result = Result.query.filter(Result.user_id == id).first()
 
+#         if result:
+#             response = make_response(result.to_dict(), 200)
+#         else:
+#             response = make_response({
+#                 "error": "Result not found"
+#             }, 404)
+#         return response
+
+# api.add_resource(ResultsByUserID, '/user/result/<int:id>')
 #------------------------------------Entry Routing------------------------------------------------------------------------------
 
 class Entries(Resource):
 
     #GET all Entries
     def get(self):
-        entries = [entry.to_dict( rules = ('-')) for entry in Entry.query.all()]
+        entries = [entry.to_dict() for entry in Entry.query.all()]
         # description
         # submission
         response = make_response(entries, 200)

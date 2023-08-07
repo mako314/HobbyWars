@@ -20,7 +20,7 @@ import UserSignUpForm from './UserComponents/UserSignUp';
 import UserDashboard from './UserComponents/UserDashboard';
 import UserEdit from './UserComponents/UserEdit';
 import UserHobbyForm from './UserComponents/UserHobbyForm';
-import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
+// import MasterUserHobbyForm from './UserComponents/MasterUserHobbyForm';
 import UserHobbyEdit from './UserComponents/UserHobbyEdit';
 
 //--------------------Hobby Imports---------------------
@@ -237,7 +237,7 @@ function App() {
                 <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
-                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID}/>}/>
+                <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries}/>}/>
                 {/* EDIT USER BY ID, BUTTONS FOUND IN DASHBOARD */}
                 <Route path='/user-edit/:id' element={<UserEdit user={user} updateUser={updateUser}/>}/>
 

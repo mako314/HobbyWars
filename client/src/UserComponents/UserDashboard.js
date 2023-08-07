@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react'
 import { Link ,useParams, useNavigate } from 'react-router-dom'
 
-function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID}) { //newUsers Don't think I'll need this prop
+function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUserHobbyID, setEntries, entries}) { //newUsers Don't think I'll need this prop
 
     //This is used for getting to the edit form portion
     const navigate = useNavigate();
@@ -13,16 +13,21 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     //State to hold the selected fetched user
     const [selectedUser, setSelectedUser] = useState([])
 
-    //State to confirm deletion (makes a button appear?)
+    //State to USER confirm deletion (makes a button appear?)
     const [toggleDelete, setToggleDelete] = useState(true)
+
+    const [toggleEntryDelete, setToggleEntryDelete] = useState(true)
 
     //State to keep track of the users mapped entries:
     const [mappedEntries, setMappedEntries] = useState([]);
 
     //State to track and display a usersHobbies
     const [mappedUserHobbies, setMappedUserHobbies] = useState([])
-    
+
+    //Setting entry to delete?
+    const [entryToDelete, setEntryToDelete] = useState([])
    
+
    
     // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
     const {id} = useParams()
@@ -51,16 +56,18 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         bannerImg,
         competitions,
         entry, // Fix in the backend 
-        user_hobby
+        user_hobby,
+        results
     } = selectedUser;
 
-    console.log(user_hobby)
 
+    // console.log(results)
+    // console.log(user_hobby)
     // console.log(selectedUser)
     // console.log(competitions)
     // console.log(entry)
 
-//--------------------------------------------------------------------------------------------------------
+//--------------------------------------------------------Hosted Competitions-----------------------------------
     //Display the competitions the user hosts on their dashboard
     const mappedCompetitions = competitions?.map((competition) => {
         return <>
@@ -87,12 +94,13 @@ function navUserHobby(id) {
     setUserHobbyID(id)
 }
 
+//Map over a users hobbies and display them all
 useEffect(()=>{
     setMappedUserHobbies(
         user_hobby?.map((userHobby) =>{
             return(
             <div>
-                {console.log(userHobby)}
+                {/* {console.log(userHobby)} */}
                 <p>
                     Hobby: {userHobby.hobby.type_of_hobby}
                 </p>
@@ -124,6 +132,13 @@ useEffect(()=>{
 
     //SCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPESCOPE SCOPE SCOPE SCOPE
     
+    //navigate to entry display page for that entry going to have to do some working, maybe put it in a useEffect
+    function viewSubmission(id) {
+        navigate(`/entry/${id}`)
+        console.log(id)
+        // setEntryID(id)
+    }
+
     //This portion handles displaying a users entry on their dashboard
     // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
     useEffect(() => {
@@ -132,30 +147,103 @@ useEffect(()=>{
                 entry?.map((oneEntry) => {
                 return (
                 <div>
-                    {/* {console.log(oneEntry)} */}
-                    
-                    
+                    {console.log(oneEntry.user_id)}
+                    <br></br>
                     <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> {oneEntry.competitions.title} </button>
                     {/* maybe something like "clicked from dash state?" 
                     it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
                     <br></br>
                     <br></br>
                     {oneEntry.submission}
+                    <br></br>
+                    <br></br>
                     {oneEntry.description}
-                    {/* need an edit entry button here to take you to edit entry page */}
                     <br></br>
                     <br></br>
                     <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>
+                    <br></br>
+
+                    {toggleEntryDelete ? entryDeleteBtn : 
+                    <div>
+                        <button onClick={() => handleEntryDelete(oneEntry)}> Yes DELETE my ENTRY.</button>
+                        <br></br>
+                        <button onClick={handleEntryToggle}> No it was a mistake</button>
+                        <br></br>
+                        {/* seems I had to move this stuff to inside of the ternary instead? */}
+                    </div>
+                    }
+
+                    <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
                 </div>)
                 })
             )
         }
-      }, [entry])
+      }, [entry, toggleEntryDelete])
 
+    //Why on earth did ^ this fix it lol, it allowed 
 
     // console.log(mappedCompetitions)
+    
+
+    //delete entry filter to make sure the ID no longer exists
+    const deleteEntry = (entryToDelete) => {
+        setEntries(entries =>
+          entries.filter(entry => entry.id !== entryToDelete.id))
+      }
+    
+    //Actual DELETE request to the backend.
+    const handleEntryDelete = (entryToDelete) => {
+        fetch(`/entry/${entryToDelete.id}`, {
+          method: "DELETE"
+        })
+          .then(() => {
+            console.log(entryToDelete)
+            console.log(entryToDelete.user_id)
+            deleteEntry(entryToDelete.id)
+            // navigate(`/user-dashboard/${entryToDelete.user_id}`)
+            // Page still doesn't refresh
+          })
+      }
+
+    // Button toggle to confirm that the user is wanting to delete their entry  just a basic toggle. 
+    function handleEntryToggle() {
+        setToggleEntryDelete(!toggleEntryDelete)
+    }
+
+    // console.log(toggleEntryDelete)
+
+
+    //This button allows you to toggle and see confirm deletion of the entry
+    const entryDeleteBtn = (
+        <button onClick={handleEntryToggle}> Delete my entry </button>
+    )
+    
+    
+    //confirm entry deletion button refuses to display
+    // const confirmEntryDelete = (
+    //     <div>
+    //     <button onClick={() => handleEntryDelete(entryToDelete)}> Yes DELETE my ENTRY.</button>
+    //     <br></br>
+    //     <button onClick={handleEntryToggle}> No it was a mistake</button>
+    //     </div>)
+
 //--------------------------------------------------------------------------------------------------------
-//-----------------------------------------------USER DELETE PORTION / DOUBLE BUTTON-------------------------------------------------
+//-----------------------------------------------USER RESULTS / DOUBLE BUTTON-------------------------------------------------
+
+const mappedUserResults = results?.map((result) => {
+    return (
+    <div>
+        <p> COMPETITION: {result.competitions.title} </p>
+        <p> Placement: {result.placement}</p>
+    </div>)
+    
+})
+
+// console.log(mappedUserResults)
+
+//--------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------USER DELETE PORTION / DOUBLE CONFIRM BUTTON-------------------------------------------------
 
 
 
@@ -240,6 +328,12 @@ useEffect(()=>{
             <p>---------------------------------Entries------------------------</p>
 
             <div>{mappedEntries}</div>
+            
+            <br></br>
+
+            <p>---------------------------------Results------------------------</p>
+
+            <div>{mappedUserResults}</div>
             
             <br></br>
 

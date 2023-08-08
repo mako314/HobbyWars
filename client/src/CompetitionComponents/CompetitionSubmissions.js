@@ -127,10 +127,27 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     //         resultFlag = true}})
     //     })
 
+    
+
+
     useEffect(() =>{
         if (entry && user && user_id){
             setUserMappedCompEntries(
                 entry?.map((oneEntry) => {
+                // Initialize resultFlag to false for each oneEntry
+                let resultFlag = false
+
+                // Check if there exists a result with a matching entry_id for the current oneEntry
+                results.forEach(result => {
+                    if (result.entry_id === oneEntry.id) {
+                        resultFlag = true
+                    }
+                })
+
+                let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
+
+                console.log(resultFlag)
+
                     return (
                         <div>
                             <br></br>
@@ -157,9 +174,13 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
                             
-                            {
-                            user.id === user_id ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted a result for this table"}
-                            
+                            {user.id === user_id ? userOwnedComp : ""}
+
+                            {/* {
+                            user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
+                            }
+                             */}
+
                             {/* Can likely make that ternary "" = something if result.entry_id === entry id?  has been done ? */}
                             {/* 
 

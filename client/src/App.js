@@ -12,6 +12,10 @@ import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
 import CompetitionCreation from './CompetitionComponents/CompetitionCreation';
 import CompetitionSubmissions from './CompetitionComponents/CompetitionSubmissions';
 
+//-------Leaderboard Imports--------
+import LeaderBoardCollection from './LeaderBoardComponents/LeaderBoardCollection';
+import LeaderBoard from './LeaderBoardComponents/LeaderBoard';
+
 //-------Login / Logout  / Signup Imports--------
 import LoginForm from './LoginComponents/LoginForm';
 import UserSignUpForm from './UserComponents/UserSignUp';
@@ -120,6 +124,9 @@ function App() {
     //State to determine whether or not a result for that competition has been declared
     const [resultForEntryID, setResultForEntryID] = useState(0)
 
+    //State to determine the competition ID for the LEADERBOARD
+    const [leaderBoardID, setLeaderBoardID] = useState(0)
+
     //setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} this was in compsubmission page, but I think I just failed to pass the props to the wrong place...
     //compID={compID} entryID={entryID} this was in the /results route
 
@@ -154,8 +161,13 @@ function App() {
           .then((resp) => resp.json())
           .then((data) => {
             setEntries(data)
+            console.log(data)
           })
       }, [])
+
+      console.log(results)
+      // console.log(entries)
+      //c onsole.log(data)
 
 
     //This handles updating the ENTRY [PATCH]
@@ -250,7 +262,7 @@ function App() {
         </div>
       )
 
-      // console.log(user)
+
     return (
         <div>
             <Header user={user} setUser={setUser}/>
@@ -270,6 +282,12 @@ function App() {
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
                 <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results}/>}/>
 
+                
+                {/* WRITE LEADERBOARD COLLECTION ROUTE/ */}
+                <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID}/>}/>
+                {/* Actual leaderboard ROUTE */}
+                <Route path='/leaderboard/:competition_id' element={<LeaderBoard competitions={competitions} leaderBoardID={leaderBoardID}/>}/>
+                
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 

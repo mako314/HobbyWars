@@ -76,8 +76,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
         navigate(`/declare-results/`)
     }
 
-    // let resultSubmitButton = <button onClick={navToSubmitResults (oneEntry.id, oneEntry.competition_id)}> Declare a result </button>
-
+    // console.log(entry.result_id === results.entry_id)
 
     //once data is fetched, and if the data exists, map over it and display the submissions and entries for a logged in user
     //This one will populate the logged in display, the next useEffect has no edit button
@@ -114,11 +113,27 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             {
                             user.id === user_id ?  
                             <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> 
-                            : ""
+                            : "working"
                             }
                             
                             {/* Can likely make that ternary "" = something if result.entry_id === entry id?  has been done ? */}
-                            {/* console.log(results)
+                            {/* 
+                            entry.result_id === result.entry_id
+
+                            entry.id === result.entry_id
+
+                            can combine with and and -> && -> || 
+
+                            && takes into account that BOTH MUST BE TRUE
+
+                            && and || can usually make up your own version
+
+                            if rain if cold I will wear a coat, 
+
+                            if and else 
+                            ^if needed
+
+                            console.log(results)
                             console.log(resultForEntryID) 
                             I have this to work with, I want that when a result exists, it takes into account the user.id matching the competition Id LIKE above, but if the results has an entry_id that matches the resultForEntryID I want it to then no longer say declare a result but RESULT DECLARED
                             */}

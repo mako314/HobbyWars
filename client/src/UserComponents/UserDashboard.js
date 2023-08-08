@@ -29,6 +29,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
 
     //State for setting user results for their entries:
     const [usersResults, setUserResults] = useState([])
+
+    //State for setting user result placements for their entries:
+    const [userPlacements, setUserPlacements] = useState([])
    
 
    
@@ -67,7 +70,15 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     // console.log(user_hobby)
     // console.log(selectedUser)
     // console.log(competitions)
-    console.log(entry.results)
+    // console.log(entry)
+
+    // if (entry){
+    // let resultsEntry = entry?.map((entryResult)=>{
+    //     let testResults = entryResult.results?.map((singleResult) =>{
+    //         console.log(singleResult.placement)
+    //     })
+    // })
+    // }
 
 //--------------------------------------------------------Hosted Competitions-----------------------------------
     //Display the competitions the user hosts on their dashboard
@@ -241,22 +252,40 @@ useEffect(()=>{
 // Need help getting my results to properly display in this persons results
 
 
+    // if (entry){
+    // let resultsEntry = entry?.map((entryResult)=>{
+    //     let testResults = entryResult.results?.map((singleResult) =>{
+    //         console.log(singleResult.placement)
+    //     })
+    // })
+    // }
 
 
+let placement
 //==================== SOS
-// useEffect(() => {
-//     if (entry){
-//         setUserResults(entry?.map((uResultForEntry)=>{
-//             return(  
-//             <div>
-//                 {console.log(uResultForEntry.results)}
-//                 <p>COMPETITION: {uResultForEntry.competitions.title} </p>
-//                 <p>Submission: {uResultForEntry.submission}</p>
-//                 <p>Placement: {uResultForEntry.results.placement}</p>
-//             </div>)
-//         }))
-// }
-//   }, [entry])
+useEffect(() => {
+    if (entry){
+        setUserResults(entry?.map((entryResult)=>{
+            // if (entryResult){
+            //     entryResult.results?.map((resultP) =>{
+            //         console.log(resultP)
+            //     })
+            //     console.log(userPlacements)
+            // }
+            return(  
+            <div>
+                {/* {console.log(entryResult.results)} */}
+                <p>COMPETITION: {entryResult.competitions.title} </p>
+                <p>Submission: {entryResult.submission}</p>
+                <p>Placement: {entryResult.results?.map((resultP) =>{
+                    return(resultP.placement)
+                })}</p>
+            </div>)
+        }))
+}
+  }, [entry])
+
+
 
 //   console.log(usersResults)
 

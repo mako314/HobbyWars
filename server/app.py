@@ -717,10 +717,10 @@ api.add_resource(EntriesByID, '/entry/<int:id>')
 #----------------------------------------------------Attempt at a leaderboard route--------------------------------------------------------------------------------
 
 class Leaderboard(Resource):
-    def get(self):
+    def get(self, competition_id):
         leaderboard_entries = db.session.query(Result, Entry) \
                                         .join(Entry, Result.entry_id == Entry.id) \
-                                        .filter(Result.competition_id == Entry.competition_id) \
+                                        .filter(Result.competition_id == competition_id) \
                                         .order_by(asc(Result.placement)).all()
 
         data = []
@@ -734,7 +734,7 @@ class Leaderboard(Resource):
     
         # response = make_response({data.to_dict()})
 
-api.add_resource(Leaderboard, '/leaderboard')
+api.add_resource(Leaderboard, '/leaderboard/<int:competition_id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

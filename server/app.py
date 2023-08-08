@@ -7,6 +7,7 @@ from flask import Flask, request, make_response, jsonify, session
 # from flask_restful import Api, Resource #original import
 from flask_restful import Resource
 from config import db, app, api
+from sqlalchemy import asc
 # import os #original import
 
 
@@ -713,7 +714,27 @@ class EntriesByID(Resource):
         return response
 
 api.add_resource(EntriesByID, '/entry/<int:id>')
-#------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------Attempt at a leaderboard route--------------------------------------------------------------------------------
+
+class Leaderboard(Resource):
+    def get(self):
+        leaderboard_entries = db.session.query(Result, Entry) \
+                                        .join(Entry, Result.entry_id == Entry.id) \
+                                        .filter(Result.competition_id == Entry.competition_id) \
+                                        .order_by(asc(Result.placement)).all()
+
+        data = []
+        for result, entry in leaderboard_entries:
+            data.append({
+                "submission": entry.submission,
+                "description": entry.description,
+                "placement": result.placement
+            })
+        return jsonify(data)
+    
+        # response = make_response({data.to_dict()})
+
+api.add_resource(Leaderboard, '/leaderboard')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

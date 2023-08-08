@@ -8,6 +8,8 @@ function CompetitionEdit({user, compID, updateCompetition}){
 
     // is there a cost to enter? == Is there an enlistment fee?
 
+    //Page breaking on refresh
+
     //Just going to make a state to grab the stuff that comes in tbh
     const [oneCompEdit, setOneCompEdit] = useState([])
 
@@ -92,6 +94,12 @@ function CompetitionEdit({user, compID, updateCompetition}){
         }
     })
 
+    
+    //NAVIGATION BACK TO THE COMPETITION DISPLAY PAGE
+    function backToComp(id) {
+        navigate(`/competition/${id}`)
+    }
+
     // USE EFFECT TO INPUT THE DATA UPON ONECOMPEDIT AND USER EXISTING
     useEffect(() => {
         if (user && oneCompEdit){
@@ -121,13 +129,9 @@ function CompetitionEdit({user, compID, updateCompetition}){
     }
       }, [user, compID])
 
-    //NAVIGATION BACK TO THE COMPETITION DISPLAY PAGE
-      function backToComp(id) {
-        navigate(`/competition/${id}`)
-    }
 
     let loggedInDisplay 
-    if(user){
+    if(user && formik){
      loggedInDisplay = (
         <div>
             <form className="war-form" onSubmit={formik.handleSubmit}>

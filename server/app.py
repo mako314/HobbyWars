@@ -138,7 +138,23 @@ class UserByID(Resource):
         user = User.query.filter(User.id == id).first()
 
         if user:
-            response = make_response(user.to_dict(), 200)
+            response = make_response(user.to_dict(rules=('-entry.competitions.competition_tasks',
+                                                         '-entry.competitions.description',
+                                                         '-entry.competitions.objective',
+                                                         '-entry.competitions.scoring',
+                                                         '-entry.competitions.safety_measures',
+                                                         '-entry.competitions.prize1',
+                                                         '-entry.competitions.prize2',
+                                                         '-entry.competitions.prize3',
+                                                         '-entry.competitions.prize4',
+                                                         '-entry.competitions.prize5',
+                                                         '-entry.competitions.prize6',
+                                                         '-entry.competitions.prize7',
+                                                         '-entry.competitions.prize8',
+                                                         '-entry.competitions.schedule',
+                                                         '-entry.competitions.registration_schedule',
+                                                         '-entry.competitions.requirements',
+                                                         '-entry.competitions.user',)), 200)
         else:
             response = make_response({
                 "error": "User not found"

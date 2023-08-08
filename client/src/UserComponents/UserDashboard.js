@@ -67,7 +67,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     // console.log(user_hobby)
     // console.log(selectedUser)
     // console.log(competitions)
-    // console.log(entry)
+    console.log(entry.results)
 
 //--------------------------------------------------------Hosted Competitions-----------------------------------
     //Display the competitions the user hosts on their dashboard

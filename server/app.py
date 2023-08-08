@@ -154,7 +154,24 @@ class UserByID(Resource):
                                                          '-entry.competitions.schedule',
                                                          '-entry.competitions.registration_schedule',
                                                          '-entry.competitions.requirements',
-                                                         '-entry.competitions.user',)), 200)
+                                                         '-entry.competitions.user',
+                                                         '-results.competitions.competition_tasks',
+                                                         '-results.competitions.description',
+                                                         '-results.competitions.objective',
+                                                         '-results.competitions.scoring',
+                                                         '-results.competitions.safety_measures',
+                                                         '-results.competitions.prize1',
+                                                         '-results.competitions.prize2',
+                                                         '-results.competitions.prize3',
+                                                         '-results.competitions.prize4',
+                                                         '-results.competitions.prize5',
+                                                         '-results.competitions.prize6',
+                                                         '-results.competitions.prize7',
+                                                         '-results.competitions.prize8',
+                                                         '-results.competitions.schedule',
+                                                         '-results.competitions.registration_schedule',
+                                                         '-results.competitions.requirements',
+                                                         '-results.competitions.user',)), 200)
         else:
             response = make_response({
                 "error": "User not found"

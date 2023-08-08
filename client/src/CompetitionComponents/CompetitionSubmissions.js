@@ -73,6 +73,8 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
         setCompResultID(idForCompetition)
         //This above works!
 
+        //This is where you you can determine if the declare a result button was clicked
+
         navigate(`/declare-results/`)
     }
 
@@ -112,6 +114,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
                             
                             {user.id === user_id ?  <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : ""}
+                            {/* Can likely make that ternary "" = something if result.entry_id === entry id?  has been done ? */}
                         </div>
                     )
                 })

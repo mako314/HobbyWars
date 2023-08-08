@@ -12,8 +12,9 @@ function ResultForm({user, setResults, results, compID, entryID, compResultID, e
     
     const navigate = useNavigate()
 
-    console.log(compResultID)
-    console.log(entryResultID)
+    //Make sure I'm getting the right comp ID and entryID
+    // console.log(compResultID)
+    // console.log(entryResultID)
 
     const formSchema = object({
         placement: string().required('You need a submission!'),
@@ -37,8 +38,10 @@ function ResultForm({user, setResults, results, compID, entryID, compResultID, e
             })
             .then(res => {
                 if (res.ok){
-                    res.json().then(result => {
+                    res.json().then(result => { 
                         setResults([...results, result])
+                        // console.log(result.entry_id) // This works, now lets make it a state variable that fires off and change competition submission to indicate such
+                        //A result declartion here maybe?
                         // navigate(`/entry/${entry.id}`)
                         //can add state here to say it came from user entry submission
                         //Add where you want it to go here / anything else you want it to do

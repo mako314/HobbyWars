@@ -111,10 +111,14 @@ function App() {
     //State to determine if it was viewed from submissions
     const [viewFromSubmissions, setViewFromSubmissions] = useState(false)
 
-    //Result State for IDs
+    //State to capture entry ID for results
     const [entryResultID, setEntryResultID] = useState(0)
+    
+    //State to capture competition ID for results
+    const [compResultID, setCompResultID] = useState(0)
 
-    const [compResultID, setCompResultID] = useState(0) 
+    //State to determine whether or not a result for that competition has been declared
+    const [resultForEntryID, setResultForEntry] = useState(0)
 
     //setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} this was in compsubmission page, but I think I just failed to pass the props to the wrong place...
     //compID={compID} entryID={entryID} this was in the /results route

@@ -22,7 +22,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     const [loMappedCompEntries, setLoMappedCompEntries] = useState([])
 
     //Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
-    
+
 //------------------------------------------------------------------ use effect PORTIONS----------------------------------------------------
 
     //take the params from when you click on VIEW SUBMISSIONS button
@@ -86,16 +86,47 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     }
 //----------------------------------------------------------------------------------------------------------------------
 
-    
-    console.log(results)
-    console.log(entries)
 
-    // console.log(entry.result_id === results.entry_id)
 
 //------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
     //once data is fetched, and if the data exists, map over it and display the submissions and entries for a logged in user
     //This one will populate the logged in display, the next useEffect has no edit button
+
+    // let resultFlag = false
+
+
+    // results.forEach((result) =>{
+    //     // console.log(result)
+    //     entries.forEach((entry)=>{
+    //         // console.log(entry)
+    //         if (result.entry_id === entry.id){
+    //             resultFlag = true
+    //         }
+    //     })
+    // })
+
+    //make a list of what I need
+    // result.entry_id === entry.id 
+
+
+    // console.log(resultFlag)
+    // console.log(entryFlag)
+
+    // can do two for eachs...
+
+    // console.log(results)
+    // console.log(entries)
+
+    // console.log(entry.result_id === results.entry_id)
+
+    // let resultFlag = false
+    // results.forEach((result) =>{
+    //     entries.forEach((oneEntry)=>{
+    //     if (result.entry_id === oneEntry.id){
+    //         resultFlag = true}})
+    //     })
+
     useEffect(() =>{
         if (entry && user && user_id){
             setUserMappedCompEntries(
@@ -127,13 +158,13 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
                             
                             {
-                            user.id === user_id ?  
-                            <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> 
-                            : "working"
-                            }
+                            user.id === user_id ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted a result for this table"}
                             
                             {/* Can likely make that ternary "" = something if result.entry_id === entry id?  has been done ? */}
                             {/* 
+
+                            && resultFlag && entryFlag
+                            
                             entry.result_id === result.entry_id
 
                             entry.id === result.entry_id

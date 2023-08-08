@@ -4,13 +4,20 @@ import { Link, useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function CompetitionEdit({user, compID, competitions, updateCompetition}){
+function CompetitionEdit({user, compID, updateCompetition}){
 
     // is there a cost to enter? == Is there an enlistment fee?
 
     //Just going to make a state to grab the stuff that comes in tbh
     const [oneCompEdit, setOneCompEdit] = useState([])
 
+    // useEffect(() => {
+    //     fetch("/check_session").then((response) => {
+    //       if (response.ok) {
+    //         response.json().then((user) => setUser(user));
+    //       }
+    //     });
+    //   }, []);
 
     useEffect(() => {
         if(compID){
@@ -21,7 +28,7 @@ function CompetitionEdit({user, compID, competitions, updateCompetition}){
           })}
       }, [compID, user])
 
-    // console.log(oneCompEdit)
+    console.log(compID)
 
 
 
@@ -75,8 +82,8 @@ function CompetitionEdit({user, compID, competitions, updateCompetition}){
                     if (res.ok){
                         res.json().then(competition => {
                             updateCompetition(competition) //May need to pass a function if I have to do other things with it
-                            navigate(`/competition/${competition.id}`)
                             console.log(competition)
+                            navigate(`/competition/${competition.id}`)
                         })
                     } else {
                         res.json().then(error => setError(error)) //for backend errors
@@ -85,6 +92,7 @@ function CompetitionEdit({user, compID, competitions, updateCompetition}){
         }
     })
 
+    // USE EFFECT TO INPUT THE DATA UPON ONECOMPEDIT AND USER EXISTING
     useEffect(() => {
         if (user && oneCompEdit){
         formik.setValues({
@@ -111,7 +119,12 @@ function CompetitionEdit({user, compID, competitions, updateCompetition}){
             registration_schedule: oneCompEdit.registration_schedule,
         })
     }
-      }, [user, oneCompEdit])
+      }, [user, compID])
+
+    //NAVIGATION BACK TO THE COMPETITION DISPLAY PAGE
+      function backToComp(id) {
+        navigate(`/competition/${id}`)
+    }
 
     let loggedInDisplay 
     if(user){
@@ -326,6 +339,8 @@ function CompetitionEdit({user, compID, competitions, updateCompetition}){
                     </div>
                 
                 <button type="submit" className=""> Submit! </button>
+                <button onClick={() => backToComp(compID)}> BACK BUTTON</button>
+                
 
             </form>
 

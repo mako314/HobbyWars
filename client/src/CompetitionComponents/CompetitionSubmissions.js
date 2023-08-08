@@ -2,7 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results, entries}){
+
+
+    //resultForEntryID and setEntryResultID are going to help make a toggle to see whether or not a user has submitted a result then removing the button
+
+//------------------------------------------------------------------ STATE PORTIONS----------------------------------------------------
 
     //setCompID
     const navigate = useNavigate();
@@ -17,6 +22,8 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     const [loMappedCompEntries, setLoMappedCompEntries] = useState([])
 
     //Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
+    
+//------------------------------------------------------------------ use effect PORTIONS----------------------------------------------------
 
     //take the params from when you click on VIEW SUBMISSIONS button
     const {id} = useParams()
@@ -31,6 +38,8 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
       }, [])
 
     //   console.log(compEntries.entry)
+
+//------------------------------------------------------------------ NAVIGATION PORTIONS----------------------------------------------------
 
 
     //Destrcuture the entries from competiton, needs to be ENTRY
@@ -75,8 +84,15 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
         navigate(`/declare-results/`)
     }
+//----------------------------------------------------------------------------------------------------------------------
+
+    
+    console.log(results)
+    console.log(entries)
 
     // console.log(entry.result_id === results.entry_id)
+
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
     //once data is fetched, and if the data exists, map over it and display the submissions and entries for a logged in user
     //This one will populate the logged in display, the next useEffect has no edit button
@@ -132,6 +148,20 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
                             if and else 
                             ^if needed
+
+                            multi step -
+
+                            grab entry first look through the array with that if you see result.entry_id make a boolean flag, indiciate true or false if the condition is met, set the boolean flag to true, intiially set to false, until proven otherwise
+
+                            set up something to search through the array and find that
+
+                            do the same for result
+
+                            then stick in the conditional after the user stuff the boolean flag
+
+
+
+
 
                             console.log(results)
                             console.log(resultForEntryID) 

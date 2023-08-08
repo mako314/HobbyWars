@@ -277,3 +277,5 @@ This can go for each and every 1 of the thingamajiggies (pages)
 //After submission of a result where should they go ? 
 
 if a result is declared, should I say so?
+
+competition edit page...

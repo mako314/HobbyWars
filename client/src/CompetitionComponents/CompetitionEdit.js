@@ -4,11 +4,26 @@ import { Link, useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function CompetitionCreation({user, setCompetitions, competitions}){
+function CompetitionEdit({user, compID, competitions, updateCompetition}){
 
     // is there a cost to enter? == Is there an enlistment fee?
 
-    // need way to grab the key
+    //Just going to make a state to grab the stuff that comes in tbh
+    const [oneCompEdit, setOneCompEdit] = useState([])
+
+
+    useEffect(() => {
+        if(compID){
+        fetch(`/competition/${compID}`)
+          .then((resp) => resp.json())
+          .then((data) => {
+            setOneCompEdit(data)
+          })}
+      }, [compID, user])
+
+    // console.log(oneCompEdit)
+
+
 
     //display errors
     const [error, setError] = useState()
@@ -49,8 +64,8 @@ function CompetitionCreation({user, setCompetitions, competitions}){
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch('/competitions', {
-                method: "POST",
+            fetch(`/competition/${compID}`, {
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
                 },
@@ -59,7 +74,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
                 .then(res =>{
                     if (res.ok){
                         res.json().then(competition => {
-                            setCompetitions([...competitions, competition]) //May need to pass a function if I have to do other things with it
+                            updateCompetition(competition) //May need to pass a function if I have to do other things with it
                             navigate(`/competition/${competition.id}`)
                             console.log(competition)
                         })
@@ -71,15 +86,36 @@ function CompetitionCreation({user, setCompetitions, competitions}){
     })
 
     useEffect(() => {
-        if (user && user.id){
+        if (user && oneCompEdit){
         formik.setValues({
-          user_id: user.id,
-          contact: user.email
+            title: oneCompEdit.firstName,
+            objective: oneCompEdit.objective,
+            description: oneCompEdit.description,
+            scoring: oneCompEdit.scoring,
+            cost_of_entry: oneCompEdit.cost_of_entry,
+            schedule: oneCompEdit.schedule,
+            user_id: oneCompEdit.id,
+            contact: oneCompEdit.email,
+            location: oneCompEdit.location,
+            requirements: oneCompEdit.requirements, //this and the one below remain the same as the first time they were logged in.
+            competition_tasks:oneCompEdit.competition_tasks, 
+            safety_measures: oneCompEdit.safety_measures,
+            prize1: oneCompEdit.prize1,
+            prize2: oneCompEdit.prize2,
+            prize3: oneCompEdit.prize3,
+            prize4: oneCompEdit.prize4,
+            prize5: oneCompEdit.prize5,
+            prize6: oneCompEdit.prize6,
+            prize7: oneCompEdit.prize7,
+            prize8: oneCompEdit.prize8,
+            registration_schedule: oneCompEdit.registration_schedule,
         })
     }
-      }, [user])
+      }, [oneCompEdit])
 
-    const loggedInDisplay = (
+    let loggedInDisplay 
+    if(user){
+     loggedInDisplay = (
         <div>
             <form className="war-form" onSubmit={formik.handleSubmit}>
                 
@@ -295,11 +331,11 @@ function CompetitionCreation({user, setCompetitions, competitions}){
 
         </div>
 
-    )
-
+    )}
+    
     const loggedOutDisplay=(
         <div>
-            <p> Sorry, but you must be logged in to declare a War!</p>
+            <p> Sorry, but you must be logged in to edit a War!</p>
         
             <Link to='/login'>
             <button> Login </button>
@@ -308,16 +344,18 @@ function CompetitionCreation({user, setCompetitions, competitions}){
         </div>
     )
 
+    // console.log(user)
+
 
 
     return (
         <>
-        {user ? loggedInDisplay : loggedOutDisplay }
+        {user.id === oneCompEdit.user_id ? loggedInDisplay : loggedOutDisplay }
         </>
     )
 }
 
-export default CompetitionCreation;
+export default CompetitionEdit;
 
 
 // <div>

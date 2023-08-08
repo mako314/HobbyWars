@@ -175,50 +175,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
                             
                             {user.id === user_id ? userOwnedComp : ""}
-
-                            {/* {
-                            user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
-                            }
-                             */}
-
-                            {/* Can likely make that ternary "" = something if result.entry_id === entry id?  has been done ? */}
-                            {/* 
-
-                            && resultFlag && entryFlag
                             
-                            entry.result_id === result.entry_id
-
-                            entry.id === result.entry_id
-
-                            can combine with and and -> && -> || 
-
-                            && takes into account that BOTH MUST BE TRUE
-
-                            && and || can usually make up your own version
-
-                            if rain if cold I will wear a coat, 
-
-                            if and else 
-                            ^if needed
-
-                            multi step -
-
-                            grab entry first look through the array with that if you see result.entry_id make a boolean flag, indiciate true or false if the condition is met, set the boolean flag to true, intiially set to false, until proven otherwise
-
-                            set up something to search through the array and find that
-
-                            do the same for result
-
-                            then stick in the conditional after the user stuff the boolean flag
-
-
-
-
-
-                            console.log(results)
-                            console.log(resultForEntryID) 
-                            I have this to work with, I want that when a result exists, it takes into account the user.id matching the competition Id LIKE above, but if the results has an entry_id that matches the resultForEntryID I want it to then no longer say declare a result but RESULT DECLARED
-                            */}
                         </div>
                     )
                 })

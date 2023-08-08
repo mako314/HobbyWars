@@ -11,6 +11,7 @@ import CompetitionCollection from './CompetitionComponents/CompetitionCollection
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
 import CompetitionCreation from './CompetitionComponents/CompetitionCreation';
 import CompetitionSubmissions from './CompetitionComponents/CompetitionSubmissions';
+import CompetitionEdit from './CompetitionComponents/CompetitionEdit';
 
 //-------Leaderboard Imports--------
 import LeaderBoardCollection from './LeaderBoardComponents/LeaderBoardCollection';
@@ -151,6 +152,16 @@ function App() {
             setCompetitions(data)
           })
       }, [])
+
+      const updateCompetition = (competitionToUpdate) =>{
+        setCompetitions(competitions => competitions.map(competition =>{
+          if (competition.id === competitionToUpdate.id) {
+            return competitionToUpdate
+          } else {
+            return competition
+          }
+        }))
+      }
     //-------------------------------------------------------------------------------
     
     //-------------------------------------------- ENTRY FETCH / PATCH ALSO CODE--------------------------
@@ -281,12 +292,13 @@ function App() {
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
                 <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results} entries={entries}/>}/>
-
+                {/* COMPETITION EDIT ROUTE */}
+                <Route path='/competition/edit/:id' element={<CompetitionEdit user={user} compID={compID} competitions={competitions} updateCompetition={updateCompetition}/>}/>
                 
                 {/* WRITE LEADERBOARD COLLECTION ROUTE/ */}
                 <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID}/>}/>
                 {/* Actual leaderboard ROUTE */}
-                <Route path='/leaderboard/:competition_id' element={<LeaderBoard competitions={competitions} leaderBoardID={leaderBoardID}/>}/>
+                <Route path='/leaderboard/:competition_id' element={<LeaderBoard user={user} competitions={competitions} leaderBoardID={leaderBoardID}/>}/>
                 
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>

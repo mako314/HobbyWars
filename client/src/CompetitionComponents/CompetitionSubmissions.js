@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results}){
 
     //setCompID
     const navigate = useNavigate();
@@ -17,8 +17,6 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     const [loMappedCompEntries, setLoMappedCompEntries] = useState([])
 
     //Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
-
-
 
     //take the params from when you click on VIEW SUBMISSIONS button
     const {id} = useParams()
@@ -42,7 +40,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
       } = compEntries
       
     //   console.log(entry)
-    console.log(compEntries)
+    //   console.log(compEntries)
     
     //Function to take you to the edit
     function navSubmissionEdit(id) {
@@ -113,8 +111,17 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
                             
-                            {user.id === user_id ?  <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : ""}
+                            {
+                            user.id === user_id ?  
+                            <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> 
+                            : ""
+                            }
+                            
                             {/* Can likely make that ternary "" = something if result.entry_id === entry id?  has been done ? */}
+                            {/* console.log(results)
+                            console.log(resultForEntryID) 
+                            I have this to work with, I want that when a result exists, it takes into account the user.id matching the competition Id LIKE above, but if the results has an entry_id that matches the resultForEntryID I want it to then no longer say declare a result but RESULT DECLARED
+                            */}
                         </div>
                     )
                 })

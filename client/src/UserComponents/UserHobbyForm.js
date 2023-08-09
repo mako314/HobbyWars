@@ -184,9 +184,9 @@ const navigate = useNavigate()
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
             <div class="mb-10 md:mb-16">
-            <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Can't Find your Hobby? Add it Here!</h2>
+            <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"> To Set a New Hobby, Just Select from the Dropdown!</h2>
 
-            <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Thanks for Contributing to the Cause! o7</p>
+            <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> An Advanced Congratulations from the Hobby Wars Team!</p>
             </div>
 
             <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">

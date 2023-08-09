@@ -79,33 +79,71 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
     }
       }, [userHobbyInfo])
 
+      let loggedInDisplay
 
-    return(
-        <div>
-            <form className="signup-form" onSubmit={formik.handleSubmit}>
-                    {/* display errors from formik/yup */}
-                    { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+      loggedInDisplay = (
+        <div class="bg-white py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-                    {/* display errors from backend */}
-                    {error && <p>{error}</p>}
+            <div class="mb-10 md:mb-16">
+            <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"> Need to make an edit? Do it here! </h2>
 
-                    <div className="user-signup-input">
-                    <label> New Expertise Level </label>
-                    <input
-                    type="text"
-                    name="expertise"
-                    value={formik.values.expertise}
-                    onChange={formik.handleChange}
-                    />
-                    </div>
+            <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Improvement? Congrats! Mistake in Entering? Human!</p>
+            </div>
 
-                <div>--------------------------------------</div>
-                <button type="submit" className=""> Submit and return to my Dashboard </button>
+            <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+
+            <div class="sm:col-span-2">
+                <label for="expertise" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Expertise Level?</label>
+                <input type="text" name="expertise" value={formik.values.expertise} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.expertise}/>
+            </div>
+
+            <div class="flex items-center justify-between sm:col-span-2">
+
+                {/* NEED TO CHANGE COLOR */}
+                <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Finish Editing</button>
+                
+                {/* NEED A BACK BUTTON */}
+                <button onClick={backToDash} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back </button>
+                
+            </div>
 
             </form>
-                <button onClick={backToDash}> Back </button>
 
         </div>
+        </div>
+      )
+
+
+    return(
+        // <div>
+        //     <form className="signup-form" onSubmit={formik.handleSubmit}>
+        //             {/* display errors from formik/yup */}
+        //             { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+
+        //             {/* display errors from backend */}
+        //             {error && <p>{error}</p>}
+
+        //             <div className="user-signup-input">
+        //             <label> New Expertise Level </label>
+        //             <input
+        //             type="text"
+        //             name="expertise"
+        //             value={formik.values.expertise}
+        //             onChange={formik.handleChange}
+        //             />
+        //             </div>
+
+        //         <div>--------------------------------------</div>
+        //         <button type="submit" className=""> Submit and return to my Dashboard </button>
+
+        //     </form>
+        //         <button onClick={backToDash}> Back </button>
+
+        // </div>
+        <>
+        {loggedInDisplay}
+        </>
     )
 }
 

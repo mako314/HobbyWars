@@ -15,7 +15,6 @@ function EntryDisplay({user, entryID, viewedFromUser }){
 
     //Use effect to grab the data when you initially load into this page
     useEffect(() => {
-        
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
@@ -24,6 +23,8 @@ function EntryDisplay({user, entryID, viewedFromUser }){
           })
       }, [entryID])
 
+
+    //   if(entryID){}
     //   if (entryID){}
 
       console.log(entryID)
@@ -52,11 +53,15 @@ function EntryDisplay({user, entryID, viewedFromUser }){
             let submissionsBackBtn = <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
 
             //Return to userdashboard if the view button was clicked from the user dash
-            function returnToUserDash(user){
+            function backBtn(singleEntry){
+                if (viewedFromUser === true){
                 navigate(`/user-dashboard/${user.id}`)
+                }else{
+                    navigate(`/competition-submissions/${singleEntry.id}`)
+                }
             }
 
-            let userDashBackBtn = <button onClick={() => returnToUserDash(user)}> Back </button>
+            // let userDashBackBtn = <button onClick={() => returnToUserDash(user)}> Back </button>
 
 
 
@@ -72,8 +77,7 @@ function EntryDisplay({user, entryID, viewedFromUser }){
                     
                     <br></br>
                     
-                    {viewedFromUser ? userDashBackBtn : submissionsBackBtn}
-                    
+                    <button onClick={() => backBtn(user, singleEntry.competition_id)}> Back </button>                    
                     <br></br>
 
                     { user.id === singleEntry.user_id ? <button onClick={() => navSubmissionEdit(singleEntry.id)}> Edit this Entry</button> : ""}
@@ -85,7 +89,7 @@ function EntryDisplay({user, entryID, viewedFromUser }){
 
     useEffect(() => {
         if(entryID){
-    function returnToSubmission(id){
+    function backBtn(id){
         navigate(`/competition-submissions/${id}`)
     }
             setLoMappedEntry(
@@ -100,7 +104,7 @@ function EntryDisplay({user, entryID, viewedFromUser }){
                     
                     <br></br>
                     
-                    <button onClick={() => returnToSubmission(singleEntry.competition_id)}> Back </button>
+                    <button onClick={() => backBtn(user, singleEntry.competition_id)}> Back </button>
                     
                     <br></br>
                 </div>

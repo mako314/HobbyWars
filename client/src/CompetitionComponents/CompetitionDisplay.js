@@ -184,6 +184,20 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         setCompID(id)
     }
 
+    //TAILWIND COMP SUBMISSIONS button for the above (handle comp sumbissions navigation)
+    const twCompSubmissionNav = (
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleCompSubmissionNav()}
+        >
+        View Submissions
+        </button>
+
+    )
+
+    //Handle navigation back from the competition display page depening where u came from
     function handleBackNav() {
         if (viewedFromUser === true){
             navigate(`/user-dashboard/${user.id}`)
@@ -194,6 +208,20 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             setCompID(id)}
             
     }
+
+    //TAILWIND back button for the above (handle back navigation)
+    const twHandleBackNav = (
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleBackNav()}
+        >
+        Back
+        </button>
+
+    )
+
     
     //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.
     function handleToggle() {
@@ -275,7 +303,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
 
     //         {user.id === user_id ? editCompetitionButton : ""}
 
-    //         {/* {user.id === user_id ? submitResultButton : ""} */}
+    //         {/* {user.id === user_id ? submitResultButton : ""} */} // < --  - - -i don think I used this tbh
             
     //         {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
     //     </div>
@@ -330,16 +358,11 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
                             <li>{prize7}</li>
                             <li>{prize8}</li>
                         </ol>
-
+                        {twHandleBackNav}
+                        {twCompSubmissionNav}
                         {user.id === user_id ? twEditCompetitionBtn : ""}
                         {user.id === user_id ? twUserConfirm : twEntryButton}
-                        <button
-                            className="mt-4 bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
-                            type="button"
-                            style={{ transition: "all .15s ease" }}
-                        >
-                            temp button
-                        </button>
+                      
                     </div>
                 </div>
             </>

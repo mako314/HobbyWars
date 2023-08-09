@@ -383,12 +383,14 @@ useEffect(()=>{
   useEffect(() => {
     if (entry){
         setUserResults(entry?.map((entryResult)=>{
+        if (entryResult){
+            return(
         <div className="p-6">
             <header className="mb-4">
             <h3 className="text-xl font-medium text-slate-700">
             {entryResult.competitions.title}
             </h3>
-            <p className="text-sm text-slate-400">By {entryResult.submission}</p>
+            <p className="text-sm text-slate-400"> Submission: {entryResult.submission}</p>
             </header>
             <p>
             Placement: 
@@ -396,10 +398,12 @@ useEffect(()=>{
                     return(resultP.placement)
                 })}
             </p>
-        </div>
-        }))
+        </div>)
+        }}))
 }
   }, [entry])
+
+  console.log(usersResults)
 
 
 

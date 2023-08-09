@@ -55,6 +55,8 @@ function EntryForm({user, setEntries, entries, compID, setEntryID}) {
         navigate(`/competition/${compID}`)
     }
 
+    //can probably use this to grab the competition and display the title, and maybe the scoring stuff in the form
+
 // //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 
     const loggedInDisplay = (
@@ -96,9 +98,9 @@ function EntryForm({user, setEntries, entries, compID, setEntryID}) {
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
     <div class="mb-10 md:mb-16">
-      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Enlist in the Hobby Wars Campaign</h2>
+      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
 
-      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Are you ready to join the ranks? Engage with fellow enthusiasts, unleash your creativity, and be a part of the vibrant Hobby Wars movement. Embrace the exhilarating rush of challenges, the thrill of friendly rivalries, and the forging of profound bonds with fellow adventurers!</p>
+      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
     </div>
 
     <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
@@ -116,7 +118,7 @@ function EntryForm({user, setEntries, entries, compID, setEntryID}) {
       <div class="flex items-center justify-between sm:col-span-2">
 
         {/* NEED TO CHANGE COLOR */}
-        <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Sign Up</button>
+        <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Submit Entry</button>
 
         <button onClick={backToCompetition} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back </button>
         <span class="text-sm text-gray-500">*Required</span>

@@ -4,6 +4,8 @@ import React from "react";
 import LeaderBoardCards from "./LeaderBoardCards";
 
 function LeaderBoardCollection({competitions, setLeaderBoardID}){
+
+    console.log(competitions)
     
     //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
     const leaderBoardCards = competitions.map((competition) =>{
@@ -29,16 +31,20 @@ function LeaderBoardCollection({competitions, setLeaderBoardID}){
         prize7={competition.prize7}
         prize8={competition.prize8}
         registration_schedule={competition.registration_schedule}
-        setLeaderBoardID={setLeaderBoardID}/>   
+        setLeaderBoardID={setLeaderBoardID}
+        username = {competition.user.username}
+        firstName = {competition.user.firstName}
+        lastName = {competition.user.lastName} 
+        profileImg = {competition.user.profileImg}/>   
     })
 
 
 
 
     return (
-        <div className="grid-cols-1 sm:grid md:grid-cols-3 ">
+        <>
             {leaderBoardCards}
-        </div>
+        </>
     )
 }
 

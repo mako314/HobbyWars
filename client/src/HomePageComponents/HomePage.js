@@ -46,12 +46,14 @@ function HomePage({}) {
         </div>
       </div>
     </section>
+    <br></br>
+    <WarSteps/>
   </div>
 </div>
 
         
 
-        <WarSteps/>
+        
 
     </div>
     )

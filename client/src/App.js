@@ -5,6 +5,7 @@ import { useNavigate, Route, Routes } from 'react-router-dom';
 //-------HomePage Imports-------
 import HomePage from './HomePageComponents/HomePage'
 import Header from './NavbarAndHeader/Header';
+import Footer from './NavbarAndHeader/Footer';
 
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
@@ -336,6 +337,7 @@ function App() {
 
             
             </Routes>
+            <Footer user={user} />
 
             {/* <CompetitionCollection competitions={competitions}/> */}
             {/* <HomePage/> */}

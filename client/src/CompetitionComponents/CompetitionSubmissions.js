@@ -71,6 +71,18 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
         navigate(`/entry/${id}`)
     }
 
+    const twBtnForViewSubmission = (
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => viewSubmission(id)}
+        >
+        View Submission
+        </button>
+
+    )
+
     //Takes you to a page to declare result for that entry need a back button there to bring me back to this page.
     function navToSubmitResults (id, idForCompetition) {
         console.log(id)
@@ -199,29 +211,75 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                         }
                     })
 
-                    let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
-
+                    let userOwnedComp = user.id === user_id && !resultFlag ? 
+                    <button
+                    className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}
+                    >
+                    Declare Results
+                    </button>
+                    :
+                    <button
+                    className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    >
+                    RESULT ALREADY SUBMITTED
+                    </button>
+                    
+  
                     return(
-                        <section>
-                <div class="relative">
-                    <div class="relative flex justify-start">
+                <section>
+                    <div class="relative">
+                        {/* <div class="relative flex justify-start">
+                        </div> */}
                     </div>
-                </div>
-                <div class="space-y-8 lg:divide-y lg:divide-gray-100">
-                    <div class="pt-8 sm:flex lg:items-end group">
-                    <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
-                        <img class="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                    <div class="space-y-8 lg:divide-y lg:divide-gray-100">
+                        <div class="pt-8 sm:flex lg:items-end group">
+                        
+                            <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+                                <img class="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                            </div>
+                            
+                            <div>
+                                <span class="text-sm text-gray-500">{oneEntry.submission}</span>
+                                <p class="mt-3 text-lg font-medium leading-6">
+                                <span class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
+                                </p>
+                                <p class="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
+                                
+                                <button
+                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                                type="button"
+                                style={{ transition: "all .15s ease" }}
+                                onClick={() => viewSubmission(oneEntry.id)}
+                                >
+                                View Submission 
+                                </button>
+
+                                { user.id === oneEntry.user_id ? 
+                                
+                                <button
+                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                                type="button"
+                                style={{ transition: "all .15s ease" }}
+                                onClick={() => navSubmissionEdit(oneEntry.id)}
+                                >
+                                Edit this Entry
+                                </button>
+                                : " " }
+
+
+                                {user.id === user_id ? userOwnedComp : ""}
+
+                            </div>
+                        
+                        </div>
+                        
+            
                     </div>
-                    <div>
-                        <span class="text-sm text-gray-500">August 20.20.21</span>
-                        <p class="mt-3 text-lg font-medium leading-6">
-                        <span class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.submission} </span>
-                        </p>
-                        <p class="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
-                    </div>
-                    </div>
-           
-                </div>
                 </section>
                     )
                 })

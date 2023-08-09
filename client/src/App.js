@@ -328,7 +328,7 @@ function App() {
                 {/* EDIT ENTRY BY ID ROUTE */}
                 <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID} editFromSubmissions={editFromSubmissions}/>}/>
                 {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
-                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
+                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser} viewFromSubmissions={viewFromSubmissions}/>}/>
 
                 {/* RESULT ROUTES */}
                 <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results} compID={compID} entryID={entryID} entryResultID={entryResultID} compResultID={compResultID} setResultForEntryID={setResultForEntryID}/>}/>

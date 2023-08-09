@@ -223,7 +223,7 @@ class Competition(db.Model, SerializerMixin):
     serialize_rules = (#remove recursing back to competitions from entry
                        '-entry.competitions',
                        #remove user from entry portion ## NEED TO CHANGE entry TO ENTRY UNFORTUNATELY
-                    #    '-entry.user',
+                    #  # '-entry.user', IF ANY DATA ISSUES BETWEEN NOW AND LATER IT IS THIS -------------------------------------------------------------------------------READ ME
                        #remove recursing back to competitions from result
                        '-results.competitions',
                        #remove user from result portion
@@ -359,6 +359,7 @@ class Entry(db.Model, SerializerMixin):
     serialize_rules = ('-user.results',
                        '-user.entry',
                        '-user.competitions',
+                       '-user.user_hobby',
                        '-competitions.entry',
                        '-competitions.results',
                     #    '-competitions.user', 

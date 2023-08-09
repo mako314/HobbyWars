@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function EntryDisplay({user, entryID, viewedFromUser }){
+function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions }){
 
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function EntryDisplay({user, entryID, viewedFromUser }){
             console.log(data)
             setSingleEntry(data)
           })
-      }, [entryID])
+      }, [entryID, viewFromSubmissions])
 
 
     //   if(entryID){}

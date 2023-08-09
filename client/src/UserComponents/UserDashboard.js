@@ -69,10 +69,6 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         user_hobby,
     } = selectedUser;
 
-    console.log(selectedUser)
-    console.log(competitions)
-
-
     // console.log(results)
     // console.log(user_hobby)
     // console.log(selectedUser)
@@ -94,7 +90,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
         </>
     })
-    // let twMappedCompetitions
+    // TAILWIND MAPPED NOW WORKING TO DISPLAY AND USER WITH WORKING ABCK
     useEffect(() => {
         setTwMappedCompetitions(selectedUser.competitions?.map((competition) =>{
         if (selectedUser){
@@ -118,7 +114,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         )}
     }))}, [selectedUser])
 
-    console.log(twMappedCompetitions)
+    
     
     // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
     // and also navigate to it
@@ -243,10 +239,35 @@ useEffect(()=>{
             <p>
             {oneEntry.description}
             </p>
+            <br></br>
+            {toggleEntryDelete ? twEntryDeleteBtn : 
+            <>
+            <button
+            className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+            type="button"
+            style={{ transition: "all .15s ease" }}
+            onClick={() => handleEntryDelete(oneEntry)}
+            >
+            Yes DELETE my ENTRY.
+            </button>
+            <br></br>
+            <button
+            className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+            type="button"
+            style={{ transition: "all .15s ease" }}
+            onClick={handleEntryToggle}
+            >
+            No, Whoops!.
+            </button>
+            </>
+            
+            
+            }
             </div>
-                )
-            })
-                )
+        
+        )}
+        )
+        )
         }
       }, [entry, toggleEntryDelete])
 
@@ -285,6 +306,17 @@ useEffect(()=>{
     const entryDeleteBtn = (
         <button onClick={handleEntryToggle}> Delete my entry </button>
     )
+    
+    //This button (TAILWIND CSS) allows you to toggle and see confirm deletion of the entry
+    const twEntryDeleteBtn = (
+    <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleEntryToggle}
+        >
+        Delete my entry
+    </button>)
     
     
     //confirm entry deletion button refuses to display

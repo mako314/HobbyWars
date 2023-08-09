@@ -318,7 +318,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
 
       <div class="sm:col-span-2">
         <label for="description" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Description*</label>
-        <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
+        <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div class="sm:col-span-2">
@@ -358,7 +358,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
 
       <div class="sm:col-span-2">
         <label for="safety_measures" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">What safety measures are being taken?</label>
-        <textarea type="text" name="safety_measures" value={formik.values.safety_measures} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
+        <textarea type="text" name="safety_measures" value={formik.values.safety_measures} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div class="sm:col-span-2">

@@ -76,6 +76,7 @@ const navigate = useNavigate()
                         res.json().then(userHobby =>{
                         setUserHobbies([...userHobbies, userHobby]) //spreads and updates our userHobby state in APP.js allowing it to post
                         console.log(userHobby)
+                        navigate(`/user-dashboard/${user.id}`)
                         })
                     } else {
                         res.json().then(error => setError(error)) //for backend errors
@@ -124,60 +125,111 @@ const navigate = useNavigate()
 //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
 // Going to try and remove the form portion here and add it to MasterUserHobbyForm
     const loggedInDisplay = (
-        <>
+        // <>
         
-        {/* display errors from formik/yup */}
-        { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+        // {/* display errors from formik/yup */}
+        // { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
 
-        {/* display errors from backend */}
-        {error && <p>{error}</p>}
+        // {/* display errors from backend */}
+        // {error && <p>{error}</p>}
 
-        <form onSubmit={formik.handleSubmit}>
-        <div>
-            <select
-            className="text-black"
-            name="hobby_id"
-            value={formik.values.hobby_id}
-            onChange={handleHobbyDisplay}>
-                <option> Select from the Hobbies below</option>
+        // <form onSubmit={formik.handleSubmit}>
+        // <div>
+        //     <select
+        //     className="text-black"
+        //     name="hobby_id"
+        //     value={formik.values.hobby_id}
+        //     onChange={handleHobbyDisplay}>
+        //         <option> Select from the Hobbies below</option>
+        //         {mappedHobby}
+        //     </select>
+        // </div>
+
+        // <div>
+        // Description
+        // <p>{hobbyDescription.description} </p>
+        // </div>
+
+        // <div className="user-signup-input">
+        //     <label> Expertise Level? </label>
+        //     <input
+        //     type="text"
+        //     name="expertise"
+        //     value={formik.values.expertise}
+        //     onChange={formik.handleChange}
+        //     />
+        // </div>
+
+        // <button type="submit" className=""> Submit! </button> 
+        // {/* ^ UNCOMMENT THIS IT WORKS ///This button can take them to a new page */}
+        // <div> </div>
+        // {/* UNCOMMENT THIS DIV this top div right here is just for spacing purposes */}
+        // </form>
+
+        // <button onClick={backToDash}> Back </button>
+        // {/* UNCOMMENT BUTTON TO HAVE IT WORKING working now */}
+
+        // <div> </div>
+        // {/* UNCOMMENT THESE DIVS this top div right here is just for spacing purposes */}
+
+        // <Link to='/add-a-hobby'>
+        // <button>
+        //     Don't see your hobby from the drop down? Add It here!
+        // </button>
+        // </Link>
+        // {/* UNCOMMENT THIS BUTTON IT IS FUNCTIONING, EDITING TO TEST */}
+        // </>
+
+        <div class="bg-white py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+
+            <div class="mb-10 md:mb-16">
+            <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Can't Find your Hobby? Add it Here!</h2>
+
+            <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Thanks for Contributing to the Cause! o7</p>
+            </div>
+
+            <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+
+            <div class="sm:col-span-2">
+                <label for="hobby_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is your Hobby?</label>
+                <select type="text" name="hobby_id" value={formik.values.hobby_id} onChange={handleHobbyDisplay} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
+
+                <option name="hobby_id" class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" > Select from the Hobbies Below </option>
                 {mappedHobby}
-            </select>
+
+                </select>
+                
+            </div>
+            <div class="sm:col-span-2">
+                <div name="description" class="h-64 w-full rounded border bg-gray-50 px-3 py-0 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"> {hobbyDescription.description} </div>
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="expertise" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Expertise Level?</label>
+                <input type="text" name="expertise" value={formik.values.expertise} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+            </div>
+
+            <div class="flex items-center justify-between sm:col-span-2">
+
+                {/* NEED TO CHANGE COLOR */}
+                <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Add this Hobby to my Profile!</button>
+                
+
+                {/* MAKE AN ONCLICK THAT IF YOU CLICK THIS IT SETS STATE SAYING YOU CLICKED FROM HERE, FROM THERE, ADD A HOBBY SHOULD TAKE YOU BACK STILL TO USER DASH i THINK? */}
+                <Link to='/add-a-hobby'>
+                <button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Add a new Hobby!</button>
+                </Link>
+                
+                {/* NEED A BACK BUTTON */}
+                <button onClick={backToDash} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back </button>
+                
+            </div>
+
+            </form>
+
         </div>
-
-        <div>
-        Description
-        <p>{hobbyDescription.description} </p>
         </div>
-
-        <div className="user-signup-input">
-            <label> Expertise Level? </label>
-            <input
-            type="text"
-            name="expertise"
-            value={formik.values.expertise}
-            onChange={formik.handleChange}
-            />
-        </div>
-
-        <button type="submit" className=""> Submit! </button> 
-        {/* ^ UNCOMMENT THIS IT WORKS ///This button can take them to a new page */}
-        <div> </div>
-        {/* UNCOMMENT THIS DIV this top div right here is just for spacing purposes */}
-        </form>
-
-        <button onClick={backToDash}> Back </button>
-        {/* UNCOMMENT BUTTON TO HAVE IT WORKING working now */}
-
-        <div> </div>
-        {/* UNCOMMENT THESE DIVS this top div right here is just for spacing purposes */}
-
-        <Link to='/add-a-hobby'>
-        <button>
-            Don't see your hobby from the drop down? Add It here!
-        </button>
-        </Link>
-        {/* UNCOMMENT THIS BUTTON IT IS FUNCTIONING, EDITING TO TEST */}
-        </>
     )
 
     const loggedOutDisplay = (

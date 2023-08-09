@@ -45,11 +45,6 @@ function LoginForm({user, setUser}){
         });
 }
 
-    //Navigation back to homepage or dashboard
-
-    // function handleNavigation(user){
-    //     navigate(`/user-dashboard/${user.id}`)
-    // }
 
 //Checks to see if user was logged in
 console.log(user)
@@ -58,16 +53,57 @@ console.log(user)
 //------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
 
-
+//Navigation back to dashboard + button under it
 function UserDashClick() {
   navigate(`/user-dashboard/${user.id}`)
 }
+
+
+function TakeMeHome(){
+  navigate(`/`)
+}
+
+
+// const loggedInDisplay = (
+//   <>
+//   <p> You're already signed in silly head, would you like to be taken to your dashboard?</p>
+//   <button onClick={UserDashClick} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take Me There!</button>
+//   </>
+// )
+
 const loggedInDisplay = (
   <>
-  <p> You're already signed in silly head, would you like to be taken to your dashboard?</p>
-  <button onClick={UserDashClick} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take Me There!</button>
+        <div class="bg-white py-6 sm:py-8 lg:py-12">
+          <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+            <div class="grid gap-8 sm:grid-cols-2">
+
+              <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+                <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" class="h-full w-full object-cover object-center" />
+              </div>
+
+              <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
+                <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error 404</p>
+                <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> You're already signed in!</h1>
+
+                <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">The page you’re looking for doesn’t exist, would you like to go somewhere else?</p>
+
+                <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
+                  
+                  <button onClick={TakeMeHome} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
+
+
+                  <br/>
+
+                  <button onClick={UserDashClick} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me to my Profile!</button>
+                
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
   </>
 )
+
 
 const loggedOutDisplay = (
   <section>

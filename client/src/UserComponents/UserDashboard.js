@@ -434,7 +434,7 @@ useEffect(() => {
 
     return (
         <div>
-        {user ? loggedInDisplay : loggedOutDisplay }
+        {/* {user ? loggedInDisplay : loggedOutDisplay } */}
         </div>
     )
 }

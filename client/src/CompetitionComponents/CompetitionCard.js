@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function CompetitionCard({id,title, objective}){
+function CompetitionCard({id,title, objective, setViewedFromUser}){
 
   //Will need this bad boy later
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ function CompetitionCard({id,title, objective}){
   //Once you click on a card it takes you to the display page of said card it is called on the whole div.
   function handleClick(e) {
     navigate(`/competition/${id}`)
+    // setViewedFromUser(false)
 }
 
     return(  

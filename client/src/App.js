@@ -278,16 +278,16 @@ function App() {
         <div>
             <Header user={user} setUser={setUser}/>
 
-            {user ? loggedInDisplay : loggedOutDisplay }
+            {/* {user ? loggedInDisplay : loggedOutDisplay } */}
             <Routes>
 
                 {/* HOME PAGE ROUTING */}
                 <Route path='/' element={<HomePage/>}/>
 
                 {/* ALL COMPETITIONS ROUTING */}
-                <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
+                <Route path='/competitions' element={<CompetitionCollection competitions={competitions} setViewedFromUser={setViewedFromUser}/>}/>
                 {/* COMPETITION ID ROUTE */}
-                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} setCompID={setCompID} compID={compID}/>}/>
+                <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} setCompID={setCompID} compID={compID} viewedFromUser={viewedFromUser}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}

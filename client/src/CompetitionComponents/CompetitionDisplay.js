@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function CompetitionDisplay({user, setCompetitions, competitions, setCompID, compID}){
+function CompetitionDisplay({user, setCompetitions, competitions, setCompID, compID, viewedFromUser}){
 
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
@@ -105,6 +105,50 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     //This allows the USER to confirm if they are the correct user,
     const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
     
+    //Tailwind user to confirm
+    
+
+    //Tailwind deleteBtn
+    const twDeleteBtn = (
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        Delete my Competition
+        </button>
+    )
+
+    //Button (TAILWIND) to confirm that you'd like to delete the competition, this actually sends the delete request. Or you can go back.
+    const twConfirmDelete = (
+        <>
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleCompetitionDelete(competition)}
+        >
+        Yes DELETE my competition.
+        </button>
+        <br/>
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        No it was a Mistake.
+        </button>
+
+        </>
+    )
+    //This allows the USER to confirm if they are the correct user, FOR THE TAILWIND BUTTONS
+    const twUserConfirm = ( toggleDelete ? twDeleteBtn : twConfirmDelete)
+
+
+
+//-----------------------------------navigation PORTIONs--------------------------------
 
     //A button to take you to the submit entry page, you have to be logged in though
     const entryButton = (
@@ -116,12 +160,39 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             </Link>
         </div>
     )
-//-----------------------------------navigation PORTIONs--------------------------------
+    
+    //A button (TAILWIND) to take you to the submit entry page, you have to be logged in though 
+    const twEntryButton = (
+        <>
+        <Link to='/submit-entry'>
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        Submit an Entry
+        </button>
+        </Link>
+        </>
+
+    )
 
     //This should take you to the submissions page for the competition, where you'll see all the entries
     function handleCompSubmissionNav(e) {
         navigate(`/competition-submissions/${id}`)
         setCompID(id)
+    }
+
+    function handleBackNav() {
+        if (viewedFromUser === true){
+            navigate(`/user-dashboard/${user.id}`)
+            } else if (viewedFromUser === false){
+            navigate(`/competitions`)}
+            else{
+            navigate(`/competition-submissions/${id}`)
+            setCompID(id)}
+            
     }
     
     //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.
@@ -146,7 +217,19 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
 
     //actual edit button that takes you to the edit page
     const editCompetitionButton = <button onClick={() => handleCompEdit()}> Edit my Competition </button>
-    
+
+
+    const twEditCompetitionBtn = (
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleCompEdit()}
+        >
+        Edit my Competition
+        </button>
+
+    )
     
     //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
@@ -155,48 +238,117 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     let loggedInDisplay
     //SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE SCOPE 
     // not in use effect so the global scoping works here
-    if(user) {loggedInDisplay=(
-        <div>
-            <p>{title}</p>
-            <p>{objective}</p>
-            <p>{description}</p>
-            <p>{scoring}</p>
-            <p>{cost_of_entry}</p>
-            <p>{schedule}</p>
-            <p>{contact}</p>
-            <p>{location}</p>
-            <p>{requirements}</p>
-            <p>{competition_tasks}</p>
-            <p>{safety_measures}</p>
-            <p>{prize1}</p>
-            <p>{prize2}</p>
-            <p>{prize3}</p>
-            <p>{prize4}</p>
-            <p>{prize5}</p>
-            <p>{prize6}</p>
-            <p>{prize7}</p>
-            <p>{prize8}</p>
-            <p>{registration_schedule}</p>
+    // if(user) {loggedInDisplay=(
+    //     <div>
+    //         <p>{title}</p>
+    //         <p>{objective}</p>
+    //         <p>{description}</p>
+    //         <p>{scoring}</p>
+    //         <p>{cost_of_entry}</p>
+    //         <p>{schedule}</p>
+    //         <p>{contact}</p>
+    //         <p>{location}</p>
+    //         <p>{requirements}</p>
+    //         <p>{competition_tasks}</p>
+    //         <p>{safety_measures}</p>
+    //         <p>{prize1}</p>
+    //         <p>{prize2}</p>
+    //         <p>{prize3}</p>
+    //         <p>{prize4}</p>
+    //         <p>{prize5}</p>
+    //         <p>{prize6}</p>
+    //         <p>{prize7}</p>
+    //         <p>{prize8}</p>
+    //         <p>{registration_schedule}</p>
 
-            <div>-------------------------</div>
-            <Link to='/competitions'>
-            <button> BACK BUTTON</button>
-            </Link>
+    //         <div>-------------------------</div>
 
-            <br></br>
-            <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
+    //         <button onClick={handleBackNav}> BACK BUTTON</button>
 
-            <br></br>
-            {user.id === user_id ? userConfirm : entryButton}
-            {/* need a button to edit the competition */}
 
-            {user.id === user_id ? editCompetitionButton : ""}
+    //         <br></br>
+    //         <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
 
-            {/* {user.id === user_id ? submitResultButton : ""} */}
+    //         <br></br>
+    //         {user.id === user_id ? userConfirm : entryButton}
+    //         {/* need a button to edit the competition */}
+
+    //         {user.id === user_id ? editCompetitionButton : ""}
+
+    //         {/* {user.id === user_id ? submitResultButton : ""} */}
             
-            {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
-        </div>
-    )}
+    //         {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
+    //     </div>
+    // )}
+
+    if (user) {
+        loggedInDisplay=(
+            <>
+                <div class="bg-white py-6 sm:py-8 lg:py-12">
+                    <div class="mx-auto max-w-screen-md px-4 md:px-8">
+                            <h1 class="mb-4 text-center text-2xl font-bold text-gray-800 sm:text-3xl md:mb-6">{title}</h1>
+
+                            <blockquote class="mb-6 border-l-4 pl-4 italic text-gray-500 sm:text-lg md:mb-8 md:pl-6">{objective}</blockquote>
+
+                            <div class="relative mb-6 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:mb-8">
+                            <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600&h=350" loading="lazy" alt="Photo by Minh Pham" class="h-full w-full object-cover object-center" />
+                            </div>
+
+                            <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">
+                                {description}                            
+                            <br/><br/>
+
+                            {/* {This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is <a href="#" class="text-indigo-500 underline transition duration-100 hover:text-indigo-600 active:text-indigo-700">random</a> or otherwise generated. It may be used to display a sample of fonts or generate text for testing. Filler text is dummy text which has no meaning however looks very similar to real text.} */}
+                            </p>
+
+                            <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4">Competition Tasks</h2>
+
+                            <p class="mb-6 text-gray-500 sm:text-lg md:mb-8">{competition_tasks}</p>
+
+                            <ul class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8">
+                            <li>Location: {location}</li>
+                            <li>Contact: {contact}</li>
+                            <li>{safety_measures}</li>
+                            </ul>
+
+
+
+                        <h2 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4"> Scoring </h2>
+
+                        <p class="text-gray-500 sm:text-lg"> {scoring}</p>
+                        <br/>
+
+                        <h3 class="mb-2 text-xl font-semibold text-gray-800 sm:text-2xl md:mb-4"> Prizes </h3>
+
+                        <ol type="1" class="mb-6 list-inside list-disc text-gray-500 sm:text-lg md:mb-8" >
+                            <li>{prize1}</li>
+                            <li>{prize2}</li>
+                            <li>{prize3}</li>
+                            <li>{prize4}</li>
+                            <li>{prize5}</li>
+                            <li>{prize6}</li>
+                            <li>{prize7}</li>
+                            <li>{prize8}</li>
+                        </ol>
+
+                        {user.id === user_id ? twEditCompetitionBtn : ""}
+                        {user.id === user_id ? twUserConfirm : twEntryButton}
+                        <button
+                            className="mt-4 bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                            type="button"
+                            style={{ transition: "all .15s ease" }}
+                        >
+                            temp button
+                        </button>
+                    </div>
+                </div>
+            </>
+        )
+    }
+
+
+
+
     const loggedOutDisplay=(
         <div>
             <p>{title}</p>
@@ -222,9 +374,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <br></br>
             
             <div>-------------------------</div>
-            <Link to='/competitions'>
-            <button> BACK BUTTON</button>
-            </Link>
+            <button onClick={handleBackNav}> BACK BUTTON</button>
 
             <br></br>
             <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>

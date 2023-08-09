@@ -37,7 +37,6 @@ function LeaderBoardCollection({competitions, setLeaderBoardID}){
 
     return (
         <div className="grid-cols-1 sm:grid md:grid-cols-3 ">
-            THIS IS THE LEADERBOARD PAGE
             {leaderBoardCards}
         </div>
     )

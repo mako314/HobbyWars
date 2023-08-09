@@ -285,7 +285,7 @@ function App() {
                 <Route path='/' element={<HomePage/>}/>
 
                 {/* ALL COMPETITIONS ROUTING */}
-                <Route path='/competitions' element={<CompetitionCollection competitions={competitions}/>}/>
+                <Route path='/competitions' element={<CompetitionCollection competitions={competitions} setViewedFromUser={setViewedFromUser}/>}/>
                 {/* COMPETITION ID ROUTE */}
                 <Route path='/competition/:id' element={<CompetitionDisplay user={user} setCompetitions={setCompetitions} competitions={competitions} setCompID={setCompID} compID={compID} viewedFromUser={viewedFromUser}/>}/>
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}

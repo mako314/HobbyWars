@@ -25,13 +25,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     const [mappedUserHobbies, setMappedUserHobbies] = useState([])
 
     //Setting entry to delete?
-    const [entryToDelete, setEntryToDelete] = useState([])
+    // const [entryToDelete, setEntryToDelete] = useState([])
 
     //State for setting user results for their entries:
     const [usersResults, setUserResults] = useState([])
 
     //State for setting user result placements for their entries:
-    const [userPlacements, setUserPlacements] = useState([])
+    // const [userPlacements, setUserPlacements] = useState([])
 
    const [twMappedCompetitions, setTwMappedCompetitions] = useState([])
 
@@ -226,7 +226,7 @@ useEffect(()=>{
 
 
       useEffect(()=> {
-        if (entry){
+        if (entry && user){
             setMappedEntries(entry?.map((oneEntry) =>{
                 return(
             <div className="p-6">
@@ -276,7 +276,7 @@ useEffect(()=>{
         )
         )
         }
-      }, [entry, toggleEntryDelete])
+      }, [entry, toggleEntryDelete, user])
 
     //Why on earth did ^ this fix it lol, it allowed 
     
@@ -355,26 +355,48 @@ useEffect(()=>{
     // }
 
 
-let placement
+// let placement
 //==================== SOS
-useEffect(() => {
+// useEffect(() => {
+//     if (entry){
+//         setUserResults(entry?.map((entryResult)=>{
+//             // if (entryResult){
+//             //     entryResult.results?.map((resultP) =>{
+//             //         console.log(resultP)
+//             //     })
+//             //     console.log(userPlacements)
+//             // }
+//             return(  
+//             <div>
+//                 {/* {console.log(entryResult.results)} */}
+//                 <p>COMPETITION: {entryResult.competitions.title} </p>
+//                 <p>Submission: {entryResult.submission}</p>
+//                 <p>Placement: {entryResult.results?.map((resultP) =>{
+//                     return(resultP.placement)
+//                 })}</p>
+//             </div>)
+//         }))
+// }
+//   }, [entry])
+
+
+  useEffect(() => {
     if (entry){
         setUserResults(entry?.map((entryResult)=>{
-            // if (entryResult){
-            //     entryResult.results?.map((resultP) =>{
-            //         console.log(resultP)
-            //     })
-            //     console.log(userPlacements)
-            // }
-            return(  
-            <div>
-                {/* {console.log(entryResult.results)} */}
-                <p>COMPETITION: {entryResult.competitions.title} </p>
-                <p>Submission: {entryResult.submission}</p>
-                <p>Placement: {entryResult.results?.map((resultP) =>{
+        <div className="p-6">
+            <header className="mb-4">
+            <h3 className="text-xl font-medium text-slate-700">
+            {entryResult.competitions.title}
+            </h3>
+            <p className="text-sm text-slate-400">By {entryResult.submission}</p>
+            </header>
+            <p>
+            Placement: 
+                {entryResult.results?.map((resultP) =>{
                     return(resultP.placement)
-                })}</p>
-            </div>)
+                })}
+            </p>
+        </div>
         }))
 }
   }, [entry])
@@ -456,7 +478,7 @@ useEffect(() => {
 
 //------------------------------------------TAILWIND DELETE------------------------------------------
 
-
+//TAILWIND PROMPT DELETE BUTTON
 const twDeleteBtn = (
     <button
         className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
@@ -468,6 +490,7 @@ const twDeleteBtn = (
     </button>
 )
 
+//TAILWIND confirm DELETE BUTTON
 const twConfirmDelete = (
     <>
     <button
@@ -494,7 +517,7 @@ const twConfirmDelete = (
 
 //------------------------------------------TAILWIND ADD MORE HOBY BUTTON------------------------------------------
 
-
+//TAILWIND add more HOBBIES button
 const twAddMoreHobbiesBtn = (    
     <>
     <Link to='/user-hobby-selection'>
@@ -711,6 +734,10 @@ const twAddMoreHobbiesBtn = (
 
         <div className="overflow: auto; items-start m-auto bg-white rounded shadow-lg text-slate-500 shadow-slate-200 p-1">
         {mappedEntries}
+        </div>
+
+        <div className="overflow: auto; items-start m-auto bg-white rounded shadow-lg text-slate-500 shadow-slate-200 p-1">
+        {usersResults}
         </div>
 
         </>

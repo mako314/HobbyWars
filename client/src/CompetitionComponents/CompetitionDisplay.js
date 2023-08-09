@@ -127,10 +127,12 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     function handleBackNav() {
         if (viewedFromUser === true){
             navigate(`/user-dashboard/${user.id}`)
-            } else {
+            } else if (viewedFromUser === false){
+            navigate(`/competitions`)}
+            else{
             navigate(`/competition-submissions/${id}`)
-            setCompID(id)
-            }
+            setCompID(id)}
+            
     }
     
     //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.

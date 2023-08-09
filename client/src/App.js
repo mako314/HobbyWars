@@ -291,7 +291,7 @@ function App() {
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
-                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results} entries={entries}/>}/>
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results} entries={entries} setViewedFromUser={setViewedFromUser}/>}/>
                 {/* COMPETITION EDIT ROUTE */}
                 <Route path='/competition/edit/:id' element={<CompetitionEdit user={user} compID={compID} competitions={competitions} updateCompetition={updateCompetition}/>}/>
                 

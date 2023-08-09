@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results, entries}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results, entries, setViewedFromUser={setViewedFromUser}}){
 
 
     //resultForEntryID and setEntryResultID are going to help make a toggle to see whether or not a user has submitted a result then removing the button
@@ -67,21 +67,24 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     //Takes you to a single display page for the submission, ENTRY DISPLAY
     function viewSubmission(id) {
         setViewFromSubmissions(true)
+        setViewedFromUser(false)
         setEntryID(id)
         navigate(`/entry/${id}`)
     }
 
-    const twBtnForViewSubmission = (
-        <button
-        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
-        type="button"
-        style={{ transition: "all .15s ease" }}
-        onClick={() => viewSubmission(id)}
-        >
-        View Submission
-        </button>
 
-    )
+    // I PUT THIS INTO THE ACTUAL DIV AND STUFF -----
+    // const twBtnForViewSubmission = (
+    //     <button
+    //     className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+    //     type="button"
+    //     style={{ transition: "all .15s ease" }}
+    //     onClick={() => viewSubmission(id)}
+    //     >
+    //     View Submission
+    //     </button>
+
+    // )
 
     //Takes you to a page to declare result for that entry need a back button there to bring me back to this page.
     function navToSubmitResults (id, idForCompetition) {

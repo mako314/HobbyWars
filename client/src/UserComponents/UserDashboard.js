@@ -32,6 +32,10 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
 
     //State for setting user result placements for their entries:
     const [userPlacements, setUserPlacements] = useState([])
+
+   const [twMappedCompetitions, setTwMappedCompetitions] = useState([])
+
+    
    
 
    
@@ -65,6 +69,9 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         user_hobby,
     } = selectedUser;
 
+    console.log(selectedUser)
+    console.log(competitions)
+
 
     // console.log(results)
     // console.log(user_hobby)
@@ -87,6 +94,31 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
         <div onClick={() => navigateToCompetition(competition.id)}>{competition.title}</div>
         </>
     })
+    // let twMappedCompetitions
+    useEffect(() => {
+        setTwMappedCompetitions(selectedUser.competitions?.map((competition) =>{
+        if (selectedUser){
+        return(
+            <>
+            <section onClick={() => navigateToCompetition(competition.id)} class="">
+                <div class="flex w-full">
+                    <div class="relative flex flex-col items-start m-1 transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8">
+                    <img class="object-cover object-center w-full rounded-t-xl lg:h-48 md:h-36" src="/assets/images/placeholders/neon-1.jpg" alt="blog"/>
+                    <div class="px-6 py-8">
+                        <h4 class="mt-4 text-2xl font-semibold text-neutral-600">
+                        <span class="">{competition.title}</span>
+                        </h4>
+                        <p class="mt-4 text-base font-normal text-gray-500 leading-relax">{competition.description}</p>
+                    </div>
+                    </div>
+                </div>
+            </section>
+            
+            </>
+        )}
+    }))}, [selectedUser])
+
+    console.log(twMappedCompetitions)
     
     // Now that entry has the competition information allowed, I can probably just pull that entry.competition.id
     // and also navigate to it
@@ -94,6 +126,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     function navigateToCompetition(id) {
         console.log(user.id)
         navigate(`/competition/${id}`)
+        setViewedFromUser(true)
     }
 
 //--------------------------------------------------------------------------------------------------------
@@ -157,41 +190,63 @@ useEffect(()=>{
 
     //This portion handles displaying a users entry on their dashboard
     // use effect to map over users entries, since it's in useEffect I needed a state to hold the data that gets put out 
-    useEffect(() => {
-        if (entry){
-            setMappedEntries(
-                entry?.map((oneEntry) => {
-                return (
-                <div>
-                    {/* {console.log(oneEntry.user_id)} */}
-                    <br></br>
-                    <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition: {oneEntry.competitions.title} </button>
-                    {/* maybe something like "clicked from dash state?" 
-                    it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
-                    <br></br>
-                    <br></br>
-                    <p>Submission: {oneEntry.submission}</p>
-                    <br></br>
-                    <br></br>
-                    <p>Description: {oneEntry.description}</p>
-                    <br></br>
-                    <br></br>
-                    <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>
-                    <br></br>
+    // useEffect(() => {
+    //     if (entry){
+    //         setMappedEntries(
+    //             entry?.map((oneEntry) => {
+    //             return (
+    //             <div>
+    //                 {/* {console.log(oneEntry.user_id)} */}
+    //                 <br></br>
+    //                 <button onClick={() => navigateToCompetition(oneEntry.competitions.id)}> Competition: {oneEntry.competitions.title} </button>
+    //                 {/* maybe something like "clicked from dash state?" 
+    //                 it would be nice if after hitting this button and hitting back it takes them back to user dashboard */}
+    //                 <br></br>
+    //                 <br></br>
+    //                 <p>Submission: {oneEntry.submission}</p>
+    //                 <br></br>
+    //                 <br></br>
+    //                 <p>Description: {oneEntry.description}</p>
+    //                 <br></br>
+    //                 <br></br>
+    //                 <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button>
+    //                 <br></br>
 
-                    {toggleEntryDelete ? entryDeleteBtn : 
-                    <div>
-                        <button onClick={() => handleEntryDelete(oneEntry)}> Yes DELETE my ENTRY.</button>
-                        <br></br>
-                        <button onClick={handleEntryToggle}> No it was a mistake</button>
-                        {/* seems I had to move this stuff to inside of the ternary instead? */}
-                    </div>
-                    }
-                    <br></br>
-                    <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
-                </div>)
-                })
-            )
+    //                 {toggleEntryDelete ? entryDeleteBtn : 
+    //                 <div>
+    //                     <button onClick={() => handleEntryDelete(oneEntry)}> Yes DELETE my ENTRY.</button>
+    //                     <br></br>
+    //                     <button onClick={handleEntryToggle}> No it was a mistake</button>
+    //                     {/* seems I had to move this stuff to inside of the ternary instead? */}
+    //                 </div>
+    //                 }
+    //                 <br></br>
+    //                 <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+    //             </div>)
+    //             })
+    //         )
+    //     }
+    //   }, [entry, toggleEntryDelete])
+
+
+      useEffect(()=> {
+        if (entry){
+            setMappedEntries(entry?.map((oneEntry) =>{
+                return(
+            <div className="p-6">
+            <header className="mb-4">
+              <h3 className="text-xl font-medium text-slate-700">
+              {oneEntry.submission}
+              </h3>
+              <p className="text-sm text-slate-400">By {user.username}</p>
+            </header>
+            <p>
+            {oneEntry.description}
+            </p>
+            </div>
+                )
+            })
+                )
         }
       }, [entry, toggleEntryDelete])
 
@@ -360,7 +415,7 @@ useEffect(() => {
         </div>
     )
 
-//------------------------------------------TAILWIND DELeTE------------------------------------------
+//------------------------------------------TAILWIND DELETE------------------------------------------
 
 
 const twDeleteBtn = (
@@ -398,6 +453,9 @@ const twConfirmDelete = (
     </>
 )
 
+//------------------------------------------TAILWIND ADD MORE HOBY BUTTON------------------------------------------
+
+
 const twAddMoreHobbiesBtn = (    
     <>
     <Link to='/user-hobby-selection'>
@@ -411,8 +469,14 @@ const twAddMoreHobbiesBtn = (
     </Link>
     </>
     )
+//------------------------------------------TAILWIND enty cards ------------------------------------------
 
-    //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+
+
+
+
+
+//---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     
     //To handle going to the edit page 
     function handleEdit(e) {
@@ -601,6 +665,15 @@ const twAddMoreHobbiesBtn = (
             </div>
           </div>
         </section>
+        
+        <div class="flex flex-wrap mx-56 md:flex-nowrap p-12">
+        {twMappedCompetitions}
+        </div>
+
+        <div className="overflow: auto; items-start m-auto bg-white rounded shadow-lg text-slate-500 shadow-slate-200 p-1">
+        {mappedEntries}
+        </div>
+
         </>
         
     )

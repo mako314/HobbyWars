@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function CompetitionDisplay({user, setCompetitions, competitions, setCompID, compID}){
+function CompetitionDisplay({user, setCompetitions, competitions, setCompID, compID, viewedFromUser}){
 
 //THIS PAGE DOES NOT LIKE TO BE REFRESEHD ???
 
@@ -123,6 +123,15 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         navigate(`/competition-submissions/${id}`)
         setCompID(id)
     }
+
+    function handleBackNav() {
+        if (viewedFromUser === true){
+            navigate(`/user-dashboard/${user.id}`)
+            } else {
+            navigate(`/competition-submissions/${id}`)
+            setCompID(id)
+            }
+    }
     
     //Handles the toggling of the delete button, meaning it will let the user toggle between delete and then making sure they confirm.
     function handleToggle() {
@@ -179,9 +188,9 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <p>{registration_schedule}</p>
 
             <div>-------------------------</div>
-            <Link to='/competitions'>
-            <button> BACK BUTTON</button>
-            </Link>
+
+            <button onClick={handleBackNav}> BACK BUTTON</button>
+
 
             <br></br>
             <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>
@@ -222,9 +231,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <br></br>
             
             <div>-------------------------</div>
-            <Link to='/competitions'>
-            <button> BACK BUTTON</button>
-            </Link>
+            <button onClick={handleBackNav}> BACK BUTTON</button>
 
             <br></br>
             <button onClick={handleCompSubmissionNav}> VIEW SUBMISSIONS</button>

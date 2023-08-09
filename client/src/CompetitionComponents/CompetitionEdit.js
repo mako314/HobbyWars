@@ -354,9 +354,9 @@ function CompetitionEdit({user, compID, updateCompetition}){
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
     <div class="mb-10 md:mb-16">
-      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Enlist in the Hobby Wars Campaign</h2>
+      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Edit your Competition</h2>
 
-      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Are you ready to join the ranks? Engage with fellow enthusiasts, unleash your creativity, and be a part of the vibrant Hobby Wars movement. Embrace the exhilarating rush of challenges, the thrill of friendly rivalries, and the forging of profound bonds with fellow adventurers!</p>
+      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Made a mistake when declaring your War? Worry not, you change the details at any time!</p>
     </div>
 
     <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">

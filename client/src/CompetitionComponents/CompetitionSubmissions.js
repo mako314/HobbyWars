@@ -236,23 +236,23 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
   
                     return(
                 <section>
-                    <div class="relative">
-                        {/* <div class="relative flex justify-start">
+                    <div className="relative">
+                        {/* <div className="relative flex justify-start">
                         </div> */}
                     </div>
-                    <div class="space-y-8 lg:divide-y lg:divide-gray-100">
-                        <div class="pt-8 sm:flex lg:items-end group">
+                    <div className="space-y-8 lg:divide-y lg:divide-gray-100">
+                        <div className="pt-8 sm:flex lg:items-end group">
                         
-                            <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
-                                <img class="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                            <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
                             </div>
                             
                             <div>
-                                <span class="text-sm text-gray-500">{oneEntry.submission}</span>
-                                <p class="mt-3 text-lg font-medium leading-6">
-                                <span class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
+                                <span className="text-sm text-gray-500">{oneEntry.submission}</span>
+                                <p className="mt-3 text-lg font-medium leading-6">
+                                <span className="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
                                 </p>
-                                <p class="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
+                                <p className="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
 
                                 <button
                                 className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
@@ -333,21 +333,21 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                 entry?.map((oneEntry) =>{
                     return(
                 <section>
-                    <div class="relative">
+                    <div className="relative">
                     </div>
-                    <div class="space-y-8 lg:divide-y lg:divide-gray-100">
-                        <div class="pt-8 sm:flex lg:items-end group">
+                    <div className="space-y-8 lg:divide-y lg:divide-gray-100">
+                        <div className="pt-8 sm:flex lg:items-end group">
                         
-                            <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
-                                <img class="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                            <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
                             </div>
                             
                             <div>
-                                <span class="text-sm text-gray-500">{oneEntry.submission}</span>
-                                <p class="mt-3 text-lg font-medium leading-6">
-                                <span class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
+                                <span className="text-sm text-gray-500">{oneEntry.submission}</span>
+                                <p className="mt-3 text-lg font-medium leading-6">
+                                <span className="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
                                 </p>
-                                <p class="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
+                                <p className="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
 
                                 <button
                                 className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
@@ -393,7 +393,6 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 <div className="relative flex flex-col justify-between h-full">
         <div>
             {/* Your main content */}
-            wowowoowow
             {user ? loggedInDisplay : loMappedCompEntries}
         </div>
 

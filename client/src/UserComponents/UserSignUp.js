@@ -280,7 +280,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers}){
 
       <div class="sm:col-span-2">
         <label for="bio" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Bio</label>
-        <textarea type="text" name="bio" value={formik.values.bio} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
+        <textarea type="text" name="bio" value={formik.values.bio} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div class="flex items-center justify-between sm:col-span-2">

@@ -51,35 +51,72 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
     // }
 
     const loggedInDisplay = (
-        <div>
+        // <div>
 
-        <form onSubmit={formik.handleSubmit}>
+        // <form onSubmit={formik.handleSubmit}>
 
-        <div className="user-signup-input">
-            <label> What is your hobby? </label>
-            <input
-            type="text"
-            name="type_of_hobby"
-            value={formik.values.type_of_hobby}
-            onChange={formik.handleChange}
-            />
-        </div>
+        // <div className="user-signup-input">
+        //     <label> What is your hobby? </label>
+        //     <input
+        //     type="text"
+        //     name="type_of_hobby"
+        //     value={formik.values.type_of_hobby}
+        //     onChange={formik.handleChange}
+        //     />
+        // </div>
 
-        <div className="user-signup-input">
-            <label> Please enter a short description of the hobby </label>
-            <textarea
-            type="text"
-            name="description"
-            value={formik.values.description}
-            onChange={formik.handleChange}
-            />
-        </div>
+        // <div className="user-signup-input">
+        //     <label> Please enter a short description of the hobby </label>
+        //     <textarea
+        //     type="text"
+        //     name="description"
+        //     value={formik.values.description}
+        //     onChange={formik.handleChange}
+        //     />
+        // </div>
  
-        <button type="submit" className="" > Add my Hobby! </button>
-        {/* onSubmit={navigateToSelection} */}
+        // <button type="submit" className="" > Add my Hobby! </button>
+        // {/* onSubmit={navigateToSelection} */}
 
-        </form>
+        // </form>
     
+        // </div>
+        <div class="bg-white py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+
+            <div class="mb-10 md:mb-16">
+            <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Can't Find your Hobby? Add it Here!</h2>
+
+            <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Thanks for Contributing to the Cause! o7</p>
+            </div>
+
+            <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+
+            <div class="sm:col-span-2">
+                <label for="type_of_hobby" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is your Hobby?</label>
+                <input type="text" name="type_of_hobby" value={formik.values.type_of_hobby} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+            </div>
+
+            <div class="sm:col-span-2">
+                <label for="description" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Please Enter a Short Description of the Hobby</label>
+                <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
+            </div>
+
+            <div class="flex items-center justify-between sm:col-span-2">
+
+                {/* NEED TO CHANGE COLOR */}
+                <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Submit Result</button>
+                
+
+                {/* NEED A BACK BUTTON */}
+                {/* <button onClick={backToCompetition} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back </button> */}
+                
+                <span class="text-sm text-gray-500">*Required</span>
+            </div>
+
+            </form>
+
+        </div>
         </div>
     )
 

@@ -278,7 +278,7 @@ function App() {
         <div>
             <Header user={user} setUser={setUser}/>
 
-            {user ? loggedInDisplay : loggedOutDisplay }
+            {/* {user ? loggedInDisplay : loggedOutDisplay } */}
             <Routes>
 
                 {/* HOME PAGE ROUTING */}

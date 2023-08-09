@@ -106,7 +106,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     const userConfirm = (toggleDelete ? deleteBtn : confirmDelete)
     
     //Tailwind user to confirm
-
+    
 
     //Tailwind deleteBtn
     const twDeleteBtn = (
@@ -116,10 +116,35 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         style={{ transition: "all .15s ease" }}
         onClick={handleToggle}
         >
-        Add more Hobbies!
+        Delete my Competition
         </button>
     )
 
+    //Button (TAILWIND) to confirm that you'd like to delete the competition, this actually sends the delete request. Or you can go back.
+    const twConfirmDelete = (
+        <>
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleCompetitionDelete(competition)}
+        >
+        Yes DELETE my competition.
+        </button>
+        <br/>
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        No it was a Mistake.
+        </button>
+
+        </>
+    )
+    //This allows the USER to confirm if they are the correct user, FOR THE TAILWIND BUTTONS
+    const twUserConfirm = ( toggleDelete ? twDeleteBtn : twConfirmDelete)
 
 
 
@@ -134,6 +159,23 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             </button>
             </Link>
         </div>
+    )
+    
+    //A button (TAILWIND) to take you to the submit entry page, you have to be logged in though 
+    const twEntryButton = (
+        <>
+        <Link to='/submit-entry'>
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        Submit an Entry
+        </button>
+        </Link>
+        </>
+
     )
 
     //This should take you to the submissions page for the competition, where you'll see all the entries
@@ -175,7 +217,19 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
 
     //actual edit button that takes you to the edit page
     const editCompetitionButton = <button onClick={() => handleCompEdit()}> Edit my Competition </button>
-    
+
+
+    const twEditCompetitionBtn = (
+        <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleCompEdit()}
+        >
+        Edit my Competition
+        </button>
+
+    )
     
     //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
@@ -276,14 +330,17 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
                             <li>{prize7}</li>
                             <li>{prize8}</li>
                         </ol>
-                    </div>
-                    <button
-                        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
-                        type="button"
-                        style={{ transition: "all .15s ease" }}
+
+                        {user.id === user_id ? twEditCompetitionBtn : ""}
+                        {user.id === user_id ? twUserConfirm : twEntryButton}
+                        <button
+                            className="mt-4 bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                            type="button"
+                            style={{ transition: "all .15s ease" }}
                         >
-                        Add more Hobbies!
-                    </button>
+                            temp button
+                        </button>
+                    </div>
                 </div>
             </>
         )

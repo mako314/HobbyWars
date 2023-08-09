@@ -11,6 +11,11 @@ import CompetitionCollection from './CompetitionComponents/CompetitionCollection
 import CompetitionDisplay from './CompetitionComponents/CompetitionDisplay';
 import CompetitionCreation from './CompetitionComponents/CompetitionCreation';
 import CompetitionSubmissions from './CompetitionComponents/CompetitionSubmissions';
+import CompetitionEdit from './CompetitionComponents/CompetitionEdit';
+
+//-------Leaderboard Imports--------
+import LeaderBoardCollection from './LeaderBoardComponents/LeaderBoardCollection';
+import LeaderBoard from './LeaderBoardComponents/LeaderBoard';
 
 //-------Login / Logout  / Signup Imports--------
 import LoginForm from './LoginComponents/LoginForm';
@@ -111,10 +116,17 @@ function App() {
     //State to determine if it was viewed from submissions
     const [viewFromSubmissions, setViewFromSubmissions] = useState(false)
 
-    //Result State for IDs
+    //State to capture entry ID for results
     const [entryResultID, setEntryResultID] = useState(0)
+    
+    //State to capture competition ID for results
+    const [compResultID, setCompResultID] = useState(0)
 
-    const [compResultID, setCompResultID] = useState(0) 
+    //State to determine whether or not a result for that competition has been declared
+    const [resultForEntryID, setResultForEntryID] = useState(0)
+
+    //State to determine the competition ID for the LEADERBOARD
+    const [leaderBoardID, setLeaderBoardID] = useState(0)
 
     //setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} this was in compsubmission page, but I think I just failed to pass the props to the wrong place...
     //compID={compID} entryID={entryID} this was in the /results route
@@ -140,6 +152,16 @@ function App() {
             setCompetitions(data)
           })
       }, [])
+
+      const updateCompetition = (competitionToUpdate) =>{
+        setCompetitions(competitions => competitions.map(competition =>{
+          if (competition.id === competitionToUpdate.id) {
+            return competitionToUpdate
+          } else {
+            return competition
+          }
+        }))
+      }
     //-------------------------------------------------------------------------------
     
     //-------------------------------------------- ENTRY FETCH / PATCH ALSO CODE--------------------------
@@ -150,8 +172,13 @@ function App() {
           .then((resp) => resp.json())
           .then((data) => {
             setEntries(data)
+            console.log(data)
           })
       }, [])
+
+      // console.log(entries)
+      // console.log(results)
+
 
 
     //This handles updating the ENTRY [PATCH]
@@ -246,7 +273,7 @@ function App() {
         </div>
       )
 
-      // console.log(user)
+
     return (
         <div>
             <Header user={user} setUser={setUser}/>
@@ -264,8 +291,15 @@ function App() {
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
-                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID}/>}/>
-
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results} entries={entries}/>}/>
+                {/* COMPETITION EDIT ROUTE */}
+                <Route path='/competition/edit/:id' element={<CompetitionEdit user={user} compID={compID} competitions={competitions} updateCompetition={updateCompetition}/>}/>
+                
+                {/* WRITE LEADERBOARD COLLECTION ROUTE/ */}
+                <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID}/>}/>
+                {/* Actual leaderboard ROUTE */}
+                <Route path='/leaderboard/:competition_id' element={<LeaderBoard user={user} competitions={competitions} leaderBoardID={leaderBoardID}/>}/>
+                
                 {/* LOGIN FORM ROUTING */}
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 
@@ -297,7 +331,7 @@ function App() {
                 <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
 
                 {/* RESULT ROUTES */}
-                <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results} compID={compID} entryID={entryID} entryResultID={entryResultID} compResultID={compResultID}/>}/>
+                <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results} compID={compID} entryID={entryID} entryResultID={entryResultID} compResultID={compResultID} setResultForEntryID={setResultForEntryID}/>}/>
                 <Route path='/results' element={<ResultCollection results={results} />}/>
 
             

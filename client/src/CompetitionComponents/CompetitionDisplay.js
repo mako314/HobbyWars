@@ -116,7 +116,8 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             </Link>
         </div>
     )
-    
+//-----------------------------------navigation PORTIONs--------------------------------
+
     //This should take you to the submissions page for the competition, where you'll see all the entries
     function handleCompSubmissionNav(e) {
         navigate(`/competition-submissions/${id}`)
@@ -136,6 +137,16 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     // let submitResultButton = <button onClick={navToSubmitResults}>Submit Results</button>
 
 
+
+    //let you edit the competition if you're the owner of the competition
+    function handleCompEdit(e) {
+        navigate(`/competition/edit/${id}`)
+        setCompID(id)
+    }
+
+    //actual edit button that takes you to the edit page
+    const editCompetitionButton = <button onClick={() => handleCompEdit()}> Edit my Competition </button>
+    
     
     //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
 
@@ -178,6 +189,8 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
             <br></br>
             {user.id === user_id ? userConfirm : entryButton}
             {/* need a button to edit the competition */}
+
+            {user.id === user_id ? editCompetitionButton : ""}
 
             {/* {user.id === user_id ? submitResultButton : ""} */}
             

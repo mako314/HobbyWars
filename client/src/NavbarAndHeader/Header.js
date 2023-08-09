@@ -33,7 +33,9 @@ function Header({user, setUser}){
             <a className="mr-5 hover:text-white">Declare War</a>
             </Link>
 
-            <a className="mr-5 hover:text-white">Placeholder</a>
+            <Link to='/leaderboard/competitions'>
+            <a className="mr-5 hover:text-white">LeaderBoards</a>
+            </Link>
 
             {/* Link to all wars / existing and current */}
             <Link to='/competitions'>
@@ -60,9 +62,14 @@ function Header({user, setUser}){
 
             {/* May have to login for this */}
             
-            <a className="mr-5 hover:text-white"> Declare War </a>
+            
+            <Link to='/war-declaration'>
+            <a className="mr-5 hover:text-white">Declare War</a>
+            </Link>
 
-            <a className="mr-5 hover:text-white">Placeholder</a>
+            <Link to='/leaderboard/competitions'>
+            <a className="mr-5 hover:text-white">LeaderBoards</a>
+            </Link>
             
             {/* Link to all wars / existing and current */}
             <Link to='/competitions'>

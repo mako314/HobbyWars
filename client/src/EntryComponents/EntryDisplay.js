@@ -38,7 +38,7 @@ function EntryDisplay({user, entryID, viewedFromUser }){
 
     //No need to map, it's a singular object.
     useEffect(() => {
-        if (singleEntry){
+        if (singleEntry && user){
             
             function navSubmissionEdit(id) {
             navigate(`/edit-entry/${id}`)
@@ -84,6 +84,7 @@ function EntryDisplay({user, entryID, viewedFromUser }){
 
 
     useEffect(() => {
+        if(entryID){
     function returnToSubmission(id){
         navigate(`/competition-submissions/${id}`)
     }
@@ -103,11 +104,11 @@ function EntryDisplay({user, entryID, viewedFromUser }){
                     
                     <br></br>
                 </div>
-            )
+            )}
 }, [singleEntry])
 
-    console.log(singleEntry)
-    if (singleEntry){}
+    // console.log(singleEntry)
+    // if (singleEntry){}
 
     //Return to the submissions page
     // function returnToSubmission(id){

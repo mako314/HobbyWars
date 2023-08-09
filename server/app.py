@@ -7,6 +7,7 @@ from flask import Flask, request, make_response, jsonify, session
 # from flask_restful import Api, Resource #original import
 from flask_restful import Resource
 from config import db, app, api
+from sqlalchemy import asc
 # import os #original import
 
 
@@ -138,7 +139,40 @@ class UserByID(Resource):
         user = User.query.filter(User.id == id).first()
 
         if user:
-            response = make_response(user.to_dict(), 200)
+            response = make_response(user.to_dict(rules=('-entry.competitions.competition_tasks',
+                                                         '-entry.competitions.description',
+                                                         '-entry.competitions.objective',
+                                                         '-entry.competitions.scoring',
+                                                         '-entry.competitions.safety_measures',
+                                                         '-entry.competitions.prize1',
+                                                         '-entry.competitions.prize2',
+                                                         '-entry.competitions.prize3',
+                                                         '-entry.competitions.prize4',
+                                                         '-entry.competitions.prize5',
+                                                         '-entry.competitions.prize6',
+                                                         '-entry.competitions.prize7',
+                                                         '-entry.competitions.prize8',
+                                                         '-entry.competitions.schedule',
+                                                         '-entry.competitions.registration_schedule',
+                                                         '-entry.competitions.requirements',
+                                                         '-entry.competitions.user',
+                                                         '-results.competitions.competition_tasks',
+                                                         '-results.competitions.description',
+                                                         '-results.competitions.objective',
+                                                         '-results.competitions.scoring',
+                                                         '-results.competitions.safety_measures',
+                                                         '-results.competitions.prize1',
+                                                         '-results.competitions.prize2',
+                                                         '-results.competitions.prize3',
+                                                         '-results.competitions.prize4',
+                                                         '-results.competitions.prize5',
+                                                         '-results.competitions.prize6',
+                                                         '-results.competitions.prize7',
+                                                         '-results.competitions.prize8',
+                                                         '-results.competitions.schedule',
+                                                         '-results.competitions.registration_schedule',
+                                                         '-results.competitions.requirements',
+                                                         '-results.competitions.user',)), 200)
         else:
             response = make_response({
                 "error": "User not found"
@@ -680,7 +714,27 @@ class EntriesByID(Resource):
         return response
 
 api.add_resource(EntriesByID, '/entry/<int:id>')
-#------------------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------Attempt at a leaderboard route--------------------------------------------------------------------------------
+
+class Leaderboard(Resource):
+    def get(self, competition_id):
+        leaderboard_entries = db.session.query(Result, Entry) \
+                                        .join(Entry, Result.entry_id == Entry.id) \
+                                        .filter(Result.competition_id == competition_id) \
+                                        .order_by(asc(Result.placement)).all()
+
+        data = []
+        for result, entry in leaderboard_entries:
+            data.append({
+                "submission": entry.submission,
+                "description": entry.description,
+                "placement": result.placement
+            })
+        return jsonify(data)
+    
+        # response = make_response({data.to_dict()})
+
+api.add_resource(Leaderboard, '/leaderboard/<int:competition_id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

@@ -4,7 +4,7 @@ import { Link ,useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
-function ResultForm({user, setResults, results, compID, entryID, compResultID, entryResultID}) {
+function ResultForm({user, setResults, results, compID, compResultID, entryResultID, setResultForEntryID}) {
     
     // I could do something where this ties with the entry tbh.
 
@@ -12,8 +12,9 @@ function ResultForm({user, setResults, results, compID, entryID, compResultID, e
     
     const navigate = useNavigate()
 
-    console.log(compResultID)
-    console.log(entryResultID)
+    //Make sure I'm getting the right comp ID and entry ID
+    // console.log(compResultID)
+    // console.log(entryResultID)
 
     const formSchema = object({
         placement: string().required('You need a submission!'),
@@ -37,9 +38,14 @@ function ResultForm({user, setResults, results, compID, entryID, compResultID, e
             })
             .then(res => {
                 if (res.ok){
-                    res.json().then(result => {
+                    res.json().then(result => { 
                         setResults([...results, result])
-                        // navigate(`/entry/${entry.id}`)
+                        setResultForEntryID(result.entry_id)
+                        // console.log(result.entry_id) // This works, now lets make it a state variable that fires off and change competition submission to indicate such
+                        //A result declartion here maybe?
+                        
+                        navigate(`/competition-submissions/${compID}`)
+                        
                         //can add state here to say it came from user entry submission
                         //Add where you want it to go here / anything else you want it to do
                     })

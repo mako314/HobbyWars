@@ -2,7 +2,12 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results, entries}){
+
+
+    //resultForEntryID and setEntryResultID are going to help make a toggle to see whether or not a user has submitted a result then removing the button
+
+//------------------------------------------------------------------ STATE PORTIONS----------------------------------------------------
 
     //setCompID
     const navigate = useNavigate();
@@ -18,7 +23,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
     //Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back
 
-
+//------------------------------------------------------------------ use effect PORTIONS----------------------------------------------------
 
     //take the params from when you click on VIEW SUBMISSIONS button
     const {id} = useParams()
@@ -34,6 +39,8 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
     //   console.log(compEntries.entry)
 
+//------------------------------------------------------------------ NAVIGATION PORTIONS----------------------------------------------------
+
 
     //Destrcuture the entries from competiton, needs to be ENTRY
       const {
@@ -42,7 +49,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
       } = compEntries
       
     //   console.log(entry)
-    console.log(compEntries)
+    //   console.log(compEntries)
     
     //Function to take you to the edit
     function navSubmissionEdit(id) {
@@ -73,18 +80,74 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
         setCompResultID(idForCompetition)
         //This above works!
 
+        //This is where you you can determine if the declare a result button was clicked
+
         navigate(`/declare-results/`)
     }
+//----------------------------------------------------------------------------------------------------------------------
 
-    // let resultSubmitButton = <button onClick={navToSubmitResults (oneEntry.id, oneEntry.competition_id)}> Declare a result </button>
 
+
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
     //once data is fetched, and if the data exists, map over it and display the submissions and entries for a logged in user
     //This one will populate the logged in display, the next useEffect has no edit button
+
+    // let resultFlag = false
+
+
+    // results.forEach((result) =>{
+    //     // console.log(result)
+    //     entries.forEach((entry)=>{
+    //         // console.log(entry)
+    //         if (result.entry_id === entry.id){
+    //             resultFlag = true
+    //         }
+    //     })
+    // })
+
+    //make a list of what I need
+    // result.entry_id === entry.id 
+
+
+    // console.log(resultFlag)
+    // console.log(entryFlag)
+
+    // can do two for eachs...
+
+    // console.log(results)
+    // console.log(entries)
+
+    // console.log(entry.result_id === results.entry_id)
+
+    // let resultFlag = false
+    // results.forEach((result) =>{
+    //     entries.forEach((oneEntry)=>{
+    //     if (result.entry_id === oneEntry.id){
+    //         resultFlag = true}})
+    //     })
+
+    
+
+
     useEffect(() =>{
         if (entry && user && user_id){
             setUserMappedCompEntries(
                 entry?.map((oneEntry) => {
+                // Initialize resultFlag to false for each oneEntry
+                let resultFlag = false
+
+                // Check if there exists a result with a matching entry_id for the current oneEntry
+                results.forEach(result => {
+                    if (result.entry_id === oneEntry.id) {
+                        resultFlag = true
+                    }
+                })
+
+                let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
+
+                console.log(resultFlag)
+
                     return (
                         <div>
                             <br></br>
@@ -111,7 +174,8 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
                             { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
                             
-                            {user.id === user_id ?  <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : ""}
+                            {user.id === user_id ? userOwnedComp : ""}
+                            
                         </div>
                     )
                 })

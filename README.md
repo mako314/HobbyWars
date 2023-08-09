@@ -271,3 +271,11 @@ need to make more front end validations with yup for competitions and other thin
 
 Maybe a state to indicate whether or not you came from this page? That way you do not get navigated back to userDashboard if you hit back //////////////// got a lot of this done today 8/7/23
 This can go for each and every 1 of the thingamajiggies (pages)
+
+
+
+//After submission of a result where should they go ? 
+
+if a result is declared, should I say so?
+
+competition edit page...

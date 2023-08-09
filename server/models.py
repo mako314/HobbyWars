@@ -223,7 +223,7 @@ class Competition(db.Model, SerializerMixin):
     serialize_rules = (#remove recursing back to competitions from entry
                        '-entry.competitions',
                        #remove user from entry portion ## NEED TO CHANGE entry TO ENTRY UNFORTUNATELY
-                       '-entry.user',
+                    #    '-entry.user',
                        #remove recursing back to competitions from result
                        '-results.competitions',
                        #remove user from result portion

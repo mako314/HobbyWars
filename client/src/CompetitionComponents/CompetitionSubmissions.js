@@ -130,59 +130,106 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     
 
 
-    useEffect(() =>{
+    // useEffect(() =>{
+    //     if (entry && user && user_id){
+    //         setUserMappedCompEntries(
+    //             entry?.map((oneEntry) => {
+    //             // Initialize resultFlag to false for each oneEntry
+    //             let resultFlag = false
+
+    //             // Check if there exists a result with a matching entry_id for the current oneEntry
+    //             results.forEach(result => {
+    //                 if (result.entry_id === oneEntry.id) {
+    //                     resultFlag = true
+    //                 }
+    //             })
+
+    //             let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
+
+    //             console.log(resultFlag)
+
+    //                 return (
+    //                     <div>
+    //                         <br></br>
+    //                         Entry
+    //                         <br></br>
+
+    //                         <div>
+    //                             Submission:
+    //                         <p>{oneEntry.submission}</p>
+    //                         </div>
+
+    //                         <br></br>
+
+    //                         <div>
+    //                             Description:
+    //                         <p>{oneEntry.description}</p>
+    //                         </div>
+
+    //                         <br></br>
+
+    //                         <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+                            
+    //                         <br></br>
+
+    //                         { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
+                            
+    //                         {user.id === user_id ? userOwnedComp : ""}
+                            
+    //                     </div>
+    //                 )
+    //             })
+    //             )
+    //     }
+
+    //   }, [entry, user])
+
+
+
+      useEffect(() => {
         if (entry && user && user_id){
             setUserMappedCompEntries(
-                entry?.map((oneEntry) => {
-                // Initialize resultFlag to false for each oneEntry
-                let resultFlag = false
+                entry?.map((oneEntry) =>{
+                    let resultFlag = false
+                    console.log(oneEntry)
 
-                // Check if there exists a result with a matching entry_id for the current oneEntry
-                results.forEach(result => {
-                    if (result.entry_id === oneEntry.id) {
-                        resultFlag = true
-                    }
-                })
+                    results.forEach(result =>{
+                        if (result.entry_id === oneEntry.id) {
+                            resultFlag = true
+                        }
+                    })
 
-                let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
+                    let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
 
-                console.log(resultFlag)
-
-                    return (
-                        <div>
-                            <br></br>
-                            Entry
-                            <br></br>
-
-                            <div>
-                                Submission:
-                            <p>{oneEntry.submission}</p>
-                            </div>
-
-                            <br></br>
-
-                            <div>
-                                Description:
-                            <p>{oneEntry.description}</p>
-                            </div>
-
-                            <br></br>
-
-                            <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
-                            
-                            <br></br>
-
-                            { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
-                            
-                            {user.id === user_id ? userOwnedComp : ""}
-                            
-                        </div>
+                    return(
+                        <section>
+                <div class="relative">
+                    <div class="relative flex justify-start">
+                    </div>
+                </div>
+                <div class="space-y-8 lg:divide-y lg:divide-gray-100">
+                    <div class="pt-8 sm:flex lg:items-end group">
+                    <div class="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+                        <img class="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                    </div>
+                    <div>
+                        <span class="text-sm text-gray-500">August 20.20.21</span>
+                        <p class="mt-3 text-lg font-medium leading-6">
+                        <span class="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.submission} </span>
+                        </p>
+                        <p class="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
+                    </div>
+                    </div>
+           
+                </div>
+                </section>
                     )
                 })
-                )
-        }
+            )
 
+        }
       }, [entry, user])
+      
     
     
     //This useEffect maps over the competitions entries, and it sets for a logged out user, there is no button to handle an edit for example.

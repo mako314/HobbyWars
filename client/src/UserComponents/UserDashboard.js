@@ -490,7 +490,7 @@ const twDeleteBtn = (
         style={{ transition: "all .15s ease" }}
         onClick={handleToggle}
         >
-        Delete
+        Delete MY ACCOUNT
     </button>
 )
 
@@ -687,7 +687,7 @@ const twAddMoreHobbiesBtn = (
                         <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
                           89
                         </span>
-                        <span className="text-sm text-gray-500">Comments</span>
+                        <span className="text-sm text-gray-500">Entries</span>
                       </div>
                     </div>
                   </div>

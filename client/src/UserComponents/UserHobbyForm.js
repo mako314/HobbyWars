@@ -122,7 +122,8 @@ const navigate = useNavigate()
     // console.log(hobbyID)
     
 
-//---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
+///------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+
 // Going to try and remove the form portion here and add it to MasterUserHobbyForm
     const loggedInDisplay = (
         // <>
@@ -235,7 +236,7 @@ const navigate = useNavigate()
     const loggedOutDisplay = (
         <>
         <div>
-        Please Log in to access this data
+        Please Log in to add new Hobbies to our List!
         </div>
         <Link to='/login'>
         <button> Login </button>

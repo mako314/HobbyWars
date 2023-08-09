@@ -129,6 +129,7 @@ function CompetitionEdit({user, compID, updateCompetition}){
     }
       }, [user, compID, oneCompEdit])
 
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
     let loggedInDisplay 
     if(user && formik && oneCompEdit){

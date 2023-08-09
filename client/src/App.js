@@ -305,7 +305,7 @@ function App() {
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 
                 {/* USER SIGNUP ROUTING*/}
-                <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers} user={user}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries} setEditFromSubmissions={setEditFromSubmissions} setViewedFromUser={setViewedFromUser}/>}/>

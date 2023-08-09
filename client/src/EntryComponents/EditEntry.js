@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
@@ -119,13 +119,15 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
             })
     }
       }, [user, entryInfo])
-    
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+ 
     // Console logs, 
     // Page breaks on reload and by breaks I mean the inputs no longer linger, can probably move some stuff around but I'll see
     // console.log(entryInfo.competition_id)
     // console.log(user.id)
-    // console.log(entryInfo)
+    console.log(entryInfo)
     // console.log(entryID)
+
     const loggedInDisplay = (
       <div className="bg-white py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -165,7 +167,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
     )
     const loggedOutDisplay=(
       <div>
-          <p> Sorry, but you must be logged in to edit a War!</p>
+          <p> Sorry, but you do not seem to be the owner of that entry. If you think this is a mistake, check your route and try again.</p>
       
           <Link to='/login'>
           <button> Login </button>
@@ -176,7 +178,18 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
 
     return(
-        // <div>
+      <>
+      {user && entryInfo && user.id === entryInfo.user_id ? loggedInDisplay : loggedOutDisplay}
+      </>
+  
+    )
+}
+
+export default EntryEdit;
+
+
+
+      // <div>
         //     <form className="signup-form" onSubmit={formik.handleSubmit}>
         //             {/* display errors from formik/yup */}
         //             { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
@@ -221,41 +234,37 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
 
 
-        <div className="bg-white py-6 sm:py-8 lg:py-12">
-  <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+//         <div className="bg-white py-6 sm:py-8 lg:py-12">
+//   <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-    <div className="mb-10 md:mb-16">
-      <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
+//     <div className="mb-10 md:mb-16">
+//       <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
 
-      <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
-    </div>
+//       <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
+//     </div>
 
-    <form onSubmit={formik.handleSubmit} className="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+//     <form onSubmit={formik.handleSubmit} className="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
 
-      <div className="sm:col-span-2">
-        <label for="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
-        <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.submission}/>
-      </div>
+//       <div className="sm:col-span-2">
+//         <label for="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
+//         <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.submission}/>
+//       </div>
 
-      <div className="sm:col-span-2">
-        <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
-        <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.description}/>
-      </div>
+//       <div className="sm:col-span-2">
+//         <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
+//         <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.description}/>
+//       </div>
 
-      <div className="flex items-center justify-between sm:col-span-2">
+//       <div className="flex items-center justify-between sm:col-span-2">
 
-        {/* NEED TO CHANGE COLOR */}
-        <button type="submit" className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Finished Editing Entry</button>
+//         {/* NEED TO CHANGE COLOR */}
+//         <button type="submit" className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Finished Editing Entry</button>
 
-        {editFromSubmissions ? submissionsReturnbtn : userDashButton}
+//         {editFromSubmissions ? submissionsReturnbtn : userDashButton}
         
-      </div>
+//       </div>
 
-    </form>
+//     </form>
 
-  </div>
-</div>
-    )
-}
-
-export default EntryEdit;
+//   </div>
+// </div>

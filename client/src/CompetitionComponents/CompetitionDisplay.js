@@ -308,6 +308,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     //         {/* double ternary, checks if user.id matches the id of the competition user_id, then allows them to delete the button with userConfirm */}
     //     </div>
     // )}
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
     if (user) {
         loggedInDisplay=(

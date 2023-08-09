@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
@@ -81,6 +81,11 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
 
       let loggedInDisplay
 
+
+
+
+      //------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+
       loggedInDisplay = (
         <div class="bg-white py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
@@ -114,6 +119,16 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
         </div>
       )
 
+      const loggedOutDisplay = (
+        <div>
+            <p> You must either login, or be affiliated with that User Hobby to edit it.</p>
+            <div></div>
+            <Link to='/login'>
+            <button> Login </button>
+            </Link>
+        </div>
+        )
+
 
     return(
         // <div>
@@ -142,7 +157,7 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
 
         // </div>
         <>
-        {loggedInDisplay}
+        {user && user.id === userHobbyInfo.user_id ? loggedInDisplay : loggedOutDisplay}
         </>
     )
 }

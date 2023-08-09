@@ -50,6 +50,12 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
     //     navigate('/user-hobby-selection')  
     // }
 
+
+
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+
+
+
     const loggedInDisplay = (
         // <div>
 

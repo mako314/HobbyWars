@@ -87,6 +87,13 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions }){
     //     }
     // }, [singleEntry, entryID])
 
+
+
+    
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+
+
+
     useEffect(() => {
         if (singleEntry && user && entryID && singleEntry.user){
             

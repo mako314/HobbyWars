@@ -78,6 +78,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
         })
     }
       }, [user])
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
 
     const loggedInDisplay = (
         // <div>

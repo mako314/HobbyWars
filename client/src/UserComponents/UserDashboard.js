@@ -360,7 +360,57 @@ useEffect(() => {
         </div>
     )
 
-//--------------------------------------------------------------------------------------------------------
+//------------------------------------------TAILWIND DELeTE------------------------------------------
+
+
+const twDeleteBtn = (
+    <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        Delete
+    </button>
+)
+
+const twConfirmDelete = (
+    <>
+    <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={() => handleUserDelete(user)}
+        >
+        CONFIRM DELETE
+    </button>
+
+    <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        onClick={handleToggle}
+        >
+        Whoops, accident!
+    </button>
+
+    
+    </>
+)
+
+const twAddMoreHobbiesBtn = (    
+    <>
+    <Link to='/user-hobby-selection'>
+    <button
+        className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+        type="button"
+        style={{ transition: "all .15s ease" }}
+        >
+        Add more Hobbies!
+    </button>
+    </Link>
+    </>
+    )
 
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
     
@@ -478,9 +528,15 @@ useEffect(() => {
                         className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                         type="button"
                         style={{ transition: "all .15s ease" }}
+                        onClick={handleEdit}
                       >
-                        Connect
+                        Edit
                       </button>
+
+                      {toggleDelete ? twDeleteBtn : twConfirmDelete}
+                      {twAddMoreHobbiesBtn}
+
+                      
                     </div>
                   </div>
                   <div className="w-full lg:w-4/12 px-4 lg:order-1">
@@ -511,8 +567,10 @@ useEffect(() => {
                   {firstName} {lastName}
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
-                    <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-                    {location}
+                    <i className="fas fa-map-marker-alt mr-2 text-base text-gray-500">{location}</i>
+                  </div>
+                  <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
+                    <p className="fas fa-map-marker-alt mr-2 text-base text-gray-500">{username}</p>
                   </div>
                   <div className="mb-2 text-gray-700 mt-10">
                     <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>

@@ -748,16 +748,60 @@ const twAddMoreHobbiesBtn = (
 
 
 
-    const loggedOutDisplay=(
-        <div>
-            <p> Sorry, but you must be logged in to view this page.</p>
-            {/* Maybe a button here that takes them to login? */}
-            {/* Or I could incorporate the functionality here and also allow for them to login here? */}
-            <Link to='/login'>
-            <button> Login </button>
-            </Link>
+    // const loggedOutDisplay=(
+    //     <div>
+    //         <p> Sorry, but you must be logged in to view this page.</p>
+    //         {/* Maybe a button here that takes them to login? */}
+    //         {/* Or I could incorporate the functionality here and also allow for them to login here? */}
+    //         <Link to='/login'>
+    //         <button> Login </button>
+    //         </Link>
+    //     </div>
+    // )
+
+
+    
+  function TakeMeToLogin() {
+    navigate(`/login`)
+  }
+
+  function TakeMeHome(){
+    navigate(`/`)
+  }
+
+  const loggedOutDisplay = (
+
+      <div class="bg-white py-6 sm:py-8 lg:py-12">
+      <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+        <div class="grid gap-8 sm:grid-cols-2">
+
+          <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+            <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" class="h-full w-full object-cover object-center" />
+          </div>
+
+          <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
+            <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
+            <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> Sorry, but you must be logged in to view your profile!</h1>
+
+            <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">Please Login to see your profile! If you believe this to be an error, check your route and try again.</p>
+
+            <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
+              
+              <button onClick={TakeMeHome} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
+
+
+              <br/>
+
+              <button onClick={TakeMeToLogin} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Login</button>
+            
+            </nav>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+
+  )
+
 
     return (
         <div>

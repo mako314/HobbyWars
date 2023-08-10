@@ -269,7 +269,7 @@ const navigate = useNavigate()
               <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
               <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> You have to be signed in to access this page!</h1>
 
-              <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">Please Log in to add new Hobbies to our List!</p>
+              <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">Please Log in to add new Hobbies to our List! If you believe this to be an error, check your route and try again.</p>
 
               <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
                 

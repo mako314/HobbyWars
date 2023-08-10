@@ -24,7 +24,7 @@ function Header({user, setUser}){
 
     
     //---------------------------------------LOGIN CONDITIONALS----------------------------------------------------
-
+    //Change hovers to see better
     const loggedInDisplay = (
         <>
             <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
@@ -85,7 +85,7 @@ function Header({user, setUser}){
 
             {/* Links to user login and prompts them to login */}
             <Link to='/login'>
-            <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-gray-700 rounded text-base mt-4 md:mt-0"> Login </button>
+            <button className="inline-flex items-center bg-gray-800 border-0 py-1 px-3 focus:outline-none hover:bg-white rounded text-base mt-4 md:mt-0"> Login </button>
             </Link>
             
         </>

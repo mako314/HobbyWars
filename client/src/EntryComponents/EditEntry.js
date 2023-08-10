@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {useFormik} from "formik"
 import { object, string, number} from 'yup'
 
@@ -80,7 +80,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
     //Button to return to the userdash board, conditionally rendered
     let userDashButton
     // let userDashButton = <button onClick={backToDash}> Back </button>
-    userDashButton = <button onClick={backToDash} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back to Profile </button>
+    userDashButton = <button onClick={backToDash} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back to Profile </button>
 
 
     //takes you back to submissions if you came from submissions
@@ -92,7 +92,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
     let submissionsReturnbtn
     // let submissionsReturnbtn = <button onClick={backToSubmissions}> Back </button>
 
-    submissionsReturnbtn = <button onClick={backToSubmissions} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back to Submissions </button>
+    submissionsReturnbtn = <button onClick={backToSubmissions} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back to Submissions </button>
 
 //---------------------------------------------------------------------------------USE EFFECTS FOR PREPOPULATING DATA -----------------------------------------------------------------------
 
@@ -119,16 +119,118 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
             })
     }
       }, [user, entryInfo])
-    
+//------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+ 
     // Console logs, 
     // Page breaks on reload and by breaks I mean the inputs no longer linger, can probably move some stuff around but I'll see
     // console.log(entryInfo.competition_id)
     // console.log(user.id)
-    // console.log(entryInfo)
+    console.log(entryInfo)
     // console.log(entryID)
 
+    const loggedInDisplay = (
+      <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+    
+        <div className="mb-10 md:mb-16">
+          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
+    
+          <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
+        </div>
+    
+        <form onSubmit={formik.handleSubmit} className="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+    
+          <div className="sm:col-span-2">
+            <label for="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
+            <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.submission}/>
+          </div>
+    
+          <div className="sm:col-span-2">
+            <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
+            <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.description}/>
+          </div>
+    
+          <div className="flex items-center justify-between sm:col-span-2">
+    
+            {/* NEED TO CHANGE COLOR */}
+            <button type="submit" className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Finished Editing Entry</button>
+    
+            {editFromSubmissions ? submissionsReturnbtn : userDashButton}
+            
+          </div>
+    
+        </form>
+    
+      </div>
+    </div>
+
+    )
+  //   const loggedOutDisplay=(
+  //     <div>
+  //         <p> Sorry, but you do not seem to be the owner of that entry. If you think this is a mistake, check your route and try again.</p>
+      
+  //         <Link to='/login'>
+  //         <button> Login </button>
+  //         </Link>
+
+  //     </div>
+  // )
+
+  function TakeMeToLogin() {
+    navigate(`/login`)
+  }
+
+  function TakeMeHome(){
+    navigate(`/`)
+  }
+
+  const loggedOutDisplay = (
+
+      <div class="bg-white py-6 sm:py-8 lg:py-12">
+      <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+        <div class="grid gap-8 sm:grid-cols-2">
+
+          <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+            <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" class="h-full w-full object-cover object-center" />
+          </div>
+
+          <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
+            <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
+            <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> Sorry, but you do not seem to be the owner of this entry. Are you signed in?</h1>
+
+            <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">You do not seem to be the owner of that entry. If you think this is a mistake, check your route and try again.</p>
+
+            <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
+              
+              <button onClick={TakeMeHome} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
+
+
+              <br/>
+
+              <button onClick={TakeMeToLogin} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Login</button>
+            
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+  
+  
+
     return(
-        // <div>
+      <>
+      {user && entryInfo && user.id === entryInfo.user_id ? loggedInDisplay : loggedOutDisplay}
+      </>
+  
+    )
+}
+
+export default EntryEdit;
+
+
+
+      // <div>
         //     <form className="signup-form" onSubmit={formik.handleSubmit}>
         //             {/* display errors from formik/yup */}
         //             { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
@@ -173,41 +275,37 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
 
 
-        <div class="bg-white py-6 sm:py-8 lg:py-12">
-  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+//         <div className="bg-white py-6 sm:py-8 lg:py-12">
+//   <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-    <div class="mb-10 md:mb-16">
-      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
+//     <div className="mb-10 md:mb-16">
+//       <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
 
-      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
-    </div>
+//       <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
+//     </div>
 
-    <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+//     <form onSubmit={formik.handleSubmit} className="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
 
-      <div class="sm:col-span-2">
-        <label for="submission" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
-        <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.submission}/>
-      </div>
+//       <div className="sm:col-span-2">
+//         <label for="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
+//         <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.submission}/>
+//       </div>
 
-      <div class="sm:col-span-2">
-        <label for="description" class="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
-        <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.description}/>
-      </div>
+//       <div className="sm:col-span-2">
+//         <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
+//         <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.description}/>
+//       </div>
 
-      <div class="flex items-center justify-between sm:col-span-2">
+//       <div className="flex items-center justify-between sm:col-span-2">
 
-        {/* NEED TO CHANGE COLOR */}
-        <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Finished Editing Entry</button>
+//         {/* NEED TO CHANGE COLOR */}
+//         <button type="submit" className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Finished Editing Entry</button>
 
-        {editFromSubmissions ? submissionsReturnbtn : userDashButton}
+//         {editFromSubmissions ? submissionsReturnbtn : userDashButton}
         
-      </div>
+//       </div>
 
-    </form>
+//     </form>
 
-  </div>
-</div>
-    )
-}
-
-export default EntryEdit;
+//   </div>
+// </div>

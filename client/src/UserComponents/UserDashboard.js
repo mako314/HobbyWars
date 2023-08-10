@@ -601,6 +601,10 @@ const twAddMoreHobbiesBtn = (
     //     </div>
     // )
 
+
+
+    //------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
+
     
     loggedInDisplay = (
         <>
@@ -717,13 +721,6 @@ const twAddMoreHobbiesBtn = (
                       <p className="mb-4 text-lg leading-relaxed text-gray-800">
                       {bio}
                       </p>
-                      <a
-                        href="#pablo"
-                        className="font-normal text-pink-500"
-                        onClick={e => e.preventDefault()}
-                      >
-                        Show more
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -751,16 +748,60 @@ const twAddMoreHobbiesBtn = (
 
 
 
-    const loggedOutDisplay=(
-        <div>
-            <p> Sorry, but you must be logged in to view this page.</p>
-            {/* Maybe a button here that takes them to login? */}
-            {/* Or I could incorporate the functionality here and also allow for them to login here? */}
-            <Link to='/login'>
-            <button> Login </button>
-            </Link>
+    // const loggedOutDisplay=(
+    //     <div>
+    //         <p> Sorry, but you must be logged in to view this page.</p>
+    //         {/* Maybe a button here that takes them to login? */}
+    //         {/* Or I could incorporate the functionality here and also allow for them to login here? */}
+    //         <Link to='/login'>
+    //         <button> Login </button>
+    //         </Link>
+    //     </div>
+    // )
+
+
+    
+  function TakeMeToLogin() {
+    navigate(`/login`)
+  }
+
+  function TakeMeHome(){
+    navigate(`/`)
+  }
+
+  const loggedOutDisplay = (
+
+      <div class="bg-white py-6 sm:py-8 lg:py-12">
+      <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+        <div class="grid gap-8 sm:grid-cols-2">
+
+          <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+            <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" class="h-full w-full object-cover object-center" />
+          </div>
+
+          <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
+            <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
+            <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> Sorry, but you must be logged in to view your profile!</h1>
+
+            <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">Please Login to see your profile! If you believe this to be an error, check your route and try again.</p>
+
+            <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
+              
+              <button onClick={TakeMeHome} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
+
+
+              <br/>
+
+              <button onClick={TakeMeToLogin} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Login</button>
+            
+            </nav>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+
+  )
+
 
     return (
         <div>
@@ -774,132 +815,3 @@ const twAddMoreHobbiesBtn = (
 }
 
 export default UserDashboard
-
-// loggedInDisplay
-
-{/* <>
-<section className="relative block" style={{ height: "500px" }}>
-  <div
-    className="absolute top-0 w-full h-full bg-center bg-cover"
-    style={{
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')"
-    }}
-  >
-    <span
-      id="blackOverlay"
-      className="w-full h-full absolute opacity-50 bg-black"
-    ></span>
-  </div>
-  <div
-    className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
-    style={{ height: "70px" }}
-  >
-    <svg
-      className="absolute bottom-0 overflow-hidden"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="none"
-      version="1.1"
-      viewBox="0 0 2560 100"
-      x="0"
-      y="0"
-    >
-      <polygon
-        className="text-gray-300 fill-current"
-        points="2560 0 2560 100 0 100"
-      ></polygon>
-    </svg>
-  </div>
-</section>
-<section className="relative py-16 bg-gray-300">
-  <div className="container mx-auto px-4">
-    <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
-      <div className="px-6">
-        <div className="flex flex-wrap justify-center">
-          <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
-            <div className="relative">
-              <img
-                alt="..."
-                src='https://avatarfiles.alphacoders.com/107/thumb-107309.png'
-                className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
-                style={{ maxWidth: "150px" }}
-              />
-            </div>
-          </div>
-          <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-            <div className="py-6 px-3 mt-32 sm:mt-0">
-              <button
-                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
-                type="button"
-                style={{ transition: "all .15s ease" }}
-              >
-                Connect
-              </button>
-            </div>
-          </div>
-          <div className="w-full lg:w-4/12 px-4 lg:order-1">
-            <div className="flex justify-center py-4 lg:pt-4 pt-8">
-              <div className="mr-4 p-3 text-center">
-                <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                  22
-                </span>
-                <span className="text-sm text-gray-500">Friends</span>
-              </div>
-              <div className="mr-4 p-3 text-center">
-                <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                  10
-                </span>
-                <span className="text-sm text-gray-500">Photos</span>
-              </div>
-              <div className="lg:mr-4 p-3 text-center">
-                <span className="text-xl font-bold block uppercase tracking-wide text-gray-700">
-                  89
-                </span>
-                <span className="text-sm text-gray-500">Comments</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="text-center mt-12">
-          <h3 className="text-4xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
-            Jenna Stones
-          </h3>
-          <div className="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
-            <i className="fas fa-map-marker-alt mr-2 text-lg text-gray-500"></i>{" "}
-            Los Angeles, California
-          </div>
-          <div className="mb-2 text-gray-700 mt-10">
-            <i className="fas fa-briefcase mr-2 text-lg text-gray-500"></i>
-            Solution Manager - Creative Tim Officer
-          </div>
-          <div className="mb-2 text-gray-700">
-            <i className="fas fa-university mr-2 text-lg text-gray-500"></i>
-            University of Computer Science
-          </div>
-        </div>
-        <div className="mt-10 py-10 border-t border-gray-300 text-center">
-          <div className="flex flex-wrap justify-center">
-            <div className="w-full lg:w-9/12 px-4">
-              <p className="mb-4 text-lg leading-relaxed text-gray-800">
-                An artist of considerable range, Jenna the name taken by
-                Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                performs and records all of his own music, giving it a
-                warm, intimate feel with a solid groove structure. An
-                artist of considerable range.
-              </p>
-              <a
-                href="#pablo"
-                className="font-normal text-pink-500"
-                onClick={e => e.preventDefault()}
-              >
-                Show more
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> 
-
-</>*/}

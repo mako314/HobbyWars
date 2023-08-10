@@ -5,6 +5,7 @@ import { useNavigate, Route, Routes } from 'react-router-dom';
 //-------HomePage Imports-------
 import HomePage from './HomePageComponents/HomePage'
 import Header from './NavbarAndHeader/Header';
+import Footer from './NavbarAndHeader/Footer';
 
 //-------Competition Imports--------
 import CompetitionCollection from './CompetitionComponents/CompetitionCollection';
@@ -291,7 +292,7 @@ function App() {
                 {/* COMPETITION POST / DECLARATION OF WAR ROUTING */}
                 <Route path='/war-declaration' element={<CompetitionCreation user={user} setCompetitions={setCompetitions} competitions={competitions}/>}/>
                 {/* COMPETITION SEE ALL SUBMISSIONS */}
-                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results} entries={entries}/>}/>
+                <Route path='/competition-submissions/:id' element={<CompetitionSubmissions user={user} setEntryID={setEntryID} setEditFromSubmissions={setEditFromSubmissions} editFromSubmissions={editFromSubmissions} setViewFromSubmissions={setViewFromSubmissions} setCompID={setCompID} setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} resultForEntryID={resultForEntryID} results={results} entries={entries} setViewedFromUser={setViewedFromUser} compID={compID}/>}/>
                 {/* COMPETITION EDIT ROUTE */}
                 <Route path='/competition/edit/:id' element={<CompetitionEdit user={user} compID={compID} competitions={competitions} updateCompetition={updateCompetition}/>}/>
                 
@@ -304,7 +305,7 @@ function App() {
                 <Route path='/login' element={<LoginForm user={user} setUser={setUser}/>}/>
 
                 {/* USER SIGNUP ROUTING*/}
-                <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers}/>}/>
+                <Route path='/enlist' element={<UserSignUpForm setUser={setUser} setNewUsers={setNewUsers} newUsers={newUsers} user={user}/>}/>
                 
                 {/* USER DASHBOARD BY ID? */}
                 <Route path='/user-dashboard/:id' element={<UserDashboard user={user} setNewUsers={setNewUsers} newUsers={newUsers} setUser={setUser} setEntryID={setEntryID} setUserHobbyID={setUserHobbyID} setEntries={setEntries} entries={entries} setEditFromSubmissions={setEditFromSubmissions} setViewedFromUser={setViewedFromUser}/>}/>
@@ -328,7 +329,7 @@ function App() {
                 {/* EDIT ENTRY BY ID ROUTE */}
                 <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID} editFromSubmissions={editFromSubmissions}/>}/>
                 {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
-                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser}/>}/>
+                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser} viewFromSubmissions={viewFromSubmissions}/>}/>
 
                 {/* RESULT ROUTES */}
                 <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results} compID={compID} entryID={entryID} entryResultID={entryResultID} compResultID={compResultID} setResultForEntryID={setResultForEntryID}/>}/>
@@ -336,6 +337,7 @@ function App() {
 
             
             </Routes>
+            <Footer user={user} />
 
             {/* <CompetitionCollection competitions={competitions}/> */}
             {/* <HomePage/> */}

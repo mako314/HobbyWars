@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
-function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results, entries}){
+function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editFromSubmissions, setViewFromSubmissions, setCompID, setEntryResultID, setCompResultID, resultForEntryID, results, entries, setViewedFromUser={setViewedFromUser}, compID={compID}}){
 
 
     //resultForEntryID and setEntryResultID are going to help make a toggle to see whether or not a user has submitted a result then removing the button
@@ -67,9 +67,24 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     //Takes you to a single display page for the submission, ENTRY DISPLAY
     function viewSubmission(id) {
         setViewFromSubmissions(true)
+        setViewedFromUser(false)
         setEntryID(id)
         navigate(`/entry/${id}`)
     }
+
+
+    // I PUT THIS INTO THE ACTUAL DIV AND STUFF -----
+    // const twBtnForViewSubmission = (
+    //     <button
+    //     className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+    //     type="button"
+    //     style={{ transition: "all .15s ease" }}
+    //     onClick={() => viewSubmission(id)}
+    //     >
+    //     View Submission
+    //     </button>
+
+    // )
 
     //Takes you to a page to declare result for that entry need a back button there to bring me back to this page.
     function navToSubmitResults (id, idForCompetition) {
@@ -130,92 +145,231 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     
 
 
-    useEffect(() =>{
+    // useEffect(() =>{
+    //     if (entry && user && user_id){
+    //         setUserMappedCompEntries(
+    //             entry?.map((oneEntry) => {
+    //             // Initialize resultFlag to false for each oneEntry
+    //             let resultFlag = false
+
+    //             // Check if there exists a result with a matching entry_id for the current oneEntry
+    //             results.forEach(result => {
+    //                 if (result.entry_id === oneEntry.id) {
+    //                     resultFlag = true
+    //                 }
+    //             })
+
+    //             let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
+
+    //             console.log(resultFlag)
+
+    //                 return (
+    //                     <div>
+    //                         <br></br>
+    //                         Entry
+    //                         <br></br>
+
+    //                         <div>
+    //                             Submission:
+    //                         <p>{oneEntry.submission}</p>
+    //                         </div>
+
+    //                         <br></br>
+
+    //                         <div>
+    //                             Description:
+    //                         <p>{oneEntry.description}</p>
+    //                         </div>
+
+    //                         <br></br>
+
+    //                         <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+                            
+    //                         <br></br>
+
+    //                         { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
+                            
+    //                         {user.id === user_id ? userOwnedComp : ""}
+                            
+    //                     </div>
+    //                 )
+    //             })
+    //             )
+    //     }
+
+    //   }, [entry, user])
+
+
+
+      useEffect(() => {
         if (entry && user && user_id){
             setUserMappedCompEntries(
-                entry?.map((oneEntry) => {
-                // Initialize resultFlag to false for each oneEntry
-                let resultFlag = false
+                entry?.map((oneEntry) =>{
+                    let resultFlag = false
+                    console.log(oneEntry)
+                    setCompID(oneEntry.competition_id)
 
-                // Check if there exists a result with a matching entry_id for the current oneEntry
-                results.forEach(result => {
-                    if (result.entry_id === oneEntry.id) {
-                        resultFlag = true
-                    }
-                })
+                    results.forEach(result =>{
+                        if (result.entry_id === oneEntry.id) {
+                            resultFlag = true
+                        }
+                    })
 
-                let userOwnedComp = user.id === user_id && !resultFlag ? <button onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}> Declare a result </button> : " You've already submitted an entry for this table"
-
-                console.log(resultFlag)
-
-                    return (
-                        <div>
-                            <br></br>
-                            Entry
-                            <br></br>
-
-                            <div>
-                                Submission:
-                            <p>{oneEntry.submission}</p>
+                    let userOwnedComp = user.id === user_id && !resultFlag ? 
+                    <button
+                    className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    onClick={() => navToSubmitResults(oneEntry.id, oneEntry.competition_id)}
+                    >
+                    Declare Results
+                    </button>
+                    :
+                    <button
+                    className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                    type="button"
+                    style={{ transition: "all .15s ease" }}
+                    >
+                    RESULT ALREADY SUBMITTED
+                    </button>
+                    
+  
+                    return(
+                <section>
+                    <div className="relative">
+                        {/* <div className="relative flex justify-start">
+                        </div> */}
+                    </div>
+                    <div className="space-y-8 lg:divide-y lg:divide-gray-100">
+                        <div className="pt-8 sm:flex lg:items-end group">
+                        
+                            <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
                             </div>
-
-                            <br></br>
-
+                            
                             <div>
-                                Description:
-                            <p>{oneEntry.description}</p>
+                                <span className="text-sm text-gray-500">{oneEntry.submission}</span>
+                                <p className="mt-3 text-lg font-medium leading-6">
+                                <span className="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
+                                </p>
+                                <p className="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
+
+                                <button
+                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                                type="button"
+                                style={{ transition: "all .15s ease" }}
+                                onClick={() => viewSubmission(oneEntry.id)}
+                                >
+                                View Submission 
+                                </button>
+
+                                { user.id === oneEntry.user_id ? 
+                                
+                                <button
+                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                                type="button"
+                                style={{ transition: "all .15s ease" }}
+                                onClick={() => navSubmissionEdit(oneEntry.id)}
+                                >
+                                Edit this Entry
+                                </button>
+                                : " " }
+
+
+                                {user.id === user_id ? userOwnedComp : ""}
+
                             </div>
-
-                            <br></br>
-
-                            <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
-                            
-                            <br></br>
-
-                            { user.id === oneEntry.user_id ? <button onClick={() => navSubmissionEdit(oneEntry.id)}> Edit this Entry</button> : ""}
-                            
-                            {user.id === user_id ? userOwnedComp : ""}
-                            
+                        
                         </div>
+                        
+            
+                    </div>
+                </section>
                     )
                 })
-                )
-        }
+            )
 
+        }
       }, [entry, user])
+      
     
     
     //This useEffect maps over the competitions entries, and it sets for a logged out user, there is no button to handle an edit for example.
-    useEffect(() =>{
-        if (entry){
+    // useEffect(() =>{
+    //     if (entry){
+    //         setLoMappedCompEntries(
+    //             entry?.map((oneEntry) => {
+    //                 return (
+    //                     <div>
+    //                         <br></br>
+    //                         Entry:
+    //                         <br></br>
+
+    //                         <div>
+    //                             Submission:
+    //                         <p>{oneEntry.submission}</p>
+    //                         </div>
+
+    //                         <br></br>
+
+    //                         <div>
+    //                             Description:
+    //                         <p>{oneEntry.description}</p>
+    //                         </div>
+
+    //                         <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+                        
+    //                     </div>
+    //                 )
+    //             })
+    //             )
+    //     }
+
+    //   }, [entry, user])
+
+      useEffect(() => {
+        if (entry && !user){
             setLoMappedCompEntries(
-                entry?.map((oneEntry) => {
-                    return (
-                        <div>
-                            <br></br>
-                            Entry:
-                            <br></br>
-
-                            <div>
-                                Submission:
-                            <p>{oneEntry.submission}</p>
+                entry?.map((oneEntry) =>{
+                    return(
+                <section>
+                    <div className="relative">
+                    </div>
+                    <div className="space-y-8 lg:divide-y lg:divide-gray-100">
+                        <div className="pt-8 sm:flex lg:items-end group">
+                        
+                            <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
+                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
                             </div>
-
-                            <br></br>
-
+                            
                             <div>
-                                Description:
-                            <p>{oneEntry.description}</p>
-                            </div>
+                                <span className="text-sm text-gray-500">{oneEntry.submission}</span>
+                                <p className="mt-3 text-lg font-medium leading-6">
+                                <span className="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
+                                </p>
+                                <p className="mt-2 text-lg text-gray-500">{oneEntry.description}</p>
 
-                            <button onClick={() => viewSubmission(oneEntry.id)}> View Submission</button>
+                                <button
+                                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                                type="button"
+                                style={{ transition: "all .15s ease" }}
+                                onClick={() => viewSubmission(oneEntry.id)}
+                                >
+                                View Submission 
+                                </button>
+
+                            </div>
                         
                         </div>
+                        
+            
+                    </div>
+                </section>
                     )
                 })
-                )
-        }
+            )
 
+        }
       }, [entry, user])
     
     //--------------------------------------------LOGGED IN CONDITIONALS-------------------------
@@ -236,13 +390,21 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
     //Tbh I can probably make it where a user can edit this if their ID matches the ID of the COMPETITION USER ID
 
     return(
+<div className="relative flex flex-col justify-between h-full">
         <div>
-            wowowoowow
+            {/* Your main content */}
             {user ? loggedInDisplay : loMappedCompEntries}
-            <br></br>
-            <button onClick={() => backToComp(id)}> BACK BUTTON</button>
-
         </div>
+
+        <button
+            className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 self-end"
+            type="button"
+            style={{ transition: "all .15s ease" }}
+            onClick={() => backToComp(compID)}
+        >
+            BACK BUTTON 
+        </button>
+    </div>
     )
 }
 

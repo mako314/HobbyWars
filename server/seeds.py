@@ -30,7 +30,7 @@ if __name__ == '__main__':
             location="Aspen, Colorado, USA",
             phone="+1 (970) 789-1234",
             email="Emily.paints.magic88@gmail.com",
-            profileImg="link_to_profile_image_1",
+            profileImg="https://avatarfiles.alphacoders.com/121/thumb-121112.jpg",
             bannerImg="link_to_banner_image_1",
             )
         
@@ -87,7 +87,7 @@ if __name__ == '__main__':
             location="Harmonyville, New York, USA",
             phone="+1 (518) 765-4321",
             email="Aria.Harmonic31@gmail.com",
-            profileImg="link_to_profile_image_5",
+            profileImg="https://avatarfiles.alphacoders.com/731/7315.jpg",
             bannerImg="link_to_banner_image_5",
             )
         
@@ -101,7 +101,7 @@ if __name__ == '__main__':
             location="Starlight City, Arizona, USA",
             phone="+1 (602) 111-2222",
             email="Max.Cosmic46@gmail.com",
-            profileImg="link_to_profile_image_6",
+            profileImg="https://avatarfiles.alphacoders.com/128/thumb-128895.jpg",
             bannerImg="link_to_banner_image_6",
             )
         
@@ -171,7 +171,7 @@ if __name__ == '__main__':
             location="Enchantia, Maine, USA",
             phone="+1 (207) 765-4321",
             email="ivy.greene29@gmail.com",
-            profileImg="link_to_profile_image_11",
+            profileImg="https://avatarfiles.alphacoders.com/127/thumb-127802.jpg",
             bannerImg="link_to_banner_image_11",
             )
         
@@ -213,7 +213,7 @@ if __name__ == '__main__':
             location="Pixelville, California, USA",
             phone="+1 (415) 234-5678",
             email="oliver.hudson.tech@gmail.com",
-            profileImg="link_to_profile_image_14",
+            profileImg="https://avatarfiles.alphacoders.com/345/thumb-345469.png",
             bannerImg="link_to_banner_image_14",
             )
         
@@ -325,7 +325,7 @@ if __name__ == '__main__':
             location="EcoHaven, Oregon, USA",
             phone="+1 (503) 120-6052",
             email="nature_silas29@gmail.com",
-            profileImg="link_to_profile_image_35",
+            profileImg="https://avatarfiles.alphacoders.com/328/thumb-328004.jpg",
             bannerImg="link_to_banner_image_35",
             )
         
@@ -409,7 +409,7 @@ if __name__ == '__main__':
             location="Blissful Bistro, New York, USA",
             phone="+1 (917) 412-2578",
             email="zestful.zoe27@gmail.com",
-            profileImg="link_to_profile_image_41",
+            profileImg="https://avatarfiles.alphacoders.com/326/thumb-326097.jpg",
             bannerImg="link_to_banner_image_41",
             )
         
@@ -1006,7 +1006,7 @@ if __name__ == '__main__':
                 title="Trail of Ten Falls Trekking Challenge",
                 objective="The objective of this competition is to test participants' trekking abilities, endurance, and appreciation for nature as they explore the Trail of Ten Falls in Silver Falls State Park.",
                 description="Participants will form teams of 3 and undertake an unforgettable trekking adventure along the Trail of Ten Falls. The trail will showcase the park's breathtaking waterfalls and offer participants a chance to immerse themselves in the beauty of Oregon's lush wilderness. Unleash your trekking prowess in the Trail of Ten Falls Challenge! Embark on an enchanting journey through lush landscapes and captivating waterfalls. Join us for an unforgettable trek where every step sparks wonder and every moment is pure magic. Ready to embrace the trail's beauty? Let's trek together and create lasting memories!",
-                compImg = " ",
+                compImg = "https://www.oregonlive.com/resizer/4Ppj7w0bVRairNLOtuigcs5nAmY=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.oregonlive.com/home/olive-media/width2048/img/travel_impact/photo/waterfalls-of-silver-falls-state-park-44de1639dcf7dd0d.jpg",
                 scoring="Teams will earn points based on their performance in each task. The team with the highest overall score at the end of the competition will be declared the winner.",
                 cost_of_entry="",
                 schedule="",
@@ -1030,7 +1030,7 @@ if __name__ == '__main__':
                 title="Celestial Explorer Challenge",
                 objective="Embark on a captivating journey of astronomical discovery as an individual participant, where you will showcase your profound knowledge of the cosmos, hone your keen stargazing skills, and immerse yourself in the awe-inspiring beauty of the night sky through a series of celestial tasks and challenges under the twinkling canopy above.",
                 description="In the Celestial Explorer Challenge, you will become a lone adventurer under the stars, navigating the mysteries of the cosmos with zeal and curiosity. This competition is tailored for individual stargazers who seek to deepen their understanding of astronomy, test their powers of observation, and capture the essence of the night sky through enthralling challenges and astronomical quests. Indulge your passion for the stars, and let the Celestial Explorer Challenge elevate your love for astronomy to new celestial heights!",
-                compImg = " ",
+                compImg = "https://www.daysoftheyear.com/wp-content/uploads/astronomy-day1.jpg",
                 scoring="Your performance in each task will be scored, and the individual participant with the highest overall score at the end of the Celestial Explorer Challenge will claim the title of the night's most accomplished stargazer.",
                 cost_of_entry="",
                 schedule="",
@@ -1054,7 +1054,7 @@ if __name__ == '__main__':
                 title="Virtual Culinary Showdown",
                 objective="Unleash your culinary prowess and embark on a thrilling gourmet adventure as you participate in the Virtual Culinary Showdown! This online cooking competition aims to celebrate the art of cooking, ignite culinary creativity, and bring together passionate home chefs in a virtual culinary spectacle.",
                 description="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens. In the culinary theater, the virtual audience becomes an integral part of the spectacle! Through real-time comments, questions, and votes, spectators will engage with the passionate chefs, savoring the excitement and camaraderie of the Virtual Culinary Showdown. During the live stream, the virtual audience will have the opportunity to engage with the participants through real-time comments, questions, and votes for their favorite dishes. The Virtual Culinary Showdown promises to be an engaging and flavorful experience, celebrating the love of cooking and culinary artistry with a wide range of prizes for the talented participants!",
-                compImg = " ",
+                compImg = "https://media.philstar.com/photos/2023/01/28/000337n9ck_2023-01-28_09-52-17.jpg",
                 scoring="Dedicated judges will assess participants' culinary feats in each challenge, and a delectable blend of taste, technique, and presentation will be rewarded. The participant who reigns supreme with the highest overall score at the end of the Virtual Culinary Showdown will be crowned the culinary virtuoso.",
                 cost_of_entry="",
                 schedule="",
@@ -1078,7 +1078,7 @@ if __name__ == '__main__':
                 title="Coastal Serenity Art Challenge",
                 objective="Unleash the power of your creativity and immerse yourself in the captivating allure of coastal landscapes with the Coastal Serenity Art Challenge! This inspiring competition invites artists of all backgrounds to celebrate the tranquil beauty of beaches through their artistic expressions, capturing the essence of serenity that resonates with these idyllic seascapes.",
                 description="Welcome to the Coastal Serenity Art Challenge, where the mesmerizing harmony of sun-kissed shores and glistening waters serves as the muse for artistic brilliance. Against a backdrop of virtual camaraderie, participants will embark on an artistic odyssey, embracing the essence of coastal serenity through their unique perspectives and strokes of genius. The virtual art gallery will be a captivating spectacle, adorned with an array of coastal-inspired creations. As the competition unfolds, spectators and fellow artists will wander through this digital haven, savoring the captivating narratives woven into each artwork. Let your creativity wash ashore and be swept away by the Coastal Serenity Art Challenge, where the tranquil beauty of beaches becomes a canvas for artistic masterpieces!",
-                compImg = " ",
+                compImg = "https://images.saatchiart.com/saatchi/1649865/art/8400046/7464383-HSC00001-7.jpg",
                 scoring="Esteemed art connoisseurs will evaluate the artworks, guided by an appreciation for technique, composition, originality, and the ability to evoke the serene spirit of beaches. The artist with the highest overall score at the end of the Coastal Serenity Art Challenge will be hailed as the coastal artist extraordinaire.",
                 cost_of_entry="",
                 schedule="",
@@ -1102,7 +1102,7 @@ if __name__ == '__main__':
                 title="Captured Visions Photography Contest",
                 objective="Embark on a thrilling visual expedition and unleash the magic of your lens in the Captured Visions Photography Contest! This captivating competition invites photographers of all levels to explore the boundless realms of creativity and showcase their unique perspectives, encapsulating the essence of captivating moments frozen in time.",
                 description="Welcome to the Captured Visions Photography Contest, where the world becomes your canvas, and your camera becomes the brush that paints unforgettable images. In this artistic journey, photographers will delve into their passion for storytelling through imagery, capturing fleeting emotions, arresting landscapes, and life's hidden treasures. Through the digital realm, the virtual photography gallery will come alive, showcasing the entrancing collection of captivating photographs. Spectators and fellow photographers will stroll through this immersive gallery, celebrating the richness of visual storytelling.  Unleash the power of your lens and embark on an extraordinary journey of visual storytelling in the Captured Visions Photography Contest, where moments are immortalized, and emotions become art!",
-                compImg = " ",
+                compImg = "https://dvyvvujm9h0uq.cloudfront.net/com/articles/1647932770-marco-xu-toupbco62lw-unsplash.jpg",
                 scoring="A panel of expert photographers and art connoisseurs will judge the entries based on technical excellence, composition, creativity, and the ability to convey powerful emotions and narratives through the lens. The photographer with the highest overall score at the end of the Captured Visions Photography Contest will be celebrated as the visionary image-maker.",
                 cost_of_entry="",
                 schedule="",
@@ -1126,7 +1126,7 @@ if __name__ == '__main__':
                 title="Strum and Show Guitar Challenge",
                 objective="Tune your passion and skill to the perfect rhythm in the Strum and Show Guitar Challenge! This dynamic competition invites guitarists of all styles and levels to showcase their musicality, stage presence, and captivating performances, inspiring audiences with the magic of their melodies.",
                 description="Welcome to the Strum and Show Guitar Challenge, where every strum is a brushstroke, and every note paints a vibrant sonic canvas. This thrilling contest provides a stage for guitarists to unleash their musical creativity, energizing the audience with heartfelt tunes and electrifying performances. The Strum and Show Guitar Challenge will host a virtual showcase, allowing audiences to revel in the captivating performances of all participants. Virtual viewers will be immersed in a musical feast, celebrating the artistry and passion of each guitarist. Step into the spotlight and let your guitar prowess shine in the Strum and Show Guitar Challenge, where strings resonate, fingers dance, and music becomes an unforgettable experience!",
-                compImg = " ",
+                compImg = "https://e1.pxfuel.com/desktop-wallpaper/404/249/desktop-wallpaper-buckethead-guitar-guitarist-heavy-metal-progressive-funk-avant-buckethead-guitar-music.jpg",
                 scoring="A panel of music experts, seasoned performers, and audience participation will contribute to the scoring process. They will evaluate technical skills, musicality, stage presence, originality, and the ability to engage the audience. The guitarist with the highest overall score at the end of the Strum and Show Guitar Challenge will be crowned the Guitar Maestro.",
                 cost_of_entry="",
                 schedule="",
@@ -1150,8 +1150,8 @@ if __name__ == '__main__':
                 title="ElectraTech Maker Challenge",
                 objective="Spark your ingenuity and technical prowess in the ElectraTech Maker Challenge! This electrifying competition invites DIY electronics and robotics enthusiasts to showcase their innovative creations, tinkering skills, and transformative designs that push the boundaries of technology.",
                 description="Welcome to the ElectraTech Maker Challenge, where circuits come alive, and robots dance to the rhythm of innovation. This thrilling contest provides a platform for makers, DIY enthusiasts, and robotics wizards to demonstrate their technical prowess, creative problem-solving, and passion for cutting-edge technology.   The ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity. Ignite your passion for innovation and join the ElectraTech Maker Challenge, where creativity sparks, robots conquer, and technology transforms the world!",
-                compImg = " ",
-                scoring="A panel of technology experts, electronics engineers, and robotics enthusiasts will contribute to the scoring process. They will evaluate project complexity, technical sophistication, innovation, and the impact of the projects on society. The participant with the highest overall score at the end of the ElectraTech Maker Challenge will be crowned the ElectraTech Innovator.   The ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity.",
+                compImg = "https://ichef.bbci.co.uk/images/ic/1200x675/p040qmt5.jpg",
+                scoring="A panel of technology experts, electronics engineers, and robotics enthusiasts will contribute to the scoring process. They will evaluate project complexity, technical sophistication, innovation, and the impact of the projects on society. The participant with the highest overall score at the end of the ElectraTech Maker Challenge will be crowned the ElectraTech Innovator. The ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity.",
                 cost_of_entry="",
                 schedule="",
                 contact="",
@@ -1174,7 +1174,7 @@ if __name__ == '__main__':
                 title="CodeCrafters Coding Challenge",
                 objective="Enter the realm of digital mastery and showcase your coding wizardry in the CodeCrafters Coding Challenge! This exhilarating competition invites programmers of all levels to demonstrate their problem-solving skills, coding prowess, and passion for crafting elegant and efficient software solutions.",
                 description="Welcome to the CodeCrafters Coding Challenge, where lines of code become brushstrokes, and algorithms paint masterpieces of functionality. This thrilling contest provides a stage for programmers to embark on coding adventures, crafting solutions that tackle real-world challenges and push the boundaries of software development. The CodeCrafters Coding Challenge will host a virtual showcase, allowing participants and spectators to explore the coding creations of all contenders. The digital exhibit will celebrate the brilliance of software development and innovation. Unleash your coding prowess and become a true CodeCraft Master in this exciting challenge, where logic prevails, innovation thrives, and software solutions come to life!",
-                compImg = " ",
+                compImg = "https://miro.medium.com/v2/resize:fit:10116/1*VBAaUoOm0WRmAgxXVUwHIA.jpeg",
                 scoring="A panel of tech experts, software engineers, and coding enthusiasts will contribute to the scoring process. They will evaluate code efficiency, algorithm design, creativity, and the overall impact of the projects. The participant with the highest overall score at the end of the CodeCrafters Coding Challenge will be crowned the CodeCraft Champion.",
                 cost_of_entry="",
                 schedule="",

@@ -814,4 +814,4 @@ const twAddMoreHobbiesBtn = (
     )
 }
 
-export default UserDashboard
+export default UserDashboard;

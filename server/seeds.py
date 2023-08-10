@@ -31,7 +31,7 @@ if __name__ == '__main__':
             phone="+1 (970) 789-1234",
             email="Emily.paints.magic88@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/121/thumb-121112.jpg",
-            bannerImg="link_to_banner_image_1",
+            bannerImg="https://images3.alphacoders.com/130/1309519.jpg",
             )
         
         
@@ -88,7 +88,7 @@ if __name__ == '__main__':
             phone="+1 (518) 765-4321",
             email="Aria.Harmonic31@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/731/7315.jpg",
-            bannerImg="link_to_banner_image_5",
+            bannerImg="https://images4.alphacoders.com/457/4574.jpg",
             )
         
         user_6 = User(
@@ -102,7 +102,7 @@ if __name__ == '__main__':
             phone="+1 (602) 111-2222",
             email="Max.Cosmic46@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/128/thumb-128895.jpg",
-            bannerImg="link_to_banner_image_6",
+            bannerImg="https://images2.alphacoders.com/542/542730.png",
             )
         
         user_7 = User(
@@ -172,7 +172,7 @@ if __name__ == '__main__':
             phone="+1 (207) 765-4321",
             email="ivy.greene29@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/127/thumb-127802.jpg",
-            bannerImg="link_to_banner_image_11",
+            bannerImg="https://images2.alphacoders.com/649/649969.jpg",
             )
         
         user_12 = User(
@@ -214,7 +214,7 @@ if __name__ == '__main__':
             phone="+1 (415) 234-5678",
             email="oliver.hudson.tech@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/345/thumb-345469.png",
-            bannerImg="link_to_banner_image_14",
+            bannerImg="https://images4.alphacoders.com/130/1307940.png",
             )
         
         user_15 = User(
@@ -326,7 +326,7 @@ if __name__ == '__main__':
             phone="+1 (503) 120-6052",
             email="nature_silas29@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/328/thumb-328004.jpg",
-            bannerImg="link_to_banner_image_35",
+            bannerImg="https://images7.alphacoders.com/132/1323341.jpeg",
             )
         
         user_23 = User(
@@ -410,7 +410,7 @@ if __name__ == '__main__':
             phone="+1 (917) 412-2578",
             email="zestful.zoe27@gmail.com",
             profileImg="https://avatarfiles.alphacoders.com/326/thumb-326097.jpg",
-            bannerImg="link_to_banner_image_41",
+            bannerImg="https://images2.alphacoders.com/697/thumbbig-697196.webp",
             )
         
         user_29 = User(
@@ -1273,55 +1273,55 @@ if __name__ == '__main__':
         print("Seeding our Entries...")
         entries = [
             Entry(
-            submission="Image: MilkyWayGalaxy_6.jpg",
+            submission="https://images.jpost.com/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_428,w_640/525666",
             description="A breathtaking view of the Milky Way as seen from a remote location in BIG BEND NATIONAL PARK, TEXAS. The dense cluster of stars in the center is prominently visible, with the dark interstellar dust creating an intriguing contrast.",
             user_id=6,
             competition_id=2,
             ),
             Entry(
-            submission="Image: ConstellationGuide_10.pdf",
+            submission="https://www.constellation-guide.com/wp-content/uploads/2022/06/night-sky-tonight-northern-hemisphere-july.webp",
             description="A detailed guide to the constellations visible during the month of August. Each constellation is described with its historical background, mythological significance, and key stars. Also included are tips for identifying each constellation in the night sky.",
             user_id=10,
             competition_id=2,
             ),
             Entry(
-            submission="Image: MeteorShowerTimelapse_19.",
+            submission="https://www.jeffsullivanphotography.com/wp-content/uploads/2018/12/Death-Valley-Geminids-Jeff_Sullivan-2913-3320.jpg",
             description="A mesmerizing time-lapse video of the Perseid meteor shower, captured during its peak activity. Each meteor trail is distinctly visible, showcasing the shower's radiant beauty against the backdrop of a dark, starry sky.",
             user_id=19,
             competition_id=2,
             ),
             Entry(
-            submission="Image: CelestialSounds_21",
+            submission="https://i.ytimg.com/vi/y3qFm_-GVks/maxresdefault.jpg",
             description="An audio recording capturing the ambient sounds of the night during a stargazing session. The gentle chirping of crickets, the distant howl of a coyote, and the occasional rustling of leaves combine to create a serene atmosphere that complements the beauty of the night sky.",
             user_id=21,
             competition_id=2,
             ),
             Entry(
-            submission="Image: EmotivePortrait_Julia_26.jpg",
+            submission="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvbWFuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
             description="A poignant portrait of a young woman, Julia, with tears glistening in her eyes. The soft lighting emphasizes the raw emotion on her face, capturing a moment of vulnerability and introspection.",
             user_id=26,
             competition_id=5,
             ),
             Entry(
-            submission="Image: StreetLife_MarketDay_11.jpg",
+            submission="https://seal2013.files.wordpress.com/2014/04/street-x.jpg",
             description="A vibrant snapshot of a bustling market street in Marrakech. The image captures the essence of the local culture, with street vendors peddling their wares, colorful textiles hanging from stalls, and a cacophony of sounds echoing in the background. The photograph tells a story of life, commerce, and the spirit of the city.",
             user_id=11,
             competition_id=5,
             ),
             Entry(
-            submission="Image: DawnTrek_2.jpg",
+            submission="https://i.ytimg.com/vi/TUM1Phi3zuI/maxresdefault.jpg",
             description="Our team began the trek just as dawn was breaking, with the soft glow of the morning sun painting the skies. As we made our way through the trail, the gentle sound of cascading water drew us closer to the first waterfall. The fresh misty air and the sheer beauty of nature left us in awe. Taking a moment to meditate by the falls, we felt an overwhelming sense of connection with the surroundings.",
             user_id=2,
             competition_id=1,
             ),
             Entry(
-            submission="Image: TeamBonding_4.jpg",
+            submission="https://www.nps.gov/piro/planyourvisit/images/hikers-on-NCT-1.jpg",
             description="The trail provided both challenges and wonders. Each waterfall we encountered told a different story - from gentle cascades to majestic falls. Our team, though tested by the terrain, grew closer with every step. Sharing stories, helping each other through tricky paths, and taking in the beauty together made the journey unforgettable.",
             user_id=4,
             competition_id=1,
             ),
             Entry(
-            submission="Image: HiddenGem_10.jpg",
+            submission="https://www.wedreamoftravel.com/wp-content/uploads/2020/08/Silver-Falls.jpg",
             description="While navigating towards the fourth waterfall, we stumbled upon an off-beaten path. Curiosity got the better of us, and we decided to explore. What we discovered was a secluded mini waterfall, not on the map, where we spent hours simply admiring nature's hidden gem. This unexpected detour became the highlight of our trek.",
             user_id=10,
             competition_id=1,
@@ -1333,7 +1333,7 @@ if __name__ == '__main__':
             # competition_id=1,
             # ),
             Entry(
-            submission="Image: FinalWaterfallTriumph_29.jpg",
+            submission="https://uprootedtraveler.com/wp-content/uploads/trail-of-ten-falls-trail-of-10-falls-lower-south-falls-2.jpg",
             description="Facing challenges like slippery paths and steep inclines, our team's spirit never wavered. Each waterfall became a milestone, a testament to our determination. By the time we reached the last waterfall, the sense of accomplishment was overwhelming. It wasn't just about completing the trek, but about the bonds formed and the memories made.",
             user_id=29,
             competition_id=1,

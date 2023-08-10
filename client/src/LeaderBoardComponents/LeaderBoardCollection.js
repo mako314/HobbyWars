@@ -5,7 +5,7 @@ import LeaderBoardCards from "./LeaderBoardCards";
 
 function LeaderBoardCollection({competitions, setLeaderBoardID, user}){
 
-    console.log(competitions)
+    // console.log(competitions)
     
     //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
     const leaderBoardCards = competitions.map((competition) =>{

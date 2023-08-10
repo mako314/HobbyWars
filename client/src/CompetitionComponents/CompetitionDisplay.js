@@ -74,7 +74,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
     
       //Handles the deletion of the competition on the back end
     const handleCompetitionDelete = (competition) => {
-        console.log(competition)
+        // console.log(competition)
         fetch(`/competition/${competition.id}`, {
           method: "DELETE"
         })

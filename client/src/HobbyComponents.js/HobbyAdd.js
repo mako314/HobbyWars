@@ -104,12 +104,12 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
             {error && <p>{error}</p>}
 
             <div className="sm:col-span-2">
-                <label for="type_of_hobby" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is your Hobby?</label>
+                <label htmlFor="type_of_hobby" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is your Hobby?</label>
                 <input type="text" name="type_of_hobby" value={formik.values.type_of_hobby} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
             </div>
 
             <div className="sm:col-span-2">
-                <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Please Enter a Short Description of the Hobby</label>
+                <label htmlFor="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Please Enter a Short Description of the Hobby</label>
                 <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"></textarea>
             </div>
 

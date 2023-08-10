@@ -39,7 +39,7 @@ function EntryForm({user, setEntries, entries, compID, setEntryID, setViewedFrom
                         // navigate(`/competition-submissions/${compID}`)
                         setEntryID(entry.id)
                         setEntryCompID(entry.competitions.id)
-                        console.log(entry.id)
+                        // console.log(entry.id)
                         setViewedFromUser(false)
                         navigate(`/entry/${entry.id}`)
                         //can add state here to say it came from user entry submission
@@ -114,12 +114,12 @@ function EntryForm({user, setEntries, entries, compID, setEntryID, setViewedFrom
           {error && <p>{error}</p>}
 
       <div className="sm:col-span-2">
-        <label for="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
+        <label htmlFor="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
         <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
+        <label htmlFor="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Please Enter a Short Description of your Submission</label>
         <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 

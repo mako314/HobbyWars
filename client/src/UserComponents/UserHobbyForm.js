@@ -63,7 +63,7 @@ const navigate = useNavigate()
         }, 
         validationSchema: formSchema,
         onSubmit: (values) => {
-            console.log("here")
+            // console.log("here")
             fetch('/user-hobbies' , {
                 method: "POST",
                 headers: {
@@ -75,7 +75,7 @@ const navigate = useNavigate()
                     if (res.ok){
                         res.json().then(userHobby =>{
                         setUserHobbies([...userHobbies, userHobby]) //spreads and updates our userHobby state in APP.js allowing it to post
-                        console.log(userHobby)
+                        // console.log(userHobby)
                         navigate(`/user-dashboard/${user.id}`)
                         })
                     } else {

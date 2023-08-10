@@ -61,7 +61,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
                         res.json().then(competition => {
                             setCompetitions([...competitions, competition]) //May need to pass a function if I have to do other things with it
                             navigate(`/competition/${competition.id}`)
-                            console.log(competition)
+                            // console.log(competition)
                         })
                     } else {
                         res.json().then(error => setError(error)) //for backend errors
@@ -313,107 +313,107 @@ function CompetitionCreation({user, setCompetitions, competitions}){
       {error && <p>{error}</p>}
       
       <div className="sm:col-span-2">
-        <label for="title" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">War Title</label>
+        <label htmlFor="title" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">War Title</label>
         <input type="text" name="title" value={formik.values.title} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="objective" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> The Objective?</label>
+        <label htmlFor="objective" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> The Objective?</label>
         <textarea type="text" name="objective" value={formik.values.objective} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div className="sm:col-span-2">
-        <label for="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Description*</label>
+        <label htmlFor="description" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Description*</label>
         <textarea type="text" name="description" value={formik.values.description} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div className="sm:col-span-2">
-        <label for="compImg" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Image! We Currently Only Accept Image Addresses</label>
+        <label htmlFor="compImg" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Image! We Currently Only Accept Image Addresses</label>
         <input type="text" name="compImg" value={formik.values.compImg} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="scoring" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">How will it be scored?*</label>
+        <label htmlFor="scoring" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">How will it be scored?*</label>
         <textarea type="text" name="scoring" value={formik.values.scoring} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div className="sm:col-span-2">
-        <label for="cost_of_entry" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Is there a cost to enter?</label>
+        <label htmlFor="cost_of_entry" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Is there a cost to enter?</label>
         <input type="text" name="cost_of_entry" value={formik.values.cost_of_entry} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="schedule" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is the schedule?</label>
+        <label htmlFor="schedule" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is the schedule?</label>
         <input type="text" name="schedule" value={formik.values.schedule} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="contact" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Contact information</label>
+        <label htmlFor="contact" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Contact information</label>
         <input type="text" name="contact" value={formik.values.contact} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="location" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Location</label>
+        <label htmlFor="location" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Location</label>
         <input type="text" name="location" value={formik.values.location} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="requirements" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Requirements</label>
+        <label htmlFor="requirements" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Requirements</label>
         <input type="text" name="requirements" value={formik.values.requirements} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
       
       <div className="sm:col-span-2">
-        <label for="competition_tasks" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What are the tasks?</label>
-        <input type="text" name="competition_tasks" value={formik.values.competition_tasks} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+        <label htmlFor="competition_tasks" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What are the tasks?</label>
+        <textarea type="text" name="competition_tasks" value={formik.values.competition_tasks} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="safety_measures" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What safety measures are being taken?</label>
+        <label htmlFor="safety_measures" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">What safety measures are being taken?</label>
         <textarea type="text" name="safety_measures" value={formik.values.safety_measures} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize1" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 1</label>
+        <label htmlFor="prize1" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 1</label>
         <input type="text" name="prize1" value={formik.values.prize1} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize2" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 2</label>
+        <label htmlFor="prize2" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 2</label>
         <input type="text" name="prize2" value={formik.values.prize2} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize3" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 3</label>
+        <label htmlFor="prize3" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 3</label>
         <input type="text" name="prize3" value={formik.values.prize3} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize4" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 4</label>
+        <label htmlFor="prize4" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 4</label>
         <input type="text" name="prize4" value={formik.values.prize4} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize5" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 5</label>
+        <label htmlFor="prize5" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 5</label>
         <input type="text" name="prize5" value={formik.values.prize5} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize6" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 6</label>
+        <label htmlFor="prize6" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 6</label>
         <input type="text" name="prize6" value={formik.values.prize6} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize7" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 7</label>
+        <label htmlFor="prize7" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 7</label>
         <input type="text" name="prize7" value={formik.values.prize7} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="prize8" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 8</label>
+        <label htmlFor="prize8" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Prize 8</label>
         <input type="text" name="prize8" value={formik.values.prize8} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div className="sm:col-span-2">
-        <label for="registration_schedule" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> What is the registration schedule?</label>
+        <label htmlFor="registration_schedule" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> What is the registration schedule?</label>
         <input type="text" name="registration_schedule" value={formik.values.registration_schedule} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 

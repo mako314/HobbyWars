@@ -18,7 +18,7 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEn
         fetch(`/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             setSingleEntry(data)
           })
       }, [entryID, viewFromSubmissions])
@@ -27,9 +27,9 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEn
     //   if(entryID){}
     //   if (entryID){}
 
-      console.log(viewFromSubmissions)
-      console.log(entryID)
-      console.log(singleEntry)
+    //   console.log(viewFromSubmissions)
+    //   console.log(entryID)
+    //   console.log(singleEntry)
 
     //navigate to the submission edit page if you are the signed in user
     // function navSubmissionEdit(id) {

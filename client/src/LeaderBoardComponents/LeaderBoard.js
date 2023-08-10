@@ -14,12 +14,13 @@ function LeaderBoard({leaderBoardID}){
             .then(data => setLeaderBoardData(data));
     }, [leaderBoardID]);
 
-    console.log(leaderBoardData)
+    // console.log(leaderBoardData)
 
     useEffect(() => {
         if (leaderBoardData){
             setLeaderBoardMapped(
                 leaderBoardData.map((leaderBoard) =>{
+                  // console.log(leaderBoard)
                     return(
                             <>
                               <tbody>
@@ -30,9 +31,9 @@ function LeaderBoard({leaderBoardID}){
                                     {leaderBoard.placement}
                                   </td>
                                   <td
-                                    className="text-dark border-b border-[#E8E8E8] bg-white py-5 px-2 text-center text-base font-medium"
+                                    className="text-dark border-b border-[#E8E8E8] bg-white py-5 px-2 text-center text-base font-medium bg-center bg-cover p-4"
+                                    style={{ backgroundImage: `url(${leaderBoard.submission})` }}
                                   >
-                                    {leaderBoard.submission}
                                   </td>
                                   <td
                                     className="text-dark border-b border-[#E8E8E8] bg-[#F3F6FF] py-5 px-2 text-center text-base font-medium"

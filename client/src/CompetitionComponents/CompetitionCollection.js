@@ -5,7 +5,7 @@ import CompetitionCard from "./CompetitionCard"
 
 function CompetitionCollection({competitions, setViewedFromUser}){
 
-    console.log(competitions)
+    // console.log(competitions)
     
     //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
     const competitionCards = competitions.map((competition) =>{

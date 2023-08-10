@@ -95,12 +95,13 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     useEffect(() => {
         setTwMappedCompetitions(selectedUser.competitions?.map((competition) =>{
         if (selectedUser){
+          console.log(competition)
         return(
             <>
             <section onClick={() => navigateToCompetition(competition.id)} class="">
                 <div class="flex w-full">
                     <div class="relative flex flex-col items-start m-1 transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8">
-                    <img class="object-cover object-center w-full rounded-t-xl lg:h-48 md:h-36" src="/assets/images/placeholders/neon-1.jpg" alt="blog"/>
+                    <img class="object-cover object-center w-full rounded-t-xl lg:h-48 md:h-36" src={competition.compImg} alt={competition.title}/>
                     <div class="px-6 py-8">
                         <h4 class="mt-4 text-2xl font-semibold text-neutral-600">
                         <span class="">{competition.title}</span>
@@ -121,7 +122,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     // and also navigate to it
     //click and navigate to the competition display page
     function navigateToCompetition(id) {
-        console.log(user.id)
+        // console.log(user.id)
         navigate(`/competition/${id}`)
         setViewedFromUser(true)
     }
@@ -252,7 +253,7 @@ useEffect(() => {
         setEntryID(id)
         setViewedFromUser(true)
         navigate(`/entry/${id}`)
-        console.log(id)
+        // console.log(id)
         // setEntryID(id)
     }
 
@@ -365,8 +366,8 @@ useEffect(() => {
           method: "DELETE"
         })
           .then(() => {
-            console.log(entryToDelete)
-            console.log(entryToDelete.user_id)
+            // console.log(entryToDelete)
+            // console.log(entryToDelete.user_id)
             deleteEntry(entryToDelete.id)
             // navigate(`/user-dashboard/${entryToDelete.user_id}`)
             // Page still doesn't refresh
@@ -474,7 +475,7 @@ useEffect(() => {
 }
   }, [entry])
 
-  console.log(usersResults)
+  // console.log(usersResults)
 
 
 
@@ -520,7 +521,7 @@ useEffect(() => {
 
     //Actual DELETE request to the backend.
     const handleUserDelete = (user) => {
-        console.log(user)
+        // console.log(user)
         fetch(`/user/${user.id}`, {
           method: "DELETE"
         })
@@ -617,7 +618,7 @@ const twAddMoreHobbiesBtn = (
     
     //To handle going to the edit page 
     function handleEdit(e) {
-        console.log(user.id)
+        // console.log(user.id)
         navigate(`/user-edit/${user.id}`)
     }
     let loggedInDisplay

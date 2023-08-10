@@ -47,7 +47,7 @@ function LoginForm({user, setUser}){
 
 
 //Checks to see if user was logged in
-console.log(user)
+// console.log(user)
 
 
 //------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------

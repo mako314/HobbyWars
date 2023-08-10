@@ -52,7 +52,7 @@ function UserEdit({user, updateUser}){
                         res.json().then(user =>{
                         updateUser(user)
                         navigate(`/user-dashboard/${user.id}`) // Return to dashboard
-                        console.log(user)
+                        // console.log(user)
                         })
                     } else {
                         res.json().then(error => setError(error)) //for backend errors
@@ -108,57 +108,57 @@ function UserEdit({user, updateUser}){
             {error && <p>{error}</p>}
 
             <div>
-                <label for="firstName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">First Name</label>
+                <label htmlFor="firstName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">First Name</label>
                 <input type="text" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.firstName}/>
             </div>
 
             <div>
-                <label for="lastName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Last Name</label>
+                <label htmlFor="lastName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Last Name</label>
                 <input type="text" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.lastName}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="username" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Username*</label>
+                <label htmlFor="username" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Username*</label>
                 <input type="text" name="username" value={formik.values.username} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.username}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="_password_hash" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password*</label>
+                <label htmlFor="_password_hash" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password*</label>
                 <input type="text" name="_password_hash" value={formik.values._password_hash} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="We won't pre-enter your password, please have that written somewhere safe!"/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
+                <label htmlFor="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
                 <input type="text" name="email" value={formik.values.email} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.email}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="phone" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Phone</label>
+                <label htmlFor="phone" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Phone</label>
                 <input type="text" name="phone" value={formik.values.phone} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.phone}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="age" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Age</label>
+                <label htmlFor="age" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Age</label>
                 <input type="text" name="age" value={formik.values.age} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.age}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="location" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Location</label>
+                <label htmlFor="location" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Location</label>
                 <input type="text" name="location" value={formik.values.location} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.location}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="profileImg" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Profile Image Link</label>
+                <label htmlFor="profileImg" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Profile Image Link</label>
                 <input type="text" name="profileImg" value={formik.values.profileImg} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.profileImg}/>
             </div>
             
             <div class="sm:col-span-2">
-                <label for="bannerImg" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Banner Image Link</label>
+                <label htmlFor="bannerImg" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Banner Image Link</label>
                 <input type="text" name="bannerImg" value={formik.values.bannerImg} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.bannerImg}/>
             </div>
 
             <div class="sm:col-span-2">
-                <label for="bio" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Bio</label>
+                <label htmlFor="bio" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Bio</label>
                 <textarea type="text" name="bio" value={formik.values.bio} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.bio}/>
             </div>
 

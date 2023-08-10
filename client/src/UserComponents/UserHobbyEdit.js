@@ -52,7 +52,7 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
                         res.json().then(user =>{
                         updateUserHobby(user)
                         navigate(`/user-dashboard/${user.id}`) // Return to dashboard
-                        console.log(user)
+                        // console.log(user)
                         })
                     } else {
                         res.json().then(error => setError(error)) //for backend errors

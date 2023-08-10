@@ -56,7 +56,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
         navigate(`/edit-entry/${id}`)
         setEntryID(id)
         setEditFromSubmissions(true)
-        console.log(editFromSubmissions)
+        // console.log(editFromSubmissions)
     }
 
     //Function to take you back to the competition display page
@@ -88,8 +88,8 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
     //Takes you to a page to declare result for that entry need a back button there to bring me back to this page.
     function navToSubmitResults (id, idForCompetition) {
-        console.log(id)
-        console.log(idForCompetition)
+        // console.log(id)
+        // console.log(idForCompetition)
 
         setEntryResultID(id)
         setCompResultID(idForCompetition)
@@ -206,7 +206,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
             setUserMappedCompEntries(
                 entry?.map((oneEntry) =>{
                     let resultFlag = false
-                    console.log(oneEntry)
+                    // console.log(oneEntry)
                     setCompID(oneEntry.competition_id)
 
                     results.forEach(result =>{

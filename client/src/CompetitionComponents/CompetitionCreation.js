@@ -328,6 +328,11 @@ function CompetitionCreation({user, setCompetitions, competitions}){
       </div>
 
       <div className="sm:col-span-2">
+        <label for="compImg" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Image! We Currently Only Accept Image Addresses</label>
+        <input type="text" name="compImg" value={formik.values.compImg} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      </div>
+
+      <div className="sm:col-span-2">
         <label for="scoring" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">How will it be scored?*</label>
         <textarea type="text" name="scoring" value={formik.values.scoring} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>

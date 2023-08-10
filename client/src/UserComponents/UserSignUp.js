@@ -46,7 +46,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
     const formSchema = object({
         firstName: string().required('You need a name'),
         username: string().required("You'll need a username to sign in"),
-        email: string().required("You'll need an email address")
+        email: string().required("You need an email address")
     })
 
     const formik = useFormik({

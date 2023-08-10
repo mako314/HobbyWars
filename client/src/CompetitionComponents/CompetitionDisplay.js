@@ -39,7 +39,8 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
         prize6, 
         prize7, 
         prize8, 
-        registration_schedule
+        registration_schedule,
+        compImg
     } = competition 
 
 
@@ -320,7 +321,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
                             <blockquote className="mb-6 border-l-4 pl-4 italic text-gray-500 sm:text-lg md:mb-8 md:pl-6">{objective}</blockquote>
 
                             <div className="relative mb-6 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:mb-8">
-                            <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600&h=350" loading="lazy" alt="Photo by Minh Pham" className="h-full w-full object-cover object-center" />
+                            <img src={compImg} loading="lazy" alt="Photo by Minh Pham" className="h-full w-full object-cover object-center" />
                             </div>
 
                             <p className="mb-6 text-gray-500 sm:text-lg md:mb-8">

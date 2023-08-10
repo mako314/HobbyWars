@@ -299,7 +299,7 @@ function App() {
                 <Route path='/competition/edit/:id' element={<CompetitionEdit user={user} compID={compID} competitions={competitions} updateCompetition={updateCompetition}/>}/>
                 
                 {/* WRITE LEADERBOARD COLLECTION ROUTE/ */}
-                <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID}/>}/>
+                <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID} user={user}/>}/>
                 {/* Actual leaderboard ROUTE */}
                 <Route path='/leaderboard/:competition_id' element={<LeaderBoard user={user} competitions={competitions} leaderBoardID={leaderBoardID}/>}/>
                 

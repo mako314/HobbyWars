@@ -19,7 +19,7 @@ function ResultForm({user, setResults, results, compID, compResultID, entryResul
     // console.log(entryResultID)
 
     const formSchema = object({
-        placement: string().required('You need a submission!'),
+        placement: string().required('You need to declare a placement!'),
     })
 
     const formik = useFormik({

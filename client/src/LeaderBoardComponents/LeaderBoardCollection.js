@@ -3,7 +3,7 @@ import React from "react";
 //------IMPORT CARDS TO MAP------
 import LeaderBoardCards from "./LeaderBoardCards";
 
-function LeaderBoardCollection({competitions, setLeaderBoardID}){
+function LeaderBoardCollection({competitions, setLeaderBoardID, user}){
 
     console.log(competitions)
     
@@ -35,7 +35,8 @@ function LeaderBoardCollection({competitions, setLeaderBoardID}){
         username = {competition.user.username}
         firstName = {competition.user.firstName}
         lastName = {competition.user.lastName} 
-        profileImg = {competition.user.profileImg}/>   
+        profileImg = {competition.user.profileImg}
+        compImg={competition.compImg}/>   
     })
 
 

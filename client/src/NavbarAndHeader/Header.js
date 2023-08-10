@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom"
+import { ReactComponent as HobbyWarLogo } from '../Logo/HobbyWarLogo.svg'
 
 function Header({user, setUser}){
 
@@ -39,7 +40,7 @@ function Header({user, setUser}){
 
             {/* Link to all wars / existing and current */}
             <Link to='/competitions'>
-            <a className="mr-5 hover:text-white">Previous Wars</a>
+            <a className="mr-5 hover:text-white">Wars</a>
             </Link>
 
             <a className="mr-5 hover:text-white" onClick={UserDashClick}>User Dashboard</a>
@@ -73,7 +74,7 @@ function Header({user, setUser}){
             
             {/* Link to all wars / existing and current */}
             <Link to='/competitions'>
-            <a className="mr-5 hover:text-white">Previous Wars</a>
+            <a className="mr-5 hover:text-white">Wars</a>
             </Link>
             
             {/* Link for logged OUT user to sign up */}
@@ -100,9 +101,7 @@ function Header({user, setUser}){
             {/* Links to homepage */}
             <Link to='/'>
             <div className="flex title-font font-medium items-center text-white mb-4 md:mb-0">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
+            <HobbyWarLogo/>
             <span className="ml-3 text-xl">HobbyWars</span>
             </div>
             </Link>

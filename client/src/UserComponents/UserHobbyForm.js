@@ -184,6 +184,8 @@ const navigate = useNavigate()
         <div class="bg-white py-6 sm:py-8 lg:py-12">
         <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 
+        
+
             <div class="mb-10 md:mb-16">
             <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl"> To Set a New Hobby, Just Select from the Dropdown!</h2>
 
@@ -191,7 +193,12 @@ const navigate = useNavigate()
             </div>
 
             <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
-
+                
+                {/* display errors from formik/yup */}
+                { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+                {/* display errors from backend */}
+                {error && <p>{error}</p>}
+            
             <div class="sm:col-span-2">
                 <label for="hobby_id" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is your Hobby?</label>
                 <select type="text" name="hobby_id" value={formik.values.hobby_id} onChange={handleHobbyDisplay} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring">
@@ -213,18 +220,17 @@ const navigate = useNavigate()
 
             <div class="flex items-center justify-between sm:col-span-2">
 
-                {/* NEED TO CHANGE COLOR */}
-                <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Add this Hobby to my Profile!</button>
+                {/* NEED A BACK BUTTON */}
+                <button onClick={backToDash} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back </button>
                 
-
                 {/* MAKE AN ONCLICK THAT IF YOU CLICK THIS IT SETS STATE SAYING YOU CLICKED FROM HERE, FROM THERE, ADD A HOBBY SHOULD TAKE YOU BACK STILL TO USER DASH i THINK? */}
                 <Link to='/add-a-hobby'>
                 <button class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Add a new Hobby!</button>
                 </Link>
-                
-                {/* NEED A BACK BUTTON */}
-                <button onClick={backToDash} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Back </button>
-                
+                 
+                {/* NEED TO CHANGE COLOR */}
+                <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Add this Hobby to my Profile!</button>
+            
             </div>
 
             </form>

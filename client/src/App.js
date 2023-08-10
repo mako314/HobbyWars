@@ -129,6 +129,8 @@ function App() {
     //State to determine the competition ID for the LEADERBOARD
     const [leaderBoardID, setLeaderBoardID] = useState(0)
 
+    const [entryCompID, setEntryCompID] = useState(0)
+
     //setEntryResultID={setEntryResultID} setCompResultID={setCompResultID} this was in compsubmission page, but I think I just failed to pass the props to the wrong place...
     //compID={compID} entryID={entryID} this was in the /results route
 
@@ -297,7 +299,7 @@ function App() {
                 <Route path='/competition/edit/:id' element={<CompetitionEdit user={user} compID={compID} competitions={competitions} updateCompetition={updateCompetition}/>}/>
                 
                 {/* WRITE LEADERBOARD COLLECTION ROUTE/ */}
-                <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID}/>}/>
+                <Route path='/leaderboard/competitions' element={<LeaderBoardCollection competitions={competitions} setLeaderBoardID={setLeaderBoardID} user={user}/>}/>
                 {/* Actual leaderboard ROUTE */}
                 <Route path='/leaderboard/:competition_id' element={<LeaderBoard user={user} competitions={competitions} leaderBoardID={leaderBoardID}/>}/>
                 
@@ -325,11 +327,11 @@ function App() {
 
                   {/* ENTRY ROUTES */}
                 {/* ADD AN ENTRY ROUTE */}
-                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} setEntryID={setEntryID}/>}/>
+                <Route path='/submit-entry' element={<EntryForm user={user} setEntries={setEntries} entries={entries} compID={compID} setEntryID={setEntryID} setViewedFromUser={setViewedFromUser} setEntryCompID={setEntryCompID}/>}/>
                 {/* EDIT ENTRY BY ID ROUTE */}
                 <Route path='/edit-entry/:id' element={<EntryEdit user={user} compID={compID} updateEntry={updateEntry} entryID={entryID} editFromSubmissions={editFromSubmissions}/>}/>
                 {/* DISPLAY ENTRY SINGLE PAGE DISPLAY */}
-                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser} viewFromSubmissions={viewFromSubmissions}/>}/>
+                <Route path='/entry/:id' element={<EntryDisplay user={user} entryID={entryID} viewedFromUser={viewedFromUser} viewFromSubmissions={viewFromSubmissions} setEntryID={setEntryID} entryCompID={entryCompID}/>}/>
 
                 {/* RESULT ROUTES */}
                 <Route path='/declare-results/' element={<ResultForm user={user} setResults={setResults} results={results} compID={compID} entryID={entryID} entryResultID={entryResultID} compResultID={compResultID} setResultForEntryID={setResultForEntryID}/>}/>
@@ -337,6 +339,7 @@ function App() {
 
             
             </Routes>
+            
             <Footer user={user} />
 
             {/* <CompetitionCollection competitions={competitions}/> */}

@@ -18,6 +18,8 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
     //I may want to have them just navigate back to their user dashboard after all is said and done.
 
+    console.log(entryID)
+
 
     const formSchema = object({
         submission: string().required('You need a submission!'),
@@ -106,7 +108,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
             setEntryInfo(data)
           })
     }
-      }, [user])
+      }, [user, entryID])
 
     //This useEffect waits for EntryInfo to be populated, then it uses formik.setValues to input the existing information in the patch.
       useEffect(() => {
@@ -118,7 +120,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
                 competition_id: entryInfo.competition_id
             })
     }
-      }, [user, entryInfo])
+      }, [user, entryInfo, entryID])
 //------------------------------------------------------------------ LOGIN CONDITIONALS----------------------------------------------------
  
     // Console logs, 
@@ -127,19 +129,26 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
     // console.log(user.id)
     console.log(entryInfo)
     // console.log(entryID)
-
-    const loggedInDisplay = (
+      
+    let loggedInDisplay
+    if(user && entryInfo && entryInfo.competitions && entryID){
+     loggedInDisplay = (
       <div className="bg-white py-6 sm:py-8 lg:py-12">
       <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
     
         <div className="mb-10 md:mb-16">
-          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Enter!</h2>
+          <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">I'm Ready to Edit!</h2>
     
-          <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> display the title, and maybe the scoring stuff in the form </p>
+          <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> {entryInfo.competitions.title} </p>
         </div>
     
         <form onSubmit={formik.handleSubmit} className="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
-    
+          
+          {/* display errors from formik/yup */}
+          { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+          {/* display errors from backend */}
+          {error && <p>{error}</p>}
+          
           <div className="sm:col-span-2">
             <label for="submission" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Enter your Submission!</label>
             <input type="text" name="submission" value={formik.values.submission} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.submission}/>
@@ -164,7 +173,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
       </div>
     </div>
 
-    )
+    )}
   //   const loggedOutDisplay=(
   //     <div>
   //         <p> Sorry, but you do not seem to be the owner of that entry. If you think this is a mistake, check your route and try again.</p>
@@ -188,6 +197,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
       <div class="bg-white py-6 sm:py-8 lg:py-12">
       <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+
         <div class="grid gap-8 sm:grid-cols-2">
 
           <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
@@ -220,7 +230,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
 
     return(
       <>
-      {user && entryInfo && user.id === entryInfo.user_id ? loggedInDisplay : loggedOutDisplay}
+      {user &&  user.id === entryInfo.user_id ? loggedInDisplay : loggedOutDisplay}
       </>
   
     )

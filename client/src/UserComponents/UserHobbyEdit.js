@@ -97,7 +97,10 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
             </div>
 
             <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
-
+              {/* display errors from formik/yup */}
+              { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+              {/* display errors from backend */}
+              {error && <p>{error}</p>}
             <div class="sm:col-span-2">
                 <label for="expertise" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Expertise Level?</label>
                 <input type="text" name="expertise" value={formik.values.expertise} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.expertise}/>

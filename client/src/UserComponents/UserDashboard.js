@@ -28,15 +28,16 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     // const [entryToDelete, setEntryToDelete] = useState([])
 
     //State for setting user results for their entries:
-    const [usersResults, setUserResults] = useState([])
+    const [usersResults, setUsersResults] = useState([])
 
     //State for setting user result placements for their entries:
     // const [userPlacements, setUserPlacements] = useState([])
 
    const [twMappedCompetitions, setTwMappedCompetitions] = useState([])
 
-    
-   
+   //State to re-fire useEffect and update the page
+   const [deleteRefresh, setDeleteRefresh] = useState(false)
+
 
    
     // I think I remember why I had this, because if you click the header, i wanted it to carry the uSER.ID but it definitely already does, I could potentially take out my use state for selected user and such
@@ -137,30 +138,101 @@ function navUserHobby(id) {
 }
 
 //Map over a users hobbies and display them all
-useEffect(()=>{
-    setMappedUserHobbies(
-        user_hobby?.map((userHobby) =>{
-            return(
-            <div>
-                {/* {console.log(userHobby)} */}
-                <p>
-                    Hobby: {userHobby.hobby.type_of_hobby}
-                </p>
-                <p>
-                    Level: {userHobby.expertise}
-                </p>
+// useEffect(()=>{
+//     setMappedUserHobbies(
+//         user_hobby?.map((userHobby) =>{
+//             return(
+//             <div>
+//                 {/* {console.log(userHobby)} */}
+//                 <p>
+//                     Hobby: {userHobby.hobby.type_of_hobby}
+//                 </p>
+//                 <p>
+//                     Level: {userHobby.expertise}
+//                 </p>
 
-                <button onClick={() => navUserHobby(userHobby.id)}> Edit this hobby</button>
+//                 <button onClick={() => navUserHobby(userHobby.id)}> Edit this hobby</button>
 
-            </div>
+//             </div>
 
-            )
-        })
-    )
+//             )
+//         })
+//     )
 
-},[user_hobby])
+// },[user_hobby])
 
 //setUserHobbyID Need this in a navigation button
+
+
+// useEffect(() => {
+//   if(user_hobby){
+//     setMappedUserHobbies(
+//       user_hobby?.map((userHobby) =>{
+//         return(
+//           <>
+//             <section>
+//               <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
+//                 <div class="grid grid-cols-1">
+//                   <div class="w-full max-w-lg mx-auto my-4 bg-white shadow-xl rounded-xl">
+//                     <div class="p-6 lg:text-center">
+//                       <span class="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase"> User Hobby</span>
+//                       <h4 class="mt-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{userHobby.hobby.type_of_hobby}</h4>
+//                       <p class="mt-3 text-base leading-relaxed text-gray-500">{userHobby.hobby.description}</p>
+//                       <div class="mt-3">
+//                         <span class="flex items-center justify-center w-full px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">{userHobby.expertise}</span>
+//                       </div>
+//                       <br/>
+//                       <button
+//                         className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+//                         type="button"
+//                         style={{ transition: "all .15s ease" }}
+//                         onClick={() => navUserHobby(userHobby.id)}
+//                         >
+//                         Edit this Hobby
+//                       </button>
+//                     </div>
+//                   </div>
+//                 </div>
+//               </div>
+//             </section>
+//           </>
+//         )
+//       })
+//     )
+//   }
+
+// },[user_hobby])
+
+useEffect(() => {
+  if (user_hobby) {
+    setMappedUserHobbies(
+      user_hobby.map((userHobby) => (
+        <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-lg">
+          <div class="w-full bg-white shadow-xl rounded-xl">
+            <div class="p-6 lg:text-center">
+              <span class="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase"> User Hobby</span>
+              <h4 class="mt-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{userHobby.hobby.type_of_hobby}</h4>
+              <p class="mt-3 text-base leading-relaxed text-gray-500">{userHobby.hobby.description}</p>
+              <div class="mt-3">
+                <span class="flex items-center justify-center w-full px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">{userHobby.expertise}</span>
+              </div>
+              <br/>
+              <button
+                className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                type="button"
+                style={{ transition: "all .15s ease" }}
+                onClick={() => navUserHobby(userHobby.id)}
+              >
+                Edit this Hobby
+              </button>
+            </div>
+          </div>
+        </div>
+      ))
+    );
+  }
+}, [user_hobby]);
+
 
 
 //--------------------------------Submission / Entry information / code----------------------------------
@@ -276,7 +348,7 @@ useEffect(()=>{
         )
         )
         }
-      }, [entry, toggleEntryDelete, user])
+      }, [entry, toggleEntryDelete, user, deleteRefresh])
 
     //Why on earth did ^ this fix it lol, it allowed 
     
@@ -304,6 +376,7 @@ useEffect(()=>{
     // Button toggle to confirm that the user is wanting to delete their entry  just a basic toggle. 
     function handleEntryToggle() {
         setToggleEntryDelete(!toggleEntryDelete)
+        setDeleteRefresh(!deleteRefresh)
     }
 
     // console.log(toggleEntryDelete)
@@ -359,7 +432,7 @@ useEffect(()=>{
 //==================== SOS
 // useEffect(() => {
 //     if (entry){
-//         setUserResults(entry?.map((entryResult)=>{
+//         setUsersResults(entry?.map((entryResult)=>{
 //             // if (entryResult){
 //             //     entryResult.results?.map((resultP) =>{
 //             //         console.log(resultP)
@@ -382,7 +455,7 @@ useEffect(()=>{
 
   useEffect(() => {
     if (entry){
-        setUserResults(entry?.map((entryResult)=>{
+        setUsersResults(entry?.map((entryResult)=>{
         if (entryResult){
             return(
         <div className="p-6">
@@ -390,14 +463,12 @@ useEffect(()=>{
             <h3 className="text-xl font-medium text-slate-700">
             {entryResult.competitions.title}
             </h3>
-            <p className="text-sm text-slate-400"> Submission: {entryResult.submission}</p>
-            </header>
-            <p>
-            Placement: 
+            <p className="text-lg text-slate-400"> Submission: {entryResult.submission}</p>
+            </header>           
+            <span class="flex items-center justify-center w-1/2 px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Placement :   
                 {entryResult.results?.map((resultP) =>{
-                    return(resultP.placement)
-                })}
-            </p>
+                    return(" " + resultP.placement)
+                })}</span>
         </div>)
         }}))
 }
@@ -613,7 +684,7 @@ const twAddMoreHobbiesBtn = (
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2710&q=80')"
+              `url(${bannerImg})`
             }}
           >
             <span
@@ -649,8 +720,8 @@ const twAddMoreHobbiesBtn = (
                   <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                     <div className="relative">
                       <img
-                        alt="..."
-                        src='https://avatarfiles.alphacoders.com/107/thumb-107309.png'
+                        alt={username + " 's" + "image"}
+                        src={profileImg}
                         className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
                         style={{ maxWidth: "150px" }}
                       />
@@ -733,14 +804,25 @@ const twAddMoreHobbiesBtn = (
         {twMappedCompetitions}
         </div>
 
+        <div class="grid grid-cols-4 gap-1">
+          {mappedUserHobbies}
+        </div>
+
         <div className="overflow: auto; items-start m-auto bg-white rounded shadow-lg text-slate-500 shadow-slate-200 p-1">
         {mappedEntries}
         </div>
 
-        <div className="overflow: auto; items-start m-auto bg-white rounded shadow-lg text-slate-500 shadow-slate-200 p-1">
+        {/* <div className="overflow: auto; items-start m-auto bg-white rounded shadow-lg text-slate-500 shadow-slate-200 p-1">
+        {usersResults}
+        </div> 
+        the one below looks nicer
+        */}
+
+        <div class="grid grid-cols-5 gap-1">
         {usersResults}
         </div>
-
+        
+        
         </>
         
     )

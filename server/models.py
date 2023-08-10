@@ -179,6 +179,7 @@ class Competition(db.Model, SerializerMixin):
     title = db.Column(db.String)
     objective = db.Column(db.String)
     description = db.Column(db.String)
+    compImg = db.Column(db.String)
     scoring = db.Column(db.String)
     cost_of_entry = db.Column(db.Integer)
 
@@ -240,19 +241,19 @@ class Competition(db.Model, SerializerMixin):
     #The way I see it, all of our user information is readily available within the entries and results. Meaning no user information technically has to appear. You can access it with entry.user_id and results.user_id?
 
     #Validations
-    # @validates("title")
-    # def validate_title(self, key, title):
-    #     if title and len(title) > 0:
-    #         return title
-    #     else:
-    #         raise ValueError("A title is required.")
+    @validates("title")
+    def validate_title(self, key, title):
+        if title and len(title) > 0:
+            return title
+        else:
+            raise ValueError("A title is required.")
         
-    # @validates("objective")
-    # def validate_objective(self, key, objective):
-    #     if objective and len(objective) > 0:
-    #         return objective
-    #     else:
-    #         raise ValueError("An objective is required.")
+    @validates("objective")
+    def validate_objective(self, key, objective):
+        if objective and len(objective) > 0:
+            return objective
+        else:
+            raise ValueError("An objective is required.")
         
     # @validates("scoring")
     # def validate_scoring(self, key, scoring):
@@ -268,26 +269,26 @@ class Competition(db.Model, SerializerMixin):
     #     else:
     #         raise ValueError("A schedule system is required.")
     
-    # @validates("prize1")
-    # def validate_prize1(self, key, prize1):
-    #     if prize1 and len(prize1) > 0:
-    #         return prize1
-    #     else:
-    #         raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
+    @validates("prize1")
+    def validate_prize1(self, key, prize1):
+        if prize1 and len(prize1) > 0:
+            return prize1
+        else:
+            raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
 
-    # @validates("prize2")
-    # def validate_prize2(self, key, prize2):
-    #     if prize2 and len(prize2) > 0:
-    #         return prize2
-    #     else:
-    #         raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
+    @validates("prize2")
+    def validate_prize2(self, key, prize2):
+        if prize2 and len(prize2) > 0:
+            return prize2
+        else:
+            raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
 
-    # @validates("prize3")
-    # def validate_prize3(self, key, prize3):
-    #     if prize3 and len(prize3) > 0:
-    #         return prize3
-    #     else:
-    #         raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
+    @validates("prize3")
+    def validate_prize3(self, key, prize3):
+        if prize3 and len(prize3) > 0:
+            return prize3
+        else:
+            raise ValueError("You need a minimum of three prizes, they do not have to be significant.")
         
     # @validates("requirements")
     # def validate_requirements(self, key, requirements):

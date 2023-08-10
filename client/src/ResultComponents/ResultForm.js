@@ -19,7 +19,7 @@ function ResultForm({user, setResults, results, compID, compResultID, entryResul
     // console.log(entryResultID)
 
     const formSchema = object({
-        placement: string().required('You need a submission!'),
+        placement: string().required('You need to declare a placement!'),
     })
 
     const formik = useFormik({
@@ -120,6 +120,11 @@ const loggedInDisplay = (
 </div>
 
 <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+        
+      {/* display errors from formik/yup */}
+      { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+      {/* display errors from backend */}
+      {error && <p>{error}</p>}
 
   <div class="sm:col-span-2">
     <label for="placement" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">What is the Placement of this Entry?</label>
@@ -163,6 +168,7 @@ function TakeMeToLogin() {
 
       <div class="bg-white py-6 sm:py-8 lg:py-12">
       <div class="mx-auto max-w-screen-lg px-4 md:px-8">
+
         <div class="grid gap-8 sm:grid-cols-2">
 
           <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">

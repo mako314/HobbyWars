@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-function CompetitionCard({id,title, objective, setViewedFromUser}){
+function CompetitionCard({id,title, objective, setViewedFromUser, compImg}){
 
   //Will need this bad boy later
   const navigate = useNavigate();
@@ -21,8 +21,8 @@ function CompetitionCard({id,title, objective, setViewedFromUser}){
         {/* don't know if i want this href */}
           <img
             className="rounded-t-lg"
-            src="https://tecdn.b-cdn.net/img/new/standard/city/041.webp"
-            alt="Hollywood Sign on The Hill" />
+            src={compImg}
+            alt={title} />
         <div className="p-6">
           <h5
             className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">

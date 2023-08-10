@@ -244,7 +244,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                         <div className="pt-8 sm:flex lg:items-end group">
                         
                             <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
-                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src={oneEntry.submission} alt={oneEntry.submission}/>
                             </div>
                             
                             <div>
@@ -339,7 +339,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                         <div className="pt-8 sm:flex lg:items-end group">
                         
                             <div className="flex-shrink-0 mb-4 sm:mb-0 sm:mr-4">
-                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src="/assets/images/placeholders/neon-1.jpg" alt="text"/>
+                                <img className="w-full rounded-md h-32 lg:w-32 object-cover" src={oneEntry.submission} alt={oneEntry.submission}/>
                             </div>
                             
                             <div>

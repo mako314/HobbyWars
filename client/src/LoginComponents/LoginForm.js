@@ -82,7 +82,7 @@ const loggedInDisplay = (
               </div>
 
               <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
-                <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error 404</p>
+                <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
                 <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> You're already signed in!</h1>
 
                 <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">The page you’re looking for doesn’t exist, would you like to go somewhere else?</p>

@@ -361,6 +361,11 @@ function CompetitionEdit({user, compID, updateCompetition}){
     </div>
 
     <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+      
+      {/* display errors from formik/yup */}
+      { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+      {/* display errors from backend */}
+      {error && <p>{error}</p>}
 
       <div class="sm:col-span-2">
         <label for="title" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">War Title</label>

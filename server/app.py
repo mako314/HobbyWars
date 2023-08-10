@@ -189,6 +189,7 @@ class UserByID(Resource):
                 for key in data:
                     setattr(user, key, data[key])
                 db.session.add(user)
+                db.session.commit()
 
                 #The below two lines should be able to take the password and hash it after it has been patched, if it has been patched
                 #Actually it does not seem possible to edit a password

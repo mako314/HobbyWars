@@ -29,7 +29,7 @@ function UserEdit({user, updateUser}){
             firstName: " ",
             lastName: " ",
             username: " ",
-            password: " ",
+            _password_hash: " ",
             age: " ",
             bio: " ",
             location: " ",
@@ -75,7 +75,6 @@ function UserEdit({user, updateUser}){
             firstName: user.firstName,
             lastName: user.lastName,
             username: user.username,
-            password: user.password,
             age: user.age,
             bio: user.bio,
             location: user.location,
@@ -102,6 +101,12 @@ function UserEdit({user, updateUser}){
             </div>
 
             <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+            
+            {/* display errors from formik/yup */}
+            { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
+            {/* display errors from backend */}
+            {error && <p>{error}</p>}
+
             <div>
                 <label for="firstName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">First Name</label>
                 <input type="text" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder={formik.values.firstName}/>
@@ -118,8 +123,8 @@ function UserEdit({user, updateUser}){
             </div>
 
             <div class="sm:col-span-2">
-                <label for="password" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password*</label>
-                <input type="text" name="password" value={formik.values.password} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="We won't pre-enter your password, please have that written somewhere safe!"/>
+                <label for="_password_hash" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password*</label>
+                <input type="text" name="_password_hash" value={formik.values._password_hash} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" placeholder="We won't pre-enter your password, please have that written somewhere safe!"/>
             </div>
 
             <div class="sm:col-span-2">

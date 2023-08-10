@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 
 
-function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions }){
+function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEntryID, entryCompID}){
 
     const navigate = useNavigate();
 
@@ -98,8 +98,8 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions }){
         if (singleEntry && user && entryID && singleEntry.user){
             
             function navSubmissionEdit(id) {
+            setEntryID(id)
             navigate(`/edit-entry/${id}`)
-            
             }
             // I added these in to see if it'd fix anything, and alas, it did not.
             // function returnToSubmission(id){
@@ -110,7 +110,9 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions }){
             function backBtn(singleEntry){
                 if (viewedFromUser === true){
                 navigate(`/user-dashboard/${user.id}`)
-                }else {
+                } else if (viewedFromUser === false){
+                    navigate(`/competition-submissions/${entryCompID}`)
+                } else {
                     navigate(`/competition-submissions/${singleEntry.id}`)
                 }
             }

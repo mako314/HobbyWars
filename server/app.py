@@ -425,6 +425,7 @@ class Competitions(Resource):
                 title = data['title'],
                 objective = data['objective'],
                 description = data['description'],
+                compImg = data['compImg'],
                 scoring = data['scoring'],
                 cost_of_entry = data['cost_of_entry'],
                 schedule = data['schedule'],

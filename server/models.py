@@ -179,6 +179,7 @@ class Competition(db.Model, SerializerMixin):
     title = db.Column(db.String)
     objective = db.Column(db.String)
     description = db.Column(db.String)
+    compImg = db.Column(db.String)
     scoring = db.Column(db.String)
     cost_of_entry = db.Column(db.Integer)
 

@@ -248,7 +248,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             </div>
                             
                             <div>
-                                <span className="text-sm text-gray-500">{oneEntry.submission}</span>
+                                {/* <span className="text-sm text-gray-500">{oneEntry.submission}</span> */}
                                 <p className="mt-3 text-lg font-medium leading-6">
                                 <span className="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
                                 </p>
@@ -343,7 +343,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
                             </div>
                             
                             <div>
-                                <span className="text-sm text-gray-500">{oneEntry.submission}</span>
+                                {/* <span className="text-sm text-gray-500">{oneEntry.submission}</span> */}
                                 <p className="mt-3 text-lg font-medium leading-6">
                                 <span className="text-xl text-gray-800 group-hover:text-gray-500 lg:text-2xl">{oneEntry.user.username} </span>
                                 </p>

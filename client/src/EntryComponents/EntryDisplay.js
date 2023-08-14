@@ -159,8 +159,9 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEn
 
 
     useEffect(() => {
-        if(entryID && singleEntry.user && singleEntry){
+    if(entryID && singleEntry.user && singleEntry){
     function backBtn(id){
+        console.log("Please Worketh")
         navigate(`/competition-submissions/${id}`)
     }
     

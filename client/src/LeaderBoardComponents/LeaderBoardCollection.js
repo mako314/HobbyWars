@@ -1,14 +1,22 @@
 import React from "react";
+import { useEffect, useState } from 'react'
 
 //------IMPORT CARDS TO MAP------
 import LeaderBoardCards from "./LeaderBoardCards";
 
 function LeaderBoardCollection({competitions, setLeaderBoardID, user}){
 
-    console.log(competitions)
+    const [leaderBoardCards, setLeaderBoardCards] = useState()
+
+    // console.log(competitions)
     
     //Simply mapping over the competitions we fetched in APP.js and making competition cards with the data for all competitions.
-    const leaderBoardCards = competitions.map((competition) =>{
+    // let leaderBoardCards
+    console.log(competitions)
+    
+        useEffect(() => {
+        if (competitions){
+        setLeaderBoardCards( competitions.map((competition) =>{
         return <LeaderBoardCards key={competition.id} 
         id={competition.id}
         title={competition.title}
@@ -36,10 +44,12 @@ function LeaderBoardCollection({competitions, setLeaderBoardID, user}){
         firstName = {competition.user.firstName}
         lastName = {competition.user.lastName} 
         profileImg = {competition.user.profileImg}
-        compImg={competition.compImg}/>   
-    })
+        compImg={competition.compImg}/>
+    }))}
+    },[competitions])
+    
 
-
+    console.log(leaderBoardCards)
 
 
     return (

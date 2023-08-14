@@ -79,7 +79,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
                         //If I want the user to login after the account is created, I can pass the login function and call it here with ()
                         handleLogin()
                         navigate('/')
-                        console.log(user)
+                        // console.log(user)
                         })
                     } else {
                         res.json().then(error => setError(error)) //for backend errors
@@ -95,16 +95,16 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
 
 
     const loggedOutDisplay = (
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+      <div className="bg-white py-6 sm:py-8 lg:py-12">
+  <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
 
-    <div class="mb-10 md:mb-16">
-      <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Enlist in the Hobby Wars Campaign</h2>
+    <div className="mb-10 md:mb-16">
+      <h2 className="mb-4 text-center text-2xl font-bold text-gray-800 md:mb-6 lg:text-3xl">Enlist in the Hobby Wars Campaign</h2>
 
-      <p class="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Are you ready to join the ranks? Engage with fellow enthusiasts, unleash your creativity, and be a part of the vibrant Hobby Wars movement. Embrace the exhilarating rush of challenges, the thrill of friendly rivalries, and the forging of profound bonds with fellow adventurers!</p>
+      <p className="mx-auto max-w-screen-md text-center text-gray-500 md:text-lg"> Are you ready to join the ranks? Engage with fellow enthusiasts, unleash your creativity, and be a part of the vibrant Hobby Wars movement. Embrace the exhilarating rush of challenges, the thrill of friendly rivalries, and the forging of profound bonds with fellow adventurers!</p>
     </div>
 
-    <form onSubmit={formik.handleSubmit} class="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
+    <form onSubmit={formik.handleSubmit} className="mx-auto grid max-w-screen-md gap-4 sm:grid-cols-2">
       
           {/* display errors from formik/yup */}
           { formik.errors && Object.values(formik.errors).map(e => <p>{e}</p>) }
@@ -112,66 +112,66 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
           {error && <p>{error}</p>}
       
       <div>
-        <label for="firstName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">First Name</label>
-        <input type="text" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+        <label htmlFor="firstName" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">First Name</label>
+        <input type="text" name="firstName" value={formik.values.firstName} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
       <div>
-        <label for="lastName" class="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Last Name</label>
-        <input type="text" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+        <label htmlFor="lastName" className="mb-2 inline-block text-sm text-gray-800 sm:text-base"> Last Name</label>
+        <input type="text" name="lastName" value={formik.values.lastName} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="username" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Username*</label>
-        <input type="text" name="username" value={formik.values.username} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="username" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Username*</label>
+        <input type="text" name="username" value={formik.values.username} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="password" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password*</label>
-        <input type="text" name="password" value={formik.values.password} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="password" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Password*</label>
+        <input type="text" name="password" value={formik.values.password} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="email" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
-        <input type="text" name="email" value={formik.values.email} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="email" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Email</label>
+        <input type="text" name="email" value={formik.values.email} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="phone" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Phone</label>
-        <input type="text" name="phone" value={formik.values.phone} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="phone" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Phone</label>
+        <input type="text" name="phone" value={formik.values.phone} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="age" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Age</label>
-        <input type="text" name="age" value={formik.values.age} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="age" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Age</label>
+        <input type="text" name="age" value={formik.values.age} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="location" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Location</label>
-        <input type="text" name="location" value={formik.values.location} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="location" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Location</label>
+        <input type="text" name="location" value={formik.values.location} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="profileImg" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Profile Image Link</label>
-        <input type="text" name="profileImg" value={formik.values.profileImg} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="profileImg" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Profile Image Link</label>
+        <input type="text" name="profileImg" value={formik.values.profileImg} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
       
-      <div class="sm:col-span-2">
-        <label for="bannerImg" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Banner Image Link</label>
-        <input type="text" name="bannerImg" value={formik.values.bannerImg} onChange={formik.handleChange} class="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+      <div className="sm:col-span-2">
+        <label htmlFor="bannerImg" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Banner Image Link</label>
+        <input type="text" name="bannerImg" value={formik.values.bannerImg} onChange={formik.handleChange} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
 
-      <div class="sm:col-span-2">
-        <label for="bio" class="mb-2 inline-block text-sm text-gray-800 sm:text-base">Bio</label>
-        <textarea type="text" name="bio" value={formik.values.bio} onChange={formik.handleChange} class="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
+      <div className="sm:col-span-2">
+        <label htmlFor="bio" className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Bio</label>
+        <textarea type="text" name="bio" value={formik.values.bio} onChange={formik.handleChange} className="h-64 w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring"/>
       </div>
 
-      <div class="flex items-center justify-between sm:col-span-2">
+      <div className="flex items-center justify-between sm:col-span-2">
 
         {/* NEED TO CHANGE COLOR */}
-        <button type="submit" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take Me There!</button>
+        <button type="submit" className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"> Sign Up!</button>
 
-        <span class="text-sm text-gray-500">*Required</span>
+        <span className="text-sm text-gray-500">*Required</span>
       </div>
     </form>
 
@@ -193,34 +193,34 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
     // const loggedInDisplay = (
     //   <>
     //   <p> You're already signed in silly head, would you like to be taken to your dashboard?</p>
-    //   <button onClick={UserDashClick} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Beam me up Scotty!</button>
+    //   <button onClick={UserDashClick} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Beam me up Scotty!</button>
     //   </>
     // )
 
     const loggedInDisplay = (
       <>
-        <div class="bg-white py-6 sm:py-8 lg:py-12">
-          <div class="mx-auto max-w-screen-lg px-4 md:px-8">
-            <div class="grid gap-8 sm:grid-cols-2">
+        <div className="bg-white py-6 sm:py-8 lg:py-12">
+          <div className="mx-auto max-w-screen-lg px-4 md:px-8">
+            <div className="grid gap-8 sm:grid-cols-2">
 
-              <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
-                <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" class="h-full w-full object-cover object-center" />
+              <div className="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+                <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" className="h-full w-full object-cover object-center" />
               </div>
 
-              <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
-                <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
-                <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> You're already signed in!</h1>
+              <div className="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
+                <p className="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
+                <h1 className="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> You're already signed in!</h1>
 
-                <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">The page you’re looking for doesn’t exist, would you like to go somewhere else? If you believe this to be an error, check your route and try again.</p>
+                <p className="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">The page you’re looking for doesn’t exist, would you like to go somewhere else? If you believe this to be an error, check your route and try again.</p>
 
-                <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
+                <nav className="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
                   
-                  <button onClick={TakeMeHome} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
+                  <button onClick={TakeMeHome} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
 
 
                   <br/>
 
-                  <button onClick={UserDashClick} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me to my Profile!</button>
+                  <button onClick={UserDashClick} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me to my Profile!</button>
                 
                 </nav>
               </div>

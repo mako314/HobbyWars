@@ -95,17 +95,18 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     useEffect(() => {
         setTwMappedCompetitions(selectedUser.competitions?.map((competition) =>{
         if (selectedUser){
+          console.log(competition)
         return(
             <>
-            <section onClick={() => navigateToCompetition(competition.id)} class="">
-                <div class="flex w-full">
-                    <div class="relative flex flex-col items-start m-1 transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8">
-                    <img class="object-cover object-center w-full rounded-t-xl lg:h-48 md:h-36" src="/assets/images/placeholders/neon-1.jpg" alt="blog"/>
-                    <div class="px-6 py-8">
-                        <h4 class="mt-4 text-2xl font-semibold text-neutral-600">
-                        <span class="">{competition.title}</span>
+            <section onClick={() => navigateToCompetition(competition.id)} className="">
+                <div className="flex w-full">
+                    <div className="relative flex flex-col items-start m-1 transition duration-300 ease-in-out delay-150 transform bg-white shadow-2xl rounded-xl md:w-80 md:-ml-16 md:hover:-translate-x-16 md:hover:-translate-y-8">
+                    <img className="object-cover object-center w-full rounded-t-xl lg:h-48 md:h-36" src={competition.compImg} alt={competition.title}/>
+                    <div className="px-6 py-8">
+                        <h4 className="mt-4 text-2xl font-semibold text-neutral-600">
+                        <span className="">{competition.title}</span>
                         </h4>
-                        <p class="mt-4 text-base font-normal text-gray-500 leading-relax">{competition.description}</p>
+                        <p className="mt-4 text-base font-normal text-gray-500 leading-relax">{competition.description}</p>
                     </div>
                     </div>
                 </div>
@@ -121,7 +122,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
     // and also navigate to it
     //click and navigate to the competition display page
     function navigateToCompetition(id) {
-        console.log(user.id)
+        // console.log(user.id)
         navigate(`/competition/${id}`)
         setViewedFromUser(true)
     }
@@ -171,15 +172,15 @@ function navUserHobby(id) {
 //         return(
 //           <>
 //             <section>
-//               <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
-//                 <div class="grid grid-cols-1">
-//                   <div class="w-full max-w-lg mx-auto my-4 bg-white shadow-xl rounded-xl">
-//                     <div class="p-6 lg:text-center">
-//                       <span class="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase"> User Hobby</span>
-//                       <h4 class="mt-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{userHobby.hobby.type_of_hobby}</h4>
-//                       <p class="mt-3 text-base leading-relaxed text-gray-500">{userHobby.hobby.description}</p>
-//                       <div class="mt-3">
-//                         <span class="flex items-center justify-center w-full px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">{userHobby.expertise}</span>
+//               <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-7xl">
+//                 <div className="grid grid-cols-1">
+//                   <div className="w-full max-w-lg mx-auto my-4 bg-white shadow-xl rounded-xl">
+//                     <div className="p-6 lg:text-center">
+//                       <span className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase"> User Hobby</span>
+//                       <h4 className="mt-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{userHobby.hobby.type_of_hobby}</h4>
+//                       <p className="mt-3 text-base leading-relaxed text-gray-500">{userHobby.hobby.description}</p>
+//                       <div className="mt-3">
+//                         <span className="flex items-center justify-center w-full px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">{userHobby.expertise}</span>
 //                       </div>
 //                       <br/>
 //                       <button
@@ -207,14 +208,14 @@ useEffect(() => {
   if (user_hobby) {
     setMappedUserHobbies(
       user_hobby.map((userHobby) => (
-        <div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-lg">
-          <div class="w-full bg-white shadow-xl rounded-xl">
-            <div class="p-6 lg:text-center">
-              <span class="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase"> User Hobby</span>
-              <h4 class="mt-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{userHobby.hobby.type_of_hobby}</h4>
-              <p class="mt-3 text-base leading-relaxed text-gray-500">{userHobby.hobby.description}</p>
-              <div class="mt-3">
-                <span class="flex items-center justify-center w-full px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">{userHobby.expertise}</span>
+        <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-24 max-w-lg">
+          <div className="w-full bg-white shadow-xl rounded-xl">
+            <div className="p-6 lg:text-center">
+              <span className="mb-8 text-xs font-semibold tracking-widest text-blue-600 uppercase"> User Hobby</span>
+              <h4 className="mt-8 text-2xl font-semibold leading-none tracking-tighter text-neutral-600 lg:text-3xl">{userHobby.hobby.type_of_hobby}</h4>
+              <p className="mt-3 text-base leading-relaxed text-gray-500">{userHobby.hobby.description}</p>
+              <div className="mt-3">
+                <span className="flex items-center justify-center w-full px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">{userHobby.expertise}</span>
               </div>
               <br/>
               <button
@@ -252,7 +253,7 @@ useEffect(() => {
         setEntryID(id)
         setViewedFromUser(true)
         navigate(`/entry/${id}`)
-        console.log(id)
+        // console.log(id)
         // setEntryID(id)
     }
 
@@ -365,8 +366,8 @@ useEffect(() => {
           method: "DELETE"
         })
           .then(() => {
-            console.log(entryToDelete)
-            console.log(entryToDelete.user_id)
+            // console.log(entryToDelete)
+            // console.log(entryToDelete.user_id)
             deleteEntry(entryToDelete.id)
             // navigate(`/user-dashboard/${entryToDelete.user_id}`)
             // Page still doesn't refresh
@@ -465,7 +466,7 @@ useEffect(() => {
             </h3>
             <p className="text-lg text-slate-400"> Submission: {entryResult.submission}</p>
             </header>           
-            <span class="flex items-center justify-center w-1/2 px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Placement :   
+            <span className="flex items-center justify-center w-1/2 px-4 py-2 text-base font-bold text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"> Placement :   
                 {entryResult.results?.map((resultP) =>{
                     return(" " + resultP.placement)
                 })}</span>
@@ -474,7 +475,7 @@ useEffect(() => {
 }
   }, [entry])
 
-  console.log(usersResults)
+  // console.log(usersResults)
 
 
 
@@ -520,7 +521,7 @@ useEffect(() => {
 
     //Actual DELETE request to the backend.
     const handleUserDelete = (user) => {
-        console.log(user)
+        // console.log(user)
         fetch(`/user/${user.id}`, {
           method: "DELETE"
         })
@@ -617,7 +618,7 @@ const twAddMoreHobbiesBtn = (
     
     //To handle going to the edit page 
     function handleEdit(e) {
-        console.log(user.id)
+        // console.log(user.id)
         navigate(`/user-edit/${user.id}`)
     }
     let loggedInDisplay
@@ -800,11 +801,11 @@ const twAddMoreHobbiesBtn = (
           </div>
         </section>
         
-        <div class="flex flex-wrap mx-56 md:flex-nowrap p-12">
+        <div className="flex flex-wrap mx-56 md:flex-nowrap p-12">
         {twMappedCompetitions}
         </div>
 
-        <div class="grid grid-cols-4 gap-1">
+        <div className="grid grid-cols-4 gap-1">
           {mappedUserHobbies}
         </div>
 
@@ -818,7 +819,7 @@ const twAddMoreHobbiesBtn = (
         the one below looks nicer
         */}
 
-        <div class="grid grid-cols-5 gap-1">
+        <div className="grid grid-cols-5 gap-1">
         {usersResults}
         </div>
         
@@ -853,28 +854,28 @@ const twAddMoreHobbiesBtn = (
 
   const loggedOutDisplay = (
 
-      <div class="bg-white py-6 sm:py-8 lg:py-12">
-      <div class="mx-auto max-w-screen-lg px-4 md:px-8">
-        <div class="grid gap-8 sm:grid-cols-2">
+      <div className="bg-white py-6 sm:py-8 lg:py-12">
+      <div className="mx-auto max-w-screen-lg px-4 md:px-8">
+        <div className="grid gap-8 sm:grid-cols-2">
 
-          <div class="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
-            <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" class="h-full w-full object-cover object-center" />
+          <div className="h-80 overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-auto">
+            <img src="https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?auto=format&q=75&fit=crop&w=600" loading="lazy" alt="Photo by Theo Crazzolara" className="h-full w-full object-cover object-center" />
           </div>
 
-          <div class="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
-            <p class="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
-            <h1 class="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> Sorry, but you must be logged in to view your profile!</h1>
+          <div className="flex flex-col items-center justify-center sm:items-start md:py-24 lg:py-32">
+            <p className="mb-4 text-sm font-semibold uppercase text-indigo-500 md:text-base">Error</p>
+            <h1 className="mb-2 text-center text-2xl font-bold text-gray-800 sm:text-left md:text-3xl"> Sorry, but you must be logged in to view your profile!</h1>
 
-            <p class="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">Please Login to see your profile! If you believe this to be an error, check your route and try again.</p>
+            <p className="mb-4 text-center text-gray-500 sm:text-left md:mb-8 md:text-lg">Please Login to see your profile! If you believe this to be an error, check your route and try again.</p>
 
-            <nav class="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
+            <nav className="flex gap-4 sm:block sm:space-y-1 md:space-y-2">
               
-              <button onClick={TakeMeHome} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
+              <button onClick={TakeMeHome} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Take me Home!</button>
 
 
               <br/>
 
-              <button onClick={TakeMeToLogin} class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Login</button>
+              <button onClick={TakeMeToLogin} className="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Login</button>
             
             </nav>
           </div>

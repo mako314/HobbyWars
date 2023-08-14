@@ -163,6 +163,7 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEn
     function backBtn(id){
         navigate(`/competition-submissions/${id}`)
     }
+    
             setLoMappedEntry(
                 <>
                 <section className="text-gray-600 body-font">
@@ -172,6 +173,7 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEn
                             <h1 className="title-font font-medium text-xl mb-2 text-gray-900">{singleEntry.user.username}</h1>
                                 <div className="leading-relaxed">{singleEntry.description}
                                 </div>
+                                {console.log(singleEntry.competition_id)}
 
                                 <button
                                 className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"

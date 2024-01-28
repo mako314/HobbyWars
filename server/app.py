@@ -188,7 +188,7 @@ class UserByID(Resource):
                 data = request.get_json()
                 for key in data:
                     setattr(user, key, data[key])
-                db.session.add(user)
+                # db.session.add(user)
                 db.session.commit()
 
                 #The below two lines should be able to take the password and hash it after it has been patched, if it has been patched
@@ -224,7 +224,7 @@ class UserByID(Resource):
             }, 404)
         return response
 
-api.add_resource(UserByID, '/user/<int:id>')
+api.add_resource(UserByID, '/user/<int:id>/')
 #------------------------------------------------------------------------------------------------------------------------------
 
 #------------------------------------Hobby (Not USER) Routing------------------------------------------------------------------------
@@ -369,13 +369,13 @@ class UserHobbiesByID(Resource):
     #PATCH Users Hobby by ID
     def patch(self, id):
         user_hobby = UserHobby.query.filter(UserHobby.id == id).first()
-
+        
         if user_hobby:
             try:
                 data = request.get_json()
                 for key in data:
                     setattr(user_hobby, key, data[key])
-                db.session.add(user_hobby)
+                # db.session.add(user_hobby)
                 db.session.commit()
                 
                 response = make_response(user_hobby.to_dict(), 202)

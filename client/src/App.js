@@ -156,6 +156,8 @@ function App() {
           })
       }, [])
 
+      console.log("COMPETITIONS:", competitions)
+
       const updateCompetition = (competitionToUpdate) =>{
         setCompetitions(competitions => competitions.map(competition =>{
           if (competition.id === competitionToUpdate.id) {

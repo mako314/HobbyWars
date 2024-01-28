@@ -65,21 +65,21 @@ function Header({user, setUser}){
             
             
             <Link to='/war-declaration'>
-            <a className="mr-5 hover:text-white">Declare War</a>
+            <span className="mr-5 text-white hover:text-blue-500">Declare War</span>
             </Link>
 
             <Link to='/leaderboard/competitions'>
-            <a className="mr-5 hover:text-white">LeaderBoards</a>
+            <span className="mr-5 text-white hover:text-blue-500">LeaderBoards</span>
             </Link>
             
             {/* Link to all wars / existing and current */}
             <Link to='/competitions'>
-            <a className="mr-5 hover:text-white">Wars</a>
+            <span className="mr-5 text-white hover:text-blue-500">Wars</span>
             </Link>
             
             {/* Link for logged OUT user to sign up */}
             <Link to='/enlist'>
-            <a className="mr-5 hover:text-white">Enlist</a>
+            <span className="mr-5 text-white hover:text-blue-500">Enlist</span>
             </Link>
 
             </nav>

@@ -9,7 +9,7 @@ function LeaderBoard({leaderBoardID}){
 
     useEffect(() => {
         // Fetch leaderboard data on component mount
-        fetch(`/leaderboard/${leaderBoardID}`)
+        fetch(`/api/leaderboard/${leaderBoardID}`)
             .then(response => response.json())
             .then(data => setLeaderBoardData(data));
     }, [leaderBoardID]);

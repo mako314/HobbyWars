@@ -45,7 +45,7 @@ function UserDashboard({user, setNewUsers, newUsers, setUser, setEntryID, setUse
 
     //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
     useEffect(() => {
-        fetch(`/user/${id}`)
+        fetch(`/api/user/${id}`)
           .then((resp) => resp.json())
           .then((data) => {
             setSelectedUser(data)
@@ -361,7 +361,7 @@ useEffect(() => {
     
     //Actual DELETE request to the backend.
     const handleEntryDelete = (entryToDelete) => {
-        fetch(`/entry/${entryToDelete.id}`, {
+        fetch(`/api/entry/${entryToDelete.id}`, {
           method: "DELETE"
         })
           .then(() => {
@@ -513,7 +513,7 @@ useEffect(() => {
     
     //This SHOULD LOG OUT the user after deletion. Could this go inside of the delete itself?
     function handleLogout() {
-        fetch("/logout", {
+        fetch("/api/logout", {
             method: "DELETE"
         }).then(setUser(null))
     }
@@ -521,7 +521,7 @@ useEffect(() => {
     //Actual DELETE request to the backend.
     const handleUserDelete = (user) => {
         // console.log(user)
-        fetch(`/user/${user.id}`, {
+        fetch(`/api/user/${user.id}`, {
           method: "DELETE"
         })
           .then(() => {

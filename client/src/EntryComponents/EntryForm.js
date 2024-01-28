@@ -25,7 +25,7 @@ function EntryForm({user, setEntries, entries, compID, setEntryID, setViewedFrom
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/entries' , {
+            fetch('/api/entries' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

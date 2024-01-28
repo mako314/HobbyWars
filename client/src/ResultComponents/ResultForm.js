@@ -31,7 +31,7 @@ function ResultForm({user, setResults, results, compID, compResultID, entryResul
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/results' , {
+            fetch('/api/results' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

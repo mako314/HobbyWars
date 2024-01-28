@@ -17,7 +17,7 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`/user/hobbies/${userHobbyID}`)
+        fetch(`/api/user/hobbies/${userHobbyID}`)
           .then((resp) => resp.json())
           .then((data) => {
             setUserHobbyInfo(data)
@@ -40,7 +40,7 @@ function UserHobbyEdit({user, updateUserHobby, userHobbyID}){
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch(`/user/hobbies/${user.id}` , {
+            fetch(`/api/user/hobbies/${user.id}` , {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"

@@ -49,7 +49,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
 
     //use Params take the navigation portion and inputs that as string interpolation into our route. Taking us to that competitions page. This then grabs that pages data and properly displays it.
     useEffect(() => {
-        fetch(`/competition/${id}`)
+        fetch(`/api/competition/${id}`)
           .then((resp) => resp.json())
           .then((data) => {
             setCompetition(data)
@@ -75,7 +75,7 @@ function CompetitionDisplay({user, setCompetitions, competitions, setCompID, com
       //Handles the deletion of the competition on the back end
     const handleCompetitionDelete = (competition) => {
         // console.log(competition)
-        fetch(`/competition/${competition.id}`, {
+        fetch(`/api/competition/${competition.id}`, {
           method: "DELETE"
         })
           .then(() => {

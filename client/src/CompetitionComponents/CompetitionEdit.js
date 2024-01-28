@@ -23,7 +23,7 @@ function CompetitionEdit({user, compID, updateCompetition}){
 
     useEffect(() => {
         if(compID){
-        fetch(`/competition/${compID}`)
+        fetch(`/api/competition/${compID}`)
           .then((resp) => resp.json())
           .then((data) => {
             setOneCompEdit(data)
@@ -73,7 +73,7 @@ function CompetitionEdit({user, compID, updateCompetition}){
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch(`/competition/${compID}`, {
+            fetch(`/api/competition/${compID}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"

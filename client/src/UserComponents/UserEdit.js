@@ -40,7 +40,7 @@ function UserEdit({user, updateUser}){
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch(`/user/${user.id}` , {
+            fetch(`/api/user/${user.id}` , {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"

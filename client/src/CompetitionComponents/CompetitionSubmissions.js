@@ -30,7 +30,7 @@ function CompetitionSubmissions({user, setEntryID, setEditFromSubmissions, editF
 
     // use the params to fetch data from the backend for the competition
     useEffect(() => {
-        fetch(`/competition/${id}`)
+        fetch(`/api/competition/${id}`)
           .then((resp) => resp.json())
           .then((data) => {
             setCompEntries(data)

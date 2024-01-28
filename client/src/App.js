@@ -137,7 +137,7 @@ function App() {
     //-------------------------------------------- CHECK SESSION TO STAY LOGGED IN ON REFRESH--------------------------
     
     useEffect(() => {
-      fetch("/check_session").then((response) => {
+      fetch("/api/check_session").then((response) => {
         if (response.ok) {
           response.json().then((user) => setUser(user));
         }
@@ -149,7 +149,7 @@ function App() {
     //-------------------------------------------- COMPETITION FETCH / CODE--------------------------
     //Competition Fetching, used to DISPLAY Competition and POST to Competition//
     useEffect(() => {
-        fetch("/competitions")
+        fetch("/api/competitions")
           .then((resp) => resp.json())
           .then((data) => {
             setCompetitions(data)
@@ -173,7 +173,7 @@ function App() {
     
     //Fetch entries
     useEffect(() => {
-        fetch("/entries")
+        fetch("/api/entries")
           .then((resp) => resp.json())
           .then((data) => {
             setEntries(data)
@@ -203,7 +203,7 @@ function App() {
     
     //USER Fetching, used to DISPLAY USERS(There is no display) and POST to USERS//
     useEffect(() => {
-        fetch("/users")
+        fetch("/api/users")
           .then((resp) => resp.json())
           .then((data) => {
             setNewUsers(data)
@@ -223,7 +223,7 @@ function App() {
 
     //-------------------------------------------- USER HOBBIES FETCH /  PATCH CODE--------------------------
     useEffect(() => {
-      fetch("/user-hobbies")
+      fetch("/api/user-hobbies")
         .then((resp) => resp.json())
         .then((data) => {
           setUserHobbies(data)
@@ -242,7 +242,7 @@ function App() {
 
     //-------------------------------------------- HOBBY FETCH / CODE--------------------------
     useEffect(() => {
-      fetch("/hobbies")
+      fetch("/api/hobbies")
         .then((resp) => resp.json())
         .then((data) => {
           setHobbyAdder(data)
@@ -254,7 +254,7 @@ function App() {
 
       //-------------------------------------------- Result FETCH / CODE--------------------------
       useEffect(() => {
-        fetch("/results")
+        fetch("/api/results")
           .then((resp) => resp.json())
           .then((data) => {
             setResults(data)

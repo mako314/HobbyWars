@@ -23,7 +23,7 @@ function HobbyAdd({user, hobbyAdder, setHobbyAdder}) {
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch('/hobbies' , {
+            fetch('/api/hobbies' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

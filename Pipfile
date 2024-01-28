@@ -6,16 +6,18 @@ name = "pypi"
 [packages]
 sqlalchemy = "*"
 alembic = "*"
-Flask = "*"
-Flask-Migrate = "*"
-Flask-SQLAlchemy = "*"
 importlib-resources = "*"
 ipdb = "*"
 pytest = "7.1.3"
 sqlalchemy-serializer = "*"
-Flask-Restful = "*"
 Flask-Cors = "*"
 Flask-Bcrypt = "*"
+flask = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
+flask-sqlalchemy = "*"
+flask-migrate = "*"
+flask-restful = "*"
 
 [dev-packages]
 

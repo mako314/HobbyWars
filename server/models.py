@@ -3,6 +3,9 @@ from sqlalchemy import MetaData
 from sqlalchemy.orm import validates
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.ext.hybrid import hybrid_property
+
+from datetime import datetime
+
 # from app import bcrypt #<--- this is giving me the circular import error ImportError: cannot import name 'db' from partially initialized module 'models' (most likely due to a circular import)
 from config import db, bcrypt
 
@@ -107,6 +110,63 @@ class User(db.Model, SerializerMixin):
             raise ValueError("A Password greater than 6 characters is required")
         else:
             return _password_hash
+
+
+
+# class User(db.Model, SerializerMixin):
+#     __tablename__ = 'users'
+
+#     id = db.Column(db.Integer, primary_key = True)
+#     name = db.Column(db.String)
+#     age = db.Column(db.Integer)
+#     location = db.Column(db.String)
+#     email = db.Column(db.String)
+#     phone = db.Column(db.Integer)
+#     movie_preferences = db.Column(db.String)
+
+#     #Foreign Key
+
+#     #Relationships
+#     movie_favorite = db.relationship('MovieFavorite', back_populates='user')
+
+#     #Serialize Rules
+
+# class Movie(db.Model, SerializerMixin):
+#     __tablename__ = 'movies'
+#     id = db.Column(db.Integer, primary_key = True)
+#     title = db.Column(db.String)
+#     director = db.Column(db.String)
+#     length = db.Column(db.Integer)
+#     awards = db.Column(db.String)
+#     genre = db.Column(db.String)
+#     changed_at = db.Column(db.DateTime, default=datetime.utcnow)
+#     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+#     #Foreign Key
+
+#     #Relationships
+#     movie_favorite = db.relationship('MovieFavorite', back_populates='movie')
+
+#     #Serialize Rules
+
+# class MovieFavorite(db.Model, SerializerMixin):
+#     __tablename__ = 'movie_favorites'
+
+#     id = db.Column(db.Integer, primary_key = True)
+
+#     #Foreign Keys
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'))
+
+#     #Relationships
+#     user = db.relationship('User', back_populates='movie_favorite')
+#     movie = db.relationship('Movie', back_populates='movie_favorites')
+
+#     #Serialize Rules
+
+
+
+
 
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"

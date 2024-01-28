@@ -79,7 +79,8 @@ function HomePage({user}) {
     <br></br>
     <section className="text-gray-600 body-font">
     <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col text-center w-full mb-20">
+
+        <div className="flex flex-col text-center w-full mt-20 mb-20">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Exploring Hobby Wars</h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Embark on a journey into the heart of Hobby Wars' influence on our dynamic community. Traverse the realms of accomplishment, unity, and innovative achievements that mark our path.</p>
         </div>

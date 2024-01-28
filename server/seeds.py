@@ -967,36 +967,36 @@ if __name__ == '__main__':
 #print some of these can defnitely have extra things
         print("Seeding our existing Users hobbies...")
         user_hobbies = [
-            UserHobby(expertise=9, user_id=user_1, hobby_id=hobbies[79]),   # Emily Everwood - Painting ✔
-            UserHobby(expertise=7, user_id=user_2, hobby_id=hobbies[8]),   # Zephyr Wilde - Adventuring - Trekking ✔
-            UserHobby(expertise=5, user_id=user_3, hobby_id=hobbies[0]),   # Seren Hawthorne - Writing - Writing Novels ✔ 
-            UserHobby(expertise=8, user_id=user_4, hobby_id=hobbies[8]),   # Atlas Stone - Mountain Exploration - Trekking ✔
-            UserHobby(expertise=6, user_id=user_5, hobby_id=hobbies[30]),   # Aria Nightingale - Music - Theater ✔
-            UserHobby(expertise=9, user_id=user_6, hobby_id=hobbies[70]),   # Max Adler - Astronomy - Astrology ✔
-            UserHobby(expertise=4, user_id=user_7, hobby_id=hobbies[59]),   # Eliza Bard - Reading Fiction Books ✔
-            UserHobby(expertise=7, user_id=user_8, hobby_id=hobbies[19]),   # Phoenix Blaze - Fire Dancing - Dancing ✔
-            UserHobby(expertise=8, user_id=user_9, hobby_id=hobbies[70]),   # Stella Morgan - Astronomy - Astrology✔
-            UserHobby(expertise=5, user_id=user_10, hobby_id=hobbies[8]),   # Asher Kane - Hiking - Trekking
-            UserHobby(expertise=6, user_id=user_11, hobby_id=hobbies[3]),  # Ivy Greene - Photography ✔
-            UserHobby(expertise=4, user_id=user_12, hobby_id=hobbies[12]),  # Carter Reeves - Adrenaline Activities - Mountain Biking	 ✔
-            UserHobby(expertise=5, user_id=user_13, hobby_id=hobbies[71]),  # Jasmine Hart - Mindfulness - Meditation (add yoga 18) ✔
-            UserHobby(expertise=8, user_id=user_14, hobby_id=hobbies[36]),  # Oliver Hudson - Technology - Coding ✔
-            UserHobby(expertise=6, user_id=user_15, hobby_id=hobbies[94]),  # Ava Morgan - Animal Welfare - Volunteering ✔
-            UserHobby(expertise=9, user_id=user_16, hobby_id=hobbies[7]),  # Ash Hunter - Nature - Hiking ✔
-            UserHobby(expertise=3, user_id=user_17, hobby_id=hobbies[49]),  # Ari James - History - Collecting Antiques ✔
-            UserHobby(expertise=7, user_id=user_18, hobby_id=hobbies[71]),  # Aiden Hartman - Mindfulness - Meditation ✔
-            UserHobby(expertise=5, user_id=user_19, hobby_id=hobbies[70]),  # Luna Knight - Astronomy - Astrology✔
-            UserHobby(expertise=4, user_id=user_20, hobby_id=hobbies[64]),  # Ryder Moss - Travel - Traveling ✔
-            UserHobby(expertise=8, user_id=user_21, hobby_id=hobbies[70]),  # Nova Sullivan - Stargazing - Astrology✔
-            UserHobby(expertise=6, user_id=user_22, hobby_id=hobbies[8]),   # Silas Rivera - Nature - Trekking✔
-            UserHobby(expertise=3, user_id=user_23, hobby_id=hobbies[9]),  # Ivy Lawrence - Gardening ✔
-            UserHobby(expertise=5, user_id=user_24, hobby_id=hobbies[2]),   # Zoe Harrison - Poetry - Writing Poetry	✔
-            UserHobby(expertise=7, user_id=user_25, hobby_id=hobbies[64]),  # Finn Collins - Travel - Traveling ✔
-            UserHobby(expertise=6, user_id=user_26, hobby_id=hobbies[3]),   # Lila Morris - Photography ✔
-            UserHobby(expertise=8, user_id=user_27, hobby_id=hobbies[46]),  # Miles Cooper - History - Vintage Items✔
-            UserHobby(expertise=3, user_id=user_28, hobby_id=hobbies[53]),  # Zoe Manning - Culinary Exploration - Cooking International Cuisines	 ✔
-            UserHobby(expertise=5, user_id=user_29, hobby_id=hobbies[8]),   # Caleb Williams - Resilience - Trekking ✔
-            UserHobby(expertise=7, user_id=user_30, hobby_id=hobbies[2]),  # Zara Knight - Poetry - Writing Poetry ✔
+            UserHobby(expertise=9, user_id=user_1.id, hobby_id=hobbies[79].id),   # Emily Everwood - Painting ✔
+            UserHobby(expertise=7, user_id=user_2.id, hobby_id=hobbies[8].id),   # Zephyr Wilde - Adventuring - Trekking ✔
+            UserHobby(expertise=5, user_id=user_3.id, hobby_id=hobbies[0].id),   # Seren Hawthorne - Writing - Writing Novels ✔ 
+            UserHobby(expertise=8, user_id=user_4.id, hobby_id=hobbies[8].id),   # Atlas Stone - Mountain Exploration - Trekking ✔
+            UserHobby(expertise=6, user_id=user_5.id, hobby_id=hobbies[30].id),   # Aria Nightingale - Music - Theater ✔
+            UserHobby(expertise=9, user_id=user_6.id, hobby_id=hobbies[70].id),   # Max Adler - Astronomy - Astrology ✔
+            UserHobby(expertise=4, user_id=user_7.id, hobby_id=hobbies[59].id),   # Eliza Bard - Reading Fiction Books ✔
+            UserHobby(expertise=7, user_id=user_8.id, hobby_id=hobbies[19].id),   # Phoenix Blaze - Fire Dancing - Dancing ✔
+            UserHobby(expertise=8, user_id=user_9.id, hobby_id=hobbies[70].id),   # Stella Morgan - Astronomy - Astrology✔
+            UserHobby(expertise=5, user_id=user_10.id, hobby_id=hobbies[8].id),   # Asher Kane - Hiking - Trekking
+            UserHobby(expertise=6, user_id=user_11.id, hobby_id=hobbies[3].id),  # Ivy Greene - Photography ✔
+            UserHobby(expertise=4, user_id=user_12.id, hobby_id=hobbies[12].id),  # Carter Reeves - Adrenaline Activities - Mountain Biking	 ✔
+            UserHobby(expertise=5, user_id=user_13.id, hobby_id=hobbies[71].id),  # Jasmine Hart - Mindfulness - Meditation (add yoga 18) ✔
+            UserHobby(expertise=8, user_id=user_14.id, hobby_id=hobbies[36].id),  # Oliver Hudson - Technology - Coding ✔
+            UserHobby(expertise=6, user_id=user_15.id, hobby_id=hobbies[94].id),  # Ava Morgan - Animal Welfare - Volunteering ✔
+            UserHobby(expertise=9, user_id=user_16.id, hobby_id=hobbies[7].id),  # Ash Hunter - Nature - Hiking ✔
+            UserHobby(expertise=3, user_id=user_17.id, hobby_id=hobbies[49].id),  # Ari James - History - Collecting Antiques ✔
+            UserHobby(expertise=7, user_id=user_18.id, hobby_id=hobbies[71].id),  # Aiden Hartman - Mindfulness - Meditation ✔
+            UserHobby(expertise=5, user_id=user_19.id, hobby_id=hobbies[70].id),  # Luna Knight - Astronomy - Astrology✔
+            UserHobby(expertise=4, user_id=user_20.id, hobby_id=hobbies[64].id),  # Ryder Moss - Travel - Traveling ✔
+            UserHobby(expertise=8, user_id=user_21.id, hobby_id=hobbies[70].id),  # Nova Sullivan - Stargazing - Astrology✔
+            UserHobby(expertise=6, user_id=user_22.id, hobby_id=hobbies[8].id),   # Silas Rivera - Nature - Trekking✔
+            UserHobby(expertise=3, user_id=user_23.id, hobby_id=hobbies[9].id),  # Ivy Lawrence - Gardening ✔
+            UserHobby(expertise=5, user_id=user_24.id, hobby_id=hobbies[2].id),   # Zoe Harrison - Poetry - Writing Poetry	✔
+            UserHobby(expertise=7, user_id=user_25.id, hobby_id=hobbies[64].id),  # Finn Collins - Travel - Traveling ✔
+            UserHobby(expertise=6, user_id=user_26.id, hobby_id=hobbies[3].id),   # Lila Morris - Photography ✔
+            UserHobby(expertise=8, user_id=user_27.id, hobby_id=hobbies[46].id),  # Miles Cooper - History - Vintage Items✔
+            UserHobby(expertise=3, user_id=user_28.id, hobby_id=hobbies[53].id),  # Zoe Manning - Culinary Exploration - Cooking International Cuisines	 ✔
+            UserHobby(expertise=5, user_id=user_29.id, hobby_id=hobbies[8].id),   # Caleb Williams - Resilience - Trekking ✔
+            UserHobby(expertise=7, user_id=user_30.id, hobby_id=hobbies[2].id),  # Zara Knight - Poetry - Writing Poetry ✔
         ]
         db.session.add_all(user_hobbies)
 #---------------------------------------------------------------------------------COMPETITIONS-----------------------------------------------------------------------------------------------
@@ -1023,7 +1023,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place team will be granted a $25 outdoor gear voucher, allowing them to choose equipment or accessories to enhance their future trekking adventures.",
                 prize8="Eighth Place: The eighth-place team will receive a $20 outdoor gear voucher, providing them with an opportunity to acquire quality gear for their outdoor pursuits.",
                 registration_schedule="Participants can register for the competition through [provide registration details]. The number of teams may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = user_22,
+                user_id = user_22.id,
             ),
             Competition(
                 title="Celestial Explorer Challenge",
@@ -1046,7 +1046,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place Prize: With a reward of $50, the seventh-place participant will be celebrated for their engagement in the cosmos and their astronomical feats.",
                 prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
                 registration_schedule="Secure your place in the Celestial Explorer Challenge by registering through [provide registration details]. Limited slots are available, so secure your spot early to join this cosmic quest of a lifetime.", # need a way to grab date
-                user_id = user_6,
+                user_id = user_6.id,
             ),
             Competition(
                 title="Virtual Culinary Showdown",
@@ -1069,7 +1069,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and culinary expertise.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 gift card to a popular online gourmet food store, allowing them to explore and indulge in gourmet ingredients and culinary delights.",
                 registration_schedule="Participants can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = user_28,
+                user_id = user_28.id,
             ),
             Competition(
                 title="Coastal Serenity Art Challenge",
@@ -1092,7 +1092,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place artist will receive a $50 cash prize, honoring their efforts and artistic expression.",
                 prize8="Eighth Place: The eighth-place artist will be granted a $25 art supply voucher, allowing them to acquire additional tools and materials to nurture their artistic visions.",
                 registration_schedule="Artists can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = user_1,
+                user_id = user_1.id,
             ),
             Competition(
                 title="Captured Visions Photography Contest",
@@ -1115,7 +1115,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place photographer will receive a $50 cash prize, honoring their efforts and artistic vision.",
                 prize8="Eighth Place: The eighth-place photographer will be granted a $25 photography gear voucher, allowing them to enhance their photographic arsenal.",
                 registration_schedule="Photographers can submit their captivating images through [provide submission details]. Each participant may enter photographs for one or more of the competition tasks.", # need a way to grab date
-                user_id = user_11,
+                user_id = user_11.id,
             ),
             Competition(
                 title="Strum and Show Guitar Challenge",
@@ -1138,7 +1138,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place guitarist will receive a $50 cash prize, honoring their efforts and musical expression.",
                 prize8="Eighth Place: The eighth-place guitarist will be granted a $25 gift card to a popular music store, allowing them to explore and expand their guitar gear collection.",
                 registration_schedule="Guitarists can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = user_5,
+                user_id = user_5.id,
             ),
             Competition(
                 title="ElectraTech Maker Challenge",
@@ -1161,7 +1161,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and technological ingenuity.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 electronics components voucher, allowing them to expand their toolkit and fuel their next creations.",
                 registration_schedule="Makers and DIY enthusiasts can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = user_14,
+                user_id = user_14.id,
             ),
             Competition(
                 title="CodeCrafters Coding Challenge",
@@ -1184,7 +1184,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and coding ingenuity.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 coding resource voucher, allowing them to enhance their toolkit and explore new coding horizons.",
                 registration_schedule="Programmers can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = user_14,
+                user_id = user_14.id,
             ),
         ]
         db.session.add_all(competitions)
@@ -1197,68 +1197,68 @@ if __name__ == '__main__':
             Entry(
             submission="https://images.jpost.com/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_428,w_640/525666",
             description="A breathtaking view of the Milky Way as seen from a remote location in BIG BEND NATIONAL PARK, TEXAS. The dense cluster of stars in the center is prominently visible, with the dark interstellar dust creating an intriguing contrast.",
-            user_id=user_6,
-            competition_id=competitions[1],
+            user_id=user_6.id,
+            competition_id=competitions[1].id,
             ),
             Entry(
             submission="https://www.constellation-guide.com/wp-content/uploads/2022/06/night-sky-tonight-northern-hemisphere-july.webp",
             description="A detailed guide to the constellations visible during the month of August. Each constellation is described with its historical background, mythological significance, and key stars. Also included are tips for identifying each constellation in the night sky.",
-            user_id=user_10,
-            competition_id=competitions[1],
+            user_id=user_10.id,
+            competition_id=competitions[1].id,
             ),
             Entry(
             submission="https://www.jeffsullivanphotography.com/wp-content/uploads/2018/12/Death-Valley-Geminids-Jeff_Sullivan-2913-3320.jpg",
             description="A mesmerizing time-lapse video of the Perseid meteor shower, captured during its peak activity. Each meteor trail is distinctly visible, showcasing the shower's radiant beauty against the backdrop of a dark, starry sky.",
-            user_id=user_19,
-            competition_id=competitions[1],
+            user_id=user_19.id,
+            competition_id=competitions[1].id,
             ),
             Entry(
             submission="https://i.ytimg.com/vi/y3qFm_-GVks/maxresdefault.jpg",
             description="An audio recording capturing the ambient sounds of the night during a stargazing session. The gentle chirping of crickets, the distant howl of a coyote, and the occasional rustling of leaves combine to create a serene atmosphere that complements the beauty of the night sky.",
-            user_id=user_21,
-            competition_id=competitions[1],
+            user_id=user_21.id,
+            competition_id=competitions[1].id,
             ),
             Entry(
             submission="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvbWFuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
             description="A poignant portrait of a young woman, Julia, with tears glistening in her eyes. The soft lighting emphasizes the raw emotion on her face, capturing a moment of vulnerability and introspection.",
-            user_id=user_26,
-            competition_id=competitions[4],
+            user_id=user_26.id,
+            competition_id=competitions[4].id,
             ),
             Entry(
             submission="https://seal2013.files.wordpress.com/2014/04/street-x.jpg",
             description="A vibrant snapshot of a bustling market street in Marrakech. The image captures the essence of the local culture, with street vendors peddling their wares, colorful textiles hanging from stalls, and a cacophony of sounds echoing in the background. The photograph tells a story of life, commerce, and the spirit of the city.",
-            user_id=user_11,
-            competition_id=competitions[4],
+            user_id=user_11.id,
+            competition_id=competitions[4].id,
             ),
             Entry(
             submission="https://i.ytimg.com/vi/TUM1Phi3zuI/maxresdefault.jpg",
             description="Our team began the trek just as dawn was breaking, with the soft glow of the morning sun painting the skies. As we made our way through the trail, the gentle sound of cascading water drew us closer to the first waterfall. The fresh misty air and the sheer beauty of nature left us in awe. Taking a moment to meditate by the falls, we felt an overwhelming sense of connection with the surroundings.",
-            user_id=user_2,
-            competition_id=competitions[0],
+            user_id=user_2.id,
+            competition_id=competitions[0].id,
             ),
             Entry(
             submission="https://www.nps.gov/piro/planyourvisit/images/hikers-on-NCT-1.jpg",
             description="The trail provided both challenges and wonders. Each waterfall we encountered told a different story - from gentle cascades to majestic falls. Our team, though tested by the terrain, grew closer with every step. Sharing stories, helping each other through tricky paths, and taking in the beauty together made the journey unforgettable.",
-            user_id=user_4,
-            competition_id=competitions[0],
+            user_id=user_4.id,
+            competition_id=competitions[0].id,
             ),
             Entry(
             submission="https://www.wedreamoftravel.com/wp-content/uploads/2020/08/Silver-Falls.jpg",
             description="While navigating towards the fourth waterfall, we stumbled upon an off-beaten path. Curiosity got the better of us, and we decided to explore. What we discovered was a secluded mini waterfall, not on the map, where we spent hours simply admiring nature's hidden gem. This unexpected detour became the highlight of our trek.",
-            user_id=user_10,
-            competition_id=competitions[0],
+            user_id=user_10.id,
+            competition_id=competitions[0].id,
             ),
             Entry(
             submission="Image: ReflectionsByTheFall_22.jpg",
             description="The Trail of Ten Falls is not just about witnessing nature's wonders, but also about introspection. As we trekked, each member took turns sharing personal stories and reflections, inspired by the natural beauty around. By the end of the trail, we not only explored the external landscape but also the landscapes of our souls.",
-            user_id=user_22,
-            competition_id=competitions[0],
+            user_id=user_22.id,
+            competition_id=competitions[0].id,
             ),
             Entry(
             submission="https://uprootedtraveler.com/wp-content/uploads/trail-of-ten-falls-trail-of-10-falls-lower-south-falls-2.jpg",
             description="Facing challenges like slippery paths and steep inclines, our team's spirit never wavered. Each waterfall became a milestone, a testament to our determination. By the time we reached the last waterfall, the sense of accomplishment was overwhelming. It wasn't just about completing the trek, but about the bonds formed and the memories made.",
-            user_id=user_29,
-            competition_id=competitions[0],
+            user_id=user_29.id,
+            competition_id=competitions[0].id,
             ),
         ]
         db.session.add_all(entries)
@@ -1269,69 +1269,69 @@ if __name__ == '__main__':
         results = [
             Result(
             placement=2,
-            user_id=user_6,
-            competition_id=competitions[1],
-            entry_id = entries[1],
+            user_id=user_6.id,
+            competition_id=competitions[1].id,
+            entry_id = entries[1].id,
             ),
             Result(
             placement=5,
-            user_id=user_10,
-            competition_id=competitions[1],
-            entry_id = entries[2],
+            user_id=user_10.id,
+            competition_id=competitions[1].id,
+            entry_id = entries[2].id,
             ),
             Result(
             placement=1,
-            user_id=user_19,
-            competition_id=competitions[1],
-            entry_id = entries[3],
+            user_id=user_19.id,
+            competition_id=competitions[1].id,
+            entry_id = entries[3].id,
             ),
             Result(
             placement=3,
-            user_id=user_21,
-            competition_id=competitions[1],
-            entry_id = entries[4],
+            user_id=user_21.id,
+            competition_id=competitions[1].id,
+            entry_id = entries[4].id,
             ),
             Result(
             placement=5,
-            user_id=user_26,
-            competition_id=competitions[4],
-            entry_id = entries[5],
+            user_id=user_26.id,
+            competition_id=competitions[4].id,
+            entry_id = entries[5].id,
             ),
             Result(
             placement=1,
-            user_id=user_11,
-            competition_id=competitions[4],
-            entry_id = entries[6],
+            user_id=user_11.id,
+            competition_id=competitions[4].id,
+            entry_id = entries[6].id,
             ),
             Result(
             placement=3,
-            user_id=user_2,
-            competition_id=competitions[0],
-            entry_id = entries[7],
+            user_id=user_2.id,
+            competition_id=competitions[0].id,
+            entry_id = entries[7].id,
             ),
             Result(
             placement=5,
-            user_id=user_4,
-            competition_id=competitions[0],
-            entry_id = entries[8],
+            user_id=user_4.id,
+            competition_id=competitions[0].id,
+            entry_id = entries[8].id,
             ),
             Result(
             placement=6,
-            user_id=user_10,
-            competition_id=competitions[0],
-            entry_id = entries[9],
+            user_id=user_10.id,
+            competition_id=competitions[0].id,
+            entry_id = entries[9].id,
             ),
             Result(
             placement=1,
-            user_id=user_22,
-            competition_id=competitions[0],
-            entry_id = entries[9],
+            user_id=user_22.id,
+            competition_id=competitions[0].id,
+            entry_id = entries[9].id,
             ),
             Result(
             placement=2,
-            user_id=user_29,
-            competition_id=competitions[0],
-            entry_id = entries[10],
+            user_id=user_29.id,
+            competition_id=competitions[0].id,
+            entry_id = entries[10].id,
             ),
         ]
         db.session.add_all(results)

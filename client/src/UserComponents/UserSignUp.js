@@ -25,7 +25,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
         let username = formik.values.username;
         let password = formik.values.password;
 
-        fetch("/login", {
+        fetch("/api/login", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",
@@ -65,7 +65,7 @@ function UserSignUpForm({setUser, setNewUsers, newUsers, user}){
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch('/users' , {
+            fetch('/api/users' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

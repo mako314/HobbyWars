@@ -37,7 +37,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
         },
         validationSchema: formSchema,
         onSubmit: (values) =>{
-            fetch(`/entry/${entryID}` , {
+            fetch(`/api/entry/${entryID}` , {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json"
@@ -101,7 +101,7 @@ function EntryEdit({user, updateEntry, entryID, editFromSubmissions}){
     //Use effect waiting for user to load, then afterwards if user exists, comp id exists, and entry ID all exist, it fetches the entries information such as description and submission.
     useEffect(() => {
         if (user && entryID){ 
-        fetch(`/entry/${entryID}`)
+        fetch(`/api/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
             // console.log("Ive fired")

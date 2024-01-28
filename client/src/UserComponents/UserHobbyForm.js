@@ -30,7 +30,7 @@ const navigate = useNavigate()
 //This useEffect grabs the data for the hobbies itself, there's probably a way to filter the descriptions out to display them on a div but alas.
     useEffect(() => {
         if (user)
-        fetch("/hobbies")
+        fetch("/api/hobbies")
           .then((resp) => resp.json())
           .then((data) => {
             setHobbies(data)
@@ -40,7 +40,7 @@ const navigate = useNavigate()
 
 //wait for hobby id to be set and then use it to pull out data for that hobby, just description.
       useEffect(() => {
-        fetch(`/hobby/${hobbyID}`)
+        fetch(`/api/hobby/${hobbyID}`)
           .then((resp) => resp.json())
           .then((data) => {
             setHobbyDescription(data)
@@ -64,7 +64,7 @@ const navigate = useNavigate()
         validationSchema: formSchema,
         onSubmit: (values) => {
             // console.log("here")
-            fetch('/user-hobbies' , {
+            fetch('/api/user-hobbies' , {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

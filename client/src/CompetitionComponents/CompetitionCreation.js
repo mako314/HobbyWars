@@ -49,7 +49,7 @@ function CompetitionCreation({user, setCompetitions, competitions}){
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch('/competitions', {
+            fetch('/api/competitions', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

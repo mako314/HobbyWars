@@ -9,7 +9,7 @@ function LoginForm({user, setUser}){
     // LOGIN / sends information to server-side, sets session, and sets state
 
     function handleCheckSession() {
-    fetch("/check_session").then((resp) => {
+    fetch("/api/check_session").then((resp) => {
       if (resp.ok) {
         resp.json().then((user) => setUser(user));
       }
@@ -18,7 +18,7 @@ function LoginForm({user, setUser}){
 
     // removes session, removes state
     function handleLogout() {
-        fetch("/logout", {
+        fetch("/api/logout", {
             method: "DELETE"
         }).then(setUser(null))
     }
@@ -30,7 +30,7 @@ function LoginForm({user, setUser}){
         let username = e.target.username.value;
         let password = e.target.password.value;
 
-        fetch("/login", {
+        fetch("/api/login", {
             method: "POST",
             headers: {
             "Content-Type": "application/json",

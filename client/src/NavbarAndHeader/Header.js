@@ -11,7 +11,7 @@ function Header({user, setUser}){
 
     //Handle a USER LOGGING OUT, IF they are LOGGED IN
     function handleLogout() {
-        fetch("/logout", {
+        fetch("/api/logout", {
             method: "DELETE"
         }).then(setUser(null))
     }

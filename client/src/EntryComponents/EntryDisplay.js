@@ -15,7 +15,7 @@ function EntryDisplay({user, entryID, viewedFromUser, viewFromSubmissions, setEn
 
     //Use effect to grab the data when you initially load into this page
     useEffect(() => {
-        fetch(`/entry/${entryID}`)
+        fetch(`/api/entry/${entryID}`)
         .then((resp) => resp.json())
         .then((data) => {
             // console.log(data)

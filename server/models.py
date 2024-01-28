@@ -112,62 +112,6 @@ class User(db.Model, SerializerMixin):
             return _password_hash
 
 
-
-# class User(db.Model, SerializerMixin):
-#     __tablename__ = 'users'
-
-#     id = db.Column(db.Integer, primary_key = True)
-#     name = db.Column(db.String)
-#     age = db.Column(db.Integer)
-#     location = db.Column(db.String)
-#     email = db.Column(db.String)
-#     phone = db.Column(db.Integer)
-#     movie_preferences = db.Column(db.String)
-
-#     #Foreign Key
-
-#     #Relationships
-#     movie_favorite = db.relationship('MovieFavorite', back_populates='user')
-
-#     #Serialize Rules
-
-# class Movie(db.Model, SerializerMixin):
-#     __tablename__ = 'movies'
-#     id = db.Column(db.Integer, primary_key = True)
-#     title = db.Column(db.String)
-#     director = db.Column(db.String)
-#     length = db.Column(db.Integer)
-#     awards = db.Column(db.String)
-#     genre = db.Column(db.String)
-#     changed_at = db.Column(db.DateTime, default=datetime.utcnow)
-#     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-#     #Foreign Key
-
-#     #Relationships
-#     movie_favorite = db.relationship('MovieFavorite', back_populates='movie')
-
-#     #Serialize Rules
-
-# class MovieFavorite(db.Model, SerializerMixin):
-#     __tablename__ = 'movie_favorites'
-
-#     id = db.Column(db.Integer, primary_key = True)
-
-#     #Foreign Keys
-#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-#     movie_id = db.Column(db.Integer, db.ForeignKey('movies.id'))
-
-#     #Relationships
-#     user = db.relationship('User', back_populates='movie_favorite')
-#     movie = db.relationship('Movie', back_populates='movie_favorites')
-
-#     #Serialize Rules
-
-
-
-
-
 class Hobby(db.Model, SerializerMixin):
     __tablename__ = "hobbies"
     #Columns

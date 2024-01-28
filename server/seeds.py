@@ -967,36 +967,36 @@ if __name__ == '__main__':
 #print some of these can defnitely have extra things
         print("Seeding our existing Users hobbies...")
         user_hobbies = [
-            UserHobby(expertise=9, user_id=1, hobby_id=80),   # Emily Everwood - Painting ✔
-            UserHobby(expertise=7, user_id=2, hobby_id=9),   # Zephyr Wilde - Adventuring - Trekking ✔
-            UserHobby(expertise=5, user_id=3, hobby_id=1),   # Seren Hawthorne - Writing - Writing Novels ✔ 
-            UserHobby(expertise=8, user_id=4, hobby_id=9),   # Atlas Stone - Mountain Exploration - Trekking ✔
-            UserHobby(expertise=6, user_id=5, hobby_id=31),   # Aria Nightingale - Music - Theater ✔
-            UserHobby(expertise=9, user_id=6, hobby_id=71),   # Max Adler - Astronomy - Astrology ✔
-            UserHobby(expertise=4, user_id=7, hobby_id=60),   # Eliza Bard - Reading Fiction Books ✔
-            UserHobby(expertise=7, user_id=8, hobby_id=20),   # Phoenix Blaze - Fire Dancing - Dancing ✔
-            UserHobby(expertise=8, user_id=9, hobby_id=71),   # Stella Morgan - Astronomy - Astrology✔
-            UserHobby(expertise=5, user_id=10, hobby_id=9),   # Asher Kane - Hiking - Trekking
-            UserHobby(expertise=6, user_id=11, hobby_id=4),  # Ivy Greene - Photography ✔
-            UserHobby(expertise=4, user_id=12, hobby_id=13),  # Carter Reeves - Adrenaline Activities - Mountain Biking	 ✔
-            UserHobby(expertise=5, user_id=13, hobby_id=72),  # Jasmine Hart - Mindfulness - Meditation (add yoga 18) ✔
-            UserHobby(expertise=8, user_id=14, hobby_id=37),  # Oliver Hudson - Technology - Coding ✔
-            UserHobby(expertise=6, user_id=15, hobby_id=95),  # Ava Morgan - Animal Welfare - Volunteering ✔
-            UserHobby(expertise=9, user_id=16, hobby_id=8),  # Ash Hunter - Nature - Hiking ✔
-            UserHobby(expertise=3, user_id=17, hobby_id=50),  # Ari James - History - Collecting Antiques ✔
-            UserHobby(expertise=7, user_id=18, hobby_id=72),  # Aiden Hartman - Mindfulness - Meditation ✔
-            UserHobby(expertise=5, user_id=19, hobby_id=71),  # Luna Knight - Astronomy - Astrology✔
-            UserHobby(expertise=4, user_id=20, hobby_id=65),  # Ryder Moss - Travel - Traveling ✔
-            UserHobby(expertise=8, user_id=21, hobby_id=71),  # Nova Sullivan - Stargazing - Astrology✔
-            UserHobby(expertise=6, user_id=22, hobby_id=9),   # Silas Rivera - Nature - Trekking✔
-            UserHobby(expertise=3, user_id=23, hobby_id=10),  # Ivy Lawrence - Gardening ✔
-            UserHobby(expertise=5, user_id=24, hobby_id=3),   # Zoe Harrison - Poetry - Writing Poetry	✔
-            UserHobby(expertise=7, user_id=25, hobby_id=65),  # Finn Collins - Travel - Traveling ✔
-            UserHobby(expertise=6, user_id=26, hobby_id=4),   # Lila Morris - Photography ✔
-            UserHobby(expertise=8, user_id=27, hobby_id=47),  # Miles Cooper - History - Vintage Items✔
-            UserHobby(expertise=3, user_id=28, hobby_id=54),  # Zoe Manning - Culinary Exploration - Cooking International Cuisines	 ✔
-            UserHobby(expertise=5, user_id=29, hobby_id=9),   # Caleb Williams - Resilience - Trekking ✔
-            UserHobby(expertise=7, user_id=30, hobby_id=3),  # Zara Knight - Poetry - Writing Poetry ✔
+            UserHobby(expertise=9, user_id=user_1, hobby_id=hobbies[79]),   # Emily Everwood - Painting ✔
+            UserHobby(expertise=7, user_id=user_2, hobby_id=hobbies[8]),   # Zephyr Wilde - Adventuring - Trekking ✔
+            UserHobby(expertise=5, user_id=user_3, hobby_id=hobbies[0]),   # Seren Hawthorne - Writing - Writing Novels ✔ 
+            UserHobby(expertise=8, user_id=user_4, hobby_id=hobbies[8]),   # Atlas Stone - Mountain Exploration - Trekking ✔
+            UserHobby(expertise=6, user_id=user_5, hobby_id=hobbies[30]),   # Aria Nightingale - Music - Theater ✔
+            UserHobby(expertise=9, user_id=user_6, hobby_id=hobbies[70]),   # Max Adler - Astronomy - Astrology ✔
+            UserHobby(expertise=4, user_id=user_7, hobby_id=hobbies[59]),   # Eliza Bard - Reading Fiction Books ✔
+            UserHobby(expertise=7, user_id=user_8, hobby_id=hobbies[19]),   # Phoenix Blaze - Fire Dancing - Dancing ✔
+            UserHobby(expertise=8, user_id=user_9, hobby_id=hobbies[70]),   # Stella Morgan - Astronomy - Astrology✔
+            UserHobby(expertise=5, user_id=user_10, hobby_id=hobbies[8]),   # Asher Kane - Hiking - Trekking
+            UserHobby(expertise=6, user_id=user_11, hobby_id=hobbies[3]),  # Ivy Greene - Photography ✔
+            UserHobby(expertise=4, user_id=user_12, hobby_id=hobbies[12]),  # Carter Reeves - Adrenaline Activities - Mountain Biking	 ✔
+            UserHobby(expertise=5, user_id=user_13, hobby_id=hobbies[71]),  # Jasmine Hart - Mindfulness - Meditation (add yoga 18) ✔
+            UserHobby(expertise=8, user_id=user_14, hobby_id=hobbies[36]),  # Oliver Hudson - Technology - Coding ✔
+            UserHobby(expertise=6, user_id=user_15, hobby_id=hobbies[94]),  # Ava Morgan - Animal Welfare - Volunteering ✔
+            UserHobby(expertise=9, user_id=user_16, hobby_id=hobbies[7]),  # Ash Hunter - Nature - Hiking ✔
+            UserHobby(expertise=3, user_id=user_17, hobby_id=hobbies[49]),  # Ari James - History - Collecting Antiques ✔
+            UserHobby(expertise=7, user_id=user_18, hobby_id=hobbies[71]),  # Aiden Hartman - Mindfulness - Meditation ✔
+            UserHobby(expertise=5, user_id=user_19, hobby_id=hobbies[70]),  # Luna Knight - Astronomy - Astrology✔
+            UserHobby(expertise=4, user_id=user_20, hobby_id=hobbies[64]),  # Ryder Moss - Travel - Traveling ✔
+            UserHobby(expertise=8, user_id=user_21, hobby_id=hobbies[70]),  # Nova Sullivan - Stargazing - Astrology✔
+            UserHobby(expertise=6, user_id=user_22, hobby_id=hobbies[8]),   # Silas Rivera - Nature - Trekking✔
+            UserHobby(expertise=3, user_id=user_23, hobby_id=hobbies[9]),  # Ivy Lawrence - Gardening ✔
+            UserHobby(expertise=5, user_id=user_24, hobby_id=hobbies[2]),   # Zoe Harrison - Poetry - Writing Poetry	✔
+            UserHobby(expertise=7, user_id=user_25, hobby_id=hobbies[64]),  # Finn Collins - Travel - Traveling ✔
+            UserHobby(expertise=6, user_id=user_26, hobby_id=hobbies[3]),   # Lila Morris - Photography ✔
+            UserHobby(expertise=8, user_id=user_27, hobby_id=hobbies[46]),  # Miles Cooper - History - Vintage Items✔
+            UserHobby(expertise=3, user_id=user_28, hobby_id=hobbies[53]),  # Zoe Manning - Culinary Exploration - Cooking International Cuisines	 ✔
+            UserHobby(expertise=5, user_id=user_29, hobby_id=hobbies[8]),   # Caleb Williams - Resilience - Trekking ✔
+            UserHobby(expertise=7, user_id=user_30, hobby_id=hobbies[2]),  # Zara Knight - Poetry - Writing Poetry ✔
         ]
         db.session.add_all(user_hobbies)
 #---------------------------------------------------------------------------------COMPETITIONS-----------------------------------------------------------------------------------------------
@@ -1008,7 +1008,6 @@ if __name__ == '__main__':
                 description="Participants will form teams of 3 and undertake an unforgettable trekking adventure along the Trail of Ten Falls. The trail will showcase the park's breathtaking waterfalls and offer participants a chance to immerse themselves in the beauty of Oregon's lush wilderness. Unleash your trekking prowess in the Trail of Ten Falls Challenge! Embark on an enchanting journey through lush landscapes and captivating waterfalls. Join us for an unforgettable trek where every step sparks wonder and every moment is pure magic. Ready to embrace the trail's beauty? Let's trek together and create lasting memories!",
                 compImg = "https://www.oregonlive.com/resizer/4Ppj7w0bVRairNLOtuigcs5nAmY=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.oregonlive.com/home/olive-media/width2048/img/travel_impact/photo/waterfalls-of-silver-falls-state-park-44de1639dcf7dd0d.jpg",
                 scoring="Teams will earn points based on their performance in each task. The team with the highest overall score at the end of the competition will be declared the winner.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Silver Falls State Park, Oregon, United States",
@@ -1024,7 +1023,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place team will be granted a $25 outdoor gear voucher, allowing them to choose equipment or accessories to enhance their future trekking adventures.",
                 prize8="Eighth Place: The eighth-place team will receive a $20 outdoor gear voucher, providing them with an opportunity to acquire quality gear for their outdoor pursuits.",
                 registration_schedule="Participants can register for the competition through [provide registration details]. The number of teams may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = 22,
+                user_id = user_22,
             ),
             Competition(
                 title="Celestial Explorer Challenge",
@@ -1032,7 +1031,6 @@ if __name__ == '__main__':
                 description="In the Celestial Explorer Challenge, you will become a lone adventurer under the stars, navigating the mysteries of the cosmos with zeal and curiosity. This competition is tailored for individual stargazers who seek to deepen their understanding of astronomy, test their powers of observation, and capture the essence of the night sky through enthralling challenges and astronomical quests. Indulge your passion for the stars, and let the Celestial Explorer Challenge elevate your love for astronomy to new celestial heights!",
                 compImg = "https://www.daysoftheyear.com/wp-content/uploads/astronomy-day1.jpg",
                 scoring="Your performance in each task will be scored, and the individual participant with the highest overall score at the end of the Celestial Explorer Challenge will claim the title of the night's most accomplished stargazer.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="BIG BEND NATIONAL PARK, TEXAS",
@@ -1048,7 +1046,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place Prize: With a reward of $50, the seventh-place participant will be celebrated for their engagement in the cosmos and their astronomical feats.",
                 prize8="Eighth Place Prize: The eighth-place participant will receive $25, honoring their passion for stargazing and commitment to the competition.",
                 registration_schedule="Secure your place in the Celestial Explorer Challenge by registering through [provide registration details]. Limited slots are available, so secure your spot early to join this cosmic quest of a lifetime.", # need a way to grab date
-                user_id = 6,
+                user_id = user_6,
             ),
             Competition(
                 title="Virtual Culinary Showdown",
@@ -1056,7 +1054,6 @@ if __name__ == '__main__':
                 description="Welcome to the sizzling world of the Virtual Culinary Showdown, where kitchen virtuosos from all corners of the culinary universe will converge for a mouthwatering and immersive experience. In this online cooking extravaganza, participants will embark on a gastronomic journey that transcends geographical boundaries as they showcase their culinary skills and innovative flair, all from the comfort of their own kitchens. In the culinary theater, the virtual audience becomes an integral part of the spectacle! Through real-time comments, questions, and votes, spectators will engage with the passionate chefs, savoring the excitement and camaraderie of the Virtual Culinary Showdown. During the live stream, the virtual audience will have the opportunity to engage with the participants through real-time comments, questions, and votes for their favorite dishes. The Virtual Culinary Showdown promises to be an engaging and flavorful experience, celebrating the love of cooking and culinary artistry with a wide range of prizes for the talented participants!",
                 compImg = "https://media.philstar.com/photos/2023/01/28/000337n9ck_2023-01-28_09-52-17.jpg",
                 scoring="Dedicated judges will assess participants' culinary feats in each challenge, and a delectable blend of taste, technique, and presentation will be rewarded. The participant who reigns supreme with the highest overall score at the end of the Virtual Culinary Showdown will be crowned the culinary virtuoso.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Online (Participants will cook from their respective kitchens)",
@@ -1072,7 +1069,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and culinary expertise.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 gift card to a popular online gourmet food store, allowing them to explore and indulge in gourmet ingredients and culinary delights.",
                 registration_schedule="Participants can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = 28,
+                user_id = user_28,
             ),
             Competition(
                 title="Coastal Serenity Art Challenge",
@@ -1080,7 +1077,6 @@ if __name__ == '__main__':
                 description="Welcome to the Coastal Serenity Art Challenge, where the mesmerizing harmony of sun-kissed shores and glistening waters serves as the muse for artistic brilliance. Against a backdrop of virtual camaraderie, participants will embark on an artistic odyssey, embracing the essence of coastal serenity through their unique perspectives and strokes of genius. The virtual art gallery will be a captivating spectacle, adorned with an array of coastal-inspired creations. As the competition unfolds, spectators and fellow artists will wander through this digital haven, savoring the captivating narratives woven into each artwork. Let your creativity wash ashore and be swept away by the Coastal Serenity Art Challenge, where the tranquil beauty of beaches becomes a canvas for artistic masterpieces!",
                 compImg = "https://images.saatchiart.com/saatchi/1649865/art/8400046/7464383-HSC00001-7.jpg",
                 scoring="Esteemed art connoisseurs will evaluate the artworks, guided by an appreciation for technique, composition, originality, and the ability to evoke the serene spirit of beaches. The artist with the highest overall score at the end of the Coastal Serenity Art Challenge will be hailed as the coastal artist extraordinaire.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Virtual (Participants will paint from their own studios or creative spaces)",
@@ -1096,7 +1092,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place artist will receive a $50 cash prize, honoring their efforts and artistic expression.",
                 prize8="Eighth Place: The eighth-place artist will be granted a $25 art supply voucher, allowing them to acquire additional tools and materials to nurture their artistic visions.",
                 registration_schedule="Artists can register for the competition through [provide registration details]. The number of participants may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = 1,
+                user_id = user_1,
             ),
             Competition(
                 title="Captured Visions Photography Contest",
@@ -1104,7 +1100,6 @@ if __name__ == '__main__':
                 description="Welcome to the Captured Visions Photography Contest, where the world becomes your canvas, and your camera becomes the brush that paints unforgettable images. In this artistic journey, photographers will delve into their passion for storytelling through imagery, capturing fleeting emotions, arresting landscapes, and life's hidden treasures. Through the digital realm, the virtual photography gallery will come alive, showcasing the entrancing collection of captivating photographs. Spectators and fellow photographers will stroll through this immersive gallery, celebrating the richness of visual storytelling.  Unleash the power of your lens and embark on an extraordinary journey of visual storytelling in the Captured Visions Photography Contest, where moments are immortalized, and emotions become art!",
                 compImg = "https://dvyvvujm9h0uq.cloudfront.net/com/articles/1647932770-marco-xu-toupbco62lw-unsplash.jpg",
                 scoring="A panel of expert photographers and art connoisseurs will judge the entries based on technical excellence, composition, creativity, and the ability to convey powerful emotions and narratives through the lens. The photographer with the highest overall score at the end of the Captured Visions Photography Contest will be celebrated as the visionary image-maker.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Global (Participants will submit their photographs online)",
@@ -1120,7 +1115,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place photographer will receive a $50 cash prize, honoring their efforts and artistic vision.",
                 prize8="Eighth Place: The eighth-place photographer will be granted a $25 photography gear voucher, allowing them to enhance their photographic arsenal.",
                 registration_schedule="Photographers can submit their captivating images through [provide submission details]. Each participant may enter photographs for one or more of the competition tasks.", # need a way to grab date
-                user_id = 11,
+                user_id = user_11,
             ),
             Competition(
                 title="Strum and Show Guitar Challenge",
@@ -1128,7 +1123,6 @@ if __name__ == '__main__':
                 description="Welcome to the Strum and Show Guitar Challenge, where every strum is a brushstroke, and every note paints a vibrant sonic canvas. This thrilling contest provides a stage for guitarists to unleash their musical creativity, energizing the audience with heartfelt tunes and electrifying performances. The Strum and Show Guitar Challenge will host a virtual showcase, allowing audiences to revel in the captivating performances of all participants. Virtual viewers will be immersed in a musical feast, celebrating the artistry and passion of each guitarist. Step into the spotlight and let your guitar prowess shine in the Strum and Show Guitar Challenge, where strings resonate, fingers dance, and music becomes an unforgettable experience!",
                 compImg = "https://e1.pxfuel.com/desktop-wallpaper/404/249/desktop-wallpaper-buckethead-guitar-guitarist-heavy-metal-progressive-funk-avant-buckethead-guitar-music.jpg",
                 scoring="A panel of music experts, seasoned performers, and audience participation will contribute to the scoring process. They will evaluate technical skills, musicality, stage presence, originality, and the ability to engage the audience. The guitarist with the highest overall score at the end of the Strum and Show Guitar Challenge will be crowned the Guitar Maestro.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Global (Participants will submit their entries online)",
@@ -1144,7 +1138,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place guitarist will receive a $50 cash prize, honoring their efforts and musical expression.",
                 prize8="Eighth Place: The eighth-place guitarist will be granted a $25 gift card to a popular music store, allowing them to explore and expand their guitar gear collection.",
                 registration_schedule="Guitarists can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = 5,
+                user_id = user_5,
             ),
             Competition(
                 title="ElectraTech Maker Challenge",
@@ -1152,7 +1146,6 @@ if __name__ == '__main__':
                 description="Welcome to the ElectraTech Maker Challenge, where circuits come alive, and robots dance to the rhythm of innovation. This thrilling contest provides a platform for makers, DIY enthusiasts, and robotics wizards to demonstrate their technical prowess, creative problem-solving, and passion for cutting-edge technology.   The ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity. Ignite your passion for innovation and join the ElectraTech Maker Challenge, where creativity sparks, robots conquer, and technology transforms the world!",
                 compImg = "https://ichef.bbci.co.uk/images/ic/1200x675/p040qmt5.jpg",
                 scoring="A panel of technology experts, electronics engineers, and robotics enthusiasts will contribute to the scoring process. They will evaluate project complexity, technical sophistication, innovation, and the impact of the projects on society. The participant with the highest overall score at the end of the ElectraTech Maker Challenge will be crowned the ElectraTech Innovator. The ElectraTech Maker Challenge will host a virtual exhibition to showcase the projects of all participants. Enthusiasts and aspiring tech makers will explore this digital gallery, celebrating the marvels of technology and creativity.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Virtual (Participants will work from their own workshops or creative spaces)",
@@ -1168,7 +1161,7 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and technological ingenuity.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 electronics components voucher, allowing them to expand their toolkit and fuel their next creations.",
                 registration_schedule="Makers and DIY enthusiasts can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = 14,
+                user_id = user_14,
             ),
             Competition(
                 title="CodeCrafters Coding Challenge",
@@ -1176,7 +1169,6 @@ if __name__ == '__main__':
                 description="Welcome to the CodeCrafters Coding Challenge, where lines of code become brushstrokes, and algorithms paint masterpieces of functionality. This thrilling contest provides a stage for programmers to embark on coding adventures, crafting solutions that tackle real-world challenges and push the boundaries of software development. The CodeCrafters Coding Challenge will host a virtual showcase, allowing participants and spectators to explore the coding creations of all contenders. The digital exhibit will celebrate the brilliance of software development and innovation. Unleash your coding prowess and become a true CodeCraft Master in this exciting challenge, where logic prevails, innovation thrives, and software solutions come to life!",
                 compImg = "https://miro.medium.com/v2/resize:fit:10116/1*VBAaUoOm0WRmAgxXVUwHIA.jpeg",
                 scoring="A panel of tech experts, software engineers, and coding enthusiasts will contribute to the scoring process. They will evaluate code efficiency, algorithm design, creativity, and the overall impact of the projects. The participant with the highest overall score at the end of the CodeCrafters Coding Challenge will be crowned the CodeCraft Champion.",
-                cost_of_entry="",
                 schedule="",
                 contact="",
                 location="Virtual (Participants will work from their own offices or creative spaces)",
@@ -1192,81 +1184,11 @@ if __name__ == '__main__':
                 prize7="Seventh Place: The seventh-place participant will receive a $50 cash prize, honoring their efforts and coding ingenuity.",
                 prize8="Eighth Place: The eighth-place participant will be granted a $25 coding resource voucher, allowing them to enhance their toolkit and explore new coding horizons.",
                 registration_schedule="Programmers can register for the competition through [provide registration details]. Spaces may be limited, so early registration is encouraged.", # need a way to grab date
-                user_id = 14,
+                user_id = user_14,
             ),
         ]
         db.session.add_all(competitions)
-#---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
-        print("Seeding our Results...")
-        results = [
-            Result(
-            placement=2,
-            user_id=6,
-            competition_id=2,
-            entry_id = 1,
-            ),
-            Result(
-            placement=5,
-            user_id=10,
-            competition_id=2,
-            entry_id = 2,
-            ),
-            Result(
-            placement=1,
-            user_id=19,
-            competition_id=2,
-            entry_id = 3,
-            ),
-            Result(
-            placement=3,
-            user_id=21,
-            competition_id=2,
-            entry_id = 4,
-            ),
-            Result(
-            placement=5,
-            user_id=26,
-            competition_id=5,
-            entry_id = 5,
-            ),
-            Result(
-            placement=1,
-            user_id=11,
-            competition_id=5,
-            entry_id = 6,
-            ),
-            Result(
-            placement=3,
-            user_id=2,
-            competition_id=1,
-            entry_id = 7,
-            ),
-            Result(
-            placement=5,
-            user_id=4,
-            competition_id=1,
-            entry_id = 8,
-            ),
-            Result(
-            placement=6,
-            user_id=10,
-            competition_id=1,
-            entry_id = 9,
-            ),
-            Result(
-            placement=1,
-            user_id=22,
-            competition_id=1,
-            entry_id = 10,
-            ),
-            Result(
-            placement=2,
-            user_id=29,
-            competition_id=1,
-            entry_id = 11,
-            ),
-        ]
-        db.session.add_all(results)
+
 
 #---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
 
@@ -1275,56 +1197,56 @@ if __name__ == '__main__':
             Entry(
             submission="https://images.jpost.com/image/upload/f_auto,fl_lossy/c_fill,g_faces:center,h_428,w_640/525666",
             description="A breathtaking view of the Milky Way as seen from a remote location in BIG BEND NATIONAL PARK, TEXAS. The dense cluster of stars in the center is prominently visible, with the dark interstellar dust creating an intriguing contrast.",
-            user_id=6,
-            competition_id=2,
+            user_id=user_6,
+            competition_id=competitions[1],
             ),
             Entry(
             submission="https://www.constellation-guide.com/wp-content/uploads/2022/06/night-sky-tonight-northern-hemisphere-july.webp",
             description="A detailed guide to the constellations visible during the month of August. Each constellation is described with its historical background, mythological significance, and key stars. Also included are tips for identifying each constellation in the night sky.",
-            user_id=10,
-            competition_id=2,
+            user_id=user_10,
+            competition_id=competitions[1],
             ),
             Entry(
             submission="https://www.jeffsullivanphotography.com/wp-content/uploads/2018/12/Death-Valley-Geminids-Jeff_Sullivan-2913-3320.jpg",
             description="A mesmerizing time-lapse video of the Perseid meteor shower, captured during its peak activity. Each meteor trail is distinctly visible, showcasing the shower's radiant beauty against the backdrop of a dark, starry sky.",
-            user_id=19,
-            competition_id=2,
+            user_id=user_19,
+            competition_id=competitions[1],
             ),
             Entry(
             submission="https://i.ytimg.com/vi/y3qFm_-GVks/maxresdefault.jpg",
             description="An audio recording capturing the ambient sounds of the night during a stargazing session. The gentle chirping of crickets, the distant howl of a coyote, and the occasional rustling of leaves combine to create a serene atmosphere that complements the beauty of the night sky.",
-            user_id=21,
-            competition_id=2,
+            user_id=user_21,
+            competition_id=competitions[1],
             ),
             Entry(
             submission="https://images.unsplash.com/photo-1589156191108-c762ff4b96ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdvbWFuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
             description="A poignant portrait of a young woman, Julia, with tears glistening in her eyes. The soft lighting emphasizes the raw emotion on her face, capturing a moment of vulnerability and introspection.",
-            user_id=26,
-            competition_id=5,
+            user_id=user_26,
+            competition_id=competitions[4],
             ),
             Entry(
             submission="https://seal2013.files.wordpress.com/2014/04/street-x.jpg",
             description="A vibrant snapshot of a bustling market street in Marrakech. The image captures the essence of the local culture, with street vendors peddling their wares, colorful textiles hanging from stalls, and a cacophony of sounds echoing in the background. The photograph tells a story of life, commerce, and the spirit of the city.",
-            user_id=11,
-            competition_id=5,
+            user_id=user_11,
+            competition_id=competitions[4],
             ),
             Entry(
             submission="https://i.ytimg.com/vi/TUM1Phi3zuI/maxresdefault.jpg",
             description="Our team began the trek just as dawn was breaking, with the soft glow of the morning sun painting the skies. As we made our way through the trail, the gentle sound of cascading water drew us closer to the first waterfall. The fresh misty air and the sheer beauty of nature left us in awe. Taking a moment to meditate by the falls, we felt an overwhelming sense of connection with the surroundings.",
-            user_id=2,
-            competition_id=1,
+            user_id=user_2,
+            competition_id=competitions[0],
             ),
             Entry(
             submission="https://www.nps.gov/piro/planyourvisit/images/hikers-on-NCT-1.jpg",
             description="The trail provided both challenges and wonders. Each waterfall we encountered told a different story - from gentle cascades to majestic falls. Our team, though tested by the terrain, grew closer with every step. Sharing stories, helping each other through tricky paths, and taking in the beauty together made the journey unforgettable.",
-            user_id=4,
-            competition_id=1,
+            user_id=user_4,
+            competition_id=competitions[0],
             ),
             Entry(
             submission="https://www.wedreamoftravel.com/wp-content/uploads/2020/08/Silver-Falls.jpg",
             description="While navigating towards the fourth waterfall, we stumbled upon an off-beaten path. Curiosity got the better of us, and we decided to explore. What we discovered was a secluded mini waterfall, not on the map, where we spent hours simply admiring nature's hidden gem. This unexpected detour became the highlight of our trek.",
-            user_id=10,
-            competition_id=1,
+            user_id=user_10,
+            competition_id=competitions[0],
             ),
             # Entry(
             # submission="Image: ReflectionsByTheFall_22.jpg",
@@ -1336,10 +1258,83 @@ if __name__ == '__main__':
             submission="https://uprootedtraveler.com/wp-content/uploads/trail-of-ten-falls-trail-of-10-falls-lower-south-falls-2.jpg",
             description="Facing challenges like slippery paths and steep inclines, our team's spirit never wavered. Each waterfall became a milestone, a testament to our determination. By the time we reached the last waterfall, the sense of accomplishment was overwhelming. It wasn't just about completing the trek, but about the bonds formed and the memories made.",
             user_id=29,
-            competition_id=1,
+            competition_id=competitions[0],
             ),
         ]
         db.session.add_all(entries)
+
+
+        #---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
+        print("Seeding our Results...")
+        results = [
+            Result(
+            placement=2,
+            user_id=user_6,
+            competition_id=competitions[1],
+            entry_id = entries[0],
+            ),
+            Result(
+            placement=5,
+            user_id=user_10,
+            competition_id=competitions[1],
+            entry_id = entries[1],
+            ),
+            Result(
+            placement=1,
+            user_id=user_19,
+            competition_id=competitions[1],
+            entry_id = entries[2],
+            ),
+            Result(
+            placement=3,
+            user_id=user_21,
+            competition_id=competitions[1],
+            entry_id = entries[3],
+            ),
+            Result(
+            placement=5,
+            user_id=user_26,
+            competition_id=competitions[4],
+            entry_id = entries[4],
+            ),
+            Result(
+            placement=1,
+            user_id=user_11,
+            competition_id=competitions[4],
+            entry_id = entries[5],
+            ),
+            Result(
+            placement=3,
+            user_id=user_2,
+            competition_id=competitions[0],
+            entry_id = entries[6],
+            ),
+            Result(
+            placement=5,
+            user_id=user_4,
+            competition_id=competitions[0],
+            entry_id = entries[7],
+            ),
+            Result(
+            placement=6,
+            user_id=user_10,
+            competition_id=competitions[0],
+            entry_id = entries[8],
+            ),
+            Result(
+            placement=1,
+            user_id=user_22,
+            competition_id=competitions[0],
+            entry_id = entries[9],
+            ),
+            Result(
+            placement=2,
+            user_id=user_29,
+            competition_id=competitions[0],
+            entry_id = entries[10],
+            ),
+        ]
+        db.session.add_all(results)
 
 
         print("Existing data is now established.")

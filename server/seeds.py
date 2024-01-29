@@ -963,6 +963,8 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(hobbies)
+        db.session.commit()
+
 #---------------------------------------------------------------------------------USERS HOBBIES-----------------------------------------------------------------------------------------------
 #print some of these can defnitely have extra things
         print("Seeding our existing Users hobbies...")
@@ -999,6 +1001,8 @@ if __name__ == '__main__':
             UserHobby(expertise=7, user_id=user_30.id, hobby_id=hobbies[2].id),  # Zara Knight - Poetry - Writing Poetry ✔
         ]
         db.session.add_all(user_hobbies)
+        db.session.commit()
+
 #---------------------------------------------------------------------------------COMPETITIONS-----------------------------------------------------------------------------------------------
         print("Seeding our Competitions...")
         competitions = [
@@ -1188,6 +1192,7 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(competitions)
+        db.session.commit()
 
 
 #---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------
@@ -1262,6 +1267,8 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(entries)
+        db.session.commit()
+
 
         print("TITLE:", competitions[1].title)
         print("TITLE:", competitions[2].title)
@@ -1343,6 +1350,8 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(results)
+        db.session.commit()
+
 
 
         print("Existing data is now established.")

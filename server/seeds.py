@@ -10,12 +10,13 @@ if __name__ == '__main__':
     with app.app_context():
         #Clear dbs
         print("Clearing db...")
-        User.query.delete()
+        
         Hobby.query.delete()
         UserHobby.query.delete()
         Competition.query.delete()
         Result.query.delete()
         Entry.query.delete()
+        User.query.delete()
 #------------------------------------------------------------------------------------------USER SEEDING---------------------------------------------------------------------------------------
         #Seed users
         print("Seeding potential Users...")
@@ -1262,6 +1263,14 @@ if __name__ == '__main__':
             ),
         ]
         db.session.add_all(entries)
+
+        print("TITLE:", competitions[1].title)
+        print("TITLE:", competitions[2].title)
+        print("TITLE:", competitions[3].title)
+        print("TITLE:", competitions[4].title)
+        print("TITLE:", competitions[5].title)
+        print("TITLE:", competitions[6].title)
+
 
 
         #---------------------------------------------------------------------------------Results-----------------------------------------------------------------------------------------------

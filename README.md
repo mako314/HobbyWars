@@ -1,8 +1,6 @@
 # HobbyWars
 Hobby Wars - Friendly Competition Platform
 
-Hobby Wars - Friendly Competition Platform:
-
 Objective: The Hobby Wars platform aims to bring together hobbyists and enthusiasts from various fields to engage in friendly competitions, showcase their skills, and celebrate their creativity. By providing a space for users to participate, vote, and connect with like-minded individuals, the platform fosters a positive and supportive community for hobbyists of all levels.
 
 Key Features and Functionality

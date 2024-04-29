@@ -1331,12 +1331,6 @@ if __name__ == '__main__':
             entry_id = entries[8].id,
             ),
             Result(
-            placement=6,
-            user_id=user_10.id,
-            competition_id=competitions[0].id,
-            entry_id = entries[9].id,
-            ),
-            Result(
             placement=1,
             user_id=user_22.id,
             competition_id=competitions[0].id,

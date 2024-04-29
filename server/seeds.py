@@ -1254,7 +1254,7 @@ if __name__ == '__main__':
             competition_id=competitions[0].id,
             ),
             Entry(
-            submission="Image: ReflectionsByTheFall_22.jpg",
+            submission="https://gowanderwild.com/wp-content/uploads/2023/09/South-Falls-Trail-of-Ten-Falls-Silver-Falls-State-Park-Oregon-35.jpg",
             description="The Trail of Ten Falls is not just about witnessing nature's wonders, but also about introspection. As we trekked, each member took turns sharing personal stories and reflections, inspired by the natural beauty around. By the end of the trail, we not only explored the external landscape but also the landscapes of our souls.",
             user_id=user_22.id,
             competition_id=competitions[0].id,

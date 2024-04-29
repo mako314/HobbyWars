@@ -1289,7 +1289,7 @@ if __name__ == '__main__':
             entry_id = entries[1].id,
             ),
             Result(
-            placement=5,
+            placement=4,
             user_id=user_10.id,
             competition_id=competitions[1].id,
             entry_id = entries[2].id,

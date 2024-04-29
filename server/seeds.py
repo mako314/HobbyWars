@@ -10,11 +10,11 @@ if __name__ == '__main__':
     with app.app_context():
         #Clear dbs
         print("Clearing db...")
-        UserHobby.query.delete()
-        Hobby.query.delete()
-        Competition.query.delete()
         Result.query.delete()
         Entry.query.delete()
+        Competition.query.delete()
+        UserHobby.query.delete()
+        Hobby.query.delete()
         User.query.delete()
 #------------------------------------------------------------------------------------------USER SEEDING---------------------------------------------------------------------------------------
         #Seed users
